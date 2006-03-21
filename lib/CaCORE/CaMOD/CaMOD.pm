@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.0';
+$VERSION = '3.01';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -9369,6 +9369,8 @@ sub setId {
 #end
 # Below is module documentation for ApprovalStatus
 
+=pod
+
 =head1 ApprovalStatus
 
   CaCORE::CaMOD::ApprovalStatus - Perl extension for ApprovalStatus.
@@ -9403,7 +9405,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Availability
+
+=pod
 
 =head1 Availability
 
@@ -9442,7 +9447,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for AbstractCancerModel
+
+=pod
 
 =head1 AbstractCancerModel
 
@@ -9483,7 +9491,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for TumorCode
+
+=pod
 
 =head1 TumorCode
 
@@ -9520,7 +9531,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Xenograft
+
+=pod
 
 =head1 Xenograft
 
@@ -9564,7 +9578,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for TreatmentSchedule
+
+=pod
 
 =head1 TreatmentSchedule
 
@@ -9601,7 +9618,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Nomenclature
+
+=pod
 
 =head1 Nomenclature
 
@@ -9637,7 +9657,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for GenotypeSummary
+
+=pod
 
 =head1 GenotypeSummary
 
@@ -9675,7 +9698,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Conditionality
+
+=pod
 
 =head1 Conditionality
 
@@ -9712,7 +9738,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Image
+
+=pod
 
 =head1 Image
 
@@ -9751,7 +9780,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for EngineeredGene
+
+=pod
 
 =head1 EngineeredGene
 
@@ -9794,7 +9826,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for IntegrationType
+
+=pod
 
 =head1 IntegrationType
 
@@ -9832,7 +9867,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Transgene
+
+=pod
 
 =head1 Transgene
 
@@ -9870,7 +9908,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Therapy
+
+=pod
 
 =head1 Therapy
 
@@ -9911,7 +9952,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for YeastModel
+
+=pod
 
 =head1 YeastModel
 
@@ -9947,7 +9991,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for TargetedModification
+
+=pod
 
 =head1 TargetedModification
 
@@ -9987,7 +10034,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for SexDistribution
+
+=pod
 
 =head1 SexDistribution
 
@@ -10023,7 +10073,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for SegmentType
+
+=pod
 
 =head1 SegmentType
 
@@ -10059,7 +10112,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Role
+
+=pod
 
 =head1 Role
 
@@ -10096,7 +10152,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for RepositoryInfo
+
+=pod
 
 =head1 RepositoryInfo
 
@@ -10134,7 +10193,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for RegulatoryElementType
+
+=pod
 
 =head1 RegulatoryElementType
 
@@ -10170,7 +10232,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for RegulatoryElement
+
+=pod
 
 =head1 RegulatoryElement
 
@@ -10209,7 +10274,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for PublicationStatus
+
+=pod
 
 =head1 PublicationStatus
 
@@ -10245,7 +10313,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Publication
+
+=pod
 
 =head1 Publication
 
@@ -10289,7 +10360,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Promoter
+
+=pod
 
 =head1 Promoter
 
@@ -10326,7 +10400,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Phenotype
+
+=pod
 
 =head1 Phenotype
 
@@ -10364,7 +10441,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Party
+
+=pod
 
 =head1 Party
 
@@ -10401,7 +10481,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Person
+
+=pod
 
 =head1 Person
 
@@ -10438,7 +10521,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for PartyRole
+
+=pod
 
 =head1 PartyRole
 
@@ -10476,7 +10562,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for Organization
+
+=pod
 
 =head1 Organization
 
@@ -10513,7 +10602,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for MicroArrayData
+
+=pod
 
 =head1 MicroArrayData
 
@@ -10551,7 +10643,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for JaxInfo
+
+=pod
 
 =head1 JaxInfo
 
@@ -10587,7 +10682,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for EnvironmentalFactor
+
+=pod
 
 =head1 EnvironmentalFactor
 
@@ -10625,7 +10723,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for InducedMutation
+
+=pod
 
 =head1 InducedMutation
 
@@ -10662,7 +10763,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for GenomicSegment
+
+=pod
 
 =head1 GenomicSegment
 
@@ -10702,7 +10806,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for GeneticAlteration
+
+=pod
 
 =head1 GeneticAlteration
 
@@ -10739,7 +10846,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for GeneFunction
+
+=pod
 
 =head1 GeneFunction
 
@@ -10776,7 +10886,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for GeneDelivery
+
+=pod
 
 =head1 GeneDelivery
 
@@ -10813,7 +10926,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for ContactInfo
+
+=pod
 
 =head1 ContactInfo
 
@@ -10858,7 +10974,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for CellLine
+
+=pod
 
 =head1 CellLine
 
@@ -10898,7 +11017,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for CarcinogenicIntervention
+
+=pod
 
 =head1 CarcinogenicIntervention
 
@@ -10935,7 +11057,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for AnimalModel
+
+=pod
 
 =head1 AnimalModel
 
@@ -10984,7 +11109,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for EndpointCode
+
+=pod
 
 =head1 EndpointCode
 
@@ -11021,7 +11149,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for ScreeningResult
+
+=pod
 
 =head1 ScreeningResult
 
@@ -11062,7 +11193,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for InvivoResult
+
+=pod
 
 =head1 InvivoResult
 
@@ -11103,7 +11237,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for ModificationType
+
+=pod
 
 =head1 ModificationType
 
@@ -11140,7 +11277,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for ExpressionFeature
+
+=pod
 
 =head1 ExpressionFeature
 
@@ -11176,7 +11316,10 @@ sub setId {
 <p>
 
 =cut
+
 # Below is module documentation for CancerModel
+
+=pod
 
 =head1 CancerModel
 
@@ -11211,3 +11354,4 @@ sub setId {
 <p>
 
 =cut
+

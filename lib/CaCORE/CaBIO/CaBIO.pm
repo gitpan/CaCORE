@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.0';
+$VERSION = '3.01';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -8541,6 +8541,8 @@ sub getGenericReporterCollection {
 #end
 # Below is module documentation for Taxon
 
+=pod
+
 =head1 Taxon
 
   CaCORE::CaBIO::Taxon - Perl extension for Taxon.
@@ -8584,7 +8586,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Agent
+
+=pod
 
 =head1 Agent
 
@@ -8627,7 +8632,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Chromosome
+
+=pod
 
 =head1 Chromosome
 
@@ -8666,7 +8674,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Gene
+
+=pod
 
 =head1 Gene
 
@@ -8721,7 +8732,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Vocabulary
+
+=pod
 
 =head1 Vocabulary
 
@@ -8759,7 +8773,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Protocol
+
+=pod
 
 =head1 Protocol
 
@@ -8799,7 +8816,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Tissue
+
+=pod
 
 =head1 Tissue
 
@@ -8847,7 +8867,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for SNP
+
+=pod
 
 =head1 SNP
 
@@ -8890,7 +8913,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for GeneAlias
+
+=pod
 
 =head1 GeneAlias
 
@@ -8928,7 +8954,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Library
+
+=pod
 
 =head1 Library
 
@@ -8982,7 +9011,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Clone
+
+=pod
 
 =head1 Clone
 
@@ -9024,7 +9056,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Target
+
+=pod
 
 =head1 Target
 
@@ -9064,7 +9099,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Location
+
+=pod
 
 =head1 Location
 
@@ -9103,7 +9141,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for CloneRelativeLocation
+
+=pod
 
 =head1 CloneRelativeLocation
 
@@ -9141,7 +9182,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for NucleicAcidSequence
+
+=pod
 
 =head1 NucleicAcidSequence
 
@@ -9185,7 +9229,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for DiseaseOntology
+
+=pod
 
 =head1 DiseaseOntology
 
@@ -9225,7 +9272,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for ClinicalTrialProtocol
+
+=pod
 
 =head1 ClinicalTrialProtocol
 
@@ -9276,7 +9326,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for ProtocolAssociation
+
+=pod
 
 =head1 ProtocolAssociation
 
@@ -9317,7 +9370,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Pathway
+
+=pod
 
 =head1 Pathway
 
@@ -9359,7 +9415,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for OrganOntology
+
+=pod
 
 =head1 OrganOntology
 
@@ -9401,7 +9460,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for OrganOntologyRelationship
+
+=pod
 
 =head1 OrganOntologyRelationship
 
@@ -9439,7 +9501,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Histopathology
+
+=pod
 
 =head1 Histopathology
 
@@ -9488,7 +9553,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for GeneOntology
+
+=pod
 
 =head1 GeneOntology
 
@@ -9527,7 +9595,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for GeneOntologyRelationship
+
+=pod
 
 =head1 GeneOntologyRelationship
 
@@ -9565,7 +9636,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for DiseaseOntologyRelationship
+
+=pod
 
 =head1 DiseaseOntologyRelationship
 
@@ -9603,7 +9677,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Anomaly
+
+=pod
 
 =head1 Anomaly
 
@@ -9642,7 +9719,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for PopulationFrequency
+
+=pod
 
 =head1 PopulationFrequency
 
@@ -9684,7 +9764,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for ProteinSequence
+
+=pod
 
 =head1 ProteinSequence
 
@@ -9724,7 +9807,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Protein
+
+=pod
 
 =head1 Protein
 
@@ -9769,7 +9855,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for ProteinAlias
+
+=pod
 
 =head1 ProteinAlias
 
@@ -9806,7 +9895,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for HomologousAssociation
+
+=pod
 
 =head1 HomologousAssociation
 
@@ -9844,7 +9936,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for PhysicalLocation
+
+=pod
 
 =head1 PhysicalLocation
 
@@ -9881,7 +9976,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for Cytoband
+
+=pod
 
 =head1 Cytoband
 
@@ -9918,7 +10016,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for CytogeneticLocation
+
+=pod
 
 =head1 CytogeneticLocation
 
@@ -9954,7 +10055,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for GeneRelativeLocation
+
+=pod
 
 =head1 GeneRelativeLocation
 
@@ -9990,7 +10094,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for GenericReporter
+
+=pod
 
 =head1 GenericReporter
 
@@ -10028,7 +10135,10 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+
 # Below is module documentation for GenericArray
+
+=pod
 
 =head1 GenericArray
 
@@ -10067,3 +10177,4 @@ sub getGenericReporterCollection {
 <p>
 
 =cut
+

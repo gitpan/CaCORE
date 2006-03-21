@@ -7,8 +7,8 @@ use strict;
 use LWP::UserAgent;
 use HTTP::Request::Common;
 use CaCORE::ApplicationService;
-use CaCORE::CaBIO;
-use CaCORE::CaDSR;
+use CaCORE::CaBIO::CaBIO;
+use CaCORE::CaDSR::CaDSR;
 
 #
 # ApplicationService is a utility classs that encapsulates webservice invocation to caCORE server.

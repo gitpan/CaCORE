@@ -577,6 +577,7 @@
 <hr />
 <p>
 </p>
+<hr />
 <h1><a name="context">Context</a></h1>
 <pre>
   CaCORE::CaDSR::Context - Perl extension for Context.</pre>
@@ -1455,158 +1456,116 @@
 <pre>
 	<a href="#casereportform">CaseReportForm</a>: 	One to many assoication, use getCaseReportFormCollection to get a collection of associated CaseReportForm.
   End Associations and related methods
-<p>
-
-<p>
+<p><p>
 </p>
 <hr />
 <h1><a name="casereportform">CaseReportForm</a></h1>
 <pre>
-  CaCORE::CaDSR::CaseReportForm - Perl extension for CaseReportForm.
-
-</pre>
+  CaCORE::CaDSR::CaseReportForm - Perl extension for CaseReportForm.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
   The CaCORE::CaDSR::bean::CaseReportForm is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  caBIO generic object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  A questionnaire that documents all the patient data stipulated in the protocol and used by clinicians to record information about patient's visits while on the clinical trial.
-
-</pre>
+  A questionnaire that documents all the patient data stipulated in the protocol and used by clinicians to record information about patient's visits while on the clinical trial.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_casereportform">Attributes of CaseReportForm</a></h3>
 <pre>
-  The following are all the attributes of the CaseReportForm object and their data types:
-
-</pre>
+  The following are all the attributes of the CaseReportForm object and their data types:</pre>
 <pre>
         displayName     string
   End Attributes
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_casereportform">Associations of CaseReportForm</a></h3>
 <pre>
-  The following are all the objects that are associated with the CaseReportForm:
-
-</pre>
+  The following are all the objects that are associated with the CaseReportForm:</pre>
 <pre>
 	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
 	<a href="#protocolformsset">ProtocolFormsSet</a>: 	Many to one assoication, use getProtocolFormsSet to get the associated ProtocolFormsSet.
 	<a href="#module">Module</a>: 	One to many assoication, use getModuleCollection to get a collection of associated Module.
   End Associations and related methods
-<p>
-
-<p>
+<p><p>
 </p>
 <hr />
 <h1><a name="module">Module</a></h1>
 <pre>
-  CaCORE::CaDSR::Module - Perl extension for Module.
-
-</pre>
+  CaCORE::CaDSR::Module - Perl extension for Module.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
   The CaCORE::CaDSR::bean::Module is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  caBIO generic object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  A collection of data elements, or Common Data Elements, logically grouped on a case report form.
-
-</pre>
+  A collection of data elements, or Common Data Elements, logically grouped on a case report form.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_module">Attributes of Module</a></h3>
 <pre>
-  The following are all the attributes of the Module object and their data types:
-
-</pre>
+  The following are all the attributes of the Module object and their data types:</pre>
 <pre>
         displayOrder    int
   End Attributes
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_module">Associations of Module</a></h3>
 <pre>
-  The following are all the objects that are associated with the Module:
-
-</pre>
+  The following are all the objects that are associated with the Module:</pre>
 <pre>
 	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
 	<a href="#casereportform">CaseReportForm</a>: 	Many to one assoication, use getCaseReportForm to get the associated CaseReportForm.
 	<a href="#protocolformstemplate">ProtocolFormsTemplate</a>: 	Many to one assoication, use getProtocolFormsTemplate to get the associated ProtocolFormsTemplate.
 	<a href="#question">Question</a>: 	One to many assoication, use getQuestionCollection to get a collection of associated Question.
   End Associations and related methods
-<p>
-
-<p>
+<p><p>
 </p>
 <hr />
 <h1><a name="question">Question</a></h1>
 <pre>
-  CaCORE::CaDSR::Question - Perl extension for Question.
-
-</pre>
+  CaCORE::CaDSR::Question - Perl extension for Question.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
   The CaCORE::CaDSR::bean::Question is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  caBIO generic object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  The actual text of the data element as specified on a Case Report Form of a Protocol.
-
-</pre>
+  The actual text of the data element as specified on a Case Report Form of a Protocol.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_question">Attributes of Question</a></h3>
 <pre>
-  The following are all the attributes of the Question object and their data types:
-
-</pre>
+  The following are all the attributes of the Question object and their data types:</pre>
 <pre>
         displayOrder    int
   End Attributes
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_question">Associations of Question</a></h3>
 <pre>
-  The following are all the objects that are associated with the Question:
-
-</pre>
+  The following are all the objects that are associated with the Question:</pre>
 <pre>
 	<a href="#valuedomain">ValueDomain</a>: 	Many to one assoication, use getValueDomain to get the associated ValueDomain.
 	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
@@ -1614,9 +1573,7 @@
 	<a href="#dataelement">DataElement</a>: 	Many to one assoication, use getDataElement to get the associated DataElement.
 	<a href="#module">Module</a>: 	Many to one assoication, use getModule to get the associated Module.
   End Associations and related methods
-<p>
-
-<p>
+<p><p>
 </p>
 <hr />
 <h1><a name="enumeratedvaluedomain">EnumeratedValueDomain</a></h1>

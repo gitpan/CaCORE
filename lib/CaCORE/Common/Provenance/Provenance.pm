@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.0';
+$VERSION = '3.01';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -1738,6 +1738,8 @@ sub setName {
 #end
 # Below is module documentation for SourceReference
 
+=pod
+
 =head1 SourceReference
 
   CaCORE::Common::Provenance::SourceReference - Perl extension for SourceReference.
@@ -1774,7 +1776,10 @@ sub setName {
 <p>
 
 =cut
+
 # Below is module documentation for Source
+
+=pod
 
 =head1 Source
 
@@ -1810,7 +1815,10 @@ sub setName {
 <p>
 
 =cut
+
 # Below is module documentation for Provenance
+
+=pod
 
 =head1 Provenance
 
@@ -1851,7 +1859,10 @@ sub setName {
 <p>
 
 =cut
+
 # Below is module documentation for URLSourceReference
+
+=pod
 
 =head1 URLSourceReference
 
@@ -1886,7 +1897,10 @@ sub setName {
 <p>
 
 =cut
+
 # Below is module documentation for PublicationSource
+
+=pod
 
 =head1 PublicationSource
 
@@ -1926,7 +1940,10 @@ sub setName {
 <p>
 
 =cut
+
 # Below is module documentation for ResearchInstitutionSource
+
+=pod
 
 =head1 ResearchInstitutionSource
 
@@ -1964,7 +1981,10 @@ sub setName {
 <p>
 
 =cut
+
 # Below is module documentation for WebServicesSourceReference
+
+=pod
 
 =head1 WebServicesSourceReference
 
@@ -1999,7 +2019,10 @@ sub setName {
 <p>
 
 =cut
+
 # Below is module documentation for InternetSource
+
+=pod
 
 =head1 InternetSource
 
@@ -2036,3 +2059,4 @@ sub setName {
 <p>
 
 =cut
+

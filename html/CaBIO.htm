@@ -499,6 +499,7 @@
 <hr />
 <p>
 </p>
+<hr />
 <h1><a name="taxon">Taxon</a></h1>
 <pre>
   CaCORE::CaBIO::Taxon - Perl extension for Taxon.</pre>
@@ -1209,9 +1210,7 @@
 </p>
 <h3><a name="attributes_of_clinicaltrialprotocol">Attributes of ClinicalTrialProtocol</a></h3>
 <pre>
-  The following are all the attributes of the ClinicalTrialProtocol object and their data types:
-
-</pre>
+  The following are all the attributes of the ClinicalTrialProtocol object and their data types:</pre>
 <pre>
         currentStatus   string
         participationType       string
@@ -1229,54 +1228,40 @@
   End Attributes
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_clinicaltrialprotocol">Associations of ClinicalTrialProtocol</a></h3>
 <pre>
-  The following are all the objects that are associated with the ClinicalTrialProtocol:
-
-</pre>
+  The following are all the objects that are associated with the ClinicalTrialProtocol:</pre>
 <pre>
 	<a href="#agent">Agent</a>: 	One to many assoication, use getAgentCollection to get a collection of associated Agent.
 	<a href="#protocolassociation">ProtocolAssociation</a>: 	One to many assoication, use getProtocolAssociationCollection to get a collection of associated ProtocolAssociation.
 	<a href="#diseaseontology">DiseaseOntology</a>: 	One to many assoication, use getDiseaseOntologyCollection to get a collection of associated DiseaseOntology.
 	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
   End Associations and related methods
-<p>
-
-<p>
+<p><p>
 </p>
 <hr />
 <h1><a name="protocolassociation">ProtocolAssociation</a></h1>
 <pre>
-  CaCORE::CaBIO::ProtocolAssociation - Perl extension for ProtocolAssociation.
-
-</pre>
+  CaCORE::CaBIO::ProtocolAssociation - Perl extension for ProtocolAssociation.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
   The CaCORE::CaBIO::bean::ProtocolAssociation is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  caBIO generic object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  An association class relating between Clinical Trial Protocols to Diseases.
-
-</pre>
+  An association class relating between Clinical Trial Protocols to Diseases.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_protocolassociation">Attributes of ProtocolAssociation</a></h3>
 <pre>
-  The following are all the attributes of the ProtocolAssociation object and their data types:
-
-</pre>
+  The following are all the attributes of the ProtocolAssociation object and their data types:</pre>
 <pre>
         diseaseSubCategory      string
         CTEPNAME        string
@@ -1286,52 +1271,38 @@
   End Attributes
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_protocolassociation">Associations of ProtocolAssociation</a></h3>
 <pre>
-  The following are all the objects that are associated with the ProtocolAssociation:
-
-</pre>
+  The following are all the objects that are associated with the ProtocolAssociation:</pre>
 <pre>
 	<a href="#diseaseontology">DiseaseOntology</a>: 	Many to one assoication, use getDiseaseOntology to get the associated DiseaseOntology.
 	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	Many to one assoication, use getClinicalTrialProtocol to get the associated ClinicalTrialProtocol.
   End Associations and related methods
-<p>
-
-<p>
+<p><p>
 </p>
 <hr />
 <h1><a name="pathway">Pathway</a></h1>
 <pre>
-  CaCORE::CaBIO::Pathway - Perl extension for Pathway.
-
-</pre>
+  CaCORE::CaBIO::Pathway - Perl extension for Pathway.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
   The CaCORE::CaBIO::bean::Pathway is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  caBIO generic object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  An object representation of a molecular/cellular pathway compiled by BioCarta. Pathways are associated with specific Taxon objects, and contain multiple Gene objects, which may be Targets for treatment.
-
-</pre>
+  An object representation of a molecular/cellular pathway compiled by BioCarta. Pathways are associated with specific Taxon objects, and contain multiple Gene objects, which may be Targets for treatment.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_pathway">Attributes of Pathway</a></h3>
 <pre>
-  The following are all the attributes of the Pathway object and their data types:
-
-</pre>
+  The following are all the attributes of the Pathway object and their data types:</pre>
 <pre>
         description     string
         diagram string
@@ -1341,24 +1312,18 @@
   End Attributes
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_pathway">Associations of Pathway</a></h3>
 <pre>
-  The following are all the objects that are associated with the Pathway:
-
-</pre>
+  The following are all the objects that are associated with the Pathway:</pre>
 <pre>
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
 	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
 	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
   End Associations and related methods
-<p>
-
-<p>
+<p><p>
 </p>
 <hr />
 <h1><a name="organontology">OrganOntology</a></h1>

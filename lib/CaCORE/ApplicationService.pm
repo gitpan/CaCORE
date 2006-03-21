@@ -10,7 +10,7 @@ BEGIN {
 }
 
 
-$VERSION = '3.0';
+$VERSION = '3.01';
 
 # These are default values
 my $default_proxy = "http://cabio.nci.nih.gov/cacore30/ws/caCOREService";
@@ -247,11 +247,11 @@ our @EXPORT = qw(
 );
 
 use CaCORE::ApplicationService;
-use CaCORE::Common;
-use CaCORE::Common::Provenance;
-use CaCORE::CaBIO;
-use CaCORE::CaMOD;
-use CaCORE::CaDSR;
+use CaCORE::Common::Common;
+use CaCORE::Common::Provenance::Provenance;
+use CaCORE::CaBIO::CaBIO;
+use CaCORE::CaMOD::CaMOD;
+use CaCORE::CaDSR::CaDSR;
 
 @ISA = qw(Exporter);
 
@@ -714,6 +714,8 @@ sub create {
 __END__
 
 # Below is module documentation for ApplicationService
+
+=pod
 
 =head1 ApplicationService
 

@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.0';
+$VERSION = '3.01';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -252,6 +252,8 @@ sub setSourceType {
 #end
 # Below is module documentation for DatabaseCrossReference
 
+=pod
+
 =head1 DatabaseCrossReference
 
   CaCORE::Common::DatabaseCrossReference - Perl extension for DatabaseCrossReference.
@@ -290,3 +292,4 @@ sub setSourceType {
 <p>
 
 =cut
+

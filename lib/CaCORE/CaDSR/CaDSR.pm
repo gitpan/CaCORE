@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.0';
+$VERSION = '3.01';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -20099,6 +20099,8 @@ sub getDefinition {
 #end
 # Below is module documentation for Context
 
+=pod
+
 =head1 Context
 
   CaCORE::CaDSR::Context - Perl extension for Context.
@@ -20143,7 +20145,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for AdministeredComponent
+
+=pod
 
 =head1 AdministeredComponent
 
@@ -20202,7 +20207,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DerivationType
+
+=pod
 
 =head1 DerivationType
 
@@ -20245,7 +20253,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ConceptDerivationRule
+
+=pod
 
 =head1 ConceptDerivationRule
 
@@ -20294,7 +20305,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ConceptualDomain
+
+=pod
 
 =head1 ConceptualDomain
 
@@ -20333,7 +20347,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ObjectClass
+
+=pod
 
 =head1 ObjectClass
 
@@ -20372,7 +20389,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Qualifier
+
+=pod
 
 =head1 Qualifier
 
@@ -20418,7 +20438,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Property
+
+=pod
 
 =head1 Property
 
@@ -20455,7 +20478,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DataElementConcept
+
+=pod
 
 =head1 DataElementConcept
 
@@ -20497,7 +20523,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Representation
+
+=pod
 
 =head1 Representation
 
@@ -20534,7 +20563,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ValueDomain
+
+=pod
 
 =head1 ValueDomain
 
@@ -20585,7 +20617,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DerivedDataElement
+
+=pod
 
 =head1 DerivedDataElement
 
@@ -20630,7 +20665,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DataElement
+
+=pod
 
 =head1 DataElement
 
@@ -20671,7 +20709,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ClassificationScheme
+
+=pod
 
 =head1 ClassificationScheme
 
@@ -20710,7 +20751,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ClassificationSchemeItem
+
+=pod
 
 =head1 ClassificationSchemeItem
 
@@ -20756,7 +20800,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ValueMeaning
+
+=pod
 
 =head1 ValueMeaning
 
@@ -20803,7 +20850,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for PermissibleValue
+
+=pod
 
 =head1 PermissibleValue
 
@@ -20847,7 +20897,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ReferenceDocument
+
+=pod
 
 =head1 ReferenceDocument
 
@@ -20895,7 +20948,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ProtocolFormsTemplate
+
+=pod
 
 =head1 ProtocolFormsTemplate
 
@@ -20932,7 +20988,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ProtocolFormsSet
+
+=pod
 
 =head1 ProtocolFormsSet
 
@@ -20977,7 +21036,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for CaseReportForm
+
+=pod
 
 =head1 CaseReportForm
 
@@ -21015,7 +21077,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Module
+
+=pod
 
 =head1 Module
 
@@ -21054,7 +21119,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Question
+
+=pod
 
 =head1 Question
 
@@ -21094,7 +21162,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for EnumeratedValueDomain
+
+=pod
 
 =head1 EnumeratedValueDomain
 
@@ -21129,7 +21200,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Concept
+
+=pod
 
 =head1 Concept
 
@@ -21167,7 +21241,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ValueDomainPermissibleValue
+
+=pod
 
 =head1 ValueDomainPermissibleValue
 
@@ -21213,7 +21290,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ValidValue
+
+=pod
 
 =head1 ValidValue
 
@@ -21251,7 +21331,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Designation
+
+=pod
 
 =head1 Designation
 
@@ -21295,7 +21378,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for NonenumeratedValueDomain
+
+=pod
 
 =head1 NonenumeratedValueDomain
 
@@ -21329,7 +21415,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DataElementConceptRelationship
+
+=pod
 
 =head1 DataElementConceptRelationship
 
@@ -21372,7 +21461,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ClassSchemeClassSchemeItem
+
+=pod
 
 =head1 ClassSchemeClassSchemeItem
 
@@ -21419,7 +21511,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DataElementDerivation
+
+=pod
 
 =head1 DataElementDerivation
 
@@ -21461,7 +21556,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for AdministeredComponentClassSchemeItem
+
+=pod
 
 =head1 AdministeredComponentClassSchemeItem
 
@@ -21501,7 +21599,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Instruction
+
+=pod
 
 =head1 Instruction
 
@@ -21541,7 +21642,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DataElementRelationship
+
+=pod
 
 =head1 DataElementRelationship
 
@@ -21583,7 +21687,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ValueDomainRelationship
+
+=pod
 
 =head1 ValueDomainRelationship
 
@@ -21625,7 +21732,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ClassificationSchemeRelationship
+
+=pod
 
 =head1 ClassificationSchemeRelationship
 
@@ -21668,7 +21778,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ClassificationSchemeItemRelationship
+
+=pod
 
 =head1 ClassificationSchemeItemRelationship
 
@@ -21710,7 +21823,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ObjectClassRelationship
+
+=pod
 
 =head1 ObjectClassRelationship
 
@@ -21754,7 +21870,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for ComponentConcept
+
+=pod
 
 =head1 ComponentConcept
 
@@ -21793,7 +21912,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for Definition
+
+=pod
 
 =head1 Definition
 
@@ -21838,7 +21960,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DesignationClassSchemeItem
+
+=pod
 
 =head1 DesignationClassSchemeItem
 
@@ -21879,7 +22004,10 @@ sub getDefinition {
 <p>
 
 =cut
+
 # Below is module documentation for DefinitionClassSchemeItem
+
+=pod
 
 =head1 DefinitionClassSchemeItem
 
@@ -21920,3 +22048,4 @@ sub getDefinition {
 <p>
 
 =cut
+
