@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>CaCORE::Common::Provenance</title>
+<link rev="made" href="mailto:" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#sourcereference">SourceReference</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_sourcereference">Attributes of SourceReference</a></li>
+			<li><a href="#associations_of_sourcereference">Associations of SourceReference</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#source">Source</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_source">Attributes of Source</a></li>
+			<li><a href="#associations_of_source">Associations of Source</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#provenance">Provenance</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_provenance">Attributes of Provenance</a></li>
+			<li><a href="#associations_of_provenance">Associations of Provenance</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#urlsourcereference">URLSourceReference</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_urlsourcereference">Attributes of URLSourceReference</a></li>
+			<li><a href="#associations_of_urlsourcereference">Associations of URLSourceReference</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#publicationsource">PublicationSource</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_publicationsource">Attributes of PublicationSource</a></li>
+			<li><a href="#associations_of_publicationsource">Associations of PublicationSource</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#researchinstitutionsource">ResearchInstitutionSource</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_researchinstitutionsource">Attributes of ResearchInstitutionSource</a></li>
+			<li><a href="#associations_of_researchinstitutionsource">Associations of ResearchInstitutionSource</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#webservicessourcereference">WebServicesSourceReference</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_webservicessourcereference">Attributes of WebServicesSourceReference</a></li>
+			<li><a href="#associations_of_webservicessourcereference">Associations of WebServicesSourceReference</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#internetsource">InternetSource</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_internetsource">Attributes of InternetSource</a></li>
+			<li><a href="#associations_of_internetsource">Associations of InternetSource</a></li>
+		</ul>
+
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="sourcereference">SourceReference</a></h1>
+<pre>
+  CaCORE::Common::Provenance::SourceReference - Perl extension for SourceReference.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::Common::Provenance::bean::SourceReference is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A reference (an electronic reference, publication citation, etc.) to the untransformed data at a source.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_sourcereference">Attributes of SourceReference</a></h3>
+<pre>
+  The following are all the attributes of the SourceReference object and their data types:</pre>
+<pre>
+        sourceReferenceType     string
+        id      long
+        reference       string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_sourcereference">Associations of SourceReference</a></h3>
+<pre>
+  The following are all the objects that are associated with the SourceReference:</pre>
+<pre>
+	<a href="#provenance">Provenance</a>: 	One to many assoication, use getProvenanceCollection to get a collection of associated Provenance.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="source">Source</a></h1>
+<pre>
+  CaCORE::Common::Provenance::Source - Perl extension for Source.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::Common::Provenance::bean::Source is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  An abstract class representing a source. Will be subclassed into a variety of specialized classes.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_source">Attributes of Source</a></h3>
+<pre>
+  The following are all the attributes of the Source object and their data types:</pre>
+<pre>
+        name    string
+        id      long
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_source">Associations of Source</a></h3>
+<pre>
+  The following are all the objects that are associated with the Source:</pre>
+<pre>
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="provenance">Provenance</a></h1>
+<pre>
+  CaCORE::Common::Provenance::Provenance - Perl extension for Provenance.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::Common::Provenance::bean::Provenance is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A record describing the source of an assertion (datum) contained in an object.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_provenance">Attributes of Provenance</a></h3>
+<pre>
+  The following are all the attributes of the Provenance object and their data types:</pre>
+<pre>
+        transformation  string
+        evidenceCode    string
+        id      long
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_provenance">Associations of Provenance</a></h3>
+<pre>
+  The following are all the objects that are associated with the Provenance:</pre>
+<pre>
+	<a href="#sourcereference">SourceReference</a>: 	Many to one assoication, use getSourceReference to get the associated SourceReference.
+	<a href="#originalsource">OriginalSource</a>: 	Many to one assoication, use getOriginalSource to get the associated OriginalSource.
+	<a href="#immediatesource">ImmediateSource</a>: 	Many to one assoication, use getImmediateSource to get the associated ImmediateSource.
+	<a href="#supplyingsource">SupplyingSource</a>: 	Many to one assoication, use getSupplyingSource to get the associated SupplyingSource.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="urlsourcereference">URLSourceReference</a></h1>
+<pre>
+  CaCORE::Common::Provenance::URLSourceReference - Perl extension for URLSourceReference.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::Common::Provenance::bean::URLSourceReference is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  An implementation of the abstract SourceReference that contains a URL to the original information.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_urlsourcereference">Attributes of URLSourceReference</a></h3>
+<pre>
+  The following are all the attributes of the URLSourceReference object and their data types:</pre>
+<pre>
+        sourceURL       string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_urlsourcereference">Associations of URLSourceReference</a></h3>
+<pre>
+  The following are all the objects that are associated with the URLSourceReference:
+
+</pre>
+<pre>
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="publicationsource">PublicationSource</a></h1>
+<pre>
+  CaCORE::Common::Provenance::PublicationSource - Perl extension for PublicationSource.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::Common::Provenance::bean::PublicationSource is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  An implementing subclass of Source. Describes a source for which an electronic online version is not available, but for which a printed version of the data is available.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_publicationsource">Attributes of PublicationSource</a></h3>
+<pre>
+  The following are all the attributes of the PublicationSource object and their data types:
+
+</pre>
+<pre>
+        volume  int
+        endPage int
+        year    int
+        title   string
+        startPage       int
+        authors string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_publicationsource">Associations of PublicationSource</a></h3>
+<pre>
+  The following are all the objects that are associated with the PublicationSource:
+
+</pre>
+<pre>
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="researchinstitutionsource">ResearchInstitutionSource</a></h1>
+<pre>
+  CaCORE::Common::Provenance::ResearchInstitutionSource - Perl extension for ResearchInstitutionSource.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::Common::Provenance::bean::ResearchInstitutionSource is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  An implementing subclass of Source that describes a research institution (commercial, academic, or government). This is used for information with attribution, but that lack an online electronic format.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_researchinstitutionsource">Attributes of ResearchInstitutionSource</a></h3>
+<pre>
+  The following are all the attributes of the ResearchInstitutionSource object and their data types:
+
+</pre>
+<pre>
+        institutionPersons      string
+        institutionAddress      string
+        institutionDepartment   string
+        institutionName string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_researchinstitutionsource">Associations of ResearchInstitutionSource</a></h3>
+<pre>
+  The following are all the objects that are associated with the ResearchInstitutionSource:
+
+</pre>
+<pre>
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="webservicessourcereference">WebServicesSourceReference</a></h1>
+<pre>
+  CaCORE::Common::Provenance::WebServicesSourceReference - Perl extension for WebServicesSourceReference.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::Common::Provenance::bean::WebServicesSourceReference is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_webservicessourcereference">Attributes of WebServicesSourceReference</a></h3>
+<pre>
+  The following are all the attributes of the WebServicesSourceReference object and their data types:
+
+</pre>
+<pre>
+        request string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_webservicessourcereference">Associations of WebServicesSourceReference</a></h3>
+<pre>
+  The following are all the objects that are associated with the WebServicesSourceReference:
+
+</pre>
+<pre>
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="internetsource">InternetSource</a></h1>
+<pre>
+  CaCORE::Common::Provenance::InternetSource - Perl extension for InternetSource.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::Common::Provenance::bean::InternetSource is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_internetsource">Attributes of InternetSource</a></h3>
+<pre>
+  The following are all the attributes of the InternetSource object and their data types:
+
+</pre>
+<pre>
+        ownerInstitution        string
+        sourceURI       string
+        ownerPersons    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_internetsource">Associations of InternetSource</a></h3>
+<pre>
+  The following are all the objects that are associated with the InternetSource:
+
+</pre>
+<pre>
+  End Associations and related methods
+<p>
+
+
+</body>
+
+</html>

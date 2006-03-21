@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>CaCORE::ApplicationService</title>
+<link rev="made" href="mailto:" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#applicationservice">ApplicationService</a></li>
+	<ul>
+
+		<li><a href="#synopsis">Synopsis</a></li>
+		<li><a href="#operations">Operations</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#search_via_applicationservice_queryobject__">Search via ApplicationService-&gt;<code>queryObject()</code></a></li>
+			<li><a href="#nested_search">Nested Search</a></li>
+			<li><a href="#result_set_control">Result Set Control</a></li>
+			<li><a href="#limitations">Limitations</a></li>
+		</ul>
+
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="applicationservice">ApplicationService</a></h1>
+<pre>
+  CaCORE::ApplicationService is a utility class that encapsulates webservice invocation to caCORE server. ApplicationService object follows the Singleton pattern, in that each program will ONLY contain one instance of such class. The URL being passed to the instance method is the service endpoint of the caCORE webservice. If no such URL is provided in the program, it will default to the caCORE production server, &quot;<a href="http://cabio.nci.nih.gov/cacore30/ws/caCOREService&quot">http://cabio.nci.nih.gov/cacore30/ws/caCOREService&quot</a>;. The ApplicationService class exposes two methods: queryObject and query for search. The ApplicationService is the fundamental class that all other search methods utilizes.</pre>
+<p>
+</p>
+<h2><a name="synopsis">Synopsis</a></h2>
+<pre>
+  <span class="keyword">my</span> <span class="variable">$appsvc</span> <span class="operator">=</span> <span class="variable">CaCORE::ApplicationService</span><span class="operator">-&gt;</span><span class="variable">instance</span><span class="operator">(</span><span class="string">"http://cabio.nci.nih.gov/cacore30/ws/caCOREService"</span><span class="operator">);</span>
+  <span class="keyword">my</span> <span class="variable">$gene</span> <span class="operator">=</span> <span class="variable">new</span> <span class="variable">CaCORE::CaBIO::Gene</span><span class="operator">;</span>
+  <span class="variable">$gene</span><span class="operator">-&gt;</span><span class="variable">setSymbol</span><span class="operator">(</span><span class="string">"NAT2"</span><span class="operator">);</span>
+  <span class="keyword">my</span> <span class="variable">@chromos</span> <span class="operator">=</span> <span class="variable">$appsvc</span><span class="operator">-&gt;</span><span class="variable">queryObject</span><span class="operator">(</span><span class="string">"CaCORE::CaBIO::Chromosome"</span><span class="operator">,</span> <span class="variable">$gene</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="operations">Operations</a></h2>
+<pre>
+  <span class="variable">The</span> <span class="variable">following</span> <span class="variable">methods</span> <span class="variable">are</span> <span class="variable">supported</span> <span class="variable">in</span> <span class="variable">CaCORE::ApplicationService</span><span class="operator">:</span>
+  
+  <span class="variable">instance</span><span class="operator">(</span><span class="variable">url</span><span class="operator">):</span> <span class="variable">returns</span> <span class="variable">the</span> <span class="variable">ApplicationService</span> <span class="variable">instance</span><span class="operator">.</span> <span class="string">"url"</span> <span class="variable">is</span> <span class="variable">the</span> <span class="variable">service</span> <span class="variable">endpoint</span> <span class="variable">to</span> <span class="variable">a</span> <span class="variable">caCORE</span> <span class="variable">server</span><span class="operator">.</span> <span class="variable">Example</span> <span class="variable">url</span><span class="operator">:</span> <span class="string">"http://cabio.nci.nih.gov/cacore30/ws/caCOREService"</span><span class="operator">.</span>
+  <span class="variable">queryObject</span><span class="operator">(</span><span class="variable">targetPath</span><span class="operator">,</span> <span class="variable">sourceObject</span><span class="operator">):</span> <span class="variable">invoke</span> <span class="variable">caCORE</span> <span class="variable">server</span> <span class="variable">to</span> <span class="variable">search</span> <span class="keyword">for</span> <span class="variable">domain</span> <span class="variable">objects</span><span class="operator">.</span> <span class="variable">This</span> <span class="variable">method</span> <span class="variable">returns</span> <span class="variable">at</span> <span class="variable">most</span> <span class="number">1000</span> <span class="variable">objects</span> <span class="variable">because</span> <span class="variable">caCORE</span> <span class="variable">webservice</span> <span class="variable">automatically</span> <span class="variable">trims</span> <span class="variable">the</span> <span class="variable">result</span> <span class="variable">set</span> <span class="variable">to</span> <span class="number">1000</span> <span class="keyword">if</span> <span class="variable">actual</span> <span class="variable">result</span> <span class="variable">set</span> <span class="variable">is</span> <span class="variable">greater</span> <span class="variable">than</span> <span class="number">1000.</span>
+  <span class="variable">query</span><span class="operator">(</span><span class="variable">targetPath</span><span class="operator">,</span> <span class="variable">sourceObject</span><span class="operator">,</span> <span class="variable">startIndex</span><span class="operator">,</span> <span class="variable">requestSize</span><span class="operator">):</span> <span class="variable">invoke</span> <span class="variable">caCORE</span> <span class="variable">server</span> <span class="variable">to</span> <span class="variable">search</span> <span class="keyword">for</span> <span class="variable">domain</span> <span class="variable">objects</span><span class="operator">.</span> <span class="variable">Allows</span> <span class="keyword">for</span> <span class="variable">specifying</span> <span class="variable">the</span> <span class="keyword">return</span> <span class="variable">result</span> <span class="variable">set</span><span class="operator">.</span> 
+  
+  <span class="variable">Description</span> <span class="variable">of</span> <span class="variable">parameters</span> <span class="variable">used</span> <span class="variable">in</span> <span class="variable">the</span> <span class="variable">above</span> <span class="variable">functions</span><span class="operator">:</span>
+  
+  <span class="variable">url</span><span class="operator">:</span> <span class="variable">the</span> <span class="variable">service</span> <span class="variable">endpoint</span> <span class="variable">to</span> <span class="variable">a</span> <span class="variable">caCORE</span> <span class="variable">server</span><span class="operator">.</span> <span class="variable">Example</span> <span class="variable">url</span><span class="operator">:</span> <span class="string">"http://cabio.nci.nih.gov/cacore30/ws/caCOREService"</span><span class="operator">.</span>
+  <span class="variable">targetPath</span><span class="operator">:</span> <span class="variable">can</span> <span class="variable">be</span> <span class="variable">either</span> <span class="variable">a</span> <span class="variable">fully</span> <span class="variable">qualified</span> <span class="variable">target</span> <span class="variable">object</span> <span class="variable">name</span><span class="operator">,</span> <span class="variable">such</span> <span class="variable">as</span> <span class="string">"CaCORE::CaBIO::Gene"</span><span class="operator">;</span> <span class="keyword">or</span> <span class="variable">a</span> <span class="variable">series</span> <span class="variable">of</span> <span class="variable">comma</span> <span class="variable">separated</span> <span class="variable">fully</span> <span class="variable">qualified</span> <span class="variable">object</span> <span class="variable">names</span> <span class="variable">indicating</span> <span class="variable">a</span> <span class="variable">navigational</span> <span class="variable">path</span><span class="operator">,</span> <span class="variable">such</span> <span class="variable">as</span> <span class="string">"CaCORE::CaBIO::Taxon,CaCORE::CaBIO::Chromosome"</span><span class="operator">.</span> <span class="variable">This</span> <span class="variable">navigational</span> <span class="variable">path</span> <span class="variable">specifies</span> <span class="variable">the</span> <span class="variable">relationship</span> <span class="variable">to</span> <span class="variable">traverse</span> <span class="variable">when</span> <span class="variable">retrieving</span> <span class="variable">the</span> <span class="variable">target</span> <span class="variable">objects</span><span class="operator">.</span> 
+  <span class="variable">sourceObject</span><span class="operator">:</span> <span class="variable">is</span> <span class="variable">the</span> <span class="variable">search</span> <span class="variable">criteria</span> <span class="variable">that</span> <span class="variable">specifies</span> <span class="variable">the</span> <span class="variable">search</span> <span class="variable">starting</span> <span class="variable">point</span><span class="operator">.</span> 
+  <span class="variable">startIndex</span> <span class="operator">(</span><span class="keyword">for</span> <span class="variable">method</span> <span class="string">"query"</span> <span class="variable">only</span><span class="operator">):</span> <span class="variable">allows</span> <span class="keyword">for</span> <span class="variable">control</span> <span class="variable">of</span> <span class="variable">the</span> <span class="variable">starting</span> <span class="keyword">index</span> <span class="variable">of</span> <span class="variable">the</span> <span class="variable">result</span> <span class="variable">set</span><span class="operator">.</span> <span class="variable">When</span> <span class="variable">presented</span><span class="operator">,</span> <span class="variable">requestSize</span> <span class="variable">must</span> <span class="variable">also</span> <span class="variable">be</span> <span class="variable">present</span><span class="operator">.</span> 
+  <span class="variable">requestSize</span> <span class="operator">(</span><span class="keyword">for</span> <span class="variable">method</span> <span class="string">"query"</span> <span class="variable">only</span><span class="operator">):</span> <span class="variable">defines</span> <span class="variable">the</span> <span class="variable">requested</span> <span class="variable">size</span><span class="operator">.</span> <span class="variable">Server</span> <span class="variable">trims</span> <span class="variable">the</span> <span class="keyword">return</span> <span class="variable">result</span> <span class="variable">to</span> <span class="variable">the</span> <span class="variable">requested</span> <span class="variable">size</span> <span class="variable">before</span> <span class="variable">returns</span><span class="operator">.</span> <span class="variable">If</span> <span class="variable">the</span> <span class="variable">result</span> <span class="variable">set</span> <span class="variable">is</span> <span class="variable">smaller</span> <span class="variable">than</span> <span class="variable">the</span> <span class="variable">requested</span> <span class="variable">size</span><span class="operator">,</span> <span class="variable">the</span> <span class="variable">result</span> <span class="variable">set</span> <span class="variable">is</span> <span class="variable">returned</span> <span class="variable">without</span> <span class="variable">trimming</span><span class="operator">.</span>
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<p>
+</p>
+<h3><a name="search_via_applicationservice_queryobject__">Search via ApplicationService-&gt;<code>queryObject()</code></a></h3>
+<pre>
+  This following example retrieves all Chromosomes whose associated genes have a symbol of &quot;NAT2&quot; using the direct and basic search function of ApplicationService-&gt;queryObject(). This queryObject() function encapsulates the webservice invocation to the caCORE server, and converts the returned XML into list of Chromosome objects. Parameter 1 indicates target class, Chromosome, to be retrieved. Parameter 2 indicates search criteria. In this case, is the gene associated with the chromosome.</pre>
+<pre>
+  <span class="keyword">use</span> <span class="variable">CaCORE::ApplicationService</span><span class="operator">;</span>
+  <span class="keyword">use</span> <span class="variable">CaCORE::CaBIO</span><span class="operator">;</span>
+  <span class="keyword">my</span> <span class="variable">$gene</span> <span class="operator">=</span> <span class="variable">new</span> <span class="variable">CaCORE::CaBIO::Gene</span><span class="operator">;</span>
+  <span class="variable">$gene</span><span class="operator">-&gt;</span><span class="variable">setSymbol</span><span class="operator">(</span><span class="string">"NAT2"</span><span class="operator">);</span>
+  <span class="keyword">my</span> <span class="variable">$appsvc</span> <span class="operator">=</span> <span class="variable">CaCORE::ApplicationService</span><span class="operator">-&gt;</span><span class="variable">instance</span><span class="operator">(</span><span class="string">"http://cabio.nci.nih.gov/cacore30/ws/caCOREService"</span><span class="operator">);</span>
+  <span class="keyword">my</span> <span class="variable">@chromos</span> <span class="operator">=</span> <span class="variable">$appsvc</span><span class="operator">-&gt;</span><span class="variable">queryObject</span><span class="operator">(</span><span class="string">"CaCORE::CaBIO::Chromosome"</span><span class="operator">,</span> <span class="variable">$gene</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h3><a name="nested_search">Nested Search</a></h3>
+<pre>
+  The first parameter in the search method can be constructed as a &quot;navigation path&quot; that reflects how these objects are related to the target object. This example retrieves all the Taxons related to the Chromosomes that are related to a Gene object:</pre>
+<pre>
+  <span class="keyword">my</span> <span class="variable">@taxons</span> <span class="operator">=</span> <span class="variable">$appsvc</span><span class="operator">-&gt;</span><span class="variable">queryObject</span><span class="operator">(</span><span class="string">"CaCORE::CaBIO::Taxon,CaCORE::CaBIO::Chromosome"</span><span class="operator">,</span> <span class="variable">$gene</span><span class="operator">);</span>
+  <span class="keyword">foreach</span> <span class="keyword">my</span> <span class="variable">$tx</span> <span class="operator">(</span><span class="variable">@taxons</span><span class="operator">){</span>
+    <span class="keyword">print</span> <span class="string">"id= "</span> <span class="operator">.</span> <span class="variable">$tx</span><span class="operator">-&gt;</span><span class="variable">getId</span> <span class="operator">.</span> <span class="string">" scientificName="</span> <span class="operator">.</span> <span class="variable">$tx</span><span class="operator">-&gt;</span><span class="variable">getScientificName</span> <span class="operator">.</span><span class="string">"\n"</span><span class="operator">;</span>
+  <span class="operator">}</span>
+</pre>
+<p>
+</p>
+<h3><a name="result_set_control">Result Set Control</a></h3>
+<pre>
+  Depending on the search criteria, a search may yield a large result set, which cause slower response time and increase the likelihood of failure. A throttle mechanism is provided by:</pre>
+<pre>
+  ApplicationService-&gt;query(targetClassName, knownSourceObject, startingIndex, requestedSize)</pre>
+<pre>
+  In the following example:
+  Parameter 1 indicates name of the target object, Gene, to be retrieved
+  Parameter 2 indicates search criteria. In this case, is the chromosome associated with the genes.
+  Parameter 3 indicates the requested start index, 10
+  Parameter 4 indicates the requested size, 20</pre>
+<pre>
+  <span class="keyword">my</span> <span class="variable">@geneSet</span> <span class="operator">=</span> <span class="variable">$appsvc</span><span class="operator">-&gt;</span><span class="variable">query</span><span class="operator">(</span><span class="string">"CaCORE::CaBIO::Gene"</span><span class="operator">,</span> <span class="variable">$chromo1</span><span class="operator">,</span> <span class="number">10</span><span class="operator">,</span> <span class="number">20</span><span class="operator">);</span>
+</pre>
+<pre>
+  This will retrieve related Gene objects from a Chromosome object, the result set starts from index number 10, and contains up to 20 Gene objects.</pre>
+<p>
+</p>
+<h3><a name="limitations">Limitations</a></h3>
+<pre>
+  By default, when calling ApplicationService-&gt;queryObject, the caCORE server automatically trim the resultset to 1000 objects if the there more than 1000. So in reality, if you want to retrieve anything beyond 1000, you must use ApplicationService-&gt;query.
+
+</pre>
+
+</body>
+
+</html>

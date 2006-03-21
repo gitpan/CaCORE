@@ -1,0 +1,180 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>caBIO Perl objects</title>
+<base target="mainFrame">
+</head>
+
+<body>
+
+<h2>Table of Contents</h2>
+<a href="intro.html">Introduction</a><br>
+<a href="#appSvc" target="navFrame">Utility Objects</a><br>
+<a href="#cabio" target="navFrame">CaBIO Objects</a><br>
+<a href="#camod" target="navFrame">CaMOD Objects</a><br>
+<a href="#cadsr" target="navFrame">CaDSR Objects</a><br>
+<a href="#common" target="navFrame">Common Objects</a><br>
+<a href="#provenance" target="navFrame">Common::Provenance Objects</a><br>
+<a href="release_notes.txt">Release Notes</a><br>
+
+<h3><A NAME="appSvc">Utility objects</A></h3>
+<a href="ApplicationService.htm">ApplicationService</a><br>
+<!-- END Utility objects -->
+
+<h3><A NAME="cabio">CaBIO objects</A></h3>
+<a href="CaBIO.htm#taxon">Taxon</a><br>
+<a href="CaBIO.htm#agent">Agent</a><br>
+<a href="CaBIO.htm#chromosome">Chromosome</a><br>
+<a href="CaBIO.htm#gene">Gene</a><br>
+<a href="CaBIO.htm#vocabulary">Vocabulary</a><br>
+<a href="CaBIO.htm#protocol">Protocol</a><br>
+<a href="CaBIO.htm#tissue">Tissue</a><br>
+<a href="CaBIO.htm#snp">SNP</a><br>
+<a href="CaBIO.htm#genealias">GeneAlias</a><br>
+<a href="CaBIO.htm#library">Library</a><br>
+<a href="CaBIO.htm#clone">Clone</a><br>
+<a href="CaBIO.htm#target">Target</a><br>
+<a href="CaBIO.htm#location">Location</a><br>
+<a href="CaBIO.htm#clonerelativelocation">CloneRelativeLocation</a><br>
+<a href="CaBIO.htm#nucleicacidsequence">NucleicAcidSequence</a><br>
+<a href="CaBIO.htm#diseaseontology">DiseaseOntology</a><br>
+<a href="CaBIO.htm#clinicaltrialprotocol">ClinicalTrialProtocol</a><br>
+<a href="CaBIO.htm#protocolassociation">ProtocolAssociation</a><br>
+<a href="CaBIO.htm#pathway">Pathway</a><br>
+<a href="CaBIO.htm#organontology">OrganOntology</a><br>
+<a href="CaBIO.htm#organontologyrelationship">OrganOntologyRelationship</a><br>
+<a href="CaBIO.htm#histopathology">Histopathology</a><br>
+<a href="CaBIO.htm#geneontology">GeneOntology</a><br>
+<a href="CaBIO.htm#geneontologyrelationship">GeneOntologyRelationship</a><br>
+<a href="CaBIO.htm#diseaseontologyrelationship">DiseaseOntologyRelationship</a><br>
+<a href="CaBIO.htm#anomaly">Anomaly</a><br>
+<a href="CaBIO.htm#populationfrequency">PopulationFrequency</a><br>
+<a href="CaBIO.htm#proteinsequence">ProteinSequence</a><br>
+<a href="CaBIO.htm#protein">Protein</a><br>
+<a href="CaBIO.htm#proteinalias">ProteinAlias</a><br>
+<a href="CaBIO.htm#homologousassociation">HomologousAssociation</a><br>
+<a href="CaBIO.htm#physicallocation">PhysicalLocation</a><br>
+<a href="CaBIO.htm#cytoband">Cytoband</a><br>
+<a href="CaBIO.htm#cytogeneticlocation">CytogeneticLocation</a><br>
+<a href="CaBIO.htm#generelativelocation">GeneRelativeLocation</a><br>
+<a href="CaBIO.htm#genericreporter">GenericReporter</a><br>
+<a href="CaBIO.htm#genericarray">GenericArray</a><br>
+<!-- END CaBIO objects -->
+
+<h3><A NAME="camod">CaMOD objects</A></h3>
+<a href="CaMOD.htm#approvalstatus">ApprovalStatus</a><br>
+<a href="CaMOD.htm#availability">Availability</a><br>
+<a href="CaMOD.htm#abstractcancermodel">AbstractCancerModel</a><br>
+<a href="CaMOD.htm#tumorcode">TumorCode</a><br>
+<a href="CaMOD.htm#xenograft">Xenograft</a><br>
+<a href="CaMOD.htm#treatmentschedule">TreatmentSchedule</a><br>
+<a href="CaMOD.htm#nomenclature">Nomenclature</a><br>
+<a href="CaMOD.htm#genotypesummary">GenotypeSummary</a><br>
+<a href="CaMOD.htm#conditionality">Conditionality</a><br>
+<a href="CaMOD.htm#image">Image</a><br>
+<a href="CaMOD.htm#engineeredgene">EngineeredGene</a><br>
+<a href="CaMOD.htm#integrationtype">IntegrationType</a><br>
+<a href="CaMOD.htm#transgene">Transgene</a><br>
+<a href="CaMOD.htm#therapy">Therapy</a><br>
+<a href="CaMOD.htm#yeastmodel">YeastModel</a><br>
+<a href="CaMOD.htm#targetedmodification">TargetedModification</a><br>
+<a href="CaMOD.htm#sexdistribution">SexDistribution</a><br>
+<a href="CaMOD.htm#segmenttype">SegmentType</a><br>
+<a href="CaMOD.htm#role">Role</a><br>
+<a href="CaMOD.htm#repositoryinfo">RepositoryInfo</a><br>
+<a href="CaMOD.htm#regulatoryelementtype">RegulatoryElementType</a><br>
+<a href="CaMOD.htm#regulatoryelement">RegulatoryElement</a><br>
+<a href="CaMOD.htm#publicationstatus">PublicationStatus</a><br>
+<a href="CaMOD.htm#publication">Publication</a><br>
+<a href="CaMOD.htm#promoter">Promoter</a><br>
+<a href="CaMOD.htm#phenotype">Phenotype</a><br>
+<a href="CaMOD.htm#party">Party</a><br>
+<a href="CaMOD.htm#person">Person</a><br>
+<a href="CaMOD.htm#partyrole">PartyRole</a><br>
+<a href="CaMOD.htm#organization">Organization</a><br>
+<a href="CaMOD.htm#microarraydata">MicroArrayData</a><br>
+<a href="CaMOD.htm#jaxinfo">JaxInfo</a><br>
+<a href="CaMOD.htm#environmentalfactor">EnvironmentalFactor</a><br>
+<a href="CaMOD.htm#inducedmutation">InducedMutation</a><br>
+<a href="CaMOD.htm#genomicsegment">GenomicSegment</a><br>
+<a href="CaMOD.htm#geneticalteration">GeneticAlteration</a><br>
+<a href="CaMOD.htm#genefunction">GeneFunction</a><br>
+<a href="CaMOD.htm#genedelivery">GeneDelivery</a><br>
+<a href="CaMOD.htm#contactinfo">ContactInfo</a><br>
+<a href="CaMOD.htm#cellline">CellLine</a><br>
+<a href="CaMOD.htm#carcinogenicintervention">CarcinogenicIntervention</a><br>
+<a href="CaMOD.htm#animalmodel">AnimalModel</a><br>
+<a href="CaMOD.htm#endpointcode">EndpointCode</a><br>
+<a href="CaMOD.htm#screeningresult">ScreeningResult</a><br>
+<a href="CaMOD.htm#invivoresult">InvivoResult</a><br>
+<a href="CaMOD.htm#modificationtype">ModificationType</a><br>
+<a href="CaMOD.htm#expressionfeature">ExpressionFeature</a><br>
+<a href="CaMOD.htm#cancermodel">CancerModel</a><br>
+<!-- END CaMOD objects -->
+
+<h3><A NAME="cadsr">CaDSR objects</A></h3>
+<a href="CaDSR.htm#context">Context</a><br>
+<a href="CaDSR.htm#administeredcomponent">AdministeredComponent</a><br>
+<a href="CaDSR.htm#derivationtype">DerivationType</a><br>
+<a href="CaDSR.htm#conceptderivationrule">ConceptDerivationRule</a><br>
+<a href="CaDSR.htm#conceptualdomain">ConceptualDomain</a><br>
+<a href="CaDSR.htm#objectclass">ObjectClass</a><br>
+<a href="CaDSR.htm#qualifier">Qualifier</a><br>
+<a href="CaDSR.htm#property">Property</a><br>
+<a href="CaDSR.htm#dataelementconcept">DataElementConcept</a><br>
+<a href="CaDSR.htm#representation">Representation</a><br>
+<a href="CaDSR.htm#valuedomain">ValueDomain</a><br>
+<a href="CaDSR.htm#deriveddataelement">DerivedDataElement</a><br>
+<a href="CaDSR.htm#dataelement">DataElement</a><br>
+<a href="CaDSR.htm#classificationscheme">ClassificationScheme</a><br>
+<a href="CaDSR.htm#classificationschemeitem">ClassificationSchemeItem</a><br>
+<a href="CaDSR.htm#valuemeaning">ValueMeaning</a><br>
+<a href="CaDSR.htm#permissiblevalue">PermissibleValue</a><br>
+<a href="CaDSR.htm#referencedocument">ReferenceDocument</a><br>
+<a href="CaDSR.htm#protocolformstemplate">ProtocolFormsTemplate</a><br>
+<a href="CaDSR.htm#protocolformsset">ProtocolFormsSet</a><br>
+<a href="CaDSR.htm#casereportform">CaseReportForm</a><br>
+<a href="CaDSR.htm#module">Module</a><br>
+<a href="CaDSR.htm#question">Question</a><br>
+<a href="CaDSR.htm#enumeratedvaluedomain">EnumeratedValueDomain</a><br>
+<a href="CaDSR.htm#concept">Concept</a><br>
+<a href="CaDSR.htm#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a><br>
+<a href="CaDSR.htm#validvalue">ValidValue</a><br>
+<a href="CaDSR.htm#designation">Designation</a><br>
+<a href="CaDSR.htm#nonenumeratedvaluedomain">NonenumeratedValueDomain</a><br>
+<a href="CaDSR.htm#dataelementconceptrelationship">DataElementConceptRelationship</a><br>
+<a href="CaDSR.htm#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a><br>
+<a href="CaDSR.htm#dataelementderivation">DataElementDerivation</a><br>
+<a href="CaDSR.htm#administeredcomponentclassschemeitem">AdministeredComponentClassSchemeItem</a><br>
+<a href="CaDSR.htm#instruction">Instruction</a><br>
+<a href="CaDSR.htm#dataelementrelationship">DataElementRelationship</a><br>
+<a href="CaDSR.htm#valuedomainrelationship">ValueDomainRelationship</a><br>
+<a href="CaDSR.htm#classificationschemerelationship">ClassificationSchemeRelationship</a><br>
+<a href="CaDSR.htm#classificationschemeitemrelationship">ClassificationSchemeItemRelationship</a><br>
+<a href="CaDSR.htm#objectclassrelationship">ObjectClassRelationship</a><br>
+<a href="CaDSR.htm#componentconcept">ComponentConcept</a><br>
+<a href="CaDSR.htm#definition">Definition</a><br>
+<a href="CaDSR.htm#designationclassschemeitem">DesignationClassSchemeItem</a><br>
+<a href="CaDSR.htm#definitionclassschemeitem">DefinitionClassSchemeItem</a><br>
+<!-- END CaDSR objects -->
+
+<h3><A NAME="common">Common objects</A></h3>
+<a href="Common.htm#databasecrossreference">DatabaseCrossReference</a><br>
+<!-- END Common objects -->
+
+<h3><A NAME="provenance">Common::Provenance objects</A></h3>
+<a href="Common/Provenance.htm#sourcereference">SourceReference</a><br>
+<a href="Common/Provenance.htm#source">Source</a><br>
+<a href="Common/Provenance.htm#provenance">Provenance</a><br>
+<a href="Common/Provenance.htm#urlsourcereference">URLSourceReference</a><br>
+<a href="Common/Provenance.htm#publicationsource">PublicationSource</a><br>
+<a href="Common/Provenance.htm#researchinstitutionsource">ResearchInstitutionSource</a><br>
+<a href="Common/Provenance.htm#webservicessourcereference">WebServicesSourceReference</a><br>
+<a href="Common/Provenance.htm#internetsource">InternetSource</a><br>
+<!-- END Common::Provenance objects -->
+<br>
+
+</body>
+</html>
+

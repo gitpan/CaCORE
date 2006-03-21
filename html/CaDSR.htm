@@ -1,0 +1,2726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>CaCORE::CaDSR</title>
+<link rev="made" href="mailto:" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#context">Context</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_context">Attributes of Context</a></li>
+			<li><a href="#associations_of_context">Associations of Context</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#administeredcomponent">AdministeredComponent</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_administeredcomponent">Attributes of AdministeredComponent</a></li>
+			<li><a href="#associations_of_administeredcomponent">Associations of AdministeredComponent</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#derivationtype">DerivationType</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_derivationtype">Attributes of DerivationType</a></li>
+			<li><a href="#associations_of_derivationtype">Associations of DerivationType</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#conceptderivationrule">ConceptDerivationRule</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_conceptderivationrule">Attributes of ConceptDerivationRule</a></li>
+			<li><a href="#associations_of_conceptderivationrule">Associations of ConceptDerivationRule</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#conceptualdomain">ConceptualDomain</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_conceptualdomain">Attributes of ConceptualDomain</a></li>
+			<li><a href="#associations_of_conceptualdomain">Associations of ConceptualDomain</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#objectclass">ObjectClass</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_objectclass">Attributes of ObjectClass</a></li>
+			<li><a href="#associations_of_objectclass">Associations of ObjectClass</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#qualifier">Qualifier</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_qualifier">Attributes of Qualifier</a></li>
+			<li><a href="#associations_of_qualifier">Associations of Qualifier</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#property">Property</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_property">Attributes of Property</a></li>
+			<li><a href="#associations_of_property">Associations of Property</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#dataelementconcept">DataElementConcept</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_dataelementconcept">Attributes of DataElementConcept</a></li>
+			<li><a href="#associations_of_dataelementconcept">Associations of DataElementConcept</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#representation">Representation</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_representation">Attributes of Representation</a></li>
+			<li><a href="#associations_of_representation">Associations of Representation</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#valuedomain">ValueDomain</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_valuedomain">Attributes of ValueDomain</a></li>
+			<li><a href="#associations_of_valuedomain">Associations of ValueDomain</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#deriveddataelement">DerivedDataElement</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_deriveddataelement">Attributes of DerivedDataElement</a></li>
+			<li><a href="#associations_of_deriveddataelement">Associations of DerivedDataElement</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#dataelement">DataElement</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_dataelement">Attributes of DataElement</a></li>
+			<li><a href="#associations_of_dataelement">Associations of DataElement</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#classificationscheme">ClassificationScheme</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_classificationscheme">Attributes of ClassificationScheme</a></li>
+			<li><a href="#associations_of_classificationscheme">Associations of ClassificationScheme</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#classificationschemeitem">ClassificationSchemeItem</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_classificationschemeitem">Attributes of ClassificationSchemeItem</a></li>
+			<li><a href="#associations_of_classificationschemeitem">Associations of ClassificationSchemeItem</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#valuemeaning">ValueMeaning</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_valuemeaning">Attributes of ValueMeaning</a></li>
+			<li><a href="#associations_of_valuemeaning">Associations of ValueMeaning</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#permissiblevalue">PermissibleValue</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_permissiblevalue">Attributes of PermissibleValue</a></li>
+			<li><a href="#associations_of_permissiblevalue">Associations of PermissibleValue</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#referencedocument">ReferenceDocument</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_referencedocument">Attributes of ReferenceDocument</a></li>
+			<li><a href="#associations_of_referencedocument">Associations of ReferenceDocument</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#protocolformstemplate">ProtocolFormsTemplate</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_protocolformstemplate">Attributes of ProtocolFormsTemplate</a></li>
+			<li><a href="#associations_of_protocolformstemplate">Associations of ProtocolFormsTemplate</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#protocolformsset">ProtocolFormsSet</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_protocolformsset">Attributes of ProtocolFormsSet</a></li>
+			<li><a href="#associations_of_protocolformsset">Associations of ProtocolFormsSet</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#casereportform">CaseReportForm</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_casereportform">Attributes of CaseReportForm</a></li>
+			<li><a href="#associations_of_casereportform">Associations of CaseReportForm</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#module">Module</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_module">Attributes of Module</a></li>
+			<li><a href="#associations_of_module">Associations of Module</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#question">Question</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_question">Attributes of Question</a></li>
+			<li><a href="#associations_of_question">Associations of Question</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#enumeratedvaluedomain">EnumeratedValueDomain</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_enumeratedvaluedomain">Attributes of EnumeratedValueDomain</a></li>
+			<li><a href="#associations_of_enumeratedvaluedomain">Associations of EnumeratedValueDomain</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#concept">Concept</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_concept">Attributes of Concept</a></li>
+			<li><a href="#associations_of_concept">Associations of Concept</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_valuedomainpermissiblevalue">Attributes of ValueDomainPermissibleValue</a></li>
+			<li><a href="#associations_of_valuedomainpermissiblevalue">Associations of ValueDomainPermissibleValue</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#validvalue">ValidValue</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_validvalue">Attributes of ValidValue</a></li>
+			<li><a href="#associations_of_validvalue">Associations of ValidValue</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#designation">Designation</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_designation">Attributes of Designation</a></li>
+			<li><a href="#associations_of_designation">Associations of Designation</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#nonenumeratedvaluedomain">NonenumeratedValueDomain</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_nonenumeratedvaluedomain">Attributes of NonenumeratedValueDomain</a></li>
+			<li><a href="#associations_of_nonenumeratedvaluedomain">Associations of NonenumeratedValueDomain</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#dataelementconceptrelationship">DataElementConceptRelationship</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_dataelementconceptrelationship">Attributes of DataElementConceptRelationship</a></li>
+			<li><a href="#associations_of_dataelementconceptrelationship">Associations of DataElementConceptRelationship</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_classschemeclassschemeitem">Attributes of ClassSchemeClassSchemeItem</a></li>
+			<li><a href="#associations_of_classschemeclassschemeitem">Associations of ClassSchemeClassSchemeItem</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#dataelementderivation">DataElementDerivation</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_dataelementderivation">Attributes of DataElementDerivation</a></li>
+			<li><a href="#associations_of_dataelementderivation">Associations of DataElementDerivation</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#administeredcomponentclassschemeitem">AdministeredComponentClassSchemeItem</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_administeredcomponentclassschemeitem">Attributes of AdministeredComponentClassSchemeItem</a></li>
+			<li><a href="#associations_of_administeredcomponentclassschemeitem">Associations of AdministeredComponentClassSchemeItem</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#instruction">Instruction</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_instruction">Attributes of Instruction</a></li>
+			<li><a href="#associations_of_instruction">Associations of Instruction</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#dataelementrelationship">DataElementRelationship</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_dataelementrelationship">Attributes of DataElementRelationship</a></li>
+			<li><a href="#associations_of_dataelementrelationship">Associations of DataElementRelationship</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#valuedomainrelationship">ValueDomainRelationship</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_valuedomainrelationship">Attributes of ValueDomainRelationship</a></li>
+			<li><a href="#associations_of_valuedomainrelationship">Associations of ValueDomainRelationship</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#classificationschemerelationship">ClassificationSchemeRelationship</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_classificationschemerelationship">Attributes of ClassificationSchemeRelationship</a></li>
+			<li><a href="#associations_of_classificationschemerelationship">Associations of ClassificationSchemeRelationship</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#classificationschemeitemrelationship">ClassificationSchemeItemRelationship</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_classificationschemeitemrelationship">Attributes of ClassificationSchemeItemRelationship</a></li>
+			<li><a href="#associations_of_classificationschemeitemrelationship">Associations of ClassificationSchemeItemRelationship</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#objectclassrelationship">ObjectClassRelationship</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_objectclassrelationship">Attributes of ObjectClassRelationship</a></li>
+			<li><a href="#associations_of_objectclassrelationship">Associations of ObjectClassRelationship</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#componentconcept">ComponentConcept</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_componentconcept">Attributes of ComponentConcept</a></li>
+			<li><a href="#associations_of_componentconcept">Associations of ComponentConcept</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#definition">Definition</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_definition">Attributes of Definition</a></li>
+			<li><a href="#associations_of_definition">Associations of Definition</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#designationclassschemeitem">DesignationClassSchemeItem</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_designationclassschemeitem">Attributes of DesignationClassSchemeItem</a></li>
+			<li><a href="#associations_of_designationclassschemeitem">Associations of DesignationClassSchemeItem</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#definitionclassschemeitem">DefinitionClassSchemeItem</a></li>
+	<ul>
+
+		<li><a href="#abstract">Abstract</a></li>
+		<li><a href="#description">Description</a></li>
+		<ul>
+
+			<li><a href="#attributes_of_definitionclassschemeitem">Attributes of DefinitionClassSchemeItem</a></li>
+			<li><a href="#associations_of_definitionclassschemeitem">Associations of DefinitionClassSchemeItem</a></li>
+		</ul>
+
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="context">Context</a></h1>
+<pre>
+  CaCORE::CaDSR::Context - Perl extension for Context.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Context is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A designation or description of the application environment or discipline in which a name is applied or from which it originates.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_context">Attributes of Context</a></h3>
+<pre>
+  The following are all the attributes of the Context object and their data types:</pre>
+<pre>
+        languageName    string
+        modifiedBy      string
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+        version float
+        dateModified    dateTime
+        description     string
+        name    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_context">Associations of Context</a></h3>
+<pre>
+  The following are all the objects that are associated with the Context:</pre>
+<pre>
+	<a href="#definition">Definition</a>: 	One to many assoication, use getDefinitionCollection to get a collection of associated Definition.
+	<a href="#designation">Designation</a>: 	One to many assoication, use getDesignationCollection to get a collection of associated Designation.
+	<a href="#referencedocument">ReferenceDocument</a>: 	One to many assoication, use getReferenceDocumentCollection to get a collection of associated ReferenceDocument.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="administeredcomponent">AdministeredComponent</a></h1>
+<pre>
+  CaCORE::CaDSR::AdministeredComponent - Perl extension for AdministeredComponent.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::AdministeredComponent is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  <span class="variable">A</span> <span class="variable">component</span> <span class="keyword">for</span> <span class="variable">which</span> <span class="variable">attributes</span> <span class="operator">(</span><span class="keyword">or</span> <span class="variable">characteristics</span><span class="operator">)</span> <span class="variable">are</span> <span class="variable">collected</span><span class="operator">;</span> <span class="variable">Data</span> <span class="variable">Elements</span> <span class="variable">are</span> <span class="variable">one</span> <span class="variable">type</span> <span class="variable">of</span> <span class="variable">administered</span> <span class="variable">component</span><span class="operator">.</span> <span class="variable">Other</span> <span class="variable">administered</span> <span class="variable">components</span> <span class="variable">have</span> <span class="variable">relationships</span> <span class="variable">to</span> <span class="variable">data</span> <span class="variable">elements</span> <span class="variable">as</span> <span class="variable">well</span> <span class="variable">as</span> <span class="keyword">each</span> <span class="variable">other</span><span class="operator">.</span>
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_administeredcomponent">Attributes of AdministeredComponent</a></h3>
+<pre>
+  The following are all the attributes of the AdministeredComponent object and their data types:</pre>
+<pre>
+        modifiedBy      string
+        beginDate       dateTime
+        workflowStatusName      string
+        changeNote      string
+        origin  string
+        dateCreated     dateTime
+        id      string
+        latestVersionIndicator  string
+        longName        string
+        preferredName   string
+        preferredDefinition     string
+        publicID        long
+        createdBy       string
+        workflowStatusDescription       string
+        version float
+        unresolvedIssue string
+        registrationStatus      string
+        dateModified    dateTime
+        endDate dateTime
+        deletedIndicator        string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_administeredcomponent">Associations of AdministeredComponent</a></h3>
+<pre>
+  The following are all the objects that are associated with the AdministeredComponent:</pre>
+<pre>
+	<a href="#definition">Definition</a>: 	One to many assoication, use getDefinitionCollection to get a collection of associated Definition.
+	<a href="#context">Context</a>: 	Many to one assoication, use getContext to get the associated Context.
+	<a href="#designation">Designation</a>: 	One to many assoication, use getDesignationCollection to get a collection of associated Designation.
+	<a href="#administeredcomponentclassschemeitem">AdministeredComponentClassSchemeItem</a>: 	One to many assoication, use getAdministeredComponentClassSchemeItemCollection to get a collection of associated AdministeredComponentClassSchemeItem.
+	<a href="#referencedocument">ReferenceDocument</a>: 	One to many assoication, use getReferenceDocumentCollection to get a collection of associated ReferenceDocument.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="derivationtype">DerivationType</a></h1>
+<pre>
+  CaCORE::CaDSR::DerivationType - Perl extension for DerivationType.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DerivationType is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The type of Derived Data Element that is being created. For example a Data Element that is derived/created by subtracting two dates represented by other data elements would be a Calculated Representation Type.   Types include: Calculated, Complex Recode, Compound, Concatenation, Object Class, and Simple Recode.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_derivationtype">Attributes of DerivationType</a></h3>
+<pre>
+  The following are all the attributes of the DerivationType object and their data types:</pre>
+<pre>
+        modifiedBy      string
+        dateModified    dateTime
+        description     string
+        createdBy       string
+        name    string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_derivationtype">Associations of DerivationType</a></h3>
+<pre>
+  The following are all the objects that are associated with the DerivationType:</pre>
+<pre>
+	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	One to many assoication, use getConceptDerivationRuleCollection to get a collection of associated ConceptDerivationRule.
+	<a href="#deriveddataelement">DerivedDataElement</a>: 	One to many assoication, use getDerivedDataElementCollection to get a collection of associated DerivedDataElement.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="conceptderivationrule">ConceptDerivationRule</a></h1>
+<pre>
+  CaCORE::CaDSR::ConceptDerivationRule - Perl extension for ConceptDerivationRule.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ConceptDerivationRule is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The derivation rule between one or more concepts.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_conceptderivationrule">Attributes of ConceptDerivationRule</a></h3>
+<pre>
+  The following are all the attributes of the ConceptDerivationRule object and their data types:</pre>
+<pre>
+        modifiedBy      string
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+        dateModified    dateTime
+        name    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_conceptderivationrule">Associations of ConceptDerivationRule</a></h3>
+<pre>
+  The following are all the objects that are associated with the ConceptDerivationRule:</pre>
+<pre>
+	<a href="#derivationtype">DerivationType</a>: 	Many to one assoication, use getDerivationType to get the associated DerivationType.
+	<a href="#qualifier">Qualifier</a>: 	One to many assoication, use getQualifierCollection to get a collection of associated Qualifier.
+	<a href="#representation">Representation</a>: 	One to many assoication, use getRepresentationCollection to get a collection of associated Representation.
+	<a href="#objectclass">ObjectClass</a>: 	One to many assoication, use getObjectClassCollection to get a collection of associated ObjectClass.
+	<a href="#property">Property</a>: 	One to many assoication, use getPropertyCollection to get a collection of associated Property.
+	<a href="#valuemeaning">ValueMeaning</a>: 	One to many assoication, use getValueMeaningCollection to get a collection of associated ValueMeaning.
+	<a href="#componentconcept">ComponentConcept</a>: 	One to many assoication, use getComponentConceptCollection to get a collection of associated ComponentConcept.
+	<a href="#conceptualdomain">ConceptualDomain</a>: 	One to many assoication, use getConceptualDomainCollection to get a collection of associated ConceptualDomain.
+	<a href="#valuedomain">ValueDomain</a>: 	One to many assoication, use getValueDomainCollection to get a collection of associated ValueDomain.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="conceptualdomain">ConceptualDomain</a></h1>
+<pre>
+  CaCORE::CaDSR::ConceptualDomain - Perl extension for ConceptualDomain.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ConceptualDomain is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The set of all possible Valid Value meanings of a Data Element Concept expressed without representation.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_conceptualdomain">Attributes of ConceptualDomain</a></h3>
+<pre>
+  The following are all the attributes of the ConceptualDomain object and their data types:</pre>
+<pre>
+        dimensionality  string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_conceptualdomain">Associations of ConceptualDomain</a></h3>
+<pre>
+  The following are all the objects that are associated with the ConceptualDomain:</pre>
+<pre>
+	<a href="#dataelementconcept">DataElementConcept</a>: 	One to many assoication, use getDataElementConceptCollection to get a collection of associated DataElementConcept.
+	<a href="#valuemeaning">ValueMeaning</a>: 	One to many assoication, use getValueMeaningCollection to get a collection of associated ValueMeaning.
+	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
+	<a href="#valuedomain">ValueDomain</a>: 	One to many assoication, use getValueDomainCollection to get a collection of associated ValueDomain.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="objectclass">ObjectClass</a></h1>
+<pre>
+  CaCORE::CaDSR::ObjectClass - Perl extension for ObjectClass.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ObjectClass is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A set of ideas, abstractions, or things in the real world that can be identified with explicit boundaries and meaning and whose properties and behavior follow the same rules.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_objectclass">Attributes of ObjectClass</a></h3>
+<pre>
+  The following are all the attributes of the ObjectClass object and their data types:</pre>
+<pre>
+        definitionSource        string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_objectclass">Associations of ObjectClass</a></h3>
+<pre>
+  The following are all the objects that are associated with the ObjectClass:</pre>
+<pre>
+	<a href="#dataelementconcept">DataElementConcept</a>: 	One to many assoication, use getDataElementConceptCollection to get a collection of associated DataElementConcept.
+	<a href="#sourcobjectclassrelationship">SourcObjectClassRelationship</a>: 	One to many assoication, use getSourcObjectClassRelationshipCollection to get a collection of associated SourcObjectClassRelationship.
+	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
+	<a href="#targetobjectclassrelationship">TargetObjectClassRelationship</a>: 	One to many assoication, use getTargetObjectClassRelationshipCollection to get a collection of associated TargetObjectClassRelationship.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="qualifier">Qualifier</a></h1>
+<pre>
+  CaCORE::CaDSR::Qualifier - Perl extension for Qualifier.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Qualifier is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A term that helps define and render a concept unique. Criteria that further defines or describes a specific aspect (object class, property, representation) of a Data Element Concept or a Value Domain.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_qualifier">Attributes of Qualifier</a></h3>
+<pre>
+  The following are all the attributes of the Qualifier object and their data types:</pre>
+<pre>
+        comments        string
+        modifiedBy      string
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+        dateModified    dateTime
+        description     string
+        name    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_qualifier">Associations of Qualifier</a></h3>
+<pre>
+  The following are all the objects that are associated with the Qualifier:</pre>
+<pre>
+	<a href="#decproperty">DECProperty</a>: 	One to many assoication, use getDECPropertyCollection to get a collection of associated DECProperty.
+	<a href="#vdrepresentation">VDRepresentation</a>: 	One to many assoication, use getVDRepresentationCollection to get a collection of associated VDRepresentation.
+	<a href="#decobjectclass">DECObjectClass</a>: 	One to many assoication, use getDECObjectClassCollection to get a collection of associated DECObjectClass.
+	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="property">Property</a></h1>
+<pre>
+  CaCORE::CaDSR::Property - Perl extension for Property.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Property is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A characteristic common to all members of an Object Class.  It may be any feature that humans naturally use to distinguish one individual object from another.  It is conceptual and thus has no particular associated means of representation by which propert</pre>
+<p>
+</p>
+<h3><a name="attributes_of_property">Attributes of Property</a></h3>
+<pre>
+  The following are all the attributes of the Property object and their data types:</pre>
+<pre>
+        definitionSource        string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_property">Associations of Property</a></h3>
+<pre>
+  The following are all the objects that are associated with the Property:</pre>
+<pre>
+	<a href="#dataelementconcept">DataElementConcept</a>: 	One to many assoication, use getDataElementConceptCollection to get a collection of associated DataElementConcept.
+	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="dataelementconcept">DataElementConcept</a></h1>
+<pre>
+  CaCORE::CaDSR::DataElementConcept - Perl extension for DataElementConcept.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DataElementConcept is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A concept that can be represented in the form of a data element, described independently of any particular representation.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_dataelementconcept">Attributes of DataElementConcept</a></h3>
+<pre>
+  The following are all the attributes of the DataElementConcept object and their data types:</pre>
+<pre>
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_dataelementconcept">Associations of DataElementConcept</a></h3>
+<pre>
+  The following are all the objects that are associated with the DataElementConcept:</pre>
+<pre>
+	<a href="#objectclass">ObjectClass</a>: 	Many to one assoication, use getObjectClass to get the associated ObjectClass.
+	<a href="#conceptualdomain">ConceptualDomain</a>: 	Many to one assoication, use getConceptualDomain to get the associated ConceptualDomain.
+	<a href="#propertyqualifier">PropertyQualifier</a>: 	Many to one assoication, use getPropertyQualifier to get the associated PropertyQualifier.
+	<a href="#parentdataelementconceptrelationship">ParentDataElementConceptRelationship</a>: 	One to many assoication, use getParentDataElementConceptRelationshipCollection to get a collection of associated ParentDataElementConceptRelationship.
+	<a href="#dataelement">DataElement</a>: 	One to many assoication, use getDataElementCollection to get a collection of associated DataElement.
+	<a href="#property">Property</a>: 	Many to one assoication, use getProperty to get the associated Property.
+	<a href="#childdataelementconceptrelationship">ChildDataElementConceptRelationship</a>: 	One to many assoication, use getChildDataElementConceptRelationshipCollection to get a collection of associated ChildDataElementConceptRelationship.
+	<a href="#objectclassqualifier">ObjectClassQualifier</a>: 	Many to one assoication, use getObjectClassQualifier to get the associated ObjectClassQualifier.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="representation">Representation</a></h1>
+<pre>
+  CaCORE::CaDSR::Representation - Perl extension for Representation.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Representation is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  Mechanism by which the functional and/or presentational category of an item maybe conveyed to a user. Component of a Data Element Name that describes how data are represented (i.e. the combination of a Value Domain, data type, and if necessary a unit of measure or a character set.)  The Representation occupies the last position in the Data Element name (i.e. rightmost).   Examples: Code - A system of valid symbols that substitute for specified values e.g. alpha, numeric, symbols and/or combinations. Count ? Non-monetary numeric value arrived at by counting. Currency ? Monetary representation. Date ? Calendar representation e.g. YYYY-MM-DD Graphic ? Diagrams, graphs, mathematical curves, or the like ? usually a vector image. Icon ? A sign or representation that stands for its object by virtue of a resemblance or analogy to it. Picture ? A visual representation of a person, object, or scene ? usually a raster image. Quantity ? A continuous number such as the linear dimensions, capacity/amount (non-monetary) of an object. Text ? A text field that is usually unformatted. Time ? Time of day or duration e.g. HH:MM:SS.SSSS.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_representation">Attributes of Representation</a></h3>
+<pre>
+  The following are all the attributes of the Representation object and their data types:</pre>
+<pre>
+        definitionSource        string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_representation">Associations of Representation</a></h3>
+<pre>
+  The following are all the objects that are associated with the Representation:</pre>
+<pre>
+	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
+	<a href="#valuedomain">ValueDomain</a>: 	One to many assoication, use getValueDomainCollection to get a collection of associated ValueDomain.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="valuedomain">ValueDomain</a></h1>
+<pre>
+  CaCORE::CaDSR::ValueDomain - Perl extension for ValueDomain.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ValueDomain is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A set of permissible values for a data element.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_valuedomain">Attributes of ValueDomain</a></h3>
+<pre>
+  The following are all the attributes of the ValueDomain object and their data types:</pre>
+<pre>
+        datatypeName    string
+        decimalPlace    int
+        highValueNumber string
+        minimumLengthNumber     int
+        formatName      string
+        lowValueNumber  string
+        characterSetName        string
+        UOMName string
+        maximumLengthNumber     int
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_valuedomain">Associations of ValueDomain</a></h3>
+<pre>
+  The following are all the objects that are associated with the ValueDomain:</pre>
+<pre>
+	<a href="#conceptualdomain">ConceptualDomain</a>: 	Many to one assoication, use getConceptualDomain to get the associated ConceptualDomain.
+	<a href="#childvaluedomainrelationship">ChildValueDomainRelationship</a>: 	One to many assoication, use getChildValueDomainRelationshipCollection to get a collection of associated ChildValueDomainRelationship.
+	<a href="#represention">Represention</a>: 	Many to one assoication, use getRepresention to get the associated Represention.
+	<a href="#dataelement">DataElement</a>: 	One to many assoication, use getDataElementCollection to get a collection of associated DataElement.
+	<a href="#parentvaluedomainrelationship">ParentValueDomainRelationship</a>: 	One to many assoication, use getParentValueDomainRelationshipCollection to get a collection of associated ParentValueDomainRelationship.
+	<a href="#question">Question</a>: 	One to many assoication, use getQuestionCollection to get a collection of associated Question.
+	<a href="#qualifier">Qualifier</a>: 	Many to one assoication, use getQualifier to get the associated Qualifier.
+	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="deriveddataelement">DerivedDataElement</a></h1>
+<pre>
+  CaCORE::CaDSR::DerivedDataElement - Perl extension for DerivedDataElement.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DerivedDataElement is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The Data Element that is derived from one or more data elements. ISO DEF: the relationship among a Data Element which is derived, the rule controlling its derivation, and the Data Element(s) from which it is derived.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_deriveddataelement">Attributes of DerivedDataElement</a></h3>
+<pre>
+  The following are all the attributes of the DerivedDataElement object and their data types:</pre>
+<pre>
+        modifiedBy      string
+        concatenationCharacter  string
+        rule    string
+        dateModified    dateTime
+        methods string
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_deriveddataelement">Associations of DerivedDataElement</a></h3>
+<pre>
+  The following are all the objects that are associated with the DerivedDataElement:</pre>
+<pre>
+	<a href="#derivationtype">DerivationType</a>: 	Many to one assoication, use getDerivationType to get the associated DerivationType.
+	<a href="#dataelementderivation">DataElementDerivation</a>: 	One to many assoication, use getDataElementDerivationCollection to get a collection of associated DataElementDerivation.
+	<a href="#dataelement">DataElement</a>: 	Many to one assoication, use getDataElement to get the associated DataElement.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="dataelement">DataElement</a></h1>
+<pre>
+  CaCORE::CaDSR::DataElement - Perl extension for DataElement.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DataElement is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A unit of data for which the definition, identification, representation and permissible values are specified by means of a set of attributes.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_dataelement">Attributes of DataElement</a></h3>
+<pre>
+  The following are all the attributes of the DataElement object and their data types:</pre>
+<pre>
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_dataelement">Associations of DataElement</a></h3>
+<pre>
+  The following are all the objects that are associated with the DataElement:</pre>
+<pre>
+	<a href="#dataelementderivation">DataElementDerivation</a>: 	One to many assoication, use getDataElementDerivationCollection to get a collection of associated DataElementDerivation.
+	<a href="#valuedomain">ValueDomain</a>: 	Many to one assoication, use getValueDomain to get the associated ValueDomain.
+	<a href="#dataelementconcept">DataElementConcept</a>: 	Many to one assoication, use getDataElementConcept to get the associated DataElementConcept.
+	<a href="#childdataelementrelationships">ChildDataElementRelationships</a>: 	One to many assoication, use getChildDataElementRelationshipsCollection to get a collection of associated ChildDataElementRelationships.
+	<a href="#deriveddataelement">DerivedDataElement</a>: 	Many to one assoication, use getDerivedDataElement to get the associated DerivedDataElement.
+	<a href="#question">Question</a>: 	One to many assoication, use getQuestionCollection to get a collection of associated Question.
+	<a href="#parentdataelementrelationships">ParentDataElementRelationships</a>: 	One to many assoication, use getParentDataElementRelationshipsCollection to get a collection of associated ParentDataElementRelationships.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="classificationscheme">ClassificationScheme</a></h1>
+<pre>
+  CaCORE::CaDSR::ClassificationScheme - Perl extension for ClassificationScheme.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ClassificationScheme is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  An arrangement or division of objects into groups based on characteristics that the objects have in common, e.g., origin, composition, structure, application, function, etc.  Adds information not easily included in definitions, helps organize the registry and facilitates access to the registry.  ISO DEF: the descriptive information for an arrangement or division of objects into groups based on characterisitics, which the objects have in common.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_classificationscheme">Attributes of ClassificationScheme</a></h3>
+<pre>
+  The following are all the attributes of the ClassificationScheme object and their data types:</pre>
+<pre>
+        labelTypeFlag   string
+        type    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_classificationscheme">Associations of ClassificationScheme</a></h3>
+<pre>
+  The following are all the objects that are associated with the ClassificationScheme:</pre>
+<pre>
+	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	One to many assoication, use getClassSchemeClassSchemeItemCollection to get a collection of associated ClassSchemeClassSchemeItem.
+	<a href="#childclassificationschemerelationship">ChildClassificationSchemeRelationship</a>: 	One to many assoication, use getChildClassificationSchemeRelationshipCollection to get a collection of associated ChildClassificationSchemeRelationship.
+	<a href="#parentclassificationschemerelationship">ParentClassificationSchemeRelationship</a>: 	One to many assoication, use getParentClassificationSchemeRelationshipCollection to get a collection of associated ParentClassificationSchemeRelationship.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="classificationschemeitem">ClassificationSchemeItem</a></h1>
+<pre>
+  CaCORE::CaDSR::ClassificationSchemeItem - Perl extension for ClassificationSchemeItem.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ClassificationSchemeItem is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A component of content in a Classification Scheme. This may be a node in a taxonomy or ontology or a term in a thesaurus, etc.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_classificationschemeitem">Attributes of ClassificationSchemeItem</a></h3>
+<pre>
+  The following are all the attributes of the ClassificationSchemeItem object and their data types:</pre>
+<pre>
+        comments        string
+        modifiedBy      string
+        type    string
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+        dateModified    dateTime
+        description     string
+        name    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_classificationschemeitem">Associations of ClassificationSchemeItem</a></h3>
+<pre>
+  The following are all the objects that are associated with the ClassificationSchemeItem:</pre>
+<pre>
+	<a href="#childclassificationschemeitemrelationship">ChildClassificationSchemeItemRelationship</a>: 	One to many assoication, use getChildClassificationSchemeItemRelationshipCollection to get a collection of associated ChildClassificationSchemeItemRelationship.
+	<a href="#parentclassificationschemeitemrelationship">ParentClassificationSchemeItemRelationship</a>: 	One to many assoication, use getParentClassificationSchemeItemRelationshipCollection to get a collection of associated ParentClassificationSchemeItemRelationship.
+	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	One to many assoication, use getClassSchemeClassSchemeItemCollection to get a collection of associated ClassSchemeClassSchemeItem.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="valuemeaning">ValueMeaning</a></h1>
+<pre>
+  CaCORE::CaDSR::ValueMeaning - Perl extension for ValueMeaning.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ValueMeaning is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The significance associated with an allowable/permissible value.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_valuemeaning">Attributes of ValueMeaning</a></h3>
+<pre>
+  The following are all the attributes of the ValueMeaning object and their data types:</pre>
+<pre>
+        comments        string
+        modifiedBy      string
+        beginDate       dateTime
+        shortMeaning    string
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+        dateModified    dateTime
+        description     string
+        endDate dateTime
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_valuemeaning">Associations of ValueMeaning</a></h3>
+<pre>
+  The following are all the objects that are associated with the ValueMeaning:</pre>
+<pre>
+	<a href="#permissablevalue">PermissableValue</a>: 	One to many assoication, use getPermissableValueCollection to get a collection of associated PermissableValue.
+	<a href="#conceptualdomain">ConceptualDomain</a>: 	One to many assoication, use getConceptualDomainCollection to get a collection of associated ConceptualDomain.
+	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="permissiblevalue">PermissibleValue</a></h1>
+<pre>
+  CaCORE::CaDSR::PermissibleValue - Perl extension for PermissibleValue.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::PermissibleValue is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The exact names, codes and text that can be stored in a data field in an information management system.  ISO DEF: An expression of a value meaning in a specific value domain.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_permissiblevalue">Attributes of PermissibleValue</a></h3>
+<pre>
+  The following are all the attributes of the PermissibleValue object and their data types:</pre>
+<pre>
+        lowValueNumber  long
+        value   string
+        modifiedBy      string
+        highValueNumber long
+        dateModified    dateTime
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_permissiblevalue">Associations of PermissibleValue</a></h3>
+<pre>
+  The following are all the objects that are associated with the PermissibleValue:</pre>
+<pre>
+	<a href="#valuemeaning">ValueMeaning</a>: 	Many to one assoication, use getValueMeaning to get the associated ValueMeaning.
+	<a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a>: 	One to many assoication, use getValueDomainPermissibleValueCollection to get a collection of associated ValueDomainPermissibleValue.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="referencedocument">ReferenceDocument</a></h1>
+<pre>
+  CaCORE::CaDSR::ReferenceDocument - Perl extension for ReferenceDocument.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ReferenceDocument is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A place to document additional information about Administered Components that is not readily stored elsewhere.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_referencedocument">Attributes of ReferenceDocument</a></h3>
+<pre>
+  The following are all the attributes of the ReferenceDocument object and their data types:</pre>
+<pre>
+        languageName    string
+        modifiedBy      string
+        displayOrder    long
+        type    string
+        organizationId  string
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+        rdtlName        string
+        dateModified    dateTime
+        URL     string
+        doctext string
+        name    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_referencedocument">Associations of ReferenceDocument</a></h3>
+<pre>
+  The following are all the objects that are associated with the ReferenceDocument:</pre>
+<pre>
+	<a href="#context">Context</a>: 	Many to one assoication, use getContext to get the associated Context.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="protocolformstemplate">ProtocolFormsTemplate</a></h1>
+<pre>
+  CaCORE::CaDSR::ProtocolFormsTemplate - Perl extension for ProtocolFormsTemplate.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ProtocolFormsTemplate is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The collection of components (modules, questions and valid values) comprising a template Case Report Form. A template form is not associated with any particular clinical trial.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_protocolformstemplate">Attributes of ProtocolFormsTemplate</a></h3>
+<pre>
+  The following are all the attributes of the ProtocolFormsTemplate object and their data types:</pre>
+<pre>
+        displayName     string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_protocolformstemplate">Associations of ProtocolFormsTemplate</a></h3>
+<pre>
+  The following are all the objects that are associated with the ProtocolFormsTemplate:</pre>
+<pre>
+	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
+	<a href="#module">Module</a>: 	One to many assoication, use getModuleCollection to get a collection of associated Module.
+  End Associations and related methods
+<p><p>
+</p>
+<hr />
+<h1><a name="protocolformsset">ProtocolFormsSet</a></h1>
+<pre>
+  CaCORE::CaDSR::ProtocolFormsSet - Perl extension for ProtocolFormsSet.</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ProtocolFormsSet is a Perl object representation of the
+  caBIO generic object.</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  Identification of a Clinical Trial Protocol document and its collection of Case Report Forms (CRFs).   Note: Protocols will be uniquely identified within each of the 3 areas of caCORE - caBIO, SPORES and caDSR-  using  the following three attributes: Protocol ID, Protocol Version and Context Name. This class will serve as a 'hook' across the three caCORE domains allowing a user to navigate across databases.</pre>
+<p>
+</p>
+<h3><a name="attributes_of_protocolformsset">Attributes of ProtocolFormsSet</a></h3>
+<pre>
+  The following are all the attributes of the ProtocolFormsSet object and their data types:</pre>
+<pre>
+        reviewedDate    dateTime
+        approvedDate    dateTime
+        changeType      string
+        leadOrganizationName    string
+        phase   string
+        type    string
+        reviewedBy      string
+        protocolId      string
+        approvedBy      string
+        changeNumber    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.</pre>
+<p>
+</p>
+<h3><a name="associations_of_protocolformsset">Associations of ProtocolFormsSet</a></h3>
+<pre>
+  The following are all the objects that are associated with the ProtocolFormsSet:</pre>
+<pre>
+	<a href="#casereportform">CaseReportForm</a>: 	One to many assoication, use getCaseReportFormCollection to get a collection of associated CaseReportForm.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="casereportform">CaseReportForm</a></h1>
+<pre>
+  CaCORE::CaDSR::CaseReportForm - Perl extension for CaseReportForm.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::CaseReportForm is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A questionnaire that documents all the patient data stipulated in the protocol and used by clinicians to record information about patient's visits while on the clinical trial.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_casereportform">Attributes of CaseReportForm</a></h3>
+<pre>
+  The following are all the attributes of the CaseReportForm object and their data types:
+
+</pre>
+<pre>
+        displayName     string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_casereportform">Associations of CaseReportForm</a></h3>
+<pre>
+  The following are all the objects that are associated with the CaseReportForm:
+
+</pre>
+<pre>
+	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
+	<a href="#protocolformsset">ProtocolFormsSet</a>: 	Many to one assoication, use getProtocolFormsSet to get the associated ProtocolFormsSet.
+	<a href="#module">Module</a>: 	One to many assoication, use getModuleCollection to get a collection of associated Module.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="module">Module</a></h1>
+<pre>
+  CaCORE::CaDSR::Module - Perl extension for Module.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Module is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A collection of data elements, or Common Data Elements, logically grouped on a case report form.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_module">Attributes of Module</a></h3>
+<pre>
+  The following are all the attributes of the Module object and their data types:
+
+</pre>
+<pre>
+        displayOrder    int
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_module">Associations of Module</a></h3>
+<pre>
+  The following are all the objects that are associated with the Module:
+
+</pre>
+<pre>
+	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
+	<a href="#casereportform">CaseReportForm</a>: 	Many to one assoication, use getCaseReportForm to get the associated CaseReportForm.
+	<a href="#protocolformstemplate">ProtocolFormsTemplate</a>: 	Many to one assoication, use getProtocolFormsTemplate to get the associated ProtocolFormsTemplate.
+	<a href="#question">Question</a>: 	One to many assoication, use getQuestionCollection to get a collection of associated Question.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="question">Question</a></h1>
+<pre>
+  CaCORE::CaDSR::Question - Perl extension for Question.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Question is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The actual text of the data element as specified on a Case Report Form of a Protocol.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_question">Attributes of Question</a></h3>
+<pre>
+  The following are all the attributes of the Question object and their data types:
+
+</pre>
+<pre>
+        displayOrder    int
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_question">Associations of Question</a></h3>
+<pre>
+  The following are all the objects that are associated with the Question:
+
+</pre>
+<pre>
+	<a href="#valuedomain">ValueDomain</a>: 	Many to one assoication, use getValueDomain to get the associated ValueDomain.
+	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
+	<a href="#validvalue">ValidValue</a>: 	One to many assoication, use getValidValueCollection to get a collection of associated ValidValue.
+	<a href="#dataelement">DataElement</a>: 	Many to one assoication, use getDataElement to get the associated DataElement.
+	<a href="#module">Module</a>: 	Many to one assoication, use getModule to get the associated Module.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="enumeratedvaluedomain">EnumeratedValueDomain</a></h1>
+<pre>
+  CaCORE::CaDSR::EnumeratedValueDomain - Perl extension for EnumeratedValueDomain.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::EnumeratedValueDomain is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_enumeratedvaluedomain">Attributes of EnumeratedValueDomain</a></h3>
+<pre>
+  The following are all the attributes of the EnumeratedValueDomain object and their data types:
+
+</pre>
+<pre>
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_enumeratedvaluedomain">Associations of EnumeratedValueDomain</a></h3>
+<pre>
+  The following are all the objects that are associated with the EnumeratedValueDomain:
+
+</pre>
+<pre>
+	<a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a>: 	One to many assoication, use getValueDomainPermissibleValueCollection to get a collection of associated ValueDomainPermissibleValue.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="concept">Concept</a></h1>
+<pre>
+  CaCORE::CaDSR::Concept - Perl extension for Concept.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Concept is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The concept for an administered component
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_concept">Attributes of Concept</a></h3>
+<pre>
+  The following are all the attributes of the Concept object and their data types:
+
+</pre>
+<pre>
+        definitionSource        string
+        evsSource       string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_concept">Associations of Concept</a></h3>
+<pre>
+  The following are all the objects that are associated with the Concept:
+
+</pre>
+<pre>
+	<a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a>: 	One to many assoication, use getValueDomainPermissibleValueCollection to get a collection of associated ValueDomainPermissibleValue.
+	<a href="#componentconcept">ComponentConcept</a>: 	One to many assoication, use getComponentConceptCollection to get a collection of associated ComponentConcept.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="valuedomainpermissiblevalue">ValueDomainPermissibleValue</a></h1>
+<pre>
+  CaCORE::CaDSR::ValueDomainPermissibleValue - Perl extension for ValueDomainPermissibleValue.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ValueDomainPermissibleValue is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  This captures the many-to-many relationship between value domain and permissible values and allows to associate a value domain to a permissible value.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_valuedomainpermissiblevalue">Attributes of ValueDomainPermissibleValue</a></h3>
+<pre>
+  The following are all the attributes of the ValueDomainPermissibleValue object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        beginDate       dateTime
+        createdBy       string
+        origin  string
+        dateCreated     dateTime
+        id      string
+        dateModified    dateTime
+        endDate dateTime
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_valuedomainpermissiblevalue">Associations of ValueDomainPermissibleValue</a></h3>
+<pre>
+  The following are all the objects that are associated with the ValueDomainPermissibleValue:
+
+</pre>
+<pre>
+	<a href="#enumeratedvaluedomain">EnumeratedValueDomain</a>: 	Many to one assoication, use getEnumeratedValueDomain to get the associated EnumeratedValueDomain.
+	<a href="#concept">Concept</a>: 	Many to one assoication, use getConcept to get the associated Concept.
+	<a href="#permissiblevalue">PermissibleValue</a>: 	Many to one assoication, use getPermissibleValue to get the associated PermissibleValue.
+	<a href="#validvalue">ValidValue</a>: 	One to many assoication, use getValidValueCollection to get a collection of associated ValidValue.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="validvalue">ValidValue</a></h1>
+<pre>
+  CaCORE::CaDSR::ValidValue - Perl extension for ValidValue.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ValidValue is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The allowable values for a given data element (question) on a Case Report Form.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_validvalue">Attributes of ValidValue</a></h3>
+<pre>
+  The following are all the attributes of the ValidValue object and their data types:
+
+</pre>
+<pre>
+        displayOrder    int
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_validvalue">Associations of ValidValue</a></h3>
+<pre>
+  The following are all the objects that are associated with the ValidValue:
+
+</pre>
+<pre>
+	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
+	<a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a>: 	Many to one assoication, use getValueDomainPermissibleValue to get the associated ValueDomainPermissibleValue.
+	<a href="#question">Question</a>: 	Many to one assoication, use getQuestion to get the associated Question.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="designation">Designation</a></h1>
+<pre>
+  CaCORE::CaDSR::Designation - Perl extension for Designation.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Designation is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A name by which an Administered Component is known in a specific Context. Also a placeholder to track the usage of Administered Components by different Contexts.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_designation">Attributes of Designation</a></h3>
+<pre>
+  The following are all the attributes of the Designation object and their data types:
+
+</pre>
+<pre>
+        languageName    string
+        modifiedBy      string
+        type    string
+        dateModified    dateTime
+        createdBy       string
+        name    string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_designation">Associations of Designation</a></h3>
+<pre>
+  The following are all the objects that are associated with the Designation:
+
+</pre>
+<pre>
+	<a href="#context">Context</a>: 	Many to one assoication, use getContext to get the associated Context.
+	<a href="#designationclassschemeitem">DesignationClassSchemeItem</a>: 	One to many assoication, use getDesignationClassSchemeItemCollection to get a collection of associated DesignationClassSchemeItem.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="nonenumeratedvaluedomain">NonenumeratedValueDomain</a></h1>
+<pre>
+  CaCORE::CaDSR::NonenumeratedValueDomain - Perl extension for NonenumeratedValueDomain.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::NonenumeratedValueDomain is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A value domain not expressed as a list of all permissible values.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_nonenumeratedvaluedomain">Attributes of NonenumeratedValueDomain</a></h3>
+<pre>
+  The following are all the attributes of the NonenumeratedValueDomain object and their data types:
+
+</pre>
+<pre>
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_nonenumeratedvaluedomain">Associations of NonenumeratedValueDomain</a></h3>
+<pre>
+  The following are all the objects that are associated with the NonenumeratedValueDomain:
+
+</pre>
+<pre>
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="dataelementconceptrelationship">DataElementConceptRelationship</a></h1>
+<pre>
+  CaCORE::CaDSR::DataElementConceptRelationship - Perl extension for DataElementConceptRelationship.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DataElementConceptRelationship is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A description of the affiliation between two occurrences of Data Element Concepts.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_dataelementconceptrelationship">Attributes of DataElementConceptRelationship</a></h3>
+<pre>
+  The following are all the attributes of the DataElementConceptRelationship object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        dateModified    dateTime
+        description     string
+        createdBy       string
+        name    string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_dataelementconceptrelationship">Associations of DataElementConceptRelationship</a></h3>
+<pre>
+  The following are all the objects that are associated with the DataElementConceptRelationship:
+
+</pre>
+<pre>
+	<a href="#parentdataelementconcept">ParentDataElementConcept</a>: 	Many to one assoication, use getParentDataElementConcept to get the associated ParentDataElementConcept.
+	<a href="#childdataelementconcept">ChildDataElementConcept</a>: 	Many to one assoication, use getChildDataElementConcept to get the associated ChildDataElementConcept.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="classschemeclassschemeitem">ClassSchemeClassSchemeItem</a></h1>
+<pre>
+  CaCORE::CaDSR::ClassSchemeClassSchemeItem - Perl extension for ClassSchemeClassSchemeItem.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ClassSchemeClassSchemeItem is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  Information pertaining to the association between Classification Schemes and Classification Scheme Items.  This information is used to get all Classification Scheme Items that belong to a particular Classification Scheme as well as the information about t
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_classschemeclassschemeitem">Attributes of ClassSchemeClassSchemeItem</a></h3>
+<pre>
+  The following are all the attributes of the ClassSchemeClassSchemeItem object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        displayOrder    int
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+        dateModified    dateTime
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_classschemeclassschemeitem">Associations of ClassSchemeClassSchemeItem</a></h3>
+<pre>
+  The following are all the objects that are associated with the ClassSchemeClassSchemeItem:
+
+</pre>
+<pre>
+	<a href="#parentclassschemeclassschemeitem">ParentClassSchemeClassSchemeItem</a>: 	Many to one assoication, use getParentClassSchemeClassSchemeItem to get the associated ParentClassSchemeClassSchemeItem.
+	<a href="#classificationscheme">ClassificationScheme</a>: 	Many to one assoication, use getClassificationScheme to get the associated ClassificationScheme.
+	<a href="#definitionclassschemeitem">DefinitionClassSchemeItem</a>: 	One to many assoication, use getDefinitionClassSchemeItemCollection to get a collection of associated DefinitionClassSchemeItem.
+	<a href="#administeredcomponentclassschemeitem">AdministeredComponentClassSchemeItem</a>: 	One to many assoication, use getAdministeredComponentClassSchemeItemCollection to get a collection of associated AdministeredComponentClassSchemeItem.
+	<a href="#designationclassschemeitem">DesignationClassSchemeItem</a>: 	One to many assoication, use getDesignationClassSchemeItemCollection to get a collection of associated DesignationClassSchemeItem.
+	<a href="#childclassschemeclassschemeitem">ChildClassSchemeClassSchemeItem</a>: 	One to many assoication, use getChildClassSchemeClassSchemeItemCollection to get a collection of associated ChildClassSchemeClassSchemeItem.
+	<a href="#classificationschemeitem">ClassificationSchemeItem</a>: 	Many to one assoication, use getClassificationSchemeItem to get the associated ClassificationSchemeItem.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="dataelementderivation">DataElementDerivation</a></h1>
+<pre>
+  CaCORE::CaDSR::DataElementDerivation - Perl extension for DataElementDerivation.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DataElementDerivation is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The data element component(s) used for a derived data element.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_dataelementderivation">Attributes of DataElementDerivation</a></h3>
+<pre>
+  The following are all the attributes of the DataElementDerivation object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        displayOrder    int
+        dateModified    dateTime
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_dataelementderivation">Associations of DataElementDerivation</a></h3>
+<pre>
+  The following are all the objects that are associated with the DataElementDerivation:
+
+</pre>
+<pre>
+	<a href="#dataelement">DataElement</a>: 	Many to one assoication, use getDataElement to get the associated DataElement.
+	<a href="#deriveddataelement">DerivedDataElement</a>: 	Many to one assoication, use getDerivedDataElement to get the associated DerivedDataElement.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="administeredcomponentclassschemeitem">AdministeredComponentClassSchemeItem</a></h1>
+<pre>
+  CaCORE::CaDSR::AdministeredComponentClassSchemeItem - Perl extension for AdministeredComponentClassSchemeItem.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::AdministeredComponentClassSchemeItem is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A class that serves to allow many to many relationships between Administered Component and ClassSchemeClassSchemeItem, providing uniqueness to the CS/CSI pairing to an AC.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_administeredcomponentclassschemeitem">Attributes of AdministeredComponentClassSchemeItem</a></h3>
+<pre>
+  The following are all the attributes of the AdministeredComponentClassSchemeItem object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        dateModified    dateTime
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_administeredcomponentclassschemeitem">Associations of AdministeredComponentClassSchemeItem</a></h3>
+<pre>
+  The following are all the objects that are associated with the AdministeredComponentClassSchemeItem:
+
+</pre>
+<pre>
+	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	Many to one assoication, use getClassSchemeClassSchemeItem to get the associated ClassSchemeClassSchemeItem.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="instruction">Instruction</a></h1>
+<pre>
+  CaCORE::CaDSR::Instruction - Perl extension for Instruction.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Instruction is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  Instruction for a Form, Module, Question or Valid Value on a Form
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_instruction">Attributes of Instruction</a></h3>
+<pre>
+  The following are all the attributes of the Instruction object and their data types:
+
+</pre>
+<pre>
+        type    string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_instruction">Associations of Instruction</a></h3>
+<pre>
+  The following are all the objects that are associated with the Instruction:
+
+</pre>
+<pre>
+	<a href="#validvalue">ValidValue</a>: 	Many to one assoication, use getValidValue to get the associated ValidValue.
+	<a href="#casereportform">CaseReportForm</a>: 	Many to one assoication, use getCaseReportForm to get the associated CaseReportForm.
+	<a href="#protocolformstemplate">ProtocolFormsTemplate</a>: 	Many to one assoication, use getProtocolFormsTemplate to get the associated ProtocolFormsTemplate.
+	<a href="#module">Module</a>: 	Many to one assoication, use getModule to get the associated Module.
+	<a href="#question">Question</a>: 	Many to one assoication, use getQuestion to get the associated Question.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="dataelementrelationship">DataElementRelationship</a></h1>
+<pre>
+  CaCORE::CaDSR::DataElementRelationship - Perl extension for DataElementRelationship.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DataElementRelationship is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The affiliation between two occurrences of Data Elements.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_dataelementrelationship">Attributes of DataElementRelationship</a></h3>
+<pre>
+  The following are all the attributes of the DataElementRelationship object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        dateModified    dateTime
+        createdBy       string
+        name    string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_dataelementrelationship">Associations of DataElementRelationship</a></h3>
+<pre>
+  The following are all the objects that are associated with the DataElementRelationship:
+
+</pre>
+<pre>
+	<a href="#parentdataelement">ParentDataElement</a>: 	Many to one assoication, use getParentDataElement to get the associated ParentDataElement.
+	<a href="#childdataelement">ChildDataElement</a>: 	Many to one assoication, use getChildDataElement to get the associated ChildDataElement.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="valuedomainrelationship">ValueDomainRelationship</a></h1>
+<pre>
+  CaCORE::CaDSR::ValueDomainRelationship - Perl extension for ValueDomainRelationship.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ValueDomainRelationship is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The affiliation between two occurrences of Value Domains.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_valuedomainrelationship">Attributes of ValueDomainRelationship</a></h3>
+<pre>
+  The following are all the attributes of the ValueDomainRelationship object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        dateModified    dateTime
+        createdBy       string
+        name    string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_valuedomainrelationship">Associations of ValueDomainRelationship</a></h3>
+<pre>
+  The following are all the objects that are associated with the ValueDomainRelationship:
+
+</pre>
+<pre>
+	<a href="#parentvaluedomain">ParentValueDomain</a>: 	Many to one assoication, use getParentValueDomain to get the associated ParentValueDomain.
+	<a href="#childvaluedomain">ChildValueDomain</a>: 	Many to one assoication, use getChildValueDomain to get the associated ChildValueDomain.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="classificationschemerelationship">ClassificationSchemeRelationship</a></h1>
+<pre>
+  CaCORE::CaDSR::ClassificationSchemeRelationship - Perl extension for ClassificationSchemeRelationship.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ClassificationSchemeRelationship is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The affiliation between two occurrences of Classification Schemes.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_classificationschemerelationship">Attributes of ClassificationSchemeRelationship</a></h3>
+<pre>
+  The following are all the attributes of the ClassificationSchemeRelationship object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        displayOrder    int
+        dateModified    dateTime
+        createdBy       string
+        name    string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_classificationschemerelationship">Associations of ClassificationSchemeRelationship</a></h3>
+<pre>
+  The following are all the objects that are associated with the ClassificationSchemeRelationship:
+
+</pre>
+<pre>
+	<a href="#childclassificationscheme">ChildClassificationScheme</a>: 	Many to one assoication, use getChildClassificationScheme to get the associated ChildClassificationScheme.
+	<a href="#parentclassificationscheme">ParentClassificationScheme</a>: 	Many to one assoication, use getParentClassificationScheme to get the associated ParentClassificationScheme.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="classificationschemeitemrelationship">ClassificationSchemeItemRelationship</a></h1>
+<pre>
+  CaCORE::CaDSR::ClassificationSchemeItemRelationship - Perl extension for ClassificationSchemeItemRelationship.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ClassificationSchemeItemRelationship is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The affiliation between two occurrences of Classification Scheme Items.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_classificationschemeitemrelationship">Attributes of ClassificationSchemeItemRelationship</a></h3>
+<pre>
+  The following are all the attributes of the ClassificationSchemeItemRelationship object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        dateModified    dateTime
+        createdBy       string
+        name    string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_classificationschemeitemrelationship">Associations of ClassificationSchemeItemRelationship</a></h3>
+<pre>
+  The following are all the objects that are associated with the ClassificationSchemeItemRelationship:
+
+</pre>
+<pre>
+	<a href="#childclassificationschemeitem">ChildClassificationSchemeItem</a>: 	Many to one assoication, use getChildClassificationSchemeItem to get the associated ChildClassificationSchemeItem.
+	<a href="#parentclassificationschemeitem">ParentClassificationSchemeItem</a>: 	Many to one assoication, use getParentClassificationSchemeItem to get the associated ParentClassificationSchemeItem.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="objectclassrelationship">ObjectClassRelationship</a></h1>
+<pre>
+  CaCORE::CaDSR::ObjectClassRelationship - Perl extension for ObjectClassRelationship.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ObjectClassRelationship is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A description of the affiliation between two occurrences of Object  Classes
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_objectclassrelationship">Attributes of ObjectClassRelationship</a></h3>
+<pre>
+  The following are all the attributes of the ObjectClassRelationship object and their data types:
+
+</pre>
+<pre>
+        targetHighMultiplicity  int
+        targetRole      string
+        name    string
+        sourceHighMultiplicity  int
+        sourceRole      string
+        direction       string
+        sourceLowMultiplicity   int
+        targetLowMultiplicity   int
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_objectclassrelationship">Associations of ObjectClassRelationship</a></h3>
+<pre>
+  The following are all the objects that are associated with the ObjectClassRelationship:
+
+</pre>
+<pre>
+	<a href="#sourceobjectclass">SourceObjectClass</a>: 	Many to one assoication, use getSourceObjectClass to get the associated SourceObjectClass.
+	<a href="#targetobjectclass">TargetObjectClass</a>: 	Many to one assoication, use getTargetObjectClass to get the associated TargetObjectClass.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="componentconcept">ComponentConcept</a></h1>
+<pre>
+  CaCORE::CaDSR::ComponentConcept - Perl extension for ComponentConcept.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::ComponentConcept is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  The concept component(s) used for a concept derivation
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_componentconcept">Attributes of ComponentConcept</a></h3>
+<pre>
+  The following are all the attributes of the ComponentConcept object and their data types:
+
+</pre>
+<pre>
+        displayOrder    int
+        primaryFlag     string
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_componentconcept">Associations of ComponentConcept</a></h3>
+<pre>
+  The following are all the objects that are associated with the ComponentConcept:
+
+</pre>
+<pre>
+	<a href="#derivationrule">DerivationRule</a>: 	Many to one assoication, use getDerivationRule to get the associated DerivationRule.
+	<a href="#concept">Concept</a>: 	Many to one assoication, use getConcept to get the associated Concept.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="definition">Definition</a></h1>
+<pre>
+  CaCORE::CaDSR::Definition - Perl extension for Definition.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::Definition is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A defintion for an Administered Component  in a specific Context.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_definition">Attributes of Definition</a></h3>
+<pre>
+  The following are all the attributes of the Definition object and their data types:
+
+</pre>
+<pre>
+        languageName    string
+        modifiedBy      string
+        text    string
+        type    string
+        dateModified    dateTime
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_definition">Associations of Definition</a></h3>
+<pre>
+  The following are all the objects that are associated with the Definition:
+
+</pre>
+<pre>
+	<a href="#definitionclassschemeitem">DefinitionClassSchemeItem</a>: 	One to many assoication, use getDefinitionClassSchemeItemCollection to get a collection of associated DefinitionClassSchemeItem.
+	<a href="#context">Context</a>: 	Many to one assoication, use getContext to get the associated Context.
+	<a href="#administeredcomponent">AdministeredComponent</a>: 	Many to one assoication, use getAdministeredComponent to get the associated AdministeredComponent.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="designationclassschemeitem">DesignationClassSchemeItem</a></h1>
+<pre>
+  CaCORE::CaDSR::DesignationClassSchemeItem - Perl extension for DesignationClassSchemeItem.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DesignationClassSchemeItem is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  A class that serves to allow many to many relationships between Designation and ClassSchemeClassSchemeItem, providing uniqueness to the CS/CSI pairing to an Designation.
+
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_designationclassschemeitem">Attributes of DesignationClassSchemeItem</a></h3>
+<pre>
+  The following are all the attributes of the DesignationClassSchemeItem object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        dateModified    dateTime
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_designationclassschemeitem">Associations of DesignationClassSchemeItem</a></h3>
+<pre>
+  The following are all the objects that are associated with the DesignationClassSchemeItem:
+
+</pre>
+<pre>
+	<a href="#designation">Designation</a>: 	Many to one assoication, use getDesignation to get the associated Designation.
+	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	Many to one assoication, use getClassSchemeClassSchemeItem to get the associated ClassSchemeClassSchemeItem.
+  End Associations and related methods
+<p>
+
+<p>
+</p>
+<hr />
+<h1><a name="definitionclassschemeitem">DefinitionClassSchemeItem</a></h1>
+<pre>
+  CaCORE::CaDSR::DefinitionClassSchemeItem - Perl extension for DefinitionClassSchemeItem.
+
+</pre>
+<p>
+</p>
+<h2><a name="abstract">Abstract</a></h2>
+<pre>
+  The CaCORE::CaDSR::bean::DefinitionClassSchemeItem is a Perl object representation of the
+  caBIO generic object.
+
+</pre>
+<p>
+</p>
+<h2><a name="description">Description</a></h2>
+<pre>
+  
+</pre>
+<p>
+</p>
+<h3><a name="attributes_of_definitionclassschemeitem">Attributes of DefinitionClassSchemeItem</a></h3>
+<pre>
+  The following are all the attributes of the DefinitionClassSchemeItem object and their data types:
+
+</pre>
+<pre>
+        modifiedBy      string
+        dateModified    dateTime
+        createdBy       string
+        dateCreated     dateTime
+        id      string
+  End Attributes
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+</pre>
+<p>
+</p>
+<h3><a name="associations_of_definitionclassschemeitem">Associations of DefinitionClassSchemeItem</a></h3>
+<pre>
+  The following are all the objects that are associated with the DefinitionClassSchemeItem:
+
+</pre>
+<pre>
+	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	Many to one assoication, use getClassSchemeClassSchemeItem to get the associated ClassSchemeClassSchemeItem.
+	<a href="#definition">Definition</a>: 	Many to one assoication, use getDefinition to get the associated Definition.
+  End Associations and related methods
+<p>
+
+
+</body>
+
+</html>
