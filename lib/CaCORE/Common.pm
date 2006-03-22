@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.01';
+$VERSION = '3.011';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -260,8 +260,8 @@ sub setSourceType {
 
 =head2 Abstract
 
-  The CaCORE::Common::bean::DatabaseCrossReference is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::DatabaseCrossReference is a Perl object representation of the
+  caBIO DatabaseCrossReference object.
 
 =head2 Description
 
@@ -271,6 +271,8 @@ sub setSourceType {
 
   The following are all the attributes of the DatabaseCrossReference object and their data types:
 
+=begin html
+<pre>
 	dataSourceName	string
 	summary	string
 	crossReferenceId	string
@@ -278,6 +280,10 @@ sub setSourceType {
 	sourceType	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -286,10 +292,12 @@ sub setSourceType {
 
   The following are all the objects that are associated with the DatabaseCrossReference:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 

@@ -5,9 +5,9 @@
 
 use Test::Simple tests => 8;
 use CaCORE::ApplicationService;
-use CaCORE::CaBIO::CaBIO;
-use CaCORE::CaDSR::CaDSR;
-use CaCORE::Common::Common;
+use CaCORE::CaBIO;
+use CaCORE::CaDSR;
+use CaCORE::Common;
 
 # test create ApplicationService instance
 my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore30/ws/caCOREService");

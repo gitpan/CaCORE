@@ -3,11 +3,11 @@ html/index.html
 html/intro.html
 html/toc.html
 lib/CaCORE/ApplicationService.pm
-lib/CaCORE/CaBIO/CaBIO.pm
-lib/CaCORE/CaDSR/CaDSR.pm
-lib/CaCORE/CaMOD/CaMOD.pm
-lib/CaCORE/Common/Common.pm
-lib/CaCORE/Common/Provenance/Provenance.pm
+lib/CaCORE/CaBIO.pm
+lib/CaCORE/CaDSR.pm
+lib/CaCORE/CaMOD.pm
+lib/CaCORE/Common.pm
+lib/CaCORE/Common/Provenance.pm
 Makefile.PL
 MANIFEST			This list of files
 README

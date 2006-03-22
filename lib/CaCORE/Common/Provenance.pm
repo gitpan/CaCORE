@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.01';
+$VERSION = '3.011';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -1746,8 +1746,8 @@ sub setName {
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::bean::SourceReference is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::SourceReference is a Perl object representation of the
+  caBIO SourceReference object.
 
 =head2 Description
 
@@ -1757,10 +1757,16 @@ sub setName {
 
   The following are all the attributes of the SourceReference object and their data types:
 
+=begin html
+<pre>
 	sourceReferenceType	string
 	id	long
 	reference	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1769,11 +1775,13 @@ sub setName {
 
   The following are all the objects that are associated with the SourceReference:
 
-=for html
+=begin html
 <pre>
 	<a href="#provenance">Provenance</a>: 	One to many assoication, use getProvenanceCollection to get a collection of associated Provenance.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -1787,8 +1795,8 @@ sub setName {
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::bean::Source is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::Source is a Perl object representation of the
+  caBIO Source object.
 
 =head2 Description
 
@@ -1798,9 +1806,15 @@ sub setName {
 
   The following are all the attributes of the Source object and their data types:
 
+=begin html
+<pre>
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1809,10 +1823,12 @@ sub setName {
 
   The following are all the objects that are associated with the Source:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -1826,8 +1842,8 @@ sub setName {
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::bean::Provenance is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::Provenance is a Perl object representation of the
+  caBIO Provenance object.
 
 =head2 Description
 
@@ -1837,10 +1853,16 @@ sub setName {
 
   The following are all the attributes of the Provenance object and their data types:
 
+=begin html
+<pre>
 	transformation	string
 	evidenceCode	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1849,14 +1871,16 @@ sub setName {
 
   The following are all the objects that are associated with the Provenance:
 
-=for html
+=begin html
 <pre>
 	<a href="#sourcereference">SourceReference</a>: 	Many to one assoication, use getSourceReference to get the associated SourceReference.
 	<a href="#originalsource">OriginalSource</a>: 	Many to one assoication, use getOriginalSource to get the associated OriginalSource.
 	<a href="#immediatesource">ImmediateSource</a>: 	Many to one assoication, use getImmediateSource to get the associated ImmediateSource.
 	<a href="#supplyingsource">SupplyingSource</a>: 	Many to one assoication, use getSupplyingSource to get the associated SupplyingSource.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -1870,8 +1894,8 @@ sub setName {
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::bean::URLSourceReference is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::URLSourceReference is a Perl object representation of the
+  caBIO URLSourceReference object.
 
 =head2 Description
 
@@ -1881,8 +1905,14 @@ sub setName {
 
   The following are all the attributes of the URLSourceReference object and their data types:
 
+=begin html
+<pre>
 	sourceURL	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1891,10 +1921,12 @@ sub setName {
 
   The following are all the objects that are associated with the URLSourceReference:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -1908,8 +1940,8 @@ sub setName {
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::bean::PublicationSource is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::PublicationSource is a Perl object representation of the
+  caBIO PublicationSource object.
 
 =head2 Description
 
@@ -1919,6 +1951,8 @@ sub setName {
 
   The following are all the attributes of the PublicationSource object and their data types:
 
+=begin html
+<pre>
 	volume	int
 	endPage	int
 	year	int
@@ -1926,6 +1960,10 @@ sub setName {
 	startPage	int
 	authors	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1934,10 +1972,12 @@ sub setName {
 
   The following are all the objects that are associated with the PublicationSource:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -1951,8 +1991,8 @@ sub setName {
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::bean::ResearchInstitutionSource is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::ResearchInstitutionSource is a Perl object representation of the
+  caBIO ResearchInstitutionSource object.
 
 =head2 Description
 
@@ -1962,11 +2002,17 @@ sub setName {
 
   The following are all the attributes of the ResearchInstitutionSource object and their data types:
 
+=begin html
+<pre>
 	institutionPersons	string
 	institutionAddress	string
 	institutionDepartment	string
 	institutionName	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1975,10 +2021,12 @@ sub setName {
 
   The following are all the objects that are associated with the ResearchInstitutionSource:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -1992,8 +2040,8 @@ sub setName {
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::bean::WebServicesSourceReference is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::WebServicesSourceReference is a Perl object representation of the
+  caBIO WebServicesSourceReference object.
 
 =head2 Description
 
@@ -2003,8 +2051,14 @@ sub setName {
 
   The following are all the attributes of the WebServicesSourceReference object and their data types:
 
+=begin html
+<pre>
 	request	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2013,10 +2067,12 @@ sub setName {
 
   The following are all the objects that are associated with the WebServicesSourceReference:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -2030,8 +2086,8 @@ sub setName {
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::bean::InternetSource is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::InternetSource is a Perl object representation of the
+  caBIO InternetSource object.
 
 =head2 Description
 
@@ -2041,10 +2097,16 @@ sub setName {
 
   The following are all the attributes of the InternetSource object and their data types:
 
+=begin html
+<pre>
 	ownerInstitution	string
 	sourceURI	string
 	ownerPersons	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2053,10 +2115,12 @@ sub setName {
 
   The following are all the objects that are associated with the InternetSource:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 

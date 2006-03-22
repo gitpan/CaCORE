@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.01';
+$VERSION = '3.011';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -8549,8 +8549,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Taxon is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Taxon is a Perl object representation of the
+  caBIO Taxon object.
 
 =head2 Description
 
@@ -8560,12 +8560,18 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Taxon object and their data types:
 
+=begin html
+<pre>
 	scientificName	string
 	ethnicityStrain	string
 	abbreviation	string
 	commonName	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8574,7 +8580,7 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Taxon:
 
-=for html
+=begin html
 <pre>
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
 	<a href="#protein">Protein</a>: 	One to many assoication, use getProteinCollection to get a collection of associated Protein.
@@ -8583,7 +8589,9 @@ sub getGenericReporterCollection {
 	<a href="#chromosome">Chromosome</a>: 	One to many assoication, use getChromosomeCollection to get a collection of associated Chromosome.
 	<a href="#clone">Clone</a>: 	One to many assoication, use getCloneCollection to get a collection of associated Clone.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8597,8 +8605,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Agent is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Agent is a Perl object representation of the
+  caBIO Agent object.
 
 =head2 Description
 
@@ -8608,6 +8616,8 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Agent object and their data types:
 
+=begin html
+<pre>
 	isCMAPAgent	boolean
 	comment	string
 	source	string
@@ -8616,6 +8626,10 @@ sub getGenericReporterCollection {
 	EVSId	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8624,12 +8638,14 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Agent:
 
-=for html
+=begin html
 <pre>
 	<a href="#target">Target</a>: 	One to many assoication, use getTargetCollection to get a collection of associated Target.
 	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	One to many assoication, use getClinicalTrialProtocolCollection to get a collection of associated ClinicalTrialProtocol.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8643,8 +8659,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Chromosome is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Chromosome is a Perl object representation of the
+  caBIO Chromosome object.
 
 =head2 Description
 
@@ -8654,9 +8670,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Chromosome object and their data types:
 
+=begin html
+<pre>
 	id	long
 	number	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8665,13 +8687,15 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Chromosome:
 
-=for html
+=begin html
 <pre>
 	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
 	<a href="#location">Location</a>: 	One to many assoication, use getLocationCollection to get a collection of associated Location.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8685,8 +8709,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Gene is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Gene is a Perl object representation of the
+  caBIO Gene object.
 
 =head2 Description
 
@@ -8696,11 +8720,17 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Gene object and their data types:
 
+=begin html
+<pre>
 	id	long
 	clusterId	long
 	symbol	string
 	fullName	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8709,7 +8739,7 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Gene:
 
-=for html
+=begin html
 <pre>
 	<a href="#geneontology">GeneOntology</a>: 	One to many assoication, use getGeneOntologyCollection to get a collection of associated GeneOntology.
 	<a href="#genealias">GeneAlias</a>: 	One to many assoication, use getGeneAliasCollection to get a collection of associated GeneAlias.
@@ -8729,7 +8759,9 @@ sub getGenericReporterCollection {
 	<a href="#nucleicacidsequence">NucleicAcidSequence</a>: 	One to many assoication, use getNucleicAcidSequenceCollection to get a collection of associated NucleicAcidSequence.
 	<a href="#homologousassociation">HomologousAssociation</a>: 	One to many assoication, use getHomologousAssociationCollection to get a collection of associated HomologousAssociation.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8743,8 +8775,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Vocabulary is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Vocabulary is a Perl object representation of the
+  caBIO Vocabulary object.
 
 =head2 Description
 
@@ -8754,10 +8786,16 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Vocabulary object and their data types:
 
+=begin html
+<pre>
 	generalTerm	string
 	coreTerm	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8766,11 +8804,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Vocabulary:
 
-=for html
+=begin html
 <pre>
 	<a href="#anomaly">Anomaly</a>: 	One to many assoication, use getAnomalyCollection to get a collection of associated Anomaly.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8784,8 +8824,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Protocol is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Protocol is a Perl object representation of the
+  caBIO Protocol object.
 
 =head2 Description
 
@@ -8795,11 +8835,17 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Protocol object and their data types:
 
+=begin html
+<pre>
 	type	string
 	description	string
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8808,12 +8854,14 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Protocol:
 
-=for html
+=begin html
 <pre>
 	<a href="#library">Library</a>: 	One to many assoication, use getLibraryCollection to get a collection of associated Library.
 	<a href="#tissue">Tissue</a>: 	One to many assoication, use getTissueCollection to get a collection of associated Tissue.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8827,8 +8875,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Tissue is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Tissue is a Perl object representation of the
+  caBIO Tissue object.
 
 =head2 Description
 
@@ -8838,6 +8886,8 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Tissue object and their data types:
 
+=begin html
+<pre>
 	type	string
 	cellType	string
 	histology	string
@@ -8850,6 +8900,10 @@ sub getGenericReporterCollection {
 	organ	string
 	name	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8858,13 +8912,15 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Tissue:
 
-=for html
+=begin html
 <pre>
 	<a href="#protocol">Protocol</a>: 	Many to one assoication, use getProtocol to get the associated Protocol.
 	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
 	<a href="#library">Library</a>: 	One to many assoication, use getLibraryCollection to get a collection of associated Library.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8878,8 +8934,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::SNP is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::SNP is a Perl object representation of the
+  caBIO SNP object.
 
 =head2 Description
 
@@ -8889,12 +8945,18 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the SNP object and their data types:
 
+=begin html
+<pre>
 	alleleA	string
 	validationStatus	string
 	alleleB	string
 	DBSNPID	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8903,14 +8965,16 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the SNP:
 
-=for html
+=begin html
 <pre>
 	<a href="#databasecrossreference">DatabaseCrossReference</a>: 	One to many assoication, use getDatabaseCrossReferenceCollection to get a collection of associated DatabaseCrossReference.
 	<a href="#populationfrequency">PopulationFrequency</a>: 	One to many assoication, use getPopulationFrequencyCollection to get a collection of associated PopulationFrequency.
 	<a href="#location">Location</a>: 	One to many assoication, use getLocationCollection to get a collection of associated Location.
 	<a href="#generelativelocation">GeneRelativeLocation</a>: 	One to many assoication, use getGeneRelativeLocationCollection to get a collection of associated GeneRelativeLocation.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8924,8 +8988,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::GeneAlias is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::GeneAlias is a Perl object representation of the
+  caBIO GeneAlias object.
 
 =head2 Description
 
@@ -8935,10 +8999,16 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the GeneAlias object and their data types:
 
+=begin html
+<pre>
 	name	string
 	type	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -8947,11 +9017,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the GeneAlias:
 
-=for html
+=begin html
 <pre>
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -8965,8 +9037,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Library is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Library is a Perl object representation of the
+  caBIO Library object.
 
 =head2 Description
 
@@ -8976,6 +9048,8 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Library object and their data types:
 
+=begin html
+<pre>
 	type	string
 	rsite1	string
 	creationDate	dateTime
@@ -8992,6 +9066,10 @@ sub getGenericReporterCollection {
 	uniGeneId	long
 	name	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9000,7 +9078,7 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Library:
 
-=for html
+=begin html
 <pre>
 	<a href="#protocol">Protocol</a>: 	Many to one assoication, use getProtocol to get the associated Protocol.
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
@@ -9008,7 +9086,9 @@ sub getGenericReporterCollection {
 	<a href="#tissue">Tissue</a>: 	Many to one assoication, use getTissue to get the associated Tissue.
 	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9022,8 +9102,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Clone is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Clone is a Perl object representation of the
+  caBIO Clone object.
 
 =head2 Description
 
@@ -9033,11 +9113,17 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Clone object and their data types:
 
+=begin html
+<pre>
 	type	string
 	insertSize	long
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9046,14 +9132,16 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Clone:
 
-=for html
+=begin html
 <pre>
 	<a href="#taxon">Taxon</a>: 	One to many assoication, use getTaxonCollection to get a collection of associated Taxon.
 	<a href="#clonerelativelocation">CloneRelativeLocation</a>: 	One to many assoication, use getCloneRelativeLocationCollection to get a collection of associated CloneRelativeLocation.
 	<a href="#library">Library</a>: 	Many to one assoication, use getLibrary to get the associated Library.
 	<a href="#nucleicacidsequence">NucleicAcidSequence</a>: 	One to many assoication, use getNucleicAcidSequenceCollection to get a collection of associated NucleicAcidSequence.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9067,8 +9155,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Target is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Target is a Perl object representation of the
+  caBIO Target object.
 
 =head2 Description
 
@@ -9078,10 +9166,16 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Target object and their data types:
 
+=begin html
+<pre>
 	type	string
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9090,13 +9184,15 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Target:
 
-=for html
+=begin html
 <pre>
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
 	<a href="#agent">Agent</a>: 	One to many assoication, use getAgentCollection to get a collection of associated Agent.
 	<a href="#anomaly">Anomaly</a>: 	One to many assoication, use getAnomalyCollection to get a collection of associated Anomaly.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9110,8 +9206,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Location is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Location is a Perl object representation of the
+  caBIO Location object.
 
 =head2 Description
 
@@ -9121,8 +9217,14 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Location object and their data types:
 
+=begin html
+<pre>
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9131,14 +9233,16 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Location:
 
-=for html
+=begin html
 <pre>
 	<a href="#snp">SNP</a>: 	Many to one assoication, use getSNP to get the associated SNP.
 	<a href="#gene">Gene</a>: 	Many to one assoication, use getGene to get the associated Gene.
 	<a href="#nucleicacidsequence">NucleicAcidSequence</a>: 	Many to one assoication, use getNucleicAcidSequence to get the associated NucleicAcidSequence.
 	<a href="#chromosome">Chromosome</a>: 	Many to one assoication, use getChromosome to get the associated Chromosome.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9152,8 +9256,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::CloneRelativeLocation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::CloneRelativeLocation is a Perl object representation of the
+  caBIO CloneRelativeLocation object.
 
 =head2 Description
 
@@ -9163,9 +9267,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the CloneRelativeLocation object and their data types:
 
+=begin html
+<pre>
 	type	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9174,12 +9284,14 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the CloneRelativeLocation:
 
-=for html
+=begin html
 <pre>
 	<a href="#clone">Clone</a>: 	Many to one assoication, use getClone to get the associated Clone.
 	<a href="#nucleicacidsequence">NucleicAcidSequence</a>: 	Many to one assoication, use getNucleicAcidSequence to get the associated NucleicAcidSequence.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9193,8 +9305,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::NucleicAcidSequence is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::NucleicAcidSequence is a Perl object representation of the
+  caBIO NucleicAcidSequence object.
 
 =head2 Description
 
@@ -9204,6 +9316,8 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the NucleicAcidSequence object and their data types:
 
+=begin html
+<pre>
 	value	string
 	type	string
 	length	long
@@ -9211,6 +9325,10 @@ sub getGenericReporterCollection {
 	id	long
 	accessionNumberVersion	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9219,14 +9337,16 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the NucleicAcidSequence:
 
-=for html
+=begin html
 <pre>
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
 	<a href="#databasecrossreference">DatabaseCrossReference</a>: 	One to many assoication, use getDatabaseCrossReferenceCollection to get a collection of associated DatabaseCrossReference.
 	<a href="#location">Location</a>: 	Many to one assoication, use getLocation to get the associated Location.
 	<a href="#clonerelativelocation">CloneRelativeLocation</a>: 	Many to one assoication, use getCloneRelativeLocation to get the associated CloneRelativeLocation.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9240,8 +9360,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::DiseaseOntology is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::DiseaseOntology is a Perl object representation of the
+  caBIO DiseaseOntology object.
 
 =head2 Description
 
@@ -9251,9 +9371,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the DiseaseOntology object and their data types:
 
+=begin html
+<pre>
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9262,14 +9388,16 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the DiseaseOntology:
 
-=for html
+=begin html
 <pre>
 	<a href="#parentdiseaseontologyrelationship">ParentDiseaseOntologyRelationship</a>: 	One to many assoication, use getParentDiseaseOntologyRelationshipCollection to get a collection of associated ParentDiseaseOntologyRelationship.
 	<a href="#childdiseaseontologyrelationship">ChildDiseaseOntologyRelationship</a>: 	One to many assoication, use getChildDiseaseOntologyRelationshipCollection to get a collection of associated ChildDiseaseOntologyRelationship.
 	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
 	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	One to many assoication, use getClinicalTrialProtocolCollection to get a collection of associated ClinicalTrialProtocol.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9283,8 +9411,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::ClinicalTrialProtocol is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::ClinicalTrialProtocol is a Perl object representation of the
+  caBIO ClinicalTrialProtocol object.
 
 =head2 Description
 
@@ -9294,6 +9422,8 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the ClinicalTrialProtocol object and their data types:
 
+=begin html
+<pre>
 	currentStatus	string
 	participationType	string
 	treatmentFlag	string
@@ -9308,6 +9438,10 @@ sub getGenericReporterCollection {
 	PIName	string
 	currentStatusDate	dateTime
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9316,14 +9450,16 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the ClinicalTrialProtocol:
 
-=for html
+=begin html
 <pre>
 	<a href="#agent">Agent</a>: 	One to many assoication, use getAgentCollection to get a collection of associated Agent.
 	<a href="#protocolassociation">ProtocolAssociation</a>: 	One to many assoication, use getProtocolAssociationCollection to get a collection of associated ProtocolAssociation.
 	<a href="#diseaseontology">DiseaseOntology</a>: 	One to many assoication, use getDiseaseOntologyCollection to get a collection of associated DiseaseOntology.
 	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9337,8 +9473,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::ProtocolAssociation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::ProtocolAssociation is a Perl object representation of the
+  caBIO ProtocolAssociation object.
 
 =head2 Description
 
@@ -9348,12 +9484,18 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the ProtocolAssociation object and their data types:
 
+=begin html
+<pre>
 	diseaseSubCategory	string
 	CTEPNAME	string
 	IMTCODE	long
 	id	long
 	diseaseCategory	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9362,12 +9504,14 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the ProtocolAssociation:
 
-=for html
+=begin html
 <pre>
 	<a href="#diseaseontology">DiseaseOntology</a>: 	Many to one assoication, use getDiseaseOntology to get the associated DiseaseOntology.
 	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	Many to one assoication, use getClinicalTrialProtocol to get the associated ClinicalTrialProtocol.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9381,8 +9525,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Pathway is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Pathway is a Perl object representation of the
+  caBIO Pathway object.
 
 =head2 Description
 
@@ -9392,12 +9536,18 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Pathway object and their data types:
 
+=begin html
+<pre>
 	description	string
 	diagram	string
 	name	string
 	id	long
 	displayValue	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9406,13 +9556,15 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Pathway:
 
-=for html
+=begin html
 <pre>
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
 	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
 	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9426,8 +9578,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::OrganOntology is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::OrganOntology is a Perl object representation of the
+  caBIO OrganOntology object.
 
 =head2 Description
 
@@ -9437,9 +9589,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the OrganOntology object and their data types:
 
+=begin html
+<pre>
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9448,7 +9606,7 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the OrganOntology:
 
-=for html
+=begin html
 <pre>
 	<a href="#parentorganontologyrelationship">ParentOrganOntologyRelationship</a>: 	One to many assoication, use getParentOrganOntologyRelationshipCollection to get a collection of associated ParentOrganOntologyRelationship.
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
@@ -9457,7 +9615,9 @@ sub getGenericReporterCollection {
 	<a href="#childorganontologyrelationship">ChildOrganOntologyRelationship</a>: 	One to many assoication, use getChildOrganOntologyRelationshipCollection to get a collection of associated ChildOrganOntologyRelationship.
 	<a href="#anomaly">Anomaly</a>: 	One to many assoication, use getAnomalyCollection to get a collection of associated Anomaly.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9471,8 +9631,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::OrganOntologyRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::OrganOntologyRelationship is a Perl object representation of the
+  caBIO OrganOntologyRelationship object.
 
 =head2 Description
 
@@ -9482,9 +9642,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the OrganOntologyRelationship object and their data types:
 
+=begin html
+<pre>
 	type	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9493,12 +9659,14 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the OrganOntologyRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#childorganontology">ChildOrganOntology</a>: 	Many to one assoication, use getChildOrganOntology to get the associated ChildOrganOntology.
 	<a href="#parentorganontology">ParentOrganOntology</a>: 	Many to one assoication, use getParentOrganOntology to get the associated ParentOrganOntology.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9512,8 +9680,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Histopathology is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Histopathology is a Perl object representation of the
+  caBIO Histopathology object.
 
 =head2 Description
 
@@ -9523,6 +9691,8 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Histopathology object and their data types:
 
+=begin html
+<pre>
 	comments	string
 	relationalOperation	string
 	tumorIncidenceRate	float
@@ -9532,6 +9702,10 @@ sub getGenericReporterCollection {
 	grossDescription	string
 	survivalInfo	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9540,7 +9714,7 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Histopathology:
 
-=for html
+=begin html
 <pre>
 	<a href="#metastasis">Metastasis</a>: 	One to many assoication, use getMetastasisCollection to get a collection of associated Metastasis.
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
@@ -9550,7 +9724,9 @@ sub getGenericReporterCollection {
 	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	One to many assoication, use getClinicalTrialProtocolCollection to get a collection of associated ClinicalTrialProtocol.
 	<a href="#anomaly">Anomaly</a>: 	One to many assoication, use getAnomalyCollection to get a collection of associated Anomaly.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9564,8 +9740,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::GeneOntology is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::GeneOntology is a Perl object representation of the
+  caBIO GeneOntology object.
 
 =head2 Description
 
@@ -9575,9 +9751,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the GeneOntology object and their data types:
 
+=begin html
+<pre>
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9586,13 +9768,15 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the GeneOntology:
 
-=for html
+=begin html
 <pre>
 	<a href="#childgeneontologyrelationship">ChildGeneOntologyRelationship</a>: 	One to many assoication, use getChildGeneOntologyRelationshipCollection to get a collection of associated ChildGeneOntologyRelationship.
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
 	<a href="#parentgeneontologyrelationship">ParentGeneOntologyRelationship</a>: 	One to many assoication, use getParentGeneOntologyRelationshipCollection to get a collection of associated ParentGeneOntologyRelationship.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9606,8 +9790,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::GeneOntologyRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::GeneOntologyRelationship is a Perl object representation of the
+  caBIO GeneOntologyRelationship object.
 
 =head2 Description
 
@@ -9617,9 +9801,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the GeneOntologyRelationship object and their data types:
 
+=begin html
+<pre>
 	relationshipType	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9628,12 +9818,14 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the GeneOntologyRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#parentgeneontology">ParentGeneOntology</a>: 	Many to one assoication, use getParentGeneOntology to get the associated ParentGeneOntology.
 	<a href="#childgeneontology">ChildGeneOntology</a>: 	Many to one assoication, use getChildGeneOntology to get the associated ChildGeneOntology.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9647,8 +9839,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::DiseaseOntologyRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::DiseaseOntologyRelationship is a Perl object representation of the
+  caBIO DiseaseOntologyRelationship object.
 
 =head2 Description
 
@@ -9658,9 +9850,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the DiseaseOntologyRelationship object and their data types:
 
+=begin html
+<pre>
 	type	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9669,12 +9867,14 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the DiseaseOntologyRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#childdiseaseontology">ChildDiseaseOntology</a>: 	Many to one assoication, use getChildDiseaseOntology to get the associated ChildDiseaseOntology.
 	<a href="#parentdiseaseontology">ParentDiseaseOntology</a>: 	Many to one assoication, use getParentDiseaseOntology to get the associated ParentDiseaseOntology.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9688,8 +9888,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Anomaly is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Anomaly is a Perl object representation of the
+  caBIO Anomaly object.
 
 =head2 Description
 
@@ -9699,9 +9899,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Anomaly object and their data types:
 
+=begin html
+<pre>
 	description	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9710,13 +9916,15 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Anomaly:
 
-=for html
+=begin html
 <pre>
 	<a href="#organontology">OrganOntology</a>: 	One to many assoication, use getOrganOntologyCollection to get a collection of associated OrganOntology.
 	<a href="#histopathology">Histopathology</a>: 	Many to one assoication, use getHistopathology to get the associated Histopathology.
 	<a href="#vocabulary">Vocabulary</a>: 	One to many assoication, use getVocabularyCollection to get a collection of associated Vocabulary.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9730,8 +9938,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::PopulationFrequency is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::PopulationFrequency is a Perl object representation of the
+  caBIO PopulationFrequency object.
 
 =head2 Description
 
@@ -9741,6 +9949,8 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the PopulationFrequency object and their data types:
 
+=begin html
+<pre>
 	majorFrequency	double
 	type	string
 	minorAllele	string
@@ -9749,6 +9959,10 @@ sub getGenericReporterCollection {
 	majorAllele	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9757,11 +9971,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the PopulationFrequency:
 
-=for html
+=begin html
 <pre>
 	<a href="#snp">SNP</a>: 	Many to one assoication, use getSNP to get the associated SNP.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9775,8 +9991,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::ProteinSequence is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::ProteinSequence is a Perl object representation of the
+  caBIO ProteinSequence object.
 
 =head2 Description
 
@@ -9786,12 +10002,18 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the ProteinSequence object and their data types:
 
+=begin html
+<pre>
 	checkSum	string
 	value	string
 	molecularWeightInDaltons	double
 	length	long
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9800,11 +10022,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the ProteinSequence:
 
-=for html
+=begin html
 <pre>
 	<a href="#protein">Protein</a>: 	Many to one assoication, use getProtein to get the associated Protein.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9818,8 +10042,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Protein is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Protein is a Perl object representation of the
+  caBIO Protein object.
 
 =head2 Description
 
@@ -9829,12 +10053,18 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Protein object and their data types:
 
+=begin html
+<pre>
 	copyrightStatement	string
 	primaryAccession	string
 	name	string
 	uniProtCode	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9843,7 +10073,7 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Protein:
 
-=for html
+=begin html
 <pre>
 	<a href="#taxon">Taxon</a>: 	One to many assoication, use getTaxonCollection to get a collection of associated Taxon.
 	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
@@ -9852,7 +10082,9 @@ sub getGenericReporterCollection {
 	<a href="#proteinsequence">ProteinSequence</a>: 	Many to one assoication, use getProteinSequence to get the associated ProteinSequence.
 	<a href="#proteinalias">ProteinAlias</a>: 	One to many assoication, use getProteinAliasCollection to get a collection of associated ProteinAlias.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9866,8 +10098,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::ProteinAlias is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::ProteinAlias is a Perl object representation of the
+  caBIO ProteinAlias object.
 
 =head2 Description
 
@@ -9877,9 +10109,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the ProteinAlias object and their data types:
 
+=begin html
+<pre>
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9888,11 +10126,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the ProteinAlias:
 
-=for html
+=begin html
 <pre>
 	<a href="#protein">Protein</a>: 	One to many assoication, use getProteinCollection to get a collection of associated Protein.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9906,8 +10146,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::HomologousAssociation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::HomologousAssociation is a Perl object representation of the
+  caBIO HomologousAssociation object.
 
 =head2 Description
 
@@ -9917,10 +10157,16 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the HomologousAssociation object and their data types:
 
+=begin html
+<pre>
 	similarityPercentage	float
 	homologousId	long
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9929,11 +10175,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the HomologousAssociation:
 
-=for html
+=begin html
 <pre>
 	<a href="#homologousgene">HomologousGene</a>: 	Many to one assoication, use getHomologousGene to get the associated HomologousGene.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9947,8 +10195,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::PhysicalLocation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::PhysicalLocation is a Perl object representation of the
+  caBIO PhysicalLocation object.
 
 =head2 Description
 
@@ -9958,9 +10206,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the PhysicalLocation object and their data types:
 
+=begin html
+<pre>
 	chromosomalStartPosition	long
 	chromosomalEndPosition	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -9969,11 +10223,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the PhysicalLocation:
 
-=for html
+=begin html
 <pre>
 	<a href="#cytoband">Cytoband</a>: 	One to many assoication, use getCytobandCollection to get a collection of associated Cytoband.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -9987,8 +10243,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::Cytoband is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::Cytoband is a Perl object representation of the
+  caBIO Cytoband object.
 
 =head2 Description
 
@@ -9998,9 +10254,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the Cytoband object and their data types:
 
+=begin html
+<pre>
 	name	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -10009,11 +10271,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the Cytoband:
 
-=for html
+=begin html
 <pre>
 	<a href="#physicallocation">PhysicalLocation</a>: 	Many to one assoication, use getPhysicalLocation to get the associated PhysicalLocation.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -10027,8 +10291,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::CytogeneticLocation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::CytogeneticLocation is a Perl object representation of the
+  caBIO CytogeneticLocation object.
 
 =head2 Description
 
@@ -10038,7 +10302,13 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the CytogeneticLocation object and their data types:
 
+=begin html
+<pre>
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -10047,12 +10317,14 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the CytogeneticLocation:
 
-=for html
+=begin html
 <pre>
 	<a href="#startcytoband">StartCytoband</a>: 	Many to one assoication, use getStartCytoband to get the associated StartCytoband.
 	<a href="#endcytoband">EndCytoband</a>: 	Many to one assoication, use getEndCytoband to get the associated EndCytoband.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -10066,8 +10338,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::GeneRelativeLocation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::GeneRelativeLocation is a Perl object representation of the
+  caBIO GeneRelativeLocation object.
 
 =head2 Description
 
@@ -10077,9 +10349,15 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the GeneRelativeLocation object and their data types:
 
+=begin html
+<pre>
 	type	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -10088,10 +10366,12 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the GeneRelativeLocation:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -10105,8 +10385,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::GenericReporter is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::GenericReporter is a Perl object representation of the
+  caBIO GenericReporter object.
 
 =head2 Description
 
@@ -10116,10 +10396,16 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the GenericReporter object and their data types:
 
+=begin html
+<pre>
 	name	string
 	type	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -10128,11 +10414,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the GenericReporter:
 
-=for html
+=begin html
 <pre>
 	<a href="#genericarray">GenericArray</a>: 	One to many assoication, use getGenericArrayCollection to get a collection of associated GenericArray.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -10146,8 +10434,8 @@ sub getGenericReporterCollection {
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::bean::GenericArray is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaBIO::GenericArray is a Perl object representation of the
+  caBIO GenericArray object.
 
 =head2 Description
 
@@ -10157,11 +10445,17 @@ sub getGenericReporterCollection {
 
   The following are all the attributes of the GenericArray object and their data types:
 
+=begin html
+<pre>
 	arrayName	string
 	platform	string
 	type	string
 	id	long
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -10170,11 +10464,13 @@ sub getGenericReporterCollection {
 
   The following are all the objects that are associated with the GenericArray:
 
-=for html
+=begin html
 <pre>
 	<a href="#genericreporter">GenericReporter</a>: 	One to many assoication, use getGenericReporterCollection to get a collection of associated GenericReporter.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 

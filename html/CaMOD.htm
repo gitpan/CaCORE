@@ -650,8 +650,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::ApprovalStatus is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::ApprovalStatus is a Perl object representation of the
+  caBIO ApprovalStatus object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -662,9 +662,10 @@
 <pre>
   The following are all the attributes of the ApprovalStatus object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -675,7 +676,7 @@
   The following are all the objects that are associated with the ApprovalStatus:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="availability">Availability</a></h1>
@@ -685,8 +686,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Availability is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::Availability is a Perl object representation of the
+  caBIO Availability object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -698,12 +699,13 @@
 <pre>
   The following are all the attributes of the Availability object and their data types:</pre>
 <pre>
-        enteredDate     dateTime
-        visibleTo       string
-        id      long
-        releaseDate     dateTime
-        modifiedDate    dateTime
+	enteredDate	dateTime
+	visibleTo	string
+	id	long
+	releaseDate	dateTime
+	modifiedDate	dateTime
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -714,7 +716,7 @@
   The following are all the objects that are associated with the Availability:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="abstractcancermodel">AbstractCancerModel</a></h1>
@@ -724,8 +726,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::AbstractCancerModel is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::AbstractCancerModel is a Perl object representation of the
+  caBIO AbstractCancerModel object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -736,10 +738,11 @@
 <pre>
   The following are all the attributes of the AbstractCancerModel object and their data types:</pre>
 <pre>
-        experimentDesign        string
-        modelDescriptor string
-        id      long
+	experimentDesign	string
+	modelDescriptor	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -754,7 +757,7 @@
 	<a href="#partyrole">PartyRole</a>: 	One to many assoication, use getPartyRoleCollection to get a collection of associated PartyRole.
 	<a href="#publication">Publication</a>: 	One to many assoication, use getPublicationCollection to get a collection of associated Publication.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="tumorcode">TumorCode</a></h1>
@@ -764,8 +767,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::TumorCode is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::TumorCode is a Perl object representation of the
+  caBIO TumorCode object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -777,10 +780,11 @@
 <pre>
   The following are all the attributes of the TumorCode object and their data types:</pre>
 <pre>
-        code    string
-        description     string
-        id      long
+	code	string
+	description	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -791,7 +795,7 @@
   The following are all the objects that are associated with the TumorCode:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="xenograft">Xenograft</a></h1>
@@ -801,8 +805,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Xenograft is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::Xenograft is a Perl object representation of the
+  caBIO Xenograft object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -814,13 +818,14 @@
 <pre>
   The following are all the attributes of the Xenograft object and their data types:</pre>
 <pre>
-        geneticManipulation     string
-        administrativeSite      string
-        type    string
-        parentalCellLineName    string
-        modificationDescription string
-        name    string
+	geneticManipulation	string
+	administrativeSite	string
+	type	string
+	parentalCellLineName	string
+	modificationDescription	string
+	name	string
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -835,7 +840,7 @@
 	<a href="#origintaxon">OriginTaxon</a>: 	Many to one assoication, use getOriginTaxon to get the associated OriginTaxon.
 	<a href="#hosttaxon">HostTaxon</a>: 	Many to one assoication, use getHostTaxon to get the associated HostTaxon.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="treatmentschedule">TreatmentSchedule</a></h1>
@@ -845,8 +850,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::TreatmentSchedule is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::TreatmentSchedule is a Perl object representation of the
+  caBIO TreatmentSchedule object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -858,10 +863,11 @@
 <pre>
   The following are all the attributes of the TreatmentSchedule object and their data types:</pre>
 <pre>
-        regimen string
-        dosage  string
-        id      long
+	regimen	string
+	dosage	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -872,7 +878,7 @@
   The following are all the objects that are associated with the TreatmentSchedule:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="nomenclature">Nomenclature</a></h1>
@@ -882,8 +888,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Nomenclature is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::Nomenclature is a Perl object representation of the
+  caBIO Nomenclature object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -895,9 +901,10 @@
 <pre>
   The following are all the attributes of the Nomenclature object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -908,7 +915,7 @@
   The following are all the objects that are associated with the Nomenclature:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="genotypesummary">GenotypeSummary</a></h1>
@@ -918,8 +925,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::GenotypeSummary is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::GenotypeSummary is a Perl object representation of the
+  caBIO GenotypeSummary object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -931,10 +938,11 @@
 <pre>
   The following are all the attributes of the GenotypeSummary object and their data types:</pre>
 <pre>
-        summary string
-        genotype        string
-        id      long
+	summary	string
+	genotype	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -946,7 +954,7 @@
 <pre>
 	<a href="#nomenclature">Nomenclature</a>: 	Many to one assoication, use getNomenclature to get the associated Nomenclature.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="conditionality">Conditionality</a></h1>
@@ -956,8 +964,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Conditionality is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::Conditionality is a Perl object representation of the
+  caBIO Conditionality object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -969,10 +977,11 @@
 <pre>
   The following are all the attributes of the Conditionality object and their data types:</pre>
 <pre>
-        description     string
-        conditionedBy   string
-        id      long
+	description	string
+	conditionedBy	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -983,7 +992,7 @@
   The following are all the objects that are associated with the Conditionality:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="image">Image</a></h1>
@@ -993,8 +1002,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Image is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::Image is a Perl object representation of the
+  caBIO Image object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1006,11 +1015,12 @@
 <pre>
   The following are all the attributes of the Image object and their data types:</pre>
 <pre>
-        description     string
-        title   string
-        id      long
-        staining        string
+	description	string
+	title	string
+	id	long
+	staining	string
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1022,7 +1032,7 @@
 <pre>
 	<a href="#availability">Availability</a>: 	Many to one assoication, use getAvailability to get the associated Availability.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="engineeredgene">EngineeredGene</a></h1>
@@ -1032,8 +1042,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::EngineeredGene is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::EngineeredGene is a Perl object representation of the
+  caBIO EngineeredGene object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1045,10 +1055,11 @@
 <pre>
   The following are all the attributes of the EngineeredGene object and their data types:</pre>
 <pre>
-        cabioId long
-        name    string
-        id      long
+	cabioId	long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1065,7 +1076,7 @@
 	<a href="#conditionality">Conditionality</a>: 	Many to one assoication, use getConditionality to get the associated Conditionality.
 	<a href="#image">Image</a>: 	Many to one assoication, use getImage to get the associated Image.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="integrationtype">IntegrationType</a></h1>
@@ -1075,8 +1086,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::IntegrationType is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::IntegrationType is a Perl object representation of the
+  caBIO IntegrationType object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1088,9 +1099,10 @@
 <pre>
   The following are all the attributes of the IntegrationType object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1103,7 +1115,7 @@
 	<a href="#genomicsegment">GenomicSegment</a>: 	One to many assoication, use getGenomicSegmentCollection to get a collection of associated GenomicSegment.
 	<a href="#transgene">Transgene</a>: 	One to many assoication, use getTransgeneCollection to get a collection of associated Transgene.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="transgene">Transgene</a></h1>
@@ -1113,8 +1125,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Transgene is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::Transgene is a Perl object representation of the
+  caBIO Transgene object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1127,9 +1139,10 @@
 <pre>
   The following are all the attributes of the Transgene object and their data types:</pre>
 <pre>
-        locationOfIntegration   string
-        engineeredGeneId        long
+	locationOfIntegration	string
+	engineeredGeneId	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1142,7 +1155,7 @@
 	<a href="#regulatoryelement">RegulatoryElement</a>: 	One to many assoication, use getRegulatoryElementCollection to get a collection of associated RegulatoryElement.
 	<a href="#integrationtype">IntegrationType</a>: 	Many to one assoication, use getIntegrationType to get the associated IntegrationType.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="therapy">Therapy</a></h1>
@@ -1152,8 +1165,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Therapy is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::Therapy is a Perl object representation of the
+  caBIO Therapy object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1165,11 +1178,12 @@
 <pre>
   The following are all the attributes of the Therapy object and their data types:</pre>
 <pre>
-        experiment      string
-        comments        string
-        id      long
-        results string
+	experiment	string
+	comments	string
+	id	long
+	results	string
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1183,7 +1197,7 @@
 	<a href="#agent">Agent</a>: 	Many to one assoication, use getAgent to get the associated Agent.
 	<a href="#publication">Publication</a>: 	One to many assoication, use getPublicationCollection to get a collection of associated Publication.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="yeastmodel">YeastModel</a></h1>
@@ -1193,8 +1207,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::YeastModel is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::YeastModel is a Perl object representation of the
+  caBIO YeastModel object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1207,6 +1221,7 @@
   The following are all the attributes of the YeastModel object and their data types:</pre>
 <pre>
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1219,7 +1234,7 @@
 	<a href="#targetedmodification">TargetedModification</a>: 	One to many assoication, use getTargetedModificationCollection to get a collection of associated TargetedModification.
 	<a href="#screeningresult">ScreeningResult</a>: 	One to many assoication, use getScreeningResultCollection to get a collection of associated ScreeningResult.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="targetedmodification">TargetedModification</a></h1>
@@ -1229,8 +1244,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::TargetedModification is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::TargetedModification is a Perl object representation of the
+  caBIO TargetedModification object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1242,10 +1257,11 @@
 <pre>
   The following are all the attributes of the TargetedModification object and their data types:</pre>
 <pre>
-        esCellLineName  string
-        blastocystName  string
-        id      long
+	esCellLineName	string
+	blastocystName	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1259,7 +1275,7 @@
 	<a href="#yeastmodel">YeastModel</a>: 	Many to one assoication, use getYeastModel to get the associated YeastModel.
 	<a href="#engineeredgene">EngineeredGene</a>: 	Many to one assoication, use getEngineeredGene to get the associated EngineeredGene.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="sexdistribution">SexDistribution</a></h1>
@@ -1269,8 +1285,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::SexDistribution is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::SexDistribution is a Perl object representation of the
+  caBIO SexDistribution object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1282,9 +1298,10 @@
 <pre>
   The following are all the attributes of the SexDistribution object and their data types:</pre>
 <pre>
-        type    string
-        id      long
+	type	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1295,7 +1312,7 @@
   The following are all the objects that are associated with the SexDistribution:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="segmenttype">SegmentType</a></h1>
@@ -1305,8 +1322,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::SegmentType is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::SegmentType is a Perl object representation of the
+  caBIO SegmentType object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1318,9 +1335,10 @@
 <pre>
   The following are all the attributes of the SegmentType object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1331,7 +1349,7 @@
   The following are all the objects that are associated with the SegmentType:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="role">Role</a></h1>
@@ -1341,8 +1359,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Role is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::Role is a Perl object representation of the
+  caBIO Role object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1354,9 +1372,10 @@
 <pre>
   The following are all the attributes of the Role object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1368,7 +1387,7 @@
 <pre>
 	<a href="#partyrole">PartyRole</a>: 	One to many assoication, use getPartyRoleCollection to get a collection of associated PartyRole.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="repositoryinfo">RepositoryInfo</a></h1>
@@ -1378,8 +1397,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::RepositoryInfo is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::RepositoryInfo is a Perl object representation of the
+  caBIO RepositoryInfo object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1391,11 +1410,12 @@
 <pre>
   The following are all the attributes of the RepositoryInfo object and their data types:</pre>
 <pre>
-        inTheRepository long
-        sentEmailContent        string
-        id      long
-        suggestSubmission       long
+	inTheRepository	long
+	sentEmailContent	string
+	id	long
+	suggestSubmission	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1406,7 +1426,7 @@
   The following are all the objects that are associated with the RepositoryInfo:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="regulatoryelementtype">RegulatoryElementType</a></h1>
@@ -1416,8 +1436,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::RegulatoryElementType is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::RegulatoryElementType is a Perl object representation of the
+  caBIO RegulatoryElementType object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1429,9 +1449,10 @@
 <pre>
   The following are all the attributes of the RegulatoryElementType object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1442,7 +1463,7 @@
   The following are all the objects that are associated with the RegulatoryElementType:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="regulatoryelement">RegulatoryElement</a></h1>
@@ -1452,8 +1473,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::RegulatoryElement is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::RegulatoryElement is a Perl object representation of the
+  caBIO RegulatoryElement object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1465,9 +1486,10 @@
 <pre>
   The following are all the attributes of the RegulatoryElement object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1481,7 +1503,7 @@
 	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
 	<a href="#regulatoryelementtype">RegulatoryElementType</a>: 	Many to one assoication, use getRegulatoryElementType to get the associated RegulatoryElementType.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="publicationstatus">PublicationStatus</a></h1>
@@ -1491,8 +1513,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::PublicationStatus is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::CaMOD::PublicationStatus is a Perl object representation of the
+  caBIO PublicationStatus object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1504,9 +1526,10 @@
 <pre>
   The following are all the attributes of the PublicationStatus object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -1517,7 +1540,7 @@
   The following are all the objects that are associated with the PublicationStatus:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="publication">Publication</a></h1>
@@ -1527,222 +1550,168 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Publication is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  The CaCORE::CaMOD::Publication is a Perl object representation of the
+  caBIO Publication object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  Publications describing the animal model itself or experiments in which the animal model was used.
-
-</pre>
+  Publications describing the animal model itself or experiments in which the animal model was used.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_publication">Attributes of Publication</a></h3>
 <pre>
-  The following are all the attributes of the Publication object and their data types:
-
-</pre>
+  The following are all the attributes of the Publication object and their data types:</pre>
 <pre>
-        volume  string
-        endPage long
-        year    long
-        title   string
-        pmid    long
-        startPage       long
-        journal string
-        authors string
-        id      long
+	volume	string
+	endPage	long
+	year	long
+	title	string
+	pmid	long
+	startPage	long
+	journal	string
+	authors	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_publication">Associations of Publication</a></h3>
 <pre>
-  The following are all the objects that are associated with the Publication:
-
-</pre>
+  The following are all the objects that are associated with the Publication:</pre>
 <pre>
 	<a href="#publicationstatus">PublicationStatus</a>: 	Many to one assoication, use getPublicationStatus to get the associated PublicationStatus.
   End Associations and related methods
-<p>
-
-<p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="promoter">Promoter</a></h1>
 <pre>
-  CaCORE::CaMOD::Promoter - Perl extension for Promoter.
-
-</pre>
+  CaCORE::CaMOD::Promoter - Perl extension for Promoter.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Promoter is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  The CaCORE::CaMOD::Promoter is a Perl object representation of the
+  caBIO Promoter object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  Promoter is a subcategory of the regulatory element.
-
-</pre>
+  Promoter is a subcategory of the regulatory element.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_promoter">Attributes of Promoter</a></h3>
 <pre>
-  The following are all the attributes of the Promoter object and their data types:
-
-</pre>
+  The following are all the attributes of the Promoter object and their data types:</pre>
 <pre>
-        id      long
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_promoter">Associations of Promoter</a></h3>
 <pre>
-  The following are all the objects that are associated with the Promoter:
-
-</pre>
+  The following are all the objects that are associated with the Promoter:</pre>
 <pre>
 	<a href="#gene">Gene</a>: 	Many to one assoication, use getGene to get the associated Gene.
 	<a href="#regulatoryelement">RegulatoryElement</a>: 	Many to one assoication, use getRegulatoryElement to get the associated RegulatoryElement.
   End Associations and related methods
-<p>
-
-<p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="phenotype">Phenotype</a></h1>
 <pre>
-  CaCORE::CaMOD::Phenotype - Perl extension for Phenotype.
-
-</pre>
+  CaCORE::CaMOD::Phenotype - Perl extension for Phenotype.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Phenotype is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  The CaCORE::CaMOD::Phenotype is a Perl object representation of the
+  caBIO Phenotype object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  Phenotype displayed by the animal model such as neoplastic lesions, other diseases, behavioral problem.
-
-</pre>
+  Phenotype displayed by the animal model such as neoplastic lesions, other diseases, behavioral problem.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_phenotype">Attributes of Phenotype</a></h3>
 <pre>
-  The following are all the attributes of the Phenotype object and their data types:
-
-</pre>
+  The following are all the attributes of the Phenotype object and their data types:</pre>
 <pre>
-        description     string
-        breedingNotes   string
-        id      long
+	description	string
+	breedingNotes	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_phenotype">Associations of Phenotype</a></h3>
 <pre>
-  The following are all the objects that are associated with the Phenotype:
-
-</pre>
+  The following are all the objects that are associated with the Phenotype:</pre>
 <pre>
 	<a href="#sexdistribution">SexDistribution</a>: 	Many to one assoication, use getSexDistribution to get the associated SexDistribution.
   End Associations and related methods
-<p>
-
-<p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="party">Party</a></h1>
 <pre>
-  CaCORE::CaMOD::Party - Perl extension for Party.
-
-</pre>
+  CaCORE::CaMOD::Party - Perl extension for Party.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Party is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  The CaCORE::CaMOD::Party is a Perl object representation of the
+  caBIO Party object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  Entity that has access to the data, either a person or an organization.
-
-</pre>
+  Entity that has access to the data, either a person or an organization.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_party">Attributes of Party</a></h3>
 <pre>
-  The following are all the attributes of the Party object and their data types:
-
-</pre>
+  The following are all the attributes of the Party object and their data types:</pre>
 <pre>
-        id      long
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_party">Associations of Party</a></h3>
 <pre>
-  The following are all the objects that are associated with the Party:
-
-</pre>
+  The following are all the objects that are associated with the Party:</pre>
 <pre>
 	<a href="#partyrole">PartyRole</a>: 	One to many assoication, use getPartyRoleCollection to get a collection of associated PartyRole.
 	<a href="#contactinfo">ContactInfo</a>: 	One to many assoication, use getContactInfoCollection to get a collection of associated ContactInfo.
   End Associations and related methods
-<p>
-
-<p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="person">Person</a></h1>
 <pre>
-  CaCORE::CaMOD::Person - Perl extension for Person.
-
-</pre>
+  CaCORE::CaMOD::Person - Perl extension for Person.</pre>
 <p>
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Person is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  The CaCORE::CaMOD::Person is a Perl object representation of the
+  caBIO Person object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -1758,10 +1727,13 @@
 
 </pre>
 <pre>
-        partyId long
-        firstName       string
-        lastName        string
+	partyId	long
+	firstName	string
+	lastName	string
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1776,7 +1748,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -1790,8 +1762,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::PartyRole is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::PartyRole is a Perl object representation of the
+  caBIO PartyRole object.
 
 </pre>
 <p>
@@ -1809,8 +1781,11 @@
 
 </pre>
 <pre>
-        id      long
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1828,7 +1803,7 @@
 	<a href="#animalmodel">AnimalModel</a>: 	One to many assoication, use getAnimalModelCollection to get a collection of associated AnimalModel.
 	<a href="#party">Party</a>: 	Many to one assoication, use getParty to get the associated Party.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -1842,8 +1817,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::Organization is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::Organization is a Perl object representation of the
+  caBIO Organization object.
 
 </pre>
 <p>
@@ -1861,10 +1836,13 @@
 
 </pre>
 <pre>
-        partyId long
-        name    string
-        id      long
+	partyId	long
+	name	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1879,7 +1857,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -1893,8 +1871,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::MicroArrayData is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::MicroArrayData is a Perl object representation of the
+  caBIO MicroArrayData object.
 
 </pre>
 <p>
@@ -1912,10 +1890,13 @@
 
 </pre>
 <pre>
-        experimentName  string
-        id      long
-        experimentId    long
+	experimentName	string
+	id	long
+	experimentId	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1931,7 +1912,7 @@
 <pre>
 	<a href="#availability">Availability</a>: 	Many to one assoication, use getAvailability to get the associated Availability.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -1945,8 +1926,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::JaxInfo is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::JaxInfo is a Perl object representation of the
+  caBIO JaxInfo object.
 
 </pre>
 <p>
@@ -1963,9 +1944,12 @@
 
 </pre>
 <pre>
-        jaxStockNo      long
-        id      long
+	jaxStockNo	long
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -1980,7 +1964,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -1994,8 +1978,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::EnvironmentalFactor is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::EnvironmentalFactor is a Perl object representation of the
+  caBIO EnvironmentalFactor object.
 
 </pre>
 <p>
@@ -2013,10 +1997,13 @@
 
 </pre>
 <pre>
-        name    string
-        type    string
-        id      long
+	name	string
+	type	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2032,7 +2019,7 @@
 <pre>
 	<a href="#inducedmutation">InducedMutation</a>: 	One to many assoication, use getInducedMutationCollection to get a collection of associated InducedMutation.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2046,8 +2033,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::InducedMutation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::InducedMutation is a Perl object representation of the
+  caBIO InducedMutation object.
 
 </pre>
 <p>
@@ -2065,8 +2052,11 @@
 
 </pre>
 <pre>
-        id      long
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2083,7 +2073,7 @@
 	<a href="#environmentalfactor">EnvironmentalFactor</a>: 	Many to one assoication, use getEnvironmentalFactor to get the associated EnvironmentalFactor.
 	<a href="#engineeredgene">EngineeredGene</a>: 	One to many assoication, use getEngineeredGeneCollection to get a collection of associated EngineeredGene.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2097,8 +2087,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::GenomicSegment is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::GenomicSegment is a Perl object representation of the
+  caBIO GenomicSegment object.
 
 </pre>
 <p>
@@ -2116,11 +2106,14 @@
 
 </pre>
 <pre>
-        locationOfIntegration   string
-        segmentSize     string
-        id      long
-        cloneDesignator string
+	locationOfIntegration	string
+	segmentSize	string
+	id	long
+	cloneDesignator	string
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2137,7 +2130,7 @@
 	<a href="#segmenttype">SegmentType</a>: 	Many to one assoication, use getSegmentType to get the associated SegmentType.
 	<a href="#engineeredgene">EngineeredGene</a>: 	One to many assoication, use getEngineeredGeneCollection to get a collection of associated EngineeredGene.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2151,8 +2144,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::GeneticAlteration is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::GeneticAlteration is a Perl object representation of the
+  caBIO GeneticAlteration object.
 
 </pre>
 <p>
@@ -2170,10 +2163,13 @@
 
 </pre>
 <pre>
-        observation     string
-        methodOfObservation     string
-        id      long
+	observation	string
+	methodOfObservation	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2188,7 +2184,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2202,8 +2198,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::GeneFunction is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::GeneFunction is a Perl object representation of the
+  caBIO GeneFunction object.
 
 </pre>
 <p>
@@ -2221,9 +2217,12 @@
 
 </pre>
 <pre>
-        function        string
-        id      long
+	function	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2239,7 +2238,7 @@
 <pre>
 	<a href="#engineeredgene">EngineeredGene</a>: 	Many to one assoication, use getEngineeredGene to get the associated EngineeredGene.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2253,8 +2252,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::GeneDelivery is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::GeneDelivery is a Perl object representation of the
+  caBIO GeneDelivery object.
 
 </pre>
 <p>
@@ -2272,9 +2271,12 @@
 
 </pre>
 <pre>
-        viralVector     string
-        id      long
+	viralVector	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2290,7 +2292,7 @@
 <pre>
 	<a href="#engineeredgene">EngineeredGene</a>: 	Many to one assoication, use getEngineeredGene to get the associated EngineeredGene.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2304,8 +2306,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::ContactInfo is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::ContactInfo is a Perl object representation of the
+  caBIO ContactInfo object.
 
 </pre>
 <p>
@@ -2323,17 +2325,20 @@
 
 </pre>
 <pre>
-        faxNumber       string
-        zipCode string
-        street  string
-        institute       string
-        state   string
-        email   string
-        phoneNumber     string
-        labName string
-        id      long
-        city    string
+	faxNumber	string
+	zipCode	string
+	street	string
+	institute	string
+	state	string
+	email	string
+	phoneNumber	string
+	labName	string
+	id	long
+	city	string
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2349,7 +2354,7 @@
 <pre>
 	<a href="#party">Party</a>: 	One to many assoication, use getPartyCollection to get a collection of associated Party.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2363,8 +2368,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::CellLine is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::CellLine is a Perl object representation of the
+  caBIO CellLine object.
 
 </pre>
 <p>
@@ -2382,12 +2387,15 @@
 
 </pre>
 <pre>
-        experiment      string
-        comments        string
-        name    string
-        results string
-        id      long
+	experiment	string
+	comments	string
+	name	string
+	results	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2403,7 +2411,7 @@
 <pre>
 	<a href="#publication">Publication</a>: 	One to many assoication, use getPublicationCollection to get a collection of associated Publication.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2417,8 +2425,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::CarcinogenicIntervention is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::CarcinogenicIntervention is a Perl object representation of the
+  caBIO CarcinogenicIntervention object.
 
 </pre>
 <p>
@@ -2436,8 +2444,11 @@
 
 </pre>
 <pre>
-        id      long
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2454,7 +2465,7 @@
 	<a href="#environmentalfactor">EnvironmentalFactor</a>: 	Many to one assoication, use getEnvironmentalFactor to get the associated EnvironmentalFactor.
 	<a href="#treatmentschedule">TreatmentSchedule</a>: 	Many to one assoication, use getTreatmentSchedule to get the associated TreatmentSchedule.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2468,8 +2479,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::AnimalModel is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::AnimalModel is a Perl object representation of the
+  caBIO AnimalModel object.
 
 </pre>
 <p>
@@ -2487,8 +2498,11 @@
 
 </pre>
 <pre>
-        url     string
+	url	string
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2517,7 +2531,7 @@
 	<a href="#jaxinfo">JaxInfo</a>: 	Many to one assoication, use getJaxInfo to get the associated JaxInfo.
 	<a href="#inducedmutation">InducedMutation</a>: 	One to many assoication, use getInducedMutationCollection to get a collection of associated InducedMutation.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2531,8 +2545,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::EndpointCode is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::EndpointCode is a Perl object representation of the
+  caBIO EndpointCode object.
 
 </pre>
 <p>
@@ -2549,10 +2563,13 @@
 
 </pre>
 <pre>
-        code    string
-        description     string
-        id      long
+	code	string
+	description	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2567,7 +2584,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2581,8 +2598,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::ScreeningResult is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::ScreeningResult is a Perl object representation of the
+  caBIO ScreeningResult object.
 
 </pre>
 <p>
@@ -2600,12 +2617,15 @@
 
 </pre>
 <pre>
-        diffinh float
-        aveinh  float
-        stage   string
-        id      long
-        inhibitionRate  float
+	diffinh	float
+	aveinh	float
+	stage	string
+	id	long
+	inhibitionRate	float
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2622,7 +2642,7 @@
 	<a href="#treatmentschedule">TreatmentSchedule</a>: 	Many to one assoication, use getTreatmentSchedule to get the associated TreatmentSchedule.
 	<a href="#agent">Agent</a>: 	Many to one assoication, use getAgent to get the associated Agent.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2636,8 +2656,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::InvivoResult is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::InvivoResult is a Perl object representation of the
+  caBIO InvivoResult object.
 
 </pre>
 <p>
@@ -2655,11 +2675,14 @@
 
 </pre>
 <pre>
-        toxicityEvalDay string
-        evaluationDay   string
-        toxicitySurvivors       string
-        id      long
+	toxicityEvalDay	string
+	evaluationDay	string
+	toxicitySurvivors	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2677,7 +2700,7 @@
 	<a href="#agent">Agent</a>: 	Many to one assoication, use getAgent to get the associated Agent.
 	<a href="#endpointcode">EndpointCode</a>: 	Many to one assoication, use getEndpointCode to get the associated EndpointCode.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2691,8 +2714,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::ModificationType is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::ModificationType is a Perl object representation of the
+  caBIO ModificationType object.
 
 </pre>
 <p>
@@ -2709,9 +2732,12 @@
 
 </pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2727,7 +2753,7 @@
 <pre>
 	<a href="#targetedmodification">TargetedModification</a>: 	One to many assoication, use getTargetedModificationCollection to get a collection of associated TargetedModification.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2741,8 +2767,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::ExpressionFeature is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::ExpressionFeature is a Perl object representation of the
+  caBIO ExpressionFeature object.
 
 </pre>
 <p>
@@ -2760,8 +2786,11 @@
 
 </pre>
 <pre>
-        id      long
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2777,7 +2806,7 @@
 <pre>
 	<a href="#organontology">OrganOntology</a>: 	One to many assoication, use getOrganOntologyCollection to get a collection of associated OrganOntology.
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -2791,8 +2820,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::CaMOD::bean::CancerModel is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaMOD::CancerModel is a Perl object representation of the
+  caBIO CancerModel object.
 
 </pre>
 <p>
@@ -2809,8 +2838,11 @@
 
 </pre>
 <pre>
-        id      long
+	id	long
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -2825,7 +2857,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 
 </body>

@@ -10,7 +10,7 @@ BEGIN {
 }
 
 
-$VERSION = '3.01';
+$VERSION = '3.011';
 
 # These are default values
 my $default_proxy = "http://cabio.nci.nih.gov/cacore30/ws/caCOREService";
@@ -247,11 +247,11 @@ our @EXPORT = qw(
 );
 
 use CaCORE::ApplicationService;
-use CaCORE::Common::Common;
-use CaCORE::Common::Provenance::Provenance;
-use CaCORE::CaBIO::CaBIO;
-use CaCORE::CaMOD::CaMOD;
-use CaCORE::CaDSR::CaDSR;
+use CaCORE::Common;
+use CaCORE::Common::Provenance;
+use CaCORE::CaBIO;
+use CaCORE::CaMOD;
+use CaCORE::CaDSR;
 
 @ISA = qw(Exporter);
 
@@ -788,3 +788,4 @@ __END__
   By default, when calling ApplicationService->queryObject, the caCORE server automatically trim the resultset to 1000 objects if the there more than 1000. So in reality, if you want to retrieve anything beyond 1000, you must use ApplicationService->query.
 
 =cut
+

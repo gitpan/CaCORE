@@ -130,8 +130,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::Common::Provenance::bean::SourceReference is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::Common::Provenance::SourceReference is a Perl object representation of the
+  caBIO SourceReference object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -143,10 +143,11 @@
 <pre>
   The following are all the attributes of the SourceReference object and their data types:</pre>
 <pre>
-        sourceReferenceType     string
-        id      long
-        reference       string
+	sourceReferenceType	string
+	id	long
+	reference	string
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -158,7 +159,7 @@
 <pre>
 	<a href="#provenance">Provenance</a>: 	One to many assoication, use getProvenanceCollection to get a collection of associated Provenance.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="source">Source</a></h1>
@@ -168,8 +169,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::Common::Provenance::bean::Source is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::Common::Provenance::Source is a Perl object representation of the
+  caBIO Source object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -181,9 +182,10 @@
 <pre>
   The following are all the attributes of the Source object and their data types:</pre>
 <pre>
-        name    string
-        id      long
+	name	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -194,7 +196,7 @@
   The following are all the objects that are associated with the Source:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="provenance">Provenance</a></h1>
@@ -204,8 +206,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::Common::Provenance::bean::Provenance is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::Common::Provenance::Provenance is a Perl object representation of the
+  caBIO Provenance object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -217,10 +219,11 @@
 <pre>
   The following are all the attributes of the Provenance object and their data types:</pre>
 <pre>
-        transformation  string
-        evidenceCode    string
-        id      long
+	transformation	string
+	evidenceCode	string
+	id	long
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -235,7 +238,7 @@
 	<a href="#immediatesource">ImmediateSource</a>: 	Many to one assoication, use getImmediateSource to get the associated ImmediateSource.
 	<a href="#supplyingsource">SupplyingSource</a>: 	Many to one assoication, use getSupplyingSource to get the associated SupplyingSource.
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="urlsourcereference">URLSourceReference</a></h1>
@@ -245,8 +248,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::Common::Provenance::bean::URLSourceReference is a Perl object representation of the
-  caBIO generic object.</pre>
+  The CaCORE::Common::Provenance::URLSourceReference is a Perl object representation of the
+  caBIO URLSourceReference object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
@@ -258,8 +261,9 @@
 <pre>
   The following are all the attributes of the URLSourceReference object and their data types:</pre>
 <pre>
-        sourceURL       string
+	sourceURL	string
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.</pre>
@@ -270,7 +274,7 @@
   The following are all the objects that are associated with the URLSourceReference:</pre>
 <pre>
   End Associations and related methods
-<p><p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="publicationsource">PublicationSource</a></h1>
@@ -280,49 +284,38 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::Common::Provenance::bean::PublicationSource is a Perl object representation of the
-  caBIO generic object.
-
-</pre>
+  The CaCORE::Common::Provenance::PublicationSource is a Perl object representation of the
+  caBIO PublicationSource object.</pre>
 <p>
 </p>
 <h2><a name="description">Description</a></h2>
 <pre>
-  An implementing subclass of Source. Describes a source for which an electronic online version is not available, but for which a printed version of the data is available.
-
-</pre>
+  An implementing subclass of Source. Describes a source for which an electronic online version is not available, but for which a printed version of the data is available.</pre>
 <p>
 </p>
 <h3><a name="attributes_of_publicationsource">Attributes of PublicationSource</a></h3>
 <pre>
-  The following are all the attributes of the PublicationSource object and their data types:
-
-</pre>
+  The following are all the attributes of the PublicationSource object and their data types:</pre>
 <pre>
-        volume  int
-        endPage int
-        year    int
-        title   string
-        startPage       int
-        authors string
+	volume	int
+	endPage	int
+	year	int
+	title	string
+	startPage	int
+	authors	string
   End Attributes
+</pre><pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+  to change the object's attributes.</pre>
 <p>
 </p>
 <h3><a name="associations_of_publicationsource">Associations of PublicationSource</a></h3>
 <pre>
-  The following are all the objects that are associated with the PublicationSource:
-
-</pre>
+  The following are all the objects that are associated with the PublicationSource:</pre>
 <pre>
   End Associations and related methods
-<p>
-
-<p>
+</pre><p>
 </p>
 <hr />
 <h1><a name="researchinstitutionsource">ResearchInstitutionSource</a></h1>
@@ -334,8 +327,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::Common::Provenance::bean::ResearchInstitutionSource is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::ResearchInstitutionSource is a Perl object representation of the
+  caBIO ResearchInstitutionSource object.
 
 </pre>
 <p>
@@ -353,11 +346,14 @@
 
 </pre>
 <pre>
-        institutionPersons      string
-        institutionAddress      string
-        institutionDepartment   string
-        institutionName string
+	institutionPersons	string
+	institutionAddress	string
+	institutionDepartment	string
+	institutionName	string
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -372,7 +368,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -386,8 +382,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::Common::Provenance::bean::WebServicesSourceReference is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::WebServicesSourceReference is a Perl object representation of the
+  caBIO WebServicesSourceReference object.
 
 </pre>
 <p>
@@ -404,8 +400,11 @@
 
 </pre>
 <pre>
-        request string
+	request	string
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -420,7 +419,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 <p>
 </p>
@@ -434,8 +433,8 @@
 </p>
 <h2><a name="abstract">Abstract</a></h2>
 <pre>
-  The CaCORE::Common::Provenance::bean::InternetSource is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::Common::Provenance::InternetSource is a Perl object representation of the
+  caBIO InternetSource object.
 
 </pre>
 <p>
@@ -452,10 +451,13 @@
 
 </pre>
 <pre>
-        ownerInstitution        string
-        sourceURI       string
-        ownerPersons    string
+	ownerInstitution	string
+	sourceURI	string
+	ownerPersons	string
   End Attributes
+</pre>
+
+<pre>
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -470,7 +472,7 @@
 </pre>
 <pre>
   End Associations and related methods
-<p>
+</pre>
 
 
 </body>

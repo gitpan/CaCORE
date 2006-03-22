@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.01';
+$VERSION = '3.011';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -20107,8 +20107,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Context is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Context is a Perl object representation of the
+  caBIO Context object.
 
 =head2 Description
 
@@ -20118,6 +20118,8 @@ sub getDefinition {
 
   The following are all the attributes of the Context object and their data types:
 
+=begin html
+<pre>
 	languageName	string
 	modifiedBy	string
 	createdBy	string
@@ -20128,6 +20130,10 @@ sub getDefinition {
 	description	string
 	name	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20136,13 +20142,15 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Context:
 
-=for html
+=begin html
 <pre>
 	<a href="#definition">Definition</a>: 	One to many assoication, use getDefinitionCollection to get a collection of associated Definition.
 	<a href="#designation">Designation</a>: 	One to many assoication, use getDesignationCollection to get a collection of associated Designation.
 	<a href="#referencedocument">ReferenceDocument</a>: 	One to many assoication, use getReferenceDocumentCollection to get a collection of associated ReferenceDocument.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20156,8 +20164,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::AdministeredComponent is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::AdministeredComponent is a Perl object representation of the
+  caBIO AdministeredComponent object.
 
 =head2 Description
 
@@ -20167,6 +20175,8 @@ sub getDefinition {
 
   The following are all the attributes of the AdministeredComponent object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	beginDate	dateTime
 	workflowStatusName	string
@@ -20188,6 +20198,10 @@ sub getDefinition {
 	endDate	dateTime
 	deletedIndicator	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20196,7 +20210,7 @@ sub getDefinition {
 
   The following are all the objects that are associated with the AdministeredComponent:
 
-=for html
+=begin html
 <pre>
 	<a href="#definition">Definition</a>: 	One to many assoication, use getDefinitionCollection to get a collection of associated Definition.
 	<a href="#context">Context</a>: 	Many to one assoication, use getContext to get the associated Context.
@@ -20204,7 +20218,9 @@ sub getDefinition {
 	<a href="#administeredcomponentclassschemeitem">AdministeredComponentClassSchemeItem</a>: 	One to many assoication, use getAdministeredComponentClassSchemeItemCollection to get a collection of associated AdministeredComponentClassSchemeItem.
 	<a href="#referencedocument">ReferenceDocument</a>: 	One to many assoication, use getReferenceDocumentCollection to get a collection of associated ReferenceDocument.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20218,8 +20234,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DerivationType is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DerivationType is a Perl object representation of the
+  caBIO DerivationType object.
 
 =head2 Description
 
@@ -20229,6 +20245,8 @@ sub getDefinition {
 
   The following are all the attributes of the DerivationType object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	dateModified	dateTime
 	description	string
@@ -20237,6 +20255,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20245,12 +20267,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DerivationType:
 
-=for html
+=begin html
 <pre>
 	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	One to many assoication, use getConceptDerivationRuleCollection to get a collection of associated ConceptDerivationRule.
 	<a href="#deriveddataelement">DerivedDataElement</a>: 	One to many assoication, use getDerivedDataElementCollection to get a collection of associated DerivedDataElement.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20264,8 +20288,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ConceptDerivationRule is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ConceptDerivationRule is a Perl object representation of the
+  caBIO ConceptDerivationRule object.
 
 =head2 Description
 
@@ -20275,6 +20299,8 @@ sub getDefinition {
 
   The following are all the attributes of the ConceptDerivationRule object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	createdBy	string
 	dateCreated	dateTime
@@ -20282,6 +20308,10 @@ sub getDefinition {
 	dateModified	dateTime
 	name	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20290,7 +20320,7 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ConceptDerivationRule:
 
-=for html
+=begin html
 <pre>
 	<a href="#derivationtype">DerivationType</a>: 	Many to one assoication, use getDerivationType to get the associated DerivationType.
 	<a href="#qualifier">Qualifier</a>: 	One to many assoication, use getQualifierCollection to get a collection of associated Qualifier.
@@ -20302,7 +20332,9 @@ sub getDefinition {
 	<a href="#conceptualdomain">ConceptualDomain</a>: 	One to many assoication, use getConceptualDomainCollection to get a collection of associated ConceptualDomain.
 	<a href="#valuedomain">ValueDomain</a>: 	One to many assoication, use getValueDomainCollection to get a collection of associated ValueDomain.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20316,8 +20348,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ConceptualDomain is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ConceptualDomain is a Perl object representation of the
+  caBIO ConceptualDomain object.
 
 =head2 Description
 
@@ -20327,8 +20359,14 @@ sub getDefinition {
 
   The following are all the attributes of the ConceptualDomain object and their data types:
 
+=begin html
+<pre>
 	dimensionality	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20337,14 +20375,16 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ConceptualDomain:
 
-=for html
+=begin html
 <pre>
 	<a href="#dataelementconcept">DataElementConcept</a>: 	One to many assoication, use getDataElementConceptCollection to get a collection of associated DataElementConcept.
 	<a href="#valuemeaning">ValueMeaning</a>: 	One to many assoication, use getValueMeaningCollection to get a collection of associated ValueMeaning.
 	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
 	<a href="#valuedomain">ValueDomain</a>: 	One to many assoication, use getValueDomainCollection to get a collection of associated ValueDomain.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20358,8 +20398,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ObjectClass is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ObjectClass is a Perl object representation of the
+  caBIO ObjectClass object.
 
 =head2 Description
 
@@ -20369,8 +20409,14 @@ sub getDefinition {
 
   The following are all the attributes of the ObjectClass object and their data types:
 
+=begin html
+<pre>
 	definitionSource	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20379,14 +20425,16 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ObjectClass:
 
-=for html
+=begin html
 <pre>
 	<a href="#dataelementconcept">DataElementConcept</a>: 	One to many assoication, use getDataElementConceptCollection to get a collection of associated DataElementConcept.
 	<a href="#sourcobjectclassrelationship">SourcObjectClassRelationship</a>: 	One to many assoication, use getSourcObjectClassRelationshipCollection to get a collection of associated SourcObjectClassRelationship.
 	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
 	<a href="#targetobjectclassrelationship">TargetObjectClassRelationship</a>: 	One to many assoication, use getTargetObjectClassRelationshipCollection to get a collection of associated TargetObjectClassRelationship.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20400,8 +20448,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Qualifier is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Qualifier is a Perl object representation of the
+  caBIO Qualifier object.
 
 =head2 Description
 
@@ -20411,6 +20459,8 @@ sub getDefinition {
 
   The following are all the attributes of the Qualifier object and their data types:
 
+=begin html
+<pre>
 	comments	string
 	modifiedBy	string
 	createdBy	string
@@ -20420,6 +20470,10 @@ sub getDefinition {
 	description	string
 	name	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20428,14 +20482,16 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Qualifier:
 
-=for html
+=begin html
 <pre>
 	<a href="#decproperty">DECProperty</a>: 	One to many assoication, use getDECPropertyCollection to get a collection of associated DECProperty.
 	<a href="#vdrepresentation">VDRepresentation</a>: 	One to many assoication, use getVDRepresentationCollection to get a collection of associated VDRepresentation.
 	<a href="#decobjectclass">DECObjectClass</a>: 	One to many assoication, use getDECObjectClassCollection to get a collection of associated DECObjectClass.
 	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20449,8 +20505,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Property is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Property is a Perl object representation of the
+  caBIO Property object.
 
 =head2 Description
 
@@ -20460,8 +20516,14 @@ sub getDefinition {
 
   The following are all the attributes of the Property object and their data types:
 
+=begin html
+<pre>
 	definitionSource	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20470,12 +20532,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Property:
 
-=for html
+=begin html
 <pre>
 	<a href="#dataelementconcept">DataElementConcept</a>: 	One to many assoication, use getDataElementConceptCollection to get a collection of associated DataElementConcept.
 	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20489,8 +20553,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DataElementConcept is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DataElementConcept is a Perl object representation of the
+  caBIO DataElementConcept object.
 
 =head2 Description
 
@@ -20500,7 +20564,13 @@ sub getDefinition {
 
   The following are all the attributes of the DataElementConcept object and their data types:
 
+=begin html
+<pre>
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20509,7 +20579,7 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DataElementConcept:
 
-=for html
+=begin html
 <pre>
 	<a href="#objectclass">ObjectClass</a>: 	Many to one assoication, use getObjectClass to get the associated ObjectClass.
 	<a href="#conceptualdomain">ConceptualDomain</a>: 	Many to one assoication, use getConceptualDomain to get the associated ConceptualDomain.
@@ -20520,7 +20590,9 @@ sub getDefinition {
 	<a href="#childdataelementconceptrelationship">ChildDataElementConceptRelationship</a>: 	One to many assoication, use getChildDataElementConceptRelationshipCollection to get a collection of associated ChildDataElementConceptRelationship.
 	<a href="#objectclassqualifier">ObjectClassQualifier</a>: 	Many to one assoication, use getObjectClassQualifier to get the associated ObjectClassQualifier.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20534,8 +20606,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Representation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Representation is a Perl object representation of the
+  caBIO Representation object.
 
 =head2 Description
 
@@ -20545,8 +20617,14 @@ sub getDefinition {
 
   The following are all the attributes of the Representation object and their data types:
 
+=begin html
+<pre>
 	definitionSource	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20555,12 +20633,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Representation:
 
-=for html
+=begin html
 <pre>
 	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
 	<a href="#valuedomain">ValueDomain</a>: 	One to many assoication, use getValueDomainCollection to get a collection of associated ValueDomain.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20574,8 +20654,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ValueDomain is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ValueDomain is a Perl object representation of the
+  caBIO ValueDomain object.
 
 =head2 Description
 
@@ -20585,6 +20665,8 @@ sub getDefinition {
 
   The following are all the attributes of the ValueDomain object and their data types:
 
+=begin html
+<pre>
 	datatypeName	string
 	decimalPlace	int
 	highValueNumber	string
@@ -20595,6 +20677,10 @@ sub getDefinition {
 	UOMName	string
 	maximumLengthNumber	int
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20603,7 +20689,7 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ValueDomain:
 
-=for html
+=begin html
 <pre>
 	<a href="#conceptualdomain">ConceptualDomain</a>: 	Many to one assoication, use getConceptualDomain to get the associated ConceptualDomain.
 	<a href="#childvaluedomainrelationship">ChildValueDomainRelationship</a>: 	One to many assoication, use getChildValueDomainRelationshipCollection to get a collection of associated ChildValueDomainRelationship.
@@ -20614,7 +20700,9 @@ sub getDefinition {
 	<a href="#qualifier">Qualifier</a>: 	Many to one assoication, use getQualifier to get the associated Qualifier.
 	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20628,8 +20716,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DerivedDataElement is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DerivedDataElement is a Perl object representation of the
+  caBIO DerivedDataElement object.
 
 =head2 Description
 
@@ -20639,6 +20727,8 @@ sub getDefinition {
 
   The following are all the attributes of the DerivedDataElement object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	concatenationCharacter	string
 	rule	string
@@ -20648,6 +20738,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20656,13 +20750,15 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DerivedDataElement:
 
-=for html
+=begin html
 <pre>
 	<a href="#derivationtype">DerivationType</a>: 	Many to one assoication, use getDerivationType to get the associated DerivationType.
 	<a href="#dataelementderivation">DataElementDerivation</a>: 	One to many assoication, use getDataElementDerivationCollection to get a collection of associated DataElementDerivation.
 	<a href="#dataelement">DataElement</a>: 	Many to one assoication, use getDataElement to get the associated DataElement.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20676,8 +20772,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DataElement is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DataElement is a Perl object representation of the
+  caBIO DataElement object.
 
 =head2 Description
 
@@ -20687,7 +20783,13 @@ sub getDefinition {
 
   The following are all the attributes of the DataElement object and their data types:
 
+=begin html
+<pre>
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20696,7 +20798,7 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DataElement:
 
-=for html
+=begin html
 <pre>
 	<a href="#dataelementderivation">DataElementDerivation</a>: 	One to many assoication, use getDataElementDerivationCollection to get a collection of associated DataElementDerivation.
 	<a href="#valuedomain">ValueDomain</a>: 	Many to one assoication, use getValueDomain to get the associated ValueDomain.
@@ -20706,7 +20808,9 @@ sub getDefinition {
 	<a href="#question">Question</a>: 	One to many assoication, use getQuestionCollection to get a collection of associated Question.
 	<a href="#parentdataelementrelationships">ParentDataElementRelationships</a>: 	One to many assoication, use getParentDataElementRelationshipsCollection to get a collection of associated ParentDataElementRelationships.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20720,8 +20824,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ClassificationScheme is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ClassificationScheme is a Perl object representation of the
+  caBIO ClassificationScheme object.
 
 =head2 Description
 
@@ -20731,9 +20835,15 @@ sub getDefinition {
 
   The following are all the attributes of the ClassificationScheme object and their data types:
 
+=begin html
+<pre>
 	labelTypeFlag	string
 	type	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20742,13 +20852,15 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ClassificationScheme:
 
-=for html
+=begin html
 <pre>
 	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	One to many assoication, use getClassSchemeClassSchemeItemCollection to get a collection of associated ClassSchemeClassSchemeItem.
 	<a href="#childclassificationschemerelationship">ChildClassificationSchemeRelationship</a>: 	One to many assoication, use getChildClassificationSchemeRelationshipCollection to get a collection of associated ChildClassificationSchemeRelationship.
 	<a href="#parentclassificationschemerelationship">ParentClassificationSchemeRelationship</a>: 	One to many assoication, use getParentClassificationSchemeRelationshipCollection to get a collection of associated ParentClassificationSchemeRelationship.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20762,8 +20874,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ClassificationSchemeItem is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ClassificationSchemeItem is a Perl object representation of the
+  caBIO ClassificationSchemeItem object.
 
 =head2 Description
 
@@ -20773,6 +20885,8 @@ sub getDefinition {
 
   The following are all the attributes of the ClassificationSchemeItem object and their data types:
 
+=begin html
+<pre>
 	comments	string
 	modifiedBy	string
 	type	string
@@ -20783,6 +20897,10 @@ sub getDefinition {
 	description	string
 	name	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20791,13 +20909,15 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ClassificationSchemeItem:
 
-=for html
+=begin html
 <pre>
 	<a href="#childclassificationschemeitemrelationship">ChildClassificationSchemeItemRelationship</a>: 	One to many assoication, use getChildClassificationSchemeItemRelationshipCollection to get a collection of associated ChildClassificationSchemeItemRelationship.
 	<a href="#parentclassificationschemeitemrelationship">ParentClassificationSchemeItemRelationship</a>: 	One to many assoication, use getParentClassificationSchemeItemRelationshipCollection to get a collection of associated ParentClassificationSchemeItemRelationship.
 	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	One to many assoication, use getClassSchemeClassSchemeItemCollection to get a collection of associated ClassSchemeClassSchemeItem.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20811,8 +20931,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ValueMeaning is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ValueMeaning is a Perl object representation of the
+  caBIO ValueMeaning object.
 
 =head2 Description
 
@@ -20822,6 +20942,8 @@ sub getDefinition {
 
   The following are all the attributes of the ValueMeaning object and their data types:
 
+=begin html
+<pre>
 	comments	string
 	modifiedBy	string
 	beginDate	dateTime
@@ -20833,6 +20955,10 @@ sub getDefinition {
 	description	string
 	endDate	dateTime
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20841,13 +20967,15 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ValueMeaning:
 
-=for html
+=begin html
 <pre>
 	<a href="#permissablevalue">PermissableValue</a>: 	One to many assoication, use getPermissableValueCollection to get a collection of associated PermissableValue.
 	<a href="#conceptualdomain">ConceptualDomain</a>: 	One to many assoication, use getConceptualDomainCollection to get a collection of associated ConceptualDomain.
 	<a href="#conceptderivationrule">ConceptDerivationRule</a>: 	Many to one assoication, use getConceptDerivationRule to get the associated ConceptDerivationRule.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20861,8 +20989,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::PermissibleValue is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::PermissibleValue is a Perl object representation of the
+  caBIO PermissibleValue object.
 
 =head2 Description
 
@@ -20872,6 +21000,8 @@ sub getDefinition {
 
   The following are all the attributes of the PermissibleValue object and their data types:
 
+=begin html
+<pre>
 	lowValueNumber	long
 	value	string
 	modifiedBy	string
@@ -20881,6 +21011,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20889,12 +21023,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the PermissibleValue:
 
-=for html
+=begin html
 <pre>
 	<a href="#valuemeaning">ValueMeaning</a>: 	Many to one assoication, use getValueMeaning to get the associated ValueMeaning.
 	<a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a>: 	One to many assoication, use getValueDomainPermissibleValueCollection to get a collection of associated ValueDomainPermissibleValue.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20908,8 +21044,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ReferenceDocument is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ReferenceDocument is a Perl object representation of the
+  caBIO ReferenceDocument object.
 
 =head2 Description
 
@@ -20919,6 +21055,8 @@ sub getDefinition {
 
   The following are all the attributes of the ReferenceDocument object and their data types:
 
+=begin html
+<pre>
 	languageName	string
 	modifiedBy	string
 	displayOrder	long
@@ -20933,6 +21071,10 @@ sub getDefinition {
 	doctext	string
 	name	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20941,11 +21083,13 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ReferenceDocument:
 
-=for html
+=begin html
 <pre>
 	<a href="#context">Context</a>: 	Many to one assoication, use getContext to get the associated Context.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20959,8 +21103,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ProtocolFormsTemplate is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ProtocolFormsTemplate is a Perl object representation of the
+  caBIO ProtocolFormsTemplate object.
 
 =head2 Description
 
@@ -20970,8 +21114,14 @@ sub getDefinition {
 
   The following are all the attributes of the ProtocolFormsTemplate object and their data types:
 
+=begin html
+<pre>
 	displayName	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -20980,12 +21130,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ProtocolFormsTemplate:
 
-=for html
+=begin html
 <pre>
 	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
 	<a href="#module">Module</a>: 	One to many assoication, use getModuleCollection to get a collection of associated Module.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -20999,8 +21151,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ProtocolFormsSet is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ProtocolFormsSet is a Perl object representation of the
+  caBIO ProtocolFormsSet object.
 
 =head2 Description
 
@@ -21010,6 +21162,8 @@ sub getDefinition {
 
   The following are all the attributes of the ProtocolFormsSet object and their data types:
 
+=begin html
+<pre>
 	reviewedDate	dateTime
 	approvedDate	dateTime
 	changeType	string
@@ -21021,6 +21175,10 @@ sub getDefinition {
 	approvedBy	string
 	changeNumber	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21029,11 +21187,13 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ProtocolFormsSet:
 
-=for html
+=begin html
 <pre>
 	<a href="#casereportform">CaseReportForm</a>: 	One to many assoication, use getCaseReportFormCollection to get a collection of associated CaseReportForm.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21047,8 +21207,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::CaseReportForm is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::CaseReportForm is a Perl object representation of the
+  caBIO CaseReportForm object.
 
 =head2 Description
 
@@ -21058,8 +21218,14 @@ sub getDefinition {
 
   The following are all the attributes of the CaseReportForm object and their data types:
 
+=begin html
+<pre>
 	displayName	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21068,13 +21234,15 @@ sub getDefinition {
 
   The following are all the objects that are associated with the CaseReportForm:
 
-=for html
+=begin html
 <pre>
 	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
 	<a href="#protocolformsset">ProtocolFormsSet</a>: 	Many to one assoication, use getProtocolFormsSet to get the associated ProtocolFormsSet.
 	<a href="#module">Module</a>: 	One to many assoication, use getModuleCollection to get a collection of associated Module.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21088,8 +21256,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Module is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Module is a Perl object representation of the
+  caBIO Module object.
 
 =head2 Description
 
@@ -21099,8 +21267,14 @@ sub getDefinition {
 
   The following are all the attributes of the Module object and their data types:
 
+=begin html
+<pre>
 	displayOrder	int
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21109,14 +21283,16 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Module:
 
-=for html
+=begin html
 <pre>
 	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
 	<a href="#casereportform">CaseReportForm</a>: 	Many to one assoication, use getCaseReportForm to get the associated CaseReportForm.
 	<a href="#protocolformstemplate">ProtocolFormsTemplate</a>: 	Many to one assoication, use getProtocolFormsTemplate to get the associated ProtocolFormsTemplate.
 	<a href="#question">Question</a>: 	One to many assoication, use getQuestionCollection to get a collection of associated Question.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21130,8 +21306,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Question is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Question is a Perl object representation of the
+  caBIO Question object.
 
 =head2 Description
 
@@ -21141,8 +21317,14 @@ sub getDefinition {
 
   The following are all the attributes of the Question object and their data types:
 
+=begin html
+<pre>
 	displayOrder	int
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21151,7 +21333,7 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Question:
 
-=for html
+=begin html
 <pre>
 	<a href="#valuedomain">ValueDomain</a>: 	Many to one assoication, use getValueDomain to get the associated ValueDomain.
 	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
@@ -21159,7 +21341,9 @@ sub getDefinition {
 	<a href="#dataelement">DataElement</a>: 	Many to one assoication, use getDataElement to get the associated DataElement.
 	<a href="#module">Module</a>: 	Many to one assoication, use getModule to get the associated Module.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21173,8 +21357,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::EnumeratedValueDomain is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::EnumeratedValueDomain is a Perl object representation of the
+  caBIO EnumeratedValueDomain object.
 
 =head2 Description
 
@@ -21184,7 +21368,13 @@ sub getDefinition {
 
   The following are all the attributes of the EnumeratedValueDomain object and their data types:
 
+=begin html
+<pre>
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21193,11 +21383,13 @@ sub getDefinition {
 
   The following are all the objects that are associated with the EnumeratedValueDomain:
 
-=for html
+=begin html
 <pre>
 	<a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a>: 	One to many assoication, use getValueDomainPermissibleValueCollection to get a collection of associated ValueDomainPermissibleValue.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21211,8 +21403,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Concept is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Concept is a Perl object representation of the
+  caBIO Concept object.
 
 =head2 Description
 
@@ -21222,9 +21414,15 @@ sub getDefinition {
 
   The following are all the attributes of the Concept object and their data types:
 
+=begin html
+<pre>
 	definitionSource	string
 	evsSource	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21233,12 +21431,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Concept:
 
-=for html
+=begin html
 <pre>
 	<a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a>: 	One to many assoication, use getValueDomainPermissibleValueCollection to get a collection of associated ValueDomainPermissibleValue.
 	<a href="#componentconcept">ComponentConcept</a>: 	One to many assoication, use getComponentConceptCollection to get a collection of associated ComponentConcept.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21252,8 +21452,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ValueDomainPermissibleValue is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ValueDomainPermissibleValue is a Perl object representation of the
+  caBIO ValueDomainPermissibleValue object.
 
 =head2 Description
 
@@ -21263,6 +21463,8 @@ sub getDefinition {
 
   The following are all the attributes of the ValueDomainPermissibleValue object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	beginDate	dateTime
 	createdBy	string
@@ -21272,6 +21474,10 @@ sub getDefinition {
 	dateModified	dateTime
 	endDate	dateTime
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21280,14 +21486,16 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ValueDomainPermissibleValue:
 
-=for html
+=begin html
 <pre>
 	<a href="#enumeratedvaluedomain">EnumeratedValueDomain</a>: 	Many to one assoication, use getEnumeratedValueDomain to get the associated EnumeratedValueDomain.
 	<a href="#concept">Concept</a>: 	Many to one assoication, use getConcept to get the associated Concept.
 	<a href="#permissiblevalue">PermissibleValue</a>: 	Many to one assoication, use getPermissibleValue to get the associated PermissibleValue.
 	<a href="#validvalue">ValidValue</a>: 	One to many assoication, use getValidValueCollection to get a collection of associated ValidValue.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21301,8 +21509,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ValidValue is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ValidValue is a Perl object representation of the
+  caBIO ValidValue object.
 
 =head2 Description
 
@@ -21312,8 +21520,14 @@ sub getDefinition {
 
   The following are all the attributes of the ValidValue object and their data types:
 
+=begin html
+<pre>
 	displayOrder	int
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21322,13 +21536,15 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ValidValue:
 
-=for html
+=begin html
 <pre>
 	<a href="#instruction">Instruction</a>: 	One to many assoication, use getInstructionCollection to get a collection of associated Instruction.
 	<a href="#valuedomainpermissiblevalue">ValueDomainPermissibleValue</a>: 	Many to one assoication, use getValueDomainPermissibleValue to get the associated ValueDomainPermissibleValue.
 	<a href="#question">Question</a>: 	Many to one assoication, use getQuestion to get the associated Question.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21342,8 +21558,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Designation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Designation is a Perl object representation of the
+  caBIO Designation object.
 
 =head2 Description
 
@@ -21353,6 +21569,8 @@ sub getDefinition {
 
   The following are all the attributes of the Designation object and their data types:
 
+=begin html
+<pre>
 	languageName	string
 	modifiedBy	string
 	type	string
@@ -21362,6 +21580,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21370,12 +21592,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Designation:
 
-=for html
+=begin html
 <pre>
 	<a href="#context">Context</a>: 	Many to one assoication, use getContext to get the associated Context.
 	<a href="#designationclassschemeitem">DesignationClassSchemeItem</a>: 	One to many assoication, use getDesignationClassSchemeItemCollection to get a collection of associated DesignationClassSchemeItem.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21389,8 +21613,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::NonenumeratedValueDomain is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::NonenumeratedValueDomain is a Perl object representation of the
+  caBIO NonenumeratedValueDomain object.
 
 =head2 Description
 
@@ -21400,7 +21624,13 @@ sub getDefinition {
 
   The following are all the attributes of the NonenumeratedValueDomain object and their data types:
 
+=begin html
+<pre>
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21409,10 +21639,12 @@ sub getDefinition {
 
   The following are all the objects that are associated with the NonenumeratedValueDomain:
 
-=for html
+=begin html
 <pre>
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21426,8 +21658,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DataElementConceptRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DataElementConceptRelationship is a Perl object representation of the
+  caBIO DataElementConceptRelationship object.
 
 =head2 Description
 
@@ -21437,6 +21669,8 @@ sub getDefinition {
 
   The following are all the attributes of the DataElementConceptRelationship object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	dateModified	dateTime
 	description	string
@@ -21445,6 +21679,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21453,12 +21691,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DataElementConceptRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#parentdataelementconcept">ParentDataElementConcept</a>: 	Many to one assoication, use getParentDataElementConcept to get the associated ParentDataElementConcept.
 	<a href="#childdataelementconcept">ChildDataElementConcept</a>: 	Many to one assoication, use getChildDataElementConcept to get the associated ChildDataElementConcept.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21472,8 +21712,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ClassSchemeClassSchemeItem is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ClassSchemeClassSchemeItem is a Perl object representation of the
+  caBIO ClassSchemeClassSchemeItem object.
 
 =head2 Description
 
@@ -21483,6 +21723,8 @@ sub getDefinition {
 
   The following are all the attributes of the ClassSchemeClassSchemeItem object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	displayOrder	int
 	createdBy	string
@@ -21490,6 +21732,10 @@ sub getDefinition {
 	id	string
 	dateModified	dateTime
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21498,7 +21744,7 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ClassSchemeClassSchemeItem:
 
-=for html
+=begin html
 <pre>
 	<a href="#parentclassschemeclassschemeitem">ParentClassSchemeClassSchemeItem</a>: 	Many to one assoication, use getParentClassSchemeClassSchemeItem to get the associated ParentClassSchemeClassSchemeItem.
 	<a href="#classificationscheme">ClassificationScheme</a>: 	Many to one assoication, use getClassificationScheme to get the associated ClassificationScheme.
@@ -21508,7 +21754,9 @@ sub getDefinition {
 	<a href="#childclassschemeclassschemeitem">ChildClassSchemeClassSchemeItem</a>: 	One to many assoication, use getChildClassSchemeClassSchemeItemCollection to get a collection of associated ChildClassSchemeClassSchemeItem.
 	<a href="#classificationschemeitem">ClassificationSchemeItem</a>: 	Many to one assoication, use getClassificationSchemeItem to get the associated ClassificationSchemeItem.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21522,8 +21770,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DataElementDerivation is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DataElementDerivation is a Perl object representation of the
+  caBIO DataElementDerivation object.
 
 =head2 Description
 
@@ -21533,6 +21781,8 @@ sub getDefinition {
 
   The following are all the attributes of the DataElementDerivation object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	displayOrder	int
 	dateModified	dateTime
@@ -21540,6 +21790,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21548,12 +21802,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DataElementDerivation:
 
-=for html
+=begin html
 <pre>
 	<a href="#dataelement">DataElement</a>: 	Many to one assoication, use getDataElement to get the associated DataElement.
 	<a href="#deriveddataelement">DerivedDataElement</a>: 	Many to one assoication, use getDerivedDataElement to get the associated DerivedDataElement.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21567,8 +21823,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::AdministeredComponentClassSchemeItem is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::AdministeredComponentClassSchemeItem is a Perl object representation of the
+  caBIO AdministeredComponentClassSchemeItem object.
 
 =head2 Description
 
@@ -21578,12 +21834,18 @@ sub getDefinition {
 
   The following are all the attributes of the AdministeredComponentClassSchemeItem object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	dateModified	dateTime
 	createdBy	string
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21592,11 +21854,13 @@ sub getDefinition {
 
   The following are all the objects that are associated with the AdministeredComponentClassSchemeItem:
 
-=for html
+=begin html
 <pre>
 	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	Many to one assoication, use getClassSchemeClassSchemeItem to get the associated ClassSchemeClassSchemeItem.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21610,8 +21874,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Instruction is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Instruction is a Perl object representation of the
+  caBIO Instruction object.
 
 =head2 Description
 
@@ -21621,8 +21885,14 @@ sub getDefinition {
 
   The following are all the attributes of the Instruction object and their data types:
 
+=begin html
+<pre>
 	type	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21631,7 +21901,7 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Instruction:
 
-=for html
+=begin html
 <pre>
 	<a href="#validvalue">ValidValue</a>: 	Many to one assoication, use getValidValue to get the associated ValidValue.
 	<a href="#casereportform">CaseReportForm</a>: 	Many to one assoication, use getCaseReportForm to get the associated CaseReportForm.
@@ -21639,7 +21909,9 @@ sub getDefinition {
 	<a href="#module">Module</a>: 	Many to one assoication, use getModule to get the associated Module.
 	<a href="#question">Question</a>: 	Many to one assoication, use getQuestion to get the associated Question.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21653,8 +21925,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DataElementRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DataElementRelationship is a Perl object representation of the
+  caBIO DataElementRelationship object.
 
 =head2 Description
 
@@ -21664,6 +21936,8 @@ sub getDefinition {
 
   The following are all the attributes of the DataElementRelationship object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	dateModified	dateTime
 	createdBy	string
@@ -21671,6 +21945,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21679,12 +21957,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DataElementRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#parentdataelement">ParentDataElement</a>: 	Many to one assoication, use getParentDataElement to get the associated ParentDataElement.
 	<a href="#childdataelement">ChildDataElement</a>: 	Many to one assoication, use getChildDataElement to get the associated ChildDataElement.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21698,8 +21978,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ValueDomainRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ValueDomainRelationship is a Perl object representation of the
+  caBIO ValueDomainRelationship object.
 
 =head2 Description
 
@@ -21709,6 +21989,8 @@ sub getDefinition {
 
   The following are all the attributes of the ValueDomainRelationship object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	dateModified	dateTime
 	createdBy	string
@@ -21716,6 +21998,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21724,12 +22010,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ValueDomainRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#parentvaluedomain">ParentValueDomain</a>: 	Many to one assoication, use getParentValueDomain to get the associated ParentValueDomain.
 	<a href="#childvaluedomain">ChildValueDomain</a>: 	Many to one assoication, use getChildValueDomain to get the associated ChildValueDomain.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21743,8 +22031,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ClassificationSchemeRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ClassificationSchemeRelationship is a Perl object representation of the
+  caBIO ClassificationSchemeRelationship object.
 
 =head2 Description
 
@@ -21754,6 +22042,8 @@ sub getDefinition {
 
   The following are all the attributes of the ClassificationSchemeRelationship object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	displayOrder	int
 	dateModified	dateTime
@@ -21762,6 +22052,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21770,12 +22064,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ClassificationSchemeRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#childclassificationscheme">ChildClassificationScheme</a>: 	Many to one assoication, use getChildClassificationScheme to get the associated ChildClassificationScheme.
 	<a href="#parentclassificationscheme">ParentClassificationScheme</a>: 	Many to one assoication, use getParentClassificationScheme to get the associated ParentClassificationScheme.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21789,8 +22085,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ClassificationSchemeItemRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ClassificationSchemeItemRelationship is a Perl object representation of the
+  caBIO ClassificationSchemeItemRelationship object.
 
 =head2 Description
 
@@ -21800,6 +22096,8 @@ sub getDefinition {
 
   The following are all the attributes of the ClassificationSchemeItemRelationship object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	dateModified	dateTime
 	createdBy	string
@@ -21807,6 +22105,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21815,12 +22117,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ClassificationSchemeItemRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#childclassificationschemeitem">ChildClassificationSchemeItem</a>: 	Many to one assoication, use getChildClassificationSchemeItem to get the associated ChildClassificationSchemeItem.
 	<a href="#parentclassificationschemeitem">ParentClassificationSchemeItem</a>: 	Many to one assoication, use getParentClassificationSchemeItem to get the associated ParentClassificationSchemeItem.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21834,8 +22138,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ObjectClassRelationship is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ObjectClassRelationship is a Perl object representation of the
+  caBIO ObjectClassRelationship object.
 
 =head2 Description
 
@@ -21845,6 +22149,8 @@ sub getDefinition {
 
   The following are all the attributes of the ObjectClassRelationship object and their data types:
 
+=begin html
+<pre>
 	targetHighMultiplicity	int
 	targetRole	string
 	name	string
@@ -21854,6 +22160,10 @@ sub getDefinition {
 	sourceLowMultiplicity	int
 	targetLowMultiplicity	int
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21862,12 +22172,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ObjectClassRelationship:
 
-=for html
+=begin html
 <pre>
 	<a href="#sourceobjectclass">SourceObjectClass</a>: 	Many to one assoication, use getSourceObjectClass to get the associated SourceObjectClass.
 	<a href="#targetobjectclass">TargetObjectClass</a>: 	Many to one assoication, use getTargetObjectClass to get the associated TargetObjectClass.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21881,8 +22193,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::ComponentConcept is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::ComponentConcept is a Perl object representation of the
+  caBIO ComponentConcept object.
 
 =head2 Description
 
@@ -21892,10 +22204,16 @@ sub getDefinition {
 
   The following are all the attributes of the ComponentConcept object and their data types:
 
+=begin html
+<pre>
 	displayOrder	int
 	primaryFlag	string
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21904,12 +22222,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the ComponentConcept:
 
-=for html
+=begin html
 <pre>
 	<a href="#derivationrule">DerivationRule</a>: 	Many to one assoication, use getDerivationRule to get the associated DerivationRule.
 	<a href="#concept">Concept</a>: 	Many to one assoication, use getConcept to get the associated Concept.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21923,8 +22243,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::Definition is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::Definition is a Perl object representation of the
+  caBIO Definition object.
 
 =head2 Description
 
@@ -21934,6 +22254,8 @@ sub getDefinition {
 
   The following are all the attributes of the Definition object and their data types:
 
+=begin html
+<pre>
 	languageName	string
 	modifiedBy	string
 	text	string
@@ -21943,6 +22265,10 @@ sub getDefinition {
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21951,13 +22277,15 @@ sub getDefinition {
 
   The following are all the objects that are associated with the Definition:
 
-=for html
+=begin html
 <pre>
 	<a href="#definitionclassschemeitem">DefinitionClassSchemeItem</a>: 	One to many assoication, use getDefinitionClassSchemeItemCollection to get a collection of associated DefinitionClassSchemeItem.
 	<a href="#context">Context</a>: 	Many to one assoication, use getContext to get the associated Context.
 	<a href="#administeredcomponent">AdministeredComponent</a>: 	Many to one assoication, use getAdministeredComponent to get the associated AdministeredComponent.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -21971,8 +22299,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DesignationClassSchemeItem is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DesignationClassSchemeItem is a Perl object representation of the
+  caBIO DesignationClassSchemeItem object.
 
 =head2 Description
 
@@ -21982,12 +22310,18 @@ sub getDefinition {
 
   The following are all the attributes of the DesignationClassSchemeItem object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	dateModified	dateTime
 	createdBy	string
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -21996,12 +22330,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DesignationClassSchemeItem:
 
-=for html
+=begin html
 <pre>
 	<a href="#designation">Designation</a>: 	Many to one assoication, use getDesignation to get the associated Designation.
 	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	Many to one assoication, use getClassSchemeClassSchemeItem to get the associated ClassSchemeClassSchemeItem.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
@@ -22015,8 +22351,8 @@ sub getDefinition {
 
 =head2 Abstract
 
-  The CaCORE::CaDSR::bean::DefinitionClassSchemeItem is a Perl object representation of the
-  caBIO generic object.
+  The CaCORE::CaDSR::DefinitionClassSchemeItem is a Perl object representation of the
+  caBIO DefinitionClassSchemeItem object.
 
 =head2 Description
 
@@ -22026,12 +22362,18 @@ sub getDefinition {
 
   The following are all the attributes of the DefinitionClassSchemeItem object and their data types:
 
+=begin html
+<pre>
 	modifiedBy	string
 	dateModified	dateTime
 	createdBy	string
 	dateCreated	dateTime
 	id	string
   End Attributes
+</pre>
+
+=end html
+
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
@@ -22040,12 +22382,14 @@ sub getDefinition {
 
   The following are all the objects that are associated with the DefinitionClassSchemeItem:
 
-=for html
+=begin html
 <pre>
 	<a href="#classschemeclassschemeitem">ClassSchemeClassSchemeItem</a>: 	Many to one assoication, use getClassSchemeClassSchemeItem to get the associated ClassSchemeClassSchemeItem.
 	<a href="#definition">Definition</a>: 	Many to one assoication, use getDefinition to get the associated Definition.
   End Associations and related methods
-<p>
+</pre>
+
+=end html
 
 =cut
 
