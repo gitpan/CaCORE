@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.011';
+$VERSION = '3.012';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -1742,46 +1742,56 @@ sub setName {
 
 =head1 SourceReference
 
-  CaCORE::Common::Provenance::SourceReference - Perl extension for SourceReference.
+CaCORE::Common::Provenance::SourceReference - Perl extension for SourceReference.
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::SourceReference is a Perl object representation of the
-  caBIO SourceReference object.
+The CaCORE::Common::Provenance::SourceReference is a Perl object representation of the
+caBIO SourceReference object.
 
 =head2 Description
 
-  A reference (an electronic reference, publication citation, etc.) to the untransformed data at a source.
+A reference (an electronic reference, publication citation, etc.) to the untransformed data at a source.
 
-=head3 Attributes of SourceReference
+=head2 Attributes of SourceReference
 
-  The following are all the attributes of the SourceReference object and their data types:
+The following are all the attributes of the SourceReference object and their data types:
 
-=begin html
-<pre>
-	sourceReferenceType	string
-	id	long
-	reference	string
+=over 4
+
+=item sourceReferenceType
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
+=item reference
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of SourceReference
+=head2 Associations of SourceReference
 
-  The following are all the objects that are associated with the SourceReference:
+The following are all the objects that are associated with the SourceReference:
 
-=begin html
-<pre>
-	<a href="#provenance">Provenance</a>: 	One to many assoication, use getProvenanceCollection to get a collection of associated Provenance.
+=over 4
+
+=item L<"Provenance">: 	
+
+One to many assoication, use C<getProvenanceCollection> to get a collection of associated Provenance.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -1791,44 +1801,48 @@ sub setName {
 
 =head1 Source
 
-  CaCORE::Common::Provenance::Source - Perl extension for Source.
+CaCORE::Common::Provenance::Source - Perl extension for Source.
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::Source is a Perl object representation of the
-  caBIO Source object.
+The CaCORE::Common::Provenance::Source is a Perl object representation of the
+caBIO Source object.
 
 =head2 Description
 
-  An abstract class representing a source. Will be subclassed into a variety of specialized classes.
+An abstract class representing a source. Will be subclassed into a variety of specialized classes.
 
-=head3 Attributes of Source
+=head2 Attributes of Source
 
-  The following are all the attributes of the Source object and their data types:
+The following are all the attributes of the Source object and their data types:
 
-=begin html
-<pre>
-	name	string
-	id	long
+=over 4
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Source
+=head2 Associations of Source
 
-  The following are all the objects that are associated with the Source:
+The following are all the objects that are associated with the Source:
 
-=begin html
-<pre>
+=over 4
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -1838,49 +1852,68 @@ sub setName {
 
 =head1 Provenance
 
-  CaCORE::Common::Provenance::Provenance - Perl extension for Provenance.
+CaCORE::Common::Provenance::Provenance - Perl extension for Provenance.
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::Provenance is a Perl object representation of the
-  caBIO Provenance object.
+The CaCORE::Common::Provenance::Provenance is a Perl object representation of the
+caBIO Provenance object.
 
 =head2 Description
 
-  A record describing the source of an assertion (datum) contained in an object.
+A record describing the source of an assertion (datum) contained in an object.
 
-=head3 Attributes of Provenance
+=head2 Attributes of Provenance
 
-  The following are all the attributes of the Provenance object and their data types:
+The following are all the attributes of the Provenance object and their data types:
 
-=begin html
-<pre>
-	transformation	string
-	evidenceCode	string
-	id	long
+=over 4
+
+=item transformation
+
+data type: C<string>
+
+=item evidenceCode
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Provenance
+=head2 Associations of Provenance
 
-  The following are all the objects that are associated with the Provenance:
+The following are all the objects that are associated with the Provenance:
 
-=begin html
-<pre>
-	<a href="#sourcereference">SourceReference</a>: 	Many to one assoication, use getSourceReference to get the associated SourceReference.
-	<a href="#originalsource">OriginalSource</a>: 	Many to one assoication, use getOriginalSource to get the associated OriginalSource.
-	<a href="#immediatesource">ImmediateSource</a>: 	Many to one assoication, use getImmediateSource to get the associated ImmediateSource.
-	<a href="#supplyingsource">SupplyingSource</a>: 	Many to one assoication, use getSupplyingSource to get the associated SupplyingSource.
+=over 4
+
+=item L<"SourceReference">: 	
+
+Many to one assoication, use C<getSourceReference> to get the associated SourceReference.
+
+=item L<"OriginalSource">: 	
+
+Many to one assoication, use C<getOriginalSource> to get the associated OriginalSource.
+
+=item L<"ImmediateSource">: 	
+
+Many to one assoication, use C<getImmediateSource> to get the associated ImmediateSource.
+
+=item L<"SupplyingSource">: 	
+
+Many to one assoication, use C<getSupplyingSource> to get the associated SupplyingSource.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -1890,43 +1923,44 @@ sub setName {
 
 =head1 URLSourceReference
 
-  CaCORE::Common::Provenance::URLSourceReference - Perl extension for URLSourceReference.
+CaCORE::Common::Provenance::URLSourceReference - Perl extension for URLSourceReference.
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::URLSourceReference is a Perl object representation of the
-  caBIO URLSourceReference object.
+The CaCORE::Common::Provenance::URLSourceReference is a Perl object representation of the
+caBIO URLSourceReference object.
 
 =head2 Description
 
-  An implementation of the abstract SourceReference that contains a URL to the original information.
+An implementation of the abstract SourceReference that contains a URL to the original information.
 
-=head3 Attributes of URLSourceReference
+=head2 Attributes of URLSourceReference
 
-  The following are all the attributes of the URLSourceReference object and their data types:
+The following are all the attributes of the URLSourceReference object and their data types:
 
-=begin html
-<pre>
-	sourceURL	string
+=over 4
+
+=item sourceURL
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of URLSourceReference
+=head2 Associations of URLSourceReference
 
-  The following are all the objects that are associated with the URLSourceReference:
+The following are all the objects that are associated with the URLSourceReference:
 
-=begin html
-<pre>
+=over 4
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -1936,48 +1970,64 @@ sub setName {
 
 =head1 PublicationSource
 
-  CaCORE::Common::Provenance::PublicationSource - Perl extension for PublicationSource.
+CaCORE::Common::Provenance::PublicationSource - Perl extension for PublicationSource.
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::PublicationSource is a Perl object representation of the
-  caBIO PublicationSource object.
+The CaCORE::Common::Provenance::PublicationSource is a Perl object representation of the
+caBIO PublicationSource object.
 
 =head2 Description
 
-  An implementing subclass of Source. Describes a source for which an electronic online version is not available, but for which a printed version of the data is available.
+An implementing subclass of Source. Describes a source for which an electronic online version is not available, but for which a printed version of the data is available.
 
-=head3 Attributes of PublicationSource
+=head2 Attributes of PublicationSource
 
-  The following are all the attributes of the PublicationSource object and their data types:
+The following are all the attributes of the PublicationSource object and their data types:
 
-=begin html
-<pre>
-	volume	int
-	endPage	int
-	year	int
-	title	string
-	startPage	int
-	authors	string
+=over 4
+
+=item volume
+
+data type: C<int>
+
+=item endPage
+
+data type: C<int>
+
+=item year
+
+data type: C<int>
+
+=item title
+
+data type: C<string>
+
+=item startPage
+
+data type: C<int>
+
+=item authors
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of PublicationSource
+=head2 Associations of PublicationSource
 
-  The following are all the objects that are associated with the PublicationSource:
+The following are all the objects that are associated with the PublicationSource:
 
-=begin html
-<pre>
+=over 4
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -1987,46 +2037,56 @@ sub setName {
 
 =head1 ResearchInstitutionSource
 
-  CaCORE::Common::Provenance::ResearchInstitutionSource - Perl extension for ResearchInstitutionSource.
+CaCORE::Common::Provenance::ResearchInstitutionSource - Perl extension for ResearchInstitutionSource.
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::ResearchInstitutionSource is a Perl object representation of the
-  caBIO ResearchInstitutionSource object.
+The CaCORE::Common::Provenance::ResearchInstitutionSource is a Perl object representation of the
+caBIO ResearchInstitutionSource object.
 
 =head2 Description
 
-  An implementing subclass of Source that describes a research institution (commercial, academic, or government). This is used for information with attribution, but that lack an online electronic format.
+An implementing subclass of Source that describes a research institution (commercial, academic, or government). This is used for information with attribution, but that lack an online electronic format.
 
-=head3 Attributes of ResearchInstitutionSource
+=head2 Attributes of ResearchInstitutionSource
 
-  The following are all the attributes of the ResearchInstitutionSource object and their data types:
+The following are all the attributes of the ResearchInstitutionSource object and their data types:
 
-=begin html
-<pre>
-	institutionPersons	string
-	institutionAddress	string
-	institutionDepartment	string
-	institutionName	string
+=over 4
+
+=item institutionPersons
+
+data type: C<string>
+
+=item institutionAddress
+
+data type: C<string>
+
+=item institutionDepartment
+
+data type: C<string>
+
+=item institutionName
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of ResearchInstitutionSource
+=head2 Associations of ResearchInstitutionSource
 
-  The following are all the objects that are associated with the ResearchInstitutionSource:
+The following are all the objects that are associated with the ResearchInstitutionSource:
 
-=begin html
-<pre>
+=over 4
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -2036,43 +2096,44 @@ sub setName {
 
 =head1 WebServicesSourceReference
 
-  CaCORE::Common::Provenance::WebServicesSourceReference - Perl extension for WebServicesSourceReference.
+CaCORE::Common::Provenance::WebServicesSourceReference - Perl extension for WebServicesSourceReference.
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::WebServicesSourceReference is a Perl object representation of the
-  caBIO WebServicesSourceReference object.
+The CaCORE::Common::Provenance::WebServicesSourceReference is a Perl object representation of the
+caBIO WebServicesSourceReference object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of WebServicesSourceReference
 
-  The following are all the attributes of the WebServicesSourceReference object and their data types:
+=head2 Attributes of WebServicesSourceReference
 
-=begin html
-<pre>
-	request	string
+The following are all the attributes of the WebServicesSourceReference object and their data types:
+
+=over 4
+
+=item request
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of WebServicesSourceReference
+=head2 Associations of WebServicesSourceReference
 
-  The following are all the objects that are associated with the WebServicesSourceReference:
+The following are all the objects that are associated with the WebServicesSourceReference:
 
-=begin html
-<pre>
+=over 4
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -2082,45 +2143,52 @@ sub setName {
 
 =head1 InternetSource
 
-  CaCORE::Common::Provenance::InternetSource - Perl extension for InternetSource.
+CaCORE::Common::Provenance::InternetSource - Perl extension for InternetSource.
 
 =head2 Abstract
 
-  The CaCORE::Common::Provenance::InternetSource is a Perl object representation of the
-  caBIO InternetSource object.
+The CaCORE::Common::Provenance::InternetSource is a Perl object representation of the
+caBIO InternetSource object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of InternetSource
 
-  The following are all the attributes of the InternetSource object and their data types:
+=head2 Attributes of InternetSource
 
-=begin html
-<pre>
-	ownerInstitution	string
-	sourceURI	string
-	ownerPersons	string
+The following are all the attributes of the InternetSource object and their data types:
+
+=over 4
+
+=item ownerInstitution
+
+data type: C<string>
+
+=item sourceURI
+
+data type: C<string>
+
+=item ownerPersons
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of InternetSource
+=head2 Associations of InternetSource
 
-  The following are all the objects that are associated with the InternetSource:
+The following are all the objects that are associated with the InternetSource:
 
-=begin html
-<pre>
+=over 4
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 

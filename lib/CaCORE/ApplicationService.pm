@@ -10,7 +10,7 @@ BEGIN {
 }
 
 
-$VERSION = '3.011';
+$VERSION = '3.012';
 
 # These are default values
 my $default_proxy = "http://cabio.nci.nih.gov/cacore30/ws/caCOREService";
@@ -788,4 +788,8 @@ __END__
   By default, when calling ApplicationService->queryObject, the caCORE server automatically trim the resultset to 1000 objects if the there more than 1000. So in reality, if you want to retrieve anything beyond 1000, you must use ApplicationService->query.
 
 =cut
+
+
+
+__END__
 

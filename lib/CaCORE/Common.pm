@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.011';
+$VERSION = '3.012';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -256,48 +256,64 @@ sub setSourceType {
 
 =head1 DatabaseCrossReference
 
-  CaCORE::Common::DatabaseCrossReference - Perl extension for DatabaseCrossReference.
+CaCORE::Common::DatabaseCrossReference - Perl extension for DatabaseCrossReference.
 
 =head2 Abstract
 
-  The CaCORE::Common::DatabaseCrossReference is a Perl object representation of the
-  caBIO DatabaseCrossReference object.
+The CaCORE::Common::DatabaseCrossReference is a Perl object representation of the
+caBIO DatabaseCrossReference object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of DatabaseCrossReference
 
-  The following are all the attributes of the DatabaseCrossReference object and their data types:
+=head2 Attributes of DatabaseCrossReference
 
-=begin html
-<pre>
-	dataSourceName	string
-	summary	string
-	crossReferenceId	string
-	type	string
-	sourceType	string
-	id	long
+The following are all the attributes of the DatabaseCrossReference object and their data types:
+
+=over 4
+
+=item dataSourceName
+
+data type: C<string>
+
+=item summary
+
+data type: C<string>
+
+=item crossReferenceId
+
+data type: C<string>
+
+=item type
+
+data type: C<string>
+
+=item sourceType
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of DatabaseCrossReference
+=head2 Associations of DatabaseCrossReference
 
-  The following are all the objects that are associated with the DatabaseCrossReference:
+The following are all the objects that are associated with the DatabaseCrossReference:
 
-=begin html
-<pre>
+=over 4
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 

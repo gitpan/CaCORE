@@ -9,7 +9,7 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.011';
+$VERSION = '3.012';
 
 ## begin import objects ##
 use CaCORE::ApplicationService;
@@ -8545,53 +8545,84 @@ sub getGenericReporterCollection {
 
 =head1 Taxon
 
-  CaCORE::CaBIO::Taxon - Perl extension for Taxon.
+CaCORE::CaBIO::Taxon - Perl extension for Taxon.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Taxon is a Perl object representation of the
-  caBIO Taxon object.
+The CaCORE::CaBIO::Taxon is a Perl object representation of the
+caBIO Taxon object.
 
 =head2 Description
 
-  An object representing the various names (scientific, common, abbreviated, etc.) for a species associated with a specific instance of a Gene, Chromosome, Pathway, Protein, or Tissue.
+An object representing the various names (scientific, common, abbreviated, etc.) for a species associated with a specific instance of a Gene, Chromosome, Pathway, Protein, or Tissue.
 
-=head3 Attributes of Taxon
+=head2 Attributes of Taxon
 
-  The following are all the attributes of the Taxon object and their data types:
+The following are all the attributes of the Taxon object and their data types:
 
-=begin html
-<pre>
-	scientificName	string
-	ethnicityStrain	string
-	abbreviation	string
-	commonName	string
-	id	long
+=over 4
+
+=item scientificName
+
+data type: C<string>
+
+=item ethnicityStrain
+
+data type: C<string>
+
+=item abbreviation
+
+data type: C<string>
+
+=item commonName
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Taxon
+=head2 Associations of Taxon
 
-  The following are all the objects that are associated with the Taxon:
+The following are all the objects that are associated with the Taxon:
 
-=begin html
-<pre>
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#protein">Protein</a>: 	One to many assoication, use getProteinCollection to get a collection of associated Protein.
-	<a href="#pathway">Pathway</a>: 	One to many assoication, use getPathwayCollection to get a collection of associated Pathway.
-	<a href="#tissue">Tissue</a>: 	One to many assoication, use getTissueCollection to get a collection of associated Tissue.
-	<a href="#chromosome">Chromosome</a>: 	One to many assoication, use getChromosomeCollection to get a collection of associated Chromosome.
-	<a href="#clone">Clone</a>: 	One to many assoication, use getCloneCollection to get a collection of associated Clone.
+=over 4
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"Protein">: 	
+
+One to many assoication, use C<getProteinCollection> to get a collection of associated Protein.
+
+=item L<"Pathway">: 	
+
+One to many assoication, use C<getPathwayCollection> to get a collection of associated Pathway.
+
+=item L<"Tissue">: 	
+
+One to many assoication, use C<getTissueCollection> to get a collection of associated Tissue.
+
+=item L<"Chromosome">: 	
+
+One to many assoication, use C<getChromosomeCollection> to get a collection of associated Chromosome.
+
+=item L<"Clone">: 	
+
+One to many assoication, use C<getCloneCollection> to get a collection of associated Clone.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -8601,51 +8632,76 @@ sub getGenericReporterCollection {
 
 =head1 Agent
 
-  CaCORE::CaBIO::Agent - Perl extension for Agent.
+CaCORE::CaBIO::Agent - Perl extension for Agent.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Agent is a Perl object representation of the
-  caBIO Agent object.
+The CaCORE::CaBIO::Agent is a Perl object representation of the
+caBIO Agent object.
 
 =head2 Description
 
-  A therapeutic agent (drug, intervention therapy) used in a clinical trail protocol.
+A therapeutic agent (drug, intervention therapy) used in a clinical trail protocol.
 
-=head3 Attributes of Agent
+=head2 Attributes of Agent
 
-  The following are all the attributes of the Agent object and their data types:
+The following are all the attributes of the Agent object and their data types:
 
-=begin html
-<pre>
-	isCMAPAgent	boolean
-	comment	string
-	source	string
-	NSCNumber	long
-	name	string
-	EVSId	string
-	id	long
+=over 4
+
+=item isCMAPAgent
+
+data type: C<boolean>
+
+=item comment
+
+data type: C<string>
+
+=item source
+
+data type: C<string>
+
+=item NSCNumber
+
+data type: C<long>
+
+=item name
+
+data type: C<string>
+
+=item EVSId
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Agent
+=head2 Associations of Agent
 
-  The following are all the objects that are associated with the Agent:
+The following are all the objects that are associated with the Agent:
 
-=begin html
-<pre>
-	<a href="#target">Target</a>: 	One to many assoication, use getTargetCollection to get a collection of associated Target.
-	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	One to many assoication, use getClinicalTrialProtocolCollection to get a collection of associated ClinicalTrialProtocol.
+=over 4
+
+=item L<"Target">: 	
+
+One to many assoication, use C<getTargetCollection> to get a collection of associated Target.
+
+=item L<"ClinicalTrialProtocol">: 	
+
+One to many assoication, use C<getClinicalTrialProtocolCollection> to get a collection of associated ClinicalTrialProtocol.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -8655,47 +8711,60 @@ sub getGenericReporterCollection {
 
 =head1 Chromosome
 
-  CaCORE::CaBIO::Chromosome - Perl extension for Chromosome.
+CaCORE::CaBIO::Chromosome - Perl extension for Chromosome.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Chromosome is a Perl object representation of the
-  caBIO Chromosome object.
+The CaCORE::CaBIO::Chromosome is a Perl object representation of the
+caBIO Chromosome object.
 
 =head2 Description
 
-  An object representing a specific chromosome for a specific taxon; provides access to all known genes contained in the chromosome and to the taxon.
+An object representing a specific chromosome for a specific taxon; provides access to all known genes contained in the chromosome and to the taxon.
 
-=head3 Attributes of Chromosome
+=head2 Attributes of Chromosome
 
-  The following are all the attributes of the Chromosome object and their data types:
+The following are all the attributes of the Chromosome object and their data types:
 
-=begin html
-<pre>
-	id	long
-	number	string
+=over 4
+
+=item id
+
+data type: C<long>
+
+=item number
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Chromosome
+=head2 Associations of Chromosome
 
-  The following are all the objects that are associated with the Chromosome:
+The following are all the objects that are associated with the Chromosome:
 
-=begin html
-<pre>
-	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#location">Location</a>: 	One to many assoication, use getLocationCollection to get a collection of associated Location.
+=over 4
+
+=item L<"Taxon">: 	
+
+Many to one assoication, use C<getTaxon> to get the associated Taxon.
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"Location">: 	
+
+One to many assoication, use C<getLocationCollection> to get a collection of associated Location.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -8705,63 +8774,124 @@ sub getGenericReporterCollection {
 
 =head1 Gene
 
-  CaCORE::CaBIO::Gene - Perl extension for Gene.
+CaCORE::CaBIO::Gene - Perl extension for Gene.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Gene is a Perl object representation of the
-  caBIO Gene object.
+The CaCORE::CaBIO::Gene is a Perl object representation of the
+caBIO Gene object.
 
 =head2 Description
 
-  Gene objects are the effective portal to most of the genomic information provided by the caBIO data services; organs, diseases, chromosomes, pathways, sequence data, and expression experiments are among the many objects accessible via a gene.
+Gene objects are the effective portal to most of the genomic information provided by the caBIO data services; organs, diseases, chromosomes, pathways, sequence data, and expression experiments are among the many objects accessible via a gene.
 
-=head3 Attributes of Gene
+=head2 Attributes of Gene
 
-  The following are all the attributes of the Gene object and their data types:
+The following are all the attributes of the Gene object and their data types:
 
-=begin html
-<pre>
-	id	long
-	clusterId	long
-	symbol	string
-	fullName	string
+=over 4
+
+=item id
+
+data type: C<long>
+
+=item clusterId
+
+data type: C<long>
+
+=item symbol
+
+data type: C<string>
+
+=item fullName
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Gene
+=head2 Associations of Gene
 
-  The following are all the objects that are associated with the Gene:
+The following are all the objects that are associated with the Gene:
 
-=begin html
-<pre>
-	<a href="#geneontology">GeneOntology</a>: 	One to many assoication, use getGeneOntologyCollection to get a collection of associated GeneOntology.
-	<a href="#genealias">GeneAlias</a>: 	One to many assoication, use getGeneAliasCollection to get a collection of associated GeneAlias.
-	<a href="#protein">Protein</a>: 	One to many assoication, use getProteinCollection to get a collection of associated Protein.
-	<a href="#expressionfeature">ExpressionFeature</a>: 	One to many assoication, use getExpressionFeatureCollection to get a collection of associated ExpressionFeature.
-	<a href="#pathway">Pathway</a>: 	One to many assoication, use getPathwayCollection to get a collection of associated Pathway.
-	<a href="#organontology">OrganOntology</a>: 	One to many assoication, use getOrganOntologyCollection to get a collection of associated OrganOntology.
-	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
-	<a href="#library">Library</a>: 	One to many assoication, use getLibraryCollection to get a collection of associated Library.
-	<a href="#generelativelocation">GeneRelativeLocation</a>: 	One to many assoication, use getGeneRelativeLocationCollection to get a collection of associated GeneRelativeLocation.
-	<a href="#chromosome">Chromosome</a>: 	Many to one assoication, use getChromosome to get the associated Chromosome.
-	<a href="#databasecrossreference">DatabaseCrossReference</a>: 	One to many assoication, use getDatabaseCrossReferenceCollection to get a collection of associated DatabaseCrossReference.
-	<a href="#genericreporter">GenericReporter</a>: 	One to many assoication, use getGenericReporterCollection to get a collection of associated GenericReporter.
-	<a href="#target">Target</a>: 	One to many assoication, use getTargetCollection to get a collection of associated Target.
-	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
-	<a href="#location">Location</a>: 	One to many assoication, use getLocationCollection to get a collection of associated Location.
-	<a href="#nucleicacidsequence">NucleicAcidSequence</a>: 	One to many assoication, use getNucleicAcidSequenceCollection to get a collection of associated NucleicAcidSequence.
-	<a href="#homologousassociation">HomologousAssociation</a>: 	One to many assoication, use getHomologousAssociationCollection to get a collection of associated HomologousAssociation.
+=over 4
+
+=item L<"GeneOntology">: 	
+
+One to many assoication, use C<getGeneOntologyCollection> to get a collection of associated GeneOntology.
+
+=item L<"GeneAlias">: 	
+
+One to many assoication, use C<getGeneAliasCollection> to get a collection of associated GeneAlias.
+
+=item L<"Protein">: 	
+
+One to many assoication, use C<getProteinCollection> to get a collection of associated Protein.
+
+=item L<"ExpressionFeature">: 	
+
+One to many assoication, use C<getExpressionFeatureCollection> to get a collection of associated ExpressionFeature.
+
+=item L<"Pathway">: 	
+
+One to many assoication, use C<getPathwayCollection> to get a collection of associated Pathway.
+
+=item L<"OrganOntology">: 	
+
+One to many assoication, use C<getOrganOntologyCollection> to get a collection of associated OrganOntology.
+
+=item L<"Taxon">: 	
+
+Many to one assoication, use C<getTaxon> to get the associated Taxon.
+
+=item L<"Library">: 	
+
+One to many assoication, use C<getLibraryCollection> to get a collection of associated Library.
+
+=item L<"GeneRelativeLocation">: 	
+
+One to many assoication, use C<getGeneRelativeLocationCollection> to get a collection of associated GeneRelativeLocation.
+
+=item L<"Chromosome">: 	
+
+Many to one assoication, use C<getChromosome> to get the associated Chromosome.
+
+=item L<"DatabaseCrossReference">: 	
+
+One to many assoication, use C<getDatabaseCrossReferenceCollection> to get a collection of associated DatabaseCrossReference.
+
+=item L<"GenericReporter">: 	
+
+One to many assoication, use C<getGenericReporterCollection> to get a collection of associated GenericReporter.
+
+=item L<"Target">: 	
+
+One to many assoication, use C<getTargetCollection> to get a collection of associated Target.
+
+=item L<"Histopathology">: 	
+
+One to many assoication, use C<getHistopathologyCollection> to get a collection of associated Histopathology.
+
+=item L<"Location">: 	
+
+One to many assoication, use C<getLocationCollection> to get a collection of associated Location.
+
+=item L<"NucleicAcidSequence">: 	
+
+One to many assoication, use C<getNucleicAcidSequenceCollection> to get a collection of associated NucleicAcidSequence.
+
+=item L<"HomologousAssociation">: 	
+
+One to many assoication, use C<getHomologousAssociationCollection> to get a collection of associated HomologousAssociation.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -8771,46 +8901,56 @@ sub getGenericReporterCollection {
 
 =head1 Vocabulary
 
-  CaCORE::CaBIO::Vocabulary - Perl extension for Vocabulary.
+CaCORE::CaBIO::Vocabulary - Perl extension for Vocabulary.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Vocabulary is a Perl object representation of the
-  caBIO Vocabulary object.
+The CaCORE::CaBIO::Vocabulary is a Perl object representation of the
+caBIO Vocabulary object.
 
 =head2 Description
 
-  The object describes the vocabulary.
+The object describes the vocabulary.
 
-=head3 Attributes of Vocabulary
+=head2 Attributes of Vocabulary
 
-  The following are all the attributes of the Vocabulary object and their data types:
+The following are all the attributes of the Vocabulary object and their data types:
 
-=begin html
-<pre>
-	generalTerm	string
-	coreTerm	string
-	id	long
+=over 4
+
+=item generalTerm
+
+data type: C<string>
+
+=item coreTerm
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Vocabulary
+=head2 Associations of Vocabulary
 
-  The following are all the objects that are associated with the Vocabulary:
+The following are all the objects that are associated with the Vocabulary:
 
-=begin html
-<pre>
-	<a href="#anomaly">Anomaly</a>: 	One to many assoication, use getAnomalyCollection to get a collection of associated Anomaly.
+=over 4
+
+=item L<"Anomaly">: 	
+
+One to many assoication, use C<getAnomalyCollection> to get a collection of associated Anomaly.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -8820,48 +8960,64 @@ sub getGenericReporterCollection {
 
 =head1 Protocol
 
-  CaCORE::CaBIO::Protocol - Perl extension for Protocol.
+CaCORE::CaBIO::Protocol - Perl extension for Protocol.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Protocol is a Perl object representation of the
-  caBIO Protocol object.
+The CaCORE::CaBIO::Protocol is a Perl object representation of the
+caBIO Protocol object.
 
 =head2 Description
 
-  An object representation of the protocol used in assembling a clone library.
+An object representation of the protocol used in assembling a clone library.
 
-=head3 Attributes of Protocol
+=head2 Attributes of Protocol
 
-  The following are all the attributes of the Protocol object and their data types:
+The following are all the attributes of the Protocol object and their data types:
 
-=begin html
-<pre>
-	type	string
-	description	string
-	name	string
-	id	long
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item description
+
+data type: C<string>
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Protocol
+=head2 Associations of Protocol
 
-  The following are all the objects that are associated with the Protocol:
+The following are all the objects that are associated with the Protocol:
 
-=begin html
-<pre>
-	<a href="#library">Library</a>: 	One to many assoication, use getLibraryCollection to get a collection of associated Library.
-	<a href="#tissue">Tissue</a>: 	One to many assoication, use getTissueCollection to get a collection of associated Tissue.
+=over 4
+
+=item L<"Library">: 	
+
+One to many assoication, use C<getLibraryCollection> to get a collection of associated Library.
+
+=item L<"Tissue">: 	
+
+One to many assoication, use C<getTissueCollection> to get a collection of associated Tissue.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -8871,56 +9027,96 @@ sub getGenericReporterCollection {
 
 =head1 Tissue
 
-  CaCORE::CaBIO::Tissue - Perl extension for Tissue.
+CaCORE::CaBIO::Tissue - Perl extension for Tissue.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Tissue is a Perl object representation of the
-  caBIO Tissue object.
+The CaCORE::CaBIO::Tissue is a Perl object representation of the
+caBIO Tissue object.
 
 =head2 Description
 
-  A group of similar cells united to perform a specific function.
+A group of similar cells united to perform a specific function.
 
-=head3 Attributes of Tissue
+=head2 Attributes of Tissue
 
-  The following are all the attributes of the Tissue object and their data types:
+The following are all the attributes of the Tissue object and their data types:
 
-=begin html
-<pre>
-	type	string
-	cellType	string
-	histology	string
-	id	long
-	sex	string
-	cellLine	string
-	supplier	string
-	developmentalStage	string
-	description	string
-	organ	string
-	name	string
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item cellType
+
+data type: C<string>
+
+=item histology
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
+=item sex
+
+data type: C<string>
+
+=item cellLine
+
+data type: C<string>
+
+=item supplier
+
+data type: C<string>
+
+=item developmentalStage
+
+data type: C<string>
+
+=item description
+
+data type: C<string>
+
+=item organ
+
+data type: C<string>
+
+=item name
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Tissue
+=head2 Associations of Tissue
 
-  The following are all the objects that are associated with the Tissue:
+The following are all the objects that are associated with the Tissue:
 
-=begin html
-<pre>
-	<a href="#protocol">Protocol</a>: 	Many to one assoication, use getProtocol to get the associated Protocol.
-	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
-	<a href="#library">Library</a>: 	One to many assoication, use getLibraryCollection to get a collection of associated Library.
+=over 4
+
+=item L<"Protocol">: 	
+
+Many to one assoication, use C<getProtocol> to get the associated Protocol.
+
+=item L<"Taxon">: 	
+
+Many to one assoication, use C<getTaxon> to get the associated Taxon.
+
+=item L<"Library">: 	
+
+One to many assoication, use C<getLibraryCollection> to get a collection of associated Library.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -8930,51 +9126,76 @@ sub getGenericReporterCollection {
 
 =head1 SNP
 
-  CaCORE::CaBIO::SNP - Perl extension for SNP.
+CaCORE::CaBIO::SNP - Perl extension for SNP.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::SNP is a Perl object representation of the
-  caBIO SNP object.
+The CaCORE::CaBIO::SNP is a Perl object representation of the
+caBIO SNP object.
 
 =head2 Description
 
-  An object representing a Single Nucleotide Polymorphism; provides access to the clones and the trace files from which it was identified, the two most common substitutions at that position, the offset of the SNP in the parent sequence, and a confidence score.
+An object representing a Single Nucleotide Polymorphism; provides access to the clones and the trace files from which it was identified, the two most common substitutions at that position, the offset of the SNP in the parent sequence, and a confidence score.
 
-=head3 Attributes of SNP
+=head2 Attributes of SNP
 
-  The following are all the attributes of the SNP object and their data types:
+The following are all the attributes of the SNP object and their data types:
 
-=begin html
-<pre>
-	alleleA	string
-	validationStatus	string
-	alleleB	string
-	DBSNPID	string
-	id	long
+=over 4
+
+=item alleleA
+
+data type: C<string>
+
+=item validationStatus
+
+data type: C<string>
+
+=item alleleB
+
+data type: C<string>
+
+=item DBSNPID
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of SNP
+=head2 Associations of SNP
 
-  The following are all the objects that are associated with the SNP:
+The following are all the objects that are associated with the SNP:
 
-=begin html
-<pre>
-	<a href="#databasecrossreference">DatabaseCrossReference</a>: 	One to many assoication, use getDatabaseCrossReferenceCollection to get a collection of associated DatabaseCrossReference.
-	<a href="#populationfrequency">PopulationFrequency</a>: 	One to many assoication, use getPopulationFrequencyCollection to get a collection of associated PopulationFrequency.
-	<a href="#location">Location</a>: 	One to many assoication, use getLocationCollection to get a collection of associated Location.
-	<a href="#generelativelocation">GeneRelativeLocation</a>: 	One to many assoication, use getGeneRelativeLocationCollection to get a collection of associated GeneRelativeLocation.
+=over 4
+
+=item L<"DatabaseCrossReference">: 	
+
+One to many assoication, use C<getDatabaseCrossReferenceCollection> to get a collection of associated DatabaseCrossReference.
+
+=item L<"PopulationFrequency">: 	
+
+One to many assoication, use C<getPopulationFrequencyCollection> to get a collection of associated PopulationFrequency.
+
+=item L<"Location">: 	
+
+One to many assoication, use C<getLocationCollection> to get a collection of associated Location.
+
+=item L<"GeneRelativeLocation">: 	
+
+One to many assoication, use C<getGeneRelativeLocationCollection> to get a collection of associated GeneRelativeLocation.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -8984,46 +9205,56 @@ sub getGenericReporterCollection {
 
 =head1 GeneAlias
 
-  CaCORE::CaBIO::GeneAlias - Perl extension for GeneAlias.
+CaCORE::CaBIO::GeneAlias - Perl extension for GeneAlias.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::GeneAlias is a Perl object representation of the
-  caBIO GeneAlias object.
+The CaCORE::CaBIO::GeneAlias is a Perl object representation of the
+caBIO GeneAlias object.
 
 =head2 Description
 
-  This object describes the gene alias.
+This object describes the gene alias.
 
-=head3 Attributes of GeneAlias
+=head2 Attributes of GeneAlias
 
-  The following are all the attributes of the GeneAlias object and their data types:
+The following are all the attributes of the GeneAlias object and their data types:
 
-=begin html
-<pre>
-	name	string
-	type	string
-	id	long
+=over 4
+
+=item name
+
+data type: C<string>
+
+=item type
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of GeneAlias
+=head2 Associations of GeneAlias
 
-  The following are all the objects that are associated with the GeneAlias:
+The following are all the objects that are associated with the GeneAlias:
 
-=begin html
-<pre>
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
+=over 4
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9033,62 +9264,120 @@ sub getGenericReporterCollection {
 
 =head1 Library
 
-  CaCORE::CaBIO::Library - Perl extension for Library.
+CaCORE::CaBIO::Library - Perl extension for Library.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Library is a Perl object representation of the
-  caBIO Library object.
+The CaCORE::CaBIO::Library is a Perl object representation of the
+caBIO Library object.
 
 =head2 Description
 
-  An object representing a CGAP library; provides access to information about: the tissue sample and its method of preparation, the library protocol that was used, the clones contained in the library, and the sequence information derived from the library.
+An object representing a CGAP library; provides access to information about: the tissue sample and its method of preparation, the library protocol that was used, the clones contained in the library, and the sequence information derived from the library.
 
-=head3 Attributes of Library
+=head2 Attributes of Library
 
-  The following are all the attributes of the Library object and their data types:
+The following are all the attributes of the Library object and their data types:
 
-=begin html
-<pre>
-	type	string
-	rsite1	string
-	creationDate	dateTime
-	labHost	string
-	cloneVector	string
-	id	long
-	clonesToDate	long
-	sequencesToDate	long
-	keyword	string
-	description	string
-	cloneProducer	string
-	rsite2	string
-	cloneVectorType	string
-	uniGeneId	long
-	name	string
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item rsite1
+
+data type: C<string>
+
+=item creationDate
+
+data type: C<dateTime>
+
+=item labHost
+
+data type: C<string>
+
+=item cloneVector
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
+=item clonesToDate
+
+data type: C<long>
+
+=item sequencesToDate
+
+data type: C<long>
+
+=item keyword
+
+data type: C<string>
+
+=item description
+
+data type: C<string>
+
+=item cloneProducer
+
+data type: C<string>
+
+=item rsite2
+
+data type: C<string>
+
+=item cloneVectorType
+
+data type: C<string>
+
+=item uniGeneId
+
+data type: C<long>
+
+=item name
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Library
+=head2 Associations of Library
 
-  The following are all the objects that are associated with the Library:
+The following are all the objects that are associated with the Library:
 
-=begin html
-<pre>
-	<a href="#protocol">Protocol</a>: 	Many to one assoication, use getProtocol to get the associated Protocol.
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#clone">Clone</a>: 	One to many assoication, use getCloneCollection to get a collection of associated Clone.
-	<a href="#tissue">Tissue</a>: 	Many to one assoication, use getTissue to get the associated Tissue.
-	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
+=over 4
+
+=item L<"Protocol">: 	
+
+Many to one assoication, use C<getProtocol> to get the associated Protocol.
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"Clone">: 	
+
+One to many assoication, use C<getCloneCollection> to get a collection of associated Clone.
+
+=item L<"Tissue">: 	
+
+Many to one assoication, use C<getTissue> to get the associated Tissue.
+
+=item L<"Histopathology">: 	
+
+One to many assoication, use C<getHistopathologyCollection> to get a collection of associated Histopathology.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9098,50 +9387,72 @@ sub getGenericReporterCollection {
 
 =head1 Clone
 
-  CaCORE::CaBIO::Clone - Perl extension for Clone.
+CaCORE::CaBIO::Clone - Perl extension for Clone.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Clone is a Perl object representation of the
-  caBIO Clone object.
+The CaCORE::CaBIO::Clone is a Perl object representation of the
+caBIO Clone object.
 
 =head2 Description
 
-  An object used to hold information pertaining to I.M.A.G.E. clones; provides access to sequence information, associated trace files, and the clone's library.
+An object used to hold information pertaining to I.M.A.G.E. clones; provides access to sequence information, associated trace files, and the clone's library.
 
-=head3 Attributes of Clone
+=head2 Attributes of Clone
 
-  The following are all the attributes of the Clone object and their data types:
+The following are all the attributes of the Clone object and their data types:
 
-=begin html
-<pre>
-	type	string
-	insertSize	long
-	name	string
-	id	long
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item insertSize
+
+data type: C<long>
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Clone
+=head2 Associations of Clone
 
-  The following are all the objects that are associated with the Clone:
+The following are all the objects that are associated with the Clone:
 
-=begin html
-<pre>
-	<a href="#taxon">Taxon</a>: 	One to many assoication, use getTaxonCollection to get a collection of associated Taxon.
-	<a href="#clonerelativelocation">CloneRelativeLocation</a>: 	One to many assoication, use getCloneRelativeLocationCollection to get a collection of associated CloneRelativeLocation.
-	<a href="#library">Library</a>: 	Many to one assoication, use getLibrary to get the associated Library.
-	<a href="#nucleicacidsequence">NucleicAcidSequence</a>: 	One to many assoication, use getNucleicAcidSequenceCollection to get a collection of associated NucleicAcidSequence.
+=over 4
+
+=item L<"Taxon">: 	
+
+One to many assoication, use C<getTaxonCollection> to get a collection of associated Taxon.
+
+=item L<"CloneRelativeLocation">: 	
+
+One to many assoication, use C<getCloneRelativeLocationCollection> to get a collection of associated CloneRelativeLocation.
+
+=item L<"Library">: 	
+
+Many to one assoication, use C<getLibrary> to get the associated Library.
+
+=item L<"NucleicAcidSequence">: 	
+
+One to many assoication, use C<getNucleicAcidSequenceCollection> to get a collection of associated NucleicAcidSequence.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9151,48 +9462,64 @@ sub getGenericReporterCollection {
 
 =head1 Target
 
-  CaCORE::CaBIO::Target - Perl extension for Target.
+CaCORE::CaBIO::Target - Perl extension for Target.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Target is a Perl object representation of the
-  caBIO Target object.
+The CaCORE::CaBIO::Target is a Perl object representation of the
+caBIO Target object.
 
 =head2 Description
 
-  A gene thought to be at the root of a disease etiology, and which is targeted for therapeutic intervention in a clinical trial.
+A gene thought to be at the root of a disease etiology, and which is targeted for therapeutic intervention in a clinical trial.
 
-=head3 Attributes of Target
+=head2 Attributes of Target
 
-  The following are all the attributes of the Target object and their data types:
+The following are all the attributes of the Target object and their data types:
 
-=begin html
-<pre>
-	type	string
-	name	string
-	id	long
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Target
+=head2 Associations of Target
 
-  The following are all the objects that are associated with the Target:
+The following are all the objects that are associated with the Target:
 
-=begin html
-<pre>
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#agent">Agent</a>: 	One to many assoication, use getAgentCollection to get a collection of associated Agent.
-	<a href="#anomaly">Anomaly</a>: 	One to many assoication, use getAnomalyCollection to get a collection of associated Anomaly.
+=over 4
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"Agent">: 	
+
+One to many assoication, use C<getAgentCollection> to get a collection of associated Agent.
+
+=item L<"Anomaly">: 	
+
+One to many assoication, use C<getAnomalyCollection> to get a collection of associated Anomaly.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9202,47 +9529,60 @@ sub getGenericReporterCollection {
 
 =head1 Location
 
-  CaCORE::CaBIO::Location - Perl extension for Location.
+CaCORE::CaBIO::Location - Perl extension for Location.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Location is a Perl object representation of the
-  caBIO Location object.
+The CaCORE::CaBIO::Location is a Perl object representation of the
+caBIO Location object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of Location
 
-  The following are all the attributes of the Location object and their data types:
+=head2 Attributes of Location
 
-=begin html
-<pre>
-	id	long
+The following are all the attributes of the Location object and their data types:
+
+=over 4
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Location
+=head2 Associations of Location
 
-  The following are all the objects that are associated with the Location:
+The following are all the objects that are associated with the Location:
 
-=begin html
-<pre>
-	<a href="#snp">SNP</a>: 	Many to one assoication, use getSNP to get the associated SNP.
-	<a href="#gene">Gene</a>: 	Many to one assoication, use getGene to get the associated Gene.
-	<a href="#nucleicacidsequence">NucleicAcidSequence</a>: 	Many to one assoication, use getNucleicAcidSequence to get the associated NucleicAcidSequence.
-	<a href="#chromosome">Chromosome</a>: 	Many to one assoication, use getChromosome to get the associated Chromosome.
+=over 4
+
+=item L<"SNP">: 	
+
+Many to one assoication, use C<getSNP> to get the associated SNP.
+
+=item L<"Gene">: 	
+
+Many to one assoication, use C<getGene> to get the associated Gene.
+
+=item L<"NucleicAcidSequence">: 	
+
+Many to one assoication, use C<getNucleicAcidSequence> to get the associated NucleicAcidSequence.
+
+=item L<"Chromosome">: 	
+
+Many to one assoication, use C<getChromosome> to get the associated Chromosome.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9252,46 +9592,56 @@ sub getGenericReporterCollection {
 
 =head1 CloneRelativeLocation
 
-  CaCORE::CaBIO::CloneRelativeLocation - Perl extension for CloneRelativeLocation.
+CaCORE::CaBIO::CloneRelativeLocation - Perl extension for CloneRelativeLocation.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::CloneRelativeLocation is a Perl object representation of the
-  caBIO CloneRelativeLocation object.
+The CaCORE::CaBIO::CloneRelativeLocation is a Perl object representation of the
+caBIO CloneRelativeLocation object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of CloneRelativeLocation
 
-  The following are all the attributes of the CloneRelativeLocation object and their data types:
+=head2 Attributes of CloneRelativeLocation
 
-=begin html
-<pre>
-	type	string
-	id	long
+The following are all the attributes of the CloneRelativeLocation object and their data types:
+
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of CloneRelativeLocation
+=head2 Associations of CloneRelativeLocation
 
-  The following are all the objects that are associated with the CloneRelativeLocation:
+The following are all the objects that are associated with the CloneRelativeLocation:
 
-=begin html
-<pre>
-	<a href="#clone">Clone</a>: 	Many to one assoication, use getClone to get the associated Clone.
-	<a href="#nucleicacidsequence">NucleicAcidSequence</a>: 	Many to one assoication, use getNucleicAcidSequence to get the associated NucleicAcidSequence.
+=over 4
+
+=item L<"Clone">: 	
+
+Many to one assoication, use C<getClone> to get the associated Clone.
+
+=item L<"NucleicAcidSequence">: 	
+
+Many to one assoication, use C<getNucleicAcidSequence> to get the associated NucleicAcidSequence.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9301,52 +9651,80 @@ sub getGenericReporterCollection {
 
 =head1 NucleicAcidSequence
 
-  CaCORE::CaBIO::NucleicAcidSequence - Perl extension for NucleicAcidSequence.
+CaCORE::CaBIO::NucleicAcidSequence - Perl extension for NucleicAcidSequence.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::NucleicAcidSequence is a Perl object representation of the
-  caBIO NucleicAcidSequence object.
+The CaCORE::CaBIO::NucleicAcidSequence is a Perl object representation of the
+caBIO NucleicAcidSequence object.
 
 =head2 Description
 
-  An object representation of a nucleic acid sequence; provides access to the clones from which it was derived.
+An object representation of a nucleic acid sequence; provides access to the clones from which it was derived.
 
-=head3 Attributes of NucleicAcidSequence
+=head2 Attributes of NucleicAcidSequence
 
-  The following are all the attributes of the NucleicAcidSequence object and their data types:
+The following are all the attributes of the NucleicAcidSequence object and their data types:
 
-=begin html
-<pre>
-	value	string
-	type	string
-	length	long
-	accessionNumber	string
-	id	long
-	accessionNumberVersion	string
+=over 4
+
+=item value
+
+data type: C<string>
+
+=item type
+
+data type: C<string>
+
+=item length
+
+data type: C<long>
+
+=item accessionNumber
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
+=item accessionNumberVersion
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of NucleicAcidSequence
+=head2 Associations of NucleicAcidSequence
 
-  The following are all the objects that are associated with the NucleicAcidSequence:
+The following are all the objects that are associated with the NucleicAcidSequence:
 
-=begin html
-<pre>
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#databasecrossreference">DatabaseCrossReference</a>: 	One to many assoication, use getDatabaseCrossReferenceCollection to get a collection of associated DatabaseCrossReference.
-	<a href="#location">Location</a>: 	Many to one assoication, use getLocation to get the associated Location.
-	<a href="#clonerelativelocation">CloneRelativeLocation</a>: 	Many to one assoication, use getCloneRelativeLocation to get the associated CloneRelativeLocation.
+=over 4
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"DatabaseCrossReference">: 	
+
+One to many assoication, use C<getDatabaseCrossReferenceCollection> to get a collection of associated DatabaseCrossReference.
+
+=item L<"Location">: 	
+
+Many to one assoication, use C<getLocation> to get the associated Location.
+
+=item L<"CloneRelativeLocation">: 	
+
+Many to one assoication, use C<getCloneRelativeLocation> to get the associated CloneRelativeLocation.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9356,48 +9734,64 @@ sub getGenericReporterCollection {
 
 =head1 DiseaseOntology
 
-  CaCORE::CaBIO::DiseaseOntology - Perl extension for DiseaseOntology.
+CaCORE::CaBIO::DiseaseOntology - Perl extension for DiseaseOntology.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::DiseaseOntology is a Perl object representation of the
-  caBIO DiseaseOntology object.
+The CaCORE::CaBIO::DiseaseOntology is a Perl object representation of the
+caBIO DiseaseOntology object.
 
 =head2 Description
 
-  Disease objects specify a disease name and ID; disease objects also provide access to: ontological relations to other diseases; clinical trial protocols treating the disease; and specific histologies associated with instances of the disease.
+Disease objects specify a disease name and ID; disease objects also provide access to: ontological relations to other diseases; clinical trial protocols treating the disease; and specific histologies associated with instances of the disease.
 
-=head3 Attributes of DiseaseOntology
+=head2 Attributes of DiseaseOntology
 
-  The following are all the attributes of the DiseaseOntology object and their data types:
+The following are all the attributes of the DiseaseOntology object and their data types:
 
-=begin html
-<pre>
-	name	string
-	id	long
+=over 4
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of DiseaseOntology
+=head2 Associations of DiseaseOntology
 
-  The following are all the objects that are associated with the DiseaseOntology:
+The following are all the objects that are associated with the DiseaseOntology:
 
-=begin html
-<pre>
-	<a href="#parentdiseaseontologyrelationship">ParentDiseaseOntologyRelationship</a>: 	One to many assoication, use getParentDiseaseOntologyRelationshipCollection to get a collection of associated ParentDiseaseOntologyRelationship.
-	<a href="#childdiseaseontologyrelationship">ChildDiseaseOntologyRelationship</a>: 	One to many assoication, use getChildDiseaseOntologyRelationshipCollection to get a collection of associated ChildDiseaseOntologyRelationship.
-	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
-	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	One to many assoication, use getClinicalTrialProtocolCollection to get a collection of associated ClinicalTrialProtocol.
+=over 4
+
+=item L<"ParentDiseaseOntologyRelationship">: 	
+
+One to many assoication, use C<getParentDiseaseOntologyRelationshipCollection> to get a collection of associated ParentDiseaseOntologyRelationship.
+
+=item L<"ChildDiseaseOntologyRelationship">: 	
+
+One to many assoication, use C<getChildDiseaseOntologyRelationshipCollection> to get a collection of associated ChildDiseaseOntologyRelationship.
+
+=item L<"Histopathology">: 	
+
+One to many assoication, use C<getHistopathologyCollection> to get a collection of associated Histopathology.
+
+=item L<"ClinicalTrialProtocol">: 	
+
+One to many assoication, use C<getClinicalTrialProtocolCollection> to get a collection of associated ClinicalTrialProtocol.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9407,59 +9801,108 @@ sub getGenericReporterCollection {
 
 =head1 ClinicalTrialProtocol
 
-  CaCORE::CaBIO::ClinicalTrialProtocol - Perl extension for ClinicalTrialProtocol.
+CaCORE::CaBIO::ClinicalTrialProtocol - Perl extension for ClinicalTrialProtocol.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::ClinicalTrialProtocol is a Perl object representation of the
-  caBIO ClinicalTrialProtocol object.
+The CaCORE::CaBIO::ClinicalTrialProtocol is a Perl object representation of the
+caBIO ClinicalTrialProtocol object.
 
 =head2 Description
 
-  The protocol associated with a clinical trial; organizes administrative information about the trial such as Organization ID, participants, phase, etc., and provides access to the administered Agents.
+The protocol associated with a clinical trial; organizes administrative information about the trial such as Organization ID, participants, phase, etc., and provides access to the administered Agents.
 
-=head3 Attributes of ClinicalTrialProtocol
+=head2 Attributes of ClinicalTrialProtocol
 
-  The following are all the attributes of the ClinicalTrialProtocol object and their data types:
+The following are all the attributes of the ClinicalTrialProtocol object and their data types:
 
-=begin html
-<pre>
-	currentStatus	string
-	participationType	string
-	treatmentFlag	string
-	leadOrganizationId	string
-	NIHAdminCode	string
-	title	string
-	id	long
-	PDQIdentifier	string
-	documentNumber	string
-	leadOrganizationName	string
-	phase	string
-	PIName	string
-	currentStatusDate	dateTime
+=over 4
+
+=item currentStatus
+
+data type: C<string>
+
+=item participationType
+
+data type: C<string>
+
+=item treatmentFlag
+
+data type: C<string>
+
+=item leadOrganizationId
+
+data type: C<string>
+
+=item NIHAdminCode
+
+data type: C<string>
+
+=item title
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
+=item PDQIdentifier
+
+data type: C<string>
+
+=item documentNumber
+
+data type: C<string>
+
+=item leadOrganizationName
+
+data type: C<string>
+
+=item phase
+
+data type: C<string>
+
+=item PIName
+
+data type: C<string>
+
+=item currentStatusDate
+
+data type: C<dateTime>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of ClinicalTrialProtocol
+=head2 Associations of ClinicalTrialProtocol
 
-  The following are all the objects that are associated with the ClinicalTrialProtocol:
+The following are all the objects that are associated with the ClinicalTrialProtocol:
 
-=begin html
-<pre>
-	<a href="#agent">Agent</a>: 	One to many assoication, use getAgentCollection to get a collection of associated Agent.
-	<a href="#protocolassociation">ProtocolAssociation</a>: 	One to many assoication, use getProtocolAssociationCollection to get a collection of associated ProtocolAssociation.
-	<a href="#diseaseontology">DiseaseOntology</a>: 	One to many assoication, use getDiseaseOntologyCollection to get a collection of associated DiseaseOntology.
-	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
+=over 4
+
+=item L<"Agent">: 	
+
+One to many assoication, use C<getAgentCollection> to get a collection of associated Agent.
+
+=item L<"ProtocolAssociation">: 	
+
+One to many assoication, use C<getProtocolAssociationCollection> to get a collection of associated ProtocolAssociation.
+
+=item L<"DiseaseOntology">: 	
+
+One to many assoication, use C<getDiseaseOntologyCollection> to get a collection of associated DiseaseOntology.
+
+=item L<"Histopathology">: 	
+
+One to many assoication, use C<getHistopathologyCollection> to get a collection of associated Histopathology.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9469,49 +9912,68 @@ sub getGenericReporterCollection {
 
 =head1 ProtocolAssociation
 
-  CaCORE::CaBIO::ProtocolAssociation - Perl extension for ProtocolAssociation.
+CaCORE::CaBIO::ProtocolAssociation - Perl extension for ProtocolAssociation.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::ProtocolAssociation is a Perl object representation of the
-  caBIO ProtocolAssociation object.
+The CaCORE::CaBIO::ProtocolAssociation is a Perl object representation of the
+caBIO ProtocolAssociation object.
 
 =head2 Description
 
-  An association class relating between Clinical Trial Protocols to Diseases.
+An association class relating between Clinical Trial Protocols to Diseases.
 
-=head3 Attributes of ProtocolAssociation
+=head2 Attributes of ProtocolAssociation
 
-  The following are all the attributes of the ProtocolAssociation object and their data types:
+The following are all the attributes of the ProtocolAssociation object and their data types:
 
-=begin html
-<pre>
-	diseaseSubCategory	string
-	CTEPNAME	string
-	IMTCODE	long
-	id	long
-	diseaseCategory	string
+=over 4
+
+=item diseaseSubCategory
+
+data type: C<string>
+
+=item CTEPNAME
+
+data type: C<string>
+
+=item IMTCODE
+
+data type: C<long>
+
+=item id
+
+data type: C<long>
+
+=item diseaseCategory
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of ProtocolAssociation
+=head2 Associations of ProtocolAssociation
 
-  The following are all the objects that are associated with the ProtocolAssociation:
+The following are all the objects that are associated with the ProtocolAssociation:
 
-=begin html
-<pre>
-	<a href="#diseaseontology">DiseaseOntology</a>: 	Many to one assoication, use getDiseaseOntology to get the associated DiseaseOntology.
-	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	Many to one assoication, use getClinicalTrialProtocol to get the associated ClinicalTrialProtocol.
+=over 4
+
+=item L<"DiseaseOntology">: 	
+
+Many to one assoication, use C<getDiseaseOntology> to get the associated DiseaseOntology.
+
+=item L<"ClinicalTrialProtocol">: 	
+
+Many to one assoication, use C<getClinicalTrialProtocol> to get the associated ClinicalTrialProtocol.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9521,50 +9983,72 @@ sub getGenericReporterCollection {
 
 =head1 Pathway
 
-  CaCORE::CaBIO::Pathway - Perl extension for Pathway.
+CaCORE::CaBIO::Pathway - Perl extension for Pathway.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Pathway is a Perl object representation of the
-  caBIO Pathway object.
+The CaCORE::CaBIO::Pathway is a Perl object representation of the
+caBIO Pathway object.
 
 =head2 Description
 
-  An object representation of a molecular/cellular pathway compiled by BioCarta. Pathways are associated with specific Taxon objects, and contain multiple Gene objects, which may be Targets for treatment.
+An object representation of a molecular/cellular pathway compiled by BioCarta. Pathways are associated with specific Taxon objects, and contain multiple Gene objects, which may be Targets for treatment.
 
-=head3 Attributes of Pathway
+=head2 Attributes of Pathway
 
-  The following are all the attributes of the Pathway object and their data types:
+The following are all the attributes of the Pathway object and their data types:
 
-=begin html
-<pre>
-	description	string
-	diagram	string
-	name	string
-	id	long
-	displayValue	string
+=over 4
+
+=item description
+
+data type: C<string>
+
+=item diagram
+
+data type: C<string>
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
+=item displayValue
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Pathway
+=head2 Associations of Pathway
 
-  The following are all the objects that are associated with the Pathway:
+The following are all the objects that are associated with the Pathway:
 
-=begin html
-<pre>
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
-	<a href="#taxon">Taxon</a>: 	Many to one assoication, use getTaxon to get the associated Taxon.
+=over 4
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"Histopathology">: 	
+
+One to many assoication, use C<getHistopathologyCollection> to get a collection of associated Histopathology.
+
+=item L<"Taxon">: 	
+
+Many to one assoication, use C<getTaxon> to get the associated Taxon.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9574,50 +10058,72 @@ sub getGenericReporterCollection {
 
 =head1 OrganOntology
 
-  CaCORE::CaBIO::OrganOntology - Perl extension for OrganOntology.
+CaCORE::CaBIO::OrganOntology - Perl extension for OrganOntology.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::OrganOntology is a Perl object representation of the
-  caBIO OrganOntology object.
+The CaCORE::CaBIO::OrganOntology is a Perl object representation of the
+caBIO OrganOntology object.
 
 =head2 Description
 
-  A representation of an organ whose name occurs in a controlled vocabulary; provides access to any Histopathology objects for the organ, and, because it is $quot;ontolog-able,$quot; provides access to its ancestral and descendant terms in the vocabulary.
+A representation of an organ whose name occurs in a controlled vocabulary; provides access to any Histopathology objects for the organ, and, because it is $quot;ontolog-able,$quot; provides access to its ancestral and descendant terms in the vocabulary.
 
-=head3 Attributes of OrganOntology
+=head2 Attributes of OrganOntology
 
-  The following are all the attributes of the OrganOntology object and their data types:
+The following are all the attributes of the OrganOntology object and their data types:
 
-=begin html
-<pre>
-	name	string
-	id	long
+=over 4
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of OrganOntology
+=head2 Associations of OrganOntology
 
-  The following are all the objects that are associated with the OrganOntology:
+The following are all the objects that are associated with the OrganOntology:
 
-=begin html
-<pre>
-	<a href="#parentorganontologyrelationship">ParentOrganOntologyRelationship</a>: 	One to many assoication, use getParentOrganOntologyRelationshipCollection to get a collection of associated ParentOrganOntologyRelationship.
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#expressionfeature">ExpressionFeature</a>: 	One to many assoication, use getExpressionFeatureCollection to get a collection of associated ExpressionFeature.
-	<a href="#histopathology">Histopathology</a>: 	One to many assoication, use getHistopathologyCollection to get a collection of associated Histopathology.
-	<a href="#childorganontologyrelationship">ChildOrganOntologyRelationship</a>: 	One to many assoication, use getChildOrganOntologyRelationshipCollection to get a collection of associated ChildOrganOntologyRelationship.
-	<a href="#anomaly">Anomaly</a>: 	One to many assoication, use getAnomalyCollection to get a collection of associated Anomaly.
+=over 4
+
+=item L<"ParentOrganOntologyRelationship">: 	
+
+One to many assoication, use C<getParentOrganOntologyRelationshipCollection> to get a collection of associated ParentOrganOntologyRelationship.
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"ExpressionFeature">: 	
+
+One to many assoication, use C<getExpressionFeatureCollection> to get a collection of associated ExpressionFeature.
+
+=item L<"Histopathology">: 	
+
+One to many assoication, use C<getHistopathologyCollection> to get a collection of associated Histopathology.
+
+=item L<"ChildOrganOntologyRelationship">: 	
+
+One to many assoication, use C<getChildOrganOntologyRelationshipCollection> to get a collection of associated ChildOrganOntologyRelationship.
+
+=item L<"Anomaly">: 	
+
+One to many assoication, use C<getAnomalyCollection> to get a collection of associated Anomaly.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9627,46 +10133,56 @@ sub getGenericReporterCollection {
 
 =head1 OrganOntologyRelationship
 
-  CaCORE::CaBIO::OrganOntologyRelationship - Perl extension for OrganOntologyRelationship.
+CaCORE::CaBIO::OrganOntologyRelationship - Perl extension for OrganOntologyRelationship.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::OrganOntologyRelationship is a Perl object representation of the
-  caBIO OrganOntologyRelationship object.
+The CaCORE::CaBIO::OrganOntologyRelationship is a Perl object representation of the
+caBIO OrganOntologyRelationship object.
 
 =head2 Description
 
-  Organ relationship object describes relationships among organs.
+Organ relationship object describes relationships among organs.
 
-=head3 Attributes of OrganOntologyRelationship
+=head2 Attributes of OrganOntologyRelationship
 
-  The following are all the attributes of the OrganOntologyRelationship object and their data types:
+The following are all the attributes of the OrganOntologyRelationship object and their data types:
 
-=begin html
-<pre>
-	type	string
-	id	long
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of OrganOntologyRelationship
+=head2 Associations of OrganOntologyRelationship
 
-  The following are all the objects that are associated with the OrganOntologyRelationship:
+The following are all the objects that are associated with the OrganOntologyRelationship:
 
-=begin html
-<pre>
-	<a href="#childorganontology">ChildOrganOntology</a>: 	Many to one assoication, use getChildOrganOntology to get the associated ChildOrganOntology.
-	<a href="#parentorganontology">ParentOrganOntology</a>: 	Many to one assoication, use getParentOrganOntology to get the associated ParentOrganOntology.
+=over 4
+
+=item L<"ChildOrganOntology">: 	
+
+Many to one assoication, use C<getChildOrganOntology> to get the associated ChildOrganOntology.
+
+=item L<"ParentOrganOntology">: 	
+
+Many to one assoication, use C<getParentOrganOntology> to get the associated ParentOrganOntology.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9676,57 +10192,100 @@ sub getGenericReporterCollection {
 
 =head1 Histopathology
 
-  CaCORE::CaBIO::Histopathology - Perl extension for Histopathology.
+CaCORE::CaBIO::Histopathology - Perl extension for Histopathology.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Histopathology is a Perl object representation of the
-  caBIO Histopathology object.
+The CaCORE::CaBIO::Histopathology is a Perl object representation of the
+caBIO Histopathology object.
 
 =head2 Description
 
-  An object representing anatomical changes in a diseased tissue sample associated with an expression experiment; captures the relationship between organ and disease.
+An object representing anatomical changes in a diseased tissue sample associated with an expression experiment; captures the relationship between organ and disease.
 
-=head3 Attributes of Histopathology
+=head2 Attributes of Histopathology
 
-  The following are all the attributes of the Histopathology object and their data types:
+The following are all the attributes of the Histopathology object and their data types:
 
-=begin html
-<pre>
-	comments	string
-	relationalOperation	string
-	tumorIncidenceRate	float
-	ageOfOnset	string
-	id	long
-	microscopicDescription	string
-	grossDescription	string
-	survivalInfo	string
+=over 4
+
+=item comments
+
+data type: C<string>
+
+=item relationalOperation
+
+data type: C<string>
+
+=item tumorIncidenceRate
+
+data type: C<float>
+
+=item ageOfOnset
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
+=item microscopicDescription
+
+data type: C<string>
+
+=item grossDescription
+
+data type: C<string>
+
+=item survivalInfo
+
+data type: C<string>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Histopathology
+=head2 Associations of Histopathology
 
-  The following are all the objects that are associated with the Histopathology:
+The following are all the objects that are associated with the Histopathology:
 
-=begin html
-<pre>
-	<a href="#metastasis">Metastasis</a>: 	One to many assoication, use getMetastasisCollection to get a collection of associated Metastasis.
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#library">Library</a>: 	One to many assoication, use getLibraryCollection to get a collection of associated Library.
-	<a href="#diseaseontology">DiseaseOntology</a>: 	Many to one assoication, use getDiseaseOntology to get the associated DiseaseOntology.
-	<a href="#organontology">OrganOntology</a>: 	Many to one assoication, use getOrganOntology to get the associated OrganOntology.
-	<a href="#clinicaltrialprotocol">ClinicalTrialProtocol</a>: 	One to many assoication, use getClinicalTrialProtocolCollection to get a collection of associated ClinicalTrialProtocol.
-	<a href="#anomaly">Anomaly</a>: 	One to many assoication, use getAnomalyCollection to get a collection of associated Anomaly.
+=over 4
+
+=item L<"Metastasis">: 	
+
+One to many assoication, use C<getMetastasisCollection> to get a collection of associated Metastasis.
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"Library">: 	
+
+One to many assoication, use C<getLibraryCollection> to get a collection of associated Library.
+
+=item L<"DiseaseOntology">: 	
+
+Many to one assoication, use C<getDiseaseOntology> to get the associated DiseaseOntology.
+
+=item L<"OrganOntology">: 	
+
+Many to one assoication, use C<getOrganOntology> to get the associated OrganOntology.
+
+=item L<"ClinicalTrialProtocol">: 	
+
+One to many assoication, use C<getClinicalTrialProtocolCollection> to get a collection of associated ClinicalTrialProtocol.
+
+=item L<"Anomaly">: 	
+
+One to many assoication, use C<getAnomalyCollection> to get a collection of associated Anomaly.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9736,47 +10295,60 @@ sub getGenericReporterCollection {
 
 =head1 GeneOntology
 
-  CaCORE::CaBIO::GeneOntology - Perl extension for GeneOntology.
+CaCORE::CaBIO::GeneOntology - Perl extension for GeneOntology.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::GeneOntology is a Perl object representation of the
-  caBIO GeneOntology object.
+The CaCORE::CaBIO::GeneOntology is a Perl object representation of the
+caBIO GeneOntology object.
 
 =head2 Description
 
-  An object providing entry to a Gene object's position in the Gene Ontology Consortium's controlled vocabularies, as recorded by LocusLink; provides access to gene objects corresponding to the ontological term, as well as to ancestor and descendant terms in the ontology tree.
+An object providing entry to a Gene object's position in the Gene Ontology Consortium's controlled vocabularies, as recorded by LocusLink; provides access to gene objects corresponding to the ontological term, as well as to ancestor and descendant terms in the ontology tree.
 
-=head3 Attributes of GeneOntology
+=head2 Attributes of GeneOntology
 
-  The following are all the attributes of the GeneOntology object and their data types:
+The following are all the attributes of the GeneOntology object and their data types:
 
-=begin html
-<pre>
-	name	string
-	id	long
+=over 4
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of GeneOntology
+=head2 Associations of GeneOntology
 
-  The following are all the objects that are associated with the GeneOntology:
+The following are all the objects that are associated with the GeneOntology:
 
-=begin html
-<pre>
-	<a href="#childgeneontologyrelationship">ChildGeneOntologyRelationship</a>: 	One to many assoication, use getChildGeneOntologyRelationshipCollection to get a collection of associated ChildGeneOntologyRelationship.
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#parentgeneontologyrelationship">ParentGeneOntologyRelationship</a>: 	One to many assoication, use getParentGeneOntologyRelationshipCollection to get a collection of associated ParentGeneOntologyRelationship.
+=over 4
+
+=item L<"ChildGeneOntologyRelationship">: 	
+
+One to many assoication, use C<getChildGeneOntologyRelationshipCollection> to get a collection of associated ChildGeneOntologyRelationship.
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"ParentGeneOntologyRelationship">: 	
+
+One to many assoication, use C<getParentGeneOntologyRelationshipCollection> to get a collection of associated ParentGeneOntologyRelationship.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9786,46 +10358,56 @@ sub getGenericReporterCollection {
 
 =head1 GeneOntologyRelationship
 
-  CaCORE::CaBIO::GeneOntologyRelationship - Perl extension for GeneOntologyRelationship.
+CaCORE::CaBIO::GeneOntologyRelationship - Perl extension for GeneOntologyRelationship.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::GeneOntologyRelationship is a Perl object representation of the
-  caBIO GeneOntologyRelationship object.
+The CaCORE::CaBIO::GeneOntologyRelationship is a Perl object representation of the
+caBIO GeneOntologyRelationship object.
 
 =head2 Description
 
-  This object specifies GoOntologyrRelationship.
+This object specifies GoOntologyrRelationship.
 
-=head3 Attributes of GeneOntologyRelationship
+=head2 Attributes of GeneOntologyRelationship
 
-  The following are all the attributes of the GeneOntologyRelationship object and their data types:
+The following are all the attributes of the GeneOntologyRelationship object and their data types:
 
-=begin html
-<pre>
-	relationshipType	string
-	id	long
+=over 4
+
+=item relationshipType
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of GeneOntologyRelationship
+=head2 Associations of GeneOntologyRelationship
 
-  The following are all the objects that are associated with the GeneOntologyRelationship:
+The following are all the objects that are associated with the GeneOntologyRelationship:
 
-=begin html
-<pre>
-	<a href="#parentgeneontology">ParentGeneOntology</a>: 	Many to one assoication, use getParentGeneOntology to get the associated ParentGeneOntology.
-	<a href="#childgeneontology">ChildGeneOntology</a>: 	Many to one assoication, use getChildGeneOntology to get the associated ChildGeneOntology.
+=over 4
+
+=item L<"ParentGeneOntology">: 	
+
+Many to one assoication, use C<getParentGeneOntology> to get the associated ParentGeneOntology.
+
+=item L<"ChildGeneOntology">: 	
+
+Many to one assoication, use C<getChildGeneOntology> to get the associated ChildGeneOntology.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9835,46 +10417,56 @@ sub getGenericReporterCollection {
 
 =head1 DiseaseOntologyRelationship
 
-  CaCORE::CaBIO::DiseaseOntologyRelationship - Perl extension for DiseaseOntologyRelationship.
+CaCORE::CaBIO::DiseaseOntologyRelationship - Perl extension for DiseaseOntologyRelationship.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::DiseaseOntologyRelationship is a Perl object representation of the
-  caBIO DiseaseOntologyRelationship object.
+The CaCORE::CaBIO::DiseaseOntologyRelationship is a Perl object representation of the
+caBIO DiseaseOntologyRelationship object.
 
 =head2 Description
 
-  The diseaser relationship specifies the relationship among diseases.
+The diseaser relationship specifies the relationship among diseases.
 
-=head3 Attributes of DiseaseOntologyRelationship
+=head2 Attributes of DiseaseOntologyRelationship
 
-  The following are all the attributes of the DiseaseOntologyRelationship object and their data types:
+The following are all the attributes of the DiseaseOntologyRelationship object and their data types:
 
-=begin html
-<pre>
-	type	string
-	id	long
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of DiseaseOntologyRelationship
+=head2 Associations of DiseaseOntologyRelationship
 
-  The following are all the objects that are associated with the DiseaseOntologyRelationship:
+The following are all the objects that are associated with the DiseaseOntologyRelationship:
 
-=begin html
-<pre>
-	<a href="#childdiseaseontology">ChildDiseaseOntology</a>: 	Many to one assoication, use getChildDiseaseOntology to get the associated ChildDiseaseOntology.
-	<a href="#parentdiseaseontology">ParentDiseaseOntology</a>: 	Many to one assoication, use getParentDiseaseOntology to get the associated ParentDiseaseOntology.
+=over 4
+
+=item L<"ChildDiseaseOntology">: 	
+
+Many to one assoication, use C<getChildDiseaseOntology> to get the associated ChildDiseaseOntology.
+
+=item L<"ParentDiseaseOntology">: 	
+
+Many to one assoication, use C<getParentDiseaseOntology> to get the associated ParentDiseaseOntology.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9884,47 +10476,60 @@ sub getGenericReporterCollection {
 
 =head1 Anomaly
 
-  CaCORE::CaBIO::Anomaly - Perl extension for Anomaly.
+CaCORE::CaBIO::Anomaly - Perl extension for Anomaly.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Anomaly is a Perl object representation of the
-  caBIO Anomaly object.
+The CaCORE::CaBIO::Anomaly is a Perl object representation of the
+caBIO Anomaly object.
 
 =head2 Description
 
-  An irregularity in either the expression of a gene or its structure (i.e., a mutation).
+An irregularity in either the expression of a gene or its structure (i.e., a mutation).
 
-=head3 Attributes of Anomaly
+=head2 Attributes of Anomaly
 
-  The following are all the attributes of the Anomaly object and their data types:
+The following are all the attributes of the Anomaly object and their data types:
 
-=begin html
-<pre>
-	description	string
-	id	long
+=over 4
+
+=item description
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Anomaly
+=head2 Associations of Anomaly
 
-  The following are all the objects that are associated with the Anomaly:
+The following are all the objects that are associated with the Anomaly:
 
-=begin html
-<pre>
-	<a href="#organontology">OrganOntology</a>: 	One to many assoication, use getOrganOntologyCollection to get a collection of associated OrganOntology.
-	<a href="#histopathology">Histopathology</a>: 	Many to one assoication, use getHistopathology to get the associated Histopathology.
-	<a href="#vocabulary">Vocabulary</a>: 	One to many assoication, use getVocabularyCollection to get a collection of associated Vocabulary.
+=over 4
+
+=item L<"OrganOntology">: 	
+
+One to many assoication, use C<getOrganOntologyCollection> to get a collection of associated OrganOntology.
+
+=item L<"Histopathology">: 	
+
+Many to one assoication, use C<getHistopathology> to get the associated Histopathology.
+
+=item L<"Vocabulary">: 	
+
+One to many assoication, use C<getVocabularyCollection> to get a collection of associated Vocabulary.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9934,50 +10539,72 @@ sub getGenericReporterCollection {
 
 =head1 PopulationFrequency
 
-  CaCORE::CaBIO::PopulationFrequency - Perl extension for PopulationFrequency.
+CaCORE::CaBIO::PopulationFrequency - Perl extension for PopulationFrequency.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::PopulationFrequency is a Perl object representation of the
-  caBIO PopulationFrequency object.
+The CaCORE::CaBIO::PopulationFrequency is a Perl object representation of the
+caBIO PopulationFrequency object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of PopulationFrequency
 
-  The following are all the attributes of the PopulationFrequency object and their data types:
+=head2 Attributes of PopulationFrequency
 
-=begin html
-<pre>
-	majorFrequency	double
-	type	string
-	minorAllele	string
-	ethnicity	string
-	minorFrequency	double
-	majorAllele	string
-	id	long
+The following are all the attributes of the PopulationFrequency object and their data types:
+
+=over 4
+
+=item majorFrequency
+
+data type: C<double>
+
+=item type
+
+data type: C<string>
+
+=item minorAllele
+
+data type: C<string>
+
+=item ethnicity
+
+data type: C<string>
+
+=item minorFrequency
+
+data type: C<double>
+
+=item majorAllele
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of PopulationFrequency
+=head2 Associations of PopulationFrequency
 
-  The following are all the objects that are associated with the PopulationFrequency:
+The following are all the objects that are associated with the PopulationFrequency:
 
-=begin html
-<pre>
-	<a href="#snp">SNP</a>: 	Many to one assoication, use getSNP to get the associated SNP.
+=over 4
+
+=item L<"SNP">: 	
+
+Many to one assoication, use C<getSNP> to get the associated SNP.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -9987,48 +10614,64 @@ sub getGenericReporterCollection {
 
 =head1 ProteinSequence
 
-  CaCORE::CaBIO::ProteinSequence - Perl extension for ProteinSequence.
+CaCORE::CaBIO::ProteinSequence - Perl extension for ProteinSequence.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::ProteinSequence is a Perl object representation of the
-  caBIO ProteinSequence object.
+The CaCORE::CaBIO::ProteinSequence is a Perl object representation of the
+caBIO ProteinSequence object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of ProteinSequence
 
-  The following are all the attributes of the ProteinSequence object and their data types:
+=head2 Attributes of ProteinSequence
 
-=begin html
-<pre>
-	checkSum	string
-	value	string
-	molecularWeightInDaltons	double
-	length	long
-	id	long
+The following are all the attributes of the ProteinSequence object and their data types:
+
+=over 4
+
+=item checkSum
+
+data type: C<string>
+
+=item value
+
+data type: C<string>
+
+=item molecularWeightInDaltons
+
+data type: C<double>
+
+=item length
+
+data type: C<long>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of ProteinSequence
+=head2 Associations of ProteinSequence
 
-  The following are all the objects that are associated with the ProteinSequence:
+The following are all the objects that are associated with the ProteinSequence:
 
-=begin html
-<pre>
-	<a href="#protein">Protein</a>: 	Many to one assoication, use getProtein to get the associated Protein.
+=over 4
+
+=item L<"Protein">: 	
+
+Many to one assoication, use C<getProtein> to get the associated Protein.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10038,53 +10681,84 @@ sub getGenericReporterCollection {
 
 =head1 Protein
 
-  CaCORE::CaBIO::Protein - Perl extension for Protein.
+CaCORE::CaBIO::Protein - Perl extension for Protein.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Protein is a Perl object representation of the
-  caBIO Protein object.
+The CaCORE::CaBIO::Protein is a Perl object representation of the
+caBIO Protein object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of Protein
 
-  The following are all the attributes of the Protein object and their data types:
+=head2 Attributes of Protein
 
-=begin html
-<pre>
-	copyrightStatement	string
-	primaryAccession	string
-	name	string
-	uniProtCode	string
-	id	long
+The following are all the attributes of the Protein object and their data types:
+
+=over 4
+
+=item copyrightStatement
+
+data type: C<string>
+
+=item primaryAccession
+
+data type: C<string>
+
+=item name
+
+data type: C<string>
+
+=item uniProtCode
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Protein
+=head2 Associations of Protein
 
-  The following are all the objects that are associated with the Protein:
+The following are all the objects that are associated with the Protein:
 
-=begin html
-<pre>
-	<a href="#taxon">Taxon</a>: 	One to many assoication, use getTaxonCollection to get a collection of associated Taxon.
-	<a href="#gene">Gene</a>: 	One to many assoication, use getGeneCollection to get a collection of associated Gene.
-	<a href="#secondaryaccession">SecondaryAccession</a>: 	One to many assoication, use getSecondaryAccessionCollection to get a collection of associated SecondaryAccession.
-	<a href="#keywords">Keywords</a>: 	One to many assoication, use getKeywordsCollection to get a collection of associated Keywords.
-	<a href="#proteinsequence">ProteinSequence</a>: 	Many to one assoication, use getProteinSequence to get the associated ProteinSequence.
-	<a href="#proteinalias">ProteinAlias</a>: 	One to many assoication, use getProteinAliasCollection to get a collection of associated ProteinAlias.
+=over 4
+
+=item L<"Taxon">: 	
+
+One to many assoication, use C<getTaxonCollection> to get a collection of associated Taxon.
+
+=item L<"Gene">: 	
+
+One to many assoication, use C<getGeneCollection> to get a collection of associated Gene.
+
+=item L<"SecondaryAccession">: 	
+
+One to many assoication, use C<getSecondaryAccessionCollection> to get a collection of associated SecondaryAccession.
+
+=item L<"Keywords">: 	
+
+One to many assoication, use C<getKeywordsCollection> to get a collection of associated Keywords.
+
+=item L<"ProteinSequence">: 	
+
+Many to one assoication, use C<getProteinSequence> to get the associated ProteinSequence.
+
+=item L<"ProteinAlias">: 	
+
+One to many assoication, use C<getProteinAliasCollection> to get a collection of associated ProteinAlias.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10094,45 +10768,52 @@ sub getGenericReporterCollection {
 
 =head1 ProteinAlias
 
-  CaCORE::CaBIO::ProteinAlias - Perl extension for ProteinAlias.
+CaCORE::CaBIO::ProteinAlias - Perl extension for ProteinAlias.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::ProteinAlias is a Perl object representation of the
-  caBIO ProteinAlias object.
+The CaCORE::CaBIO::ProteinAlias is a Perl object representation of the
+caBIO ProteinAlias object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of ProteinAlias
 
-  The following are all the attributes of the ProteinAlias object and their data types:
+=head2 Attributes of ProteinAlias
 
-=begin html
-<pre>
-	name	string
-	id	long
+The following are all the attributes of the ProteinAlias object and their data types:
+
+=over 4
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of ProteinAlias
+=head2 Associations of ProteinAlias
 
-  The following are all the objects that are associated with the ProteinAlias:
+The following are all the objects that are associated with the ProteinAlias:
 
-=begin html
-<pre>
-	<a href="#protein">Protein</a>: 	One to many assoication, use getProteinCollection to get a collection of associated Protein.
+=over 4
+
+=item L<"Protein">: 	
+
+One to many assoication, use C<getProteinCollection> to get a collection of associated Protein.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10142,46 +10823,56 @@ sub getGenericReporterCollection {
 
 =head1 HomologousAssociation
 
-  CaCORE::CaBIO::HomologousAssociation - Perl extension for HomologousAssociation.
+CaCORE::CaBIO::HomologousAssociation - Perl extension for HomologousAssociation.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::HomologousAssociation is a Perl object representation of the
-  caBIO HomologousAssociation object.
+The CaCORE::CaBIO::HomologousAssociation is a Perl object representation of the
+caBIO HomologousAssociation object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of HomologousAssociation
 
-  The following are all the attributes of the HomologousAssociation object and their data types:
+=head2 Attributes of HomologousAssociation
 
-=begin html
-<pre>
-	similarityPercentage	float
-	homologousId	long
-	id	long
+The following are all the attributes of the HomologousAssociation object and their data types:
+
+=over 4
+
+=item similarityPercentage
+
+data type: C<float>
+
+=item homologousId
+
+data type: C<long>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of HomologousAssociation
+=head2 Associations of HomologousAssociation
 
-  The following are all the objects that are associated with the HomologousAssociation:
+The following are all the objects that are associated with the HomologousAssociation:
 
-=begin html
-<pre>
-	<a href="#homologousgene">HomologousGene</a>: 	Many to one assoication, use getHomologousGene to get the associated HomologousGene.
+=over 4
+
+=item L<"HomologousGene">: 	
+
+Many to one assoication, use C<getHomologousGene> to get the associated HomologousGene.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10191,45 +10882,52 @@ sub getGenericReporterCollection {
 
 =head1 PhysicalLocation
 
-  CaCORE::CaBIO::PhysicalLocation - Perl extension for PhysicalLocation.
+CaCORE::CaBIO::PhysicalLocation - Perl extension for PhysicalLocation.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::PhysicalLocation is a Perl object representation of the
-  caBIO PhysicalLocation object.
+The CaCORE::CaBIO::PhysicalLocation is a Perl object representation of the
+caBIO PhysicalLocation object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of PhysicalLocation
 
-  The following are all the attributes of the PhysicalLocation object and their data types:
+=head2 Attributes of PhysicalLocation
 
-=begin html
-<pre>
-	chromosomalStartPosition	long
-	chromosomalEndPosition	long
+The following are all the attributes of the PhysicalLocation object and their data types:
+
+=over 4
+
+=item chromosomalStartPosition
+
+data type: C<long>
+
+=item chromosomalEndPosition
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of PhysicalLocation
+=head2 Associations of PhysicalLocation
 
-  The following are all the objects that are associated with the PhysicalLocation:
+The following are all the objects that are associated with the PhysicalLocation:
 
-=begin html
-<pre>
-	<a href="#cytoband">Cytoband</a>: 	One to many assoication, use getCytobandCollection to get a collection of associated Cytoband.
+=over 4
+
+=item L<"Cytoband">: 	
+
+One to many assoication, use C<getCytobandCollection> to get a collection of associated Cytoband.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10239,45 +10937,52 @@ sub getGenericReporterCollection {
 
 =head1 Cytoband
 
-  CaCORE::CaBIO::Cytoband - Perl extension for Cytoband.
+CaCORE::CaBIO::Cytoband - Perl extension for Cytoband.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::Cytoband is a Perl object representation of the
-  caBIO Cytoband object.
+The CaCORE::CaBIO::Cytoband is a Perl object representation of the
+caBIO Cytoband object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of Cytoband
 
-  The following are all the attributes of the Cytoband object and their data types:
+=head2 Attributes of Cytoband
 
-=begin html
-<pre>
-	name	string
-	id	long
+The following are all the attributes of the Cytoband object and their data types:
+
+=over 4
+
+=item name
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of Cytoband
+=head2 Associations of Cytoband
 
-  The following are all the objects that are associated with the Cytoband:
+The following are all the objects that are associated with the Cytoband:
 
-=begin html
-<pre>
-	<a href="#physicallocation">PhysicalLocation</a>: 	Many to one assoication, use getPhysicalLocation to get the associated PhysicalLocation.
+=over 4
+
+=item L<"PhysicalLocation">: 	
+
+Many to one assoication, use C<getPhysicalLocation> to get the associated PhysicalLocation.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10287,44 +10992,48 @@ sub getGenericReporterCollection {
 
 =head1 CytogeneticLocation
 
-  CaCORE::CaBIO::CytogeneticLocation - Perl extension for CytogeneticLocation.
+CaCORE::CaBIO::CytogeneticLocation - Perl extension for CytogeneticLocation.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::CytogeneticLocation is a Perl object representation of the
-  caBIO CytogeneticLocation object.
+The CaCORE::CaBIO::CytogeneticLocation is a Perl object representation of the
+caBIO CytogeneticLocation object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of CytogeneticLocation
 
-  The following are all the attributes of the CytogeneticLocation object and their data types:
+=head2 Attributes of CytogeneticLocation
 
-=begin html
-<pre>
+The following are all the attributes of the CytogeneticLocation object and their data types:
+
+=over 4
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of CytogeneticLocation
+=head2 Associations of CytogeneticLocation
 
-  The following are all the objects that are associated with the CytogeneticLocation:
+The following are all the objects that are associated with the CytogeneticLocation:
 
-=begin html
-<pre>
-	<a href="#startcytoband">StartCytoband</a>: 	Many to one assoication, use getStartCytoband to get the associated StartCytoband.
-	<a href="#endcytoband">EndCytoband</a>: 	Many to one assoication, use getEndCytoband to get the associated EndCytoband.
+=over 4
+
+=item L<"StartCytoband">: 	
+
+Many to one assoication, use C<getStartCytoband> to get the associated StartCytoband.
+
+=item L<"EndCytoband">: 	
+
+Many to one assoication, use C<getEndCytoband> to get the associated EndCytoband.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10334,44 +11043,48 @@ sub getGenericReporterCollection {
 
 =head1 GeneRelativeLocation
 
-  CaCORE::CaBIO::GeneRelativeLocation - Perl extension for GeneRelativeLocation.
+CaCORE::CaBIO::GeneRelativeLocation - Perl extension for GeneRelativeLocation.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::GeneRelativeLocation is a Perl object representation of the
-  caBIO GeneRelativeLocation object.
+The CaCORE::CaBIO::GeneRelativeLocation is a Perl object representation of the
+caBIO GeneRelativeLocation object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of GeneRelativeLocation
 
-  The following are all the attributes of the GeneRelativeLocation object and their data types:
+=head2 Attributes of GeneRelativeLocation
 
-=begin html
-<pre>
-	type	string
-	id	long
+The following are all the attributes of the GeneRelativeLocation object and their data types:
+
+=over 4
+
+=item type
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of GeneRelativeLocation
+=head2 Associations of GeneRelativeLocation
 
-  The following are all the objects that are associated with the GeneRelativeLocation:
+The following are all the objects that are associated with the GeneRelativeLocation:
 
-=begin html
-<pre>
+=over 4
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10381,46 +11094,56 @@ sub getGenericReporterCollection {
 
 =head1 GenericReporter
 
-  CaCORE::CaBIO::GenericReporter - Perl extension for GenericReporter.
+CaCORE::CaBIO::GenericReporter - Perl extension for GenericReporter.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::GenericReporter is a Perl object representation of the
-  caBIO GenericReporter object.
+The CaCORE::CaBIO::GenericReporter is a Perl object representation of the
+caBIO GenericReporter object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of GenericReporter
 
-  The following are all the attributes of the GenericReporter object and their data types:
+=head2 Attributes of GenericReporter
 
-=begin html
-<pre>
-	name	string
-	type	string
-	id	long
+The following are all the attributes of the GenericReporter object and their data types:
+
+=over 4
+
+=item name
+
+data type: C<string>
+
+=item type
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of GenericReporter
+=head2 Associations of GenericReporter
 
-  The following are all the objects that are associated with the GenericReporter:
+The following are all the objects that are associated with the GenericReporter:
 
-=begin html
-<pre>
-	<a href="#genericarray">GenericArray</a>: 	One to many assoication, use getGenericArrayCollection to get a collection of associated GenericArray.
+=over 4
+
+=item L<"GenericArray">: 	
+
+One to many assoication, use C<getGenericArrayCollection> to get a collection of associated GenericArray.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
@@ -10430,47 +11153,60 @@ sub getGenericReporterCollection {
 
 =head1 GenericArray
 
-  CaCORE::CaBIO::GenericArray - Perl extension for GenericArray.
+CaCORE::CaBIO::GenericArray - Perl extension for GenericArray.
 
 =head2 Abstract
 
-  The CaCORE::CaBIO::GenericArray is a Perl object representation of the
-  caBIO GenericArray object.
+The CaCORE::CaBIO::GenericArray is a Perl object representation of the
+caBIO GenericArray object.
 
 =head2 Description
 
-  
 
-=head3 Attributes of GenericArray
 
-  The following are all the attributes of the GenericArray object and their data types:
+=head2 Attributes of GenericArray
 
-=begin html
-<pre>
-	arrayName	string
-	platform	string
-	type	string
-	id	long
+The following are all the attributes of the GenericArray object and their data types:
+
+=over 4
+
+=item arrayName
+
+data type: C<string>
+
+=item platform
+
+data type: C<string>
+
+=item type
+
+data type: C<string>
+
+=item id
+
+data type: C<long>
+
   End Attributes
-</pre>
 
-=end html
+=back
 
   Note: Although you can also use the corresponding setter methods to set the
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head3 Associations of GenericArray
+=head2 Associations of GenericArray
 
-  The following are all the objects that are associated with the GenericArray:
+The following are all the objects that are associated with the GenericArray:
 
-=begin html
-<pre>
-	<a href="#genericreporter">GenericReporter</a>: 	One to many assoication, use getGenericReporterCollection to get a collection of associated GenericReporter.
+=over 4
+
+=item L<"GenericReporter">: 	
+
+One to many assoication, use C<getGenericReporterCollection> to get a collection of associated GenericReporter.
+
   End Associations and related methods
-</pre>
 
-=end html
+=back
 
 =cut
 
