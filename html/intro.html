@@ -11,9 +11,11 @@
 <h1>Contents</h1>
 <ul>
   <li><a class="doc" href="#What_is_CaCOREperl">What is CaCOREperl</a></li>
-  <li><a class="doc" href="#Using_ActivePerl">Getting Started</a></li>
+  <li><a class="doc" href="#installing">Installing CaCOREperl</a></li>
+  <li><a class="doc" href="#Using_CaCOREperl">Getting Started</a></li>
   <li><a class="doc" href="#Object_Desc">Object Descriptions</a></li>
-  <li><a class="doc" href="#Nest_Search">Nested Search</a></li>
+  <li><a class="doc" href="searching.html">Search</a></li>
+  <li><a class="doc" href="#limitations">Limitations</a></li>
   <li><a class="doc" href="#Troubleshooting_FAQ">More Information</a></li>
 </ul>
 
@@ -21,43 +23,53 @@
 
 <p>CaCOREperl is a Perl application programming interface to caCORE hosted vocabulary,
 metadata, and biomedical data. It implements the caCORE object model with object-oriented
-methodology, and encapsulates SOAP::Lite and XML parsing so that programmers deal with caCORE
+methodology, and encapsulates webservice invocations and XML parsing so that programmers deal with caCORE
 objects directly. CaCOREperl is available in Windows, Solaris and other Perl
 supported operating systems<br>
-CaCOREperl requires Perl version 5.6 or above.<br>
-Current version of CaCOREperl is 3.01.
+CaCOREperl requires Perl version 5.6.0 or above.<br>
+Current version of CaCOREperl is 3.1.
 
 <h3>Main Features of CaCOREperl:</h3>
 <ul>
-  <li>search caCORE, a Java application, hosted vocabulary, metadata, and biomedical datadata</li>
-  <li>manipulate search results in ojbect oriented fashion
+  <li>search caCORE server, a Java application, hosted vocabulary, metadata, and biomedical data</li>
+  <li>manipulate search results in object oriented fashion
   <li>association navigation from object to object</li>
 </ul>
 
-<h3>The complete CaCOREperl Package contains:</h3>
+<h3>CaCOREperl contains the following sub-packages:</h3>
 <ul>
   <li>CaBIO</li>
-  <li>CaMOD</li>
+  <li>CaMOD (Deprecated)</li>
   <li>CaDSR</li>
   <li>EVS</li>
+  <li>Common</li>
 </ul>
 
-<h2><a name="Using_CaCOREperl">Getting Started</a></h2>
+<h3>Architecture</h3>
+<p>The following picture describe the architecture of CaCOREperl and how it is related to the caCORE server.</p>
+<IMG src="architecture.jpg"</IMG>
 
-<h3>Install Perl</h3>
+<p>This picture illustrates the following features of CaCOREperl:<p>
+
+<ul>
+	<li>CaCOREperl itself is not a data store, but a delegate to the caCORE server.
+	<li>CaCOREperl encapsulates the gory details of webservice call to the caCORE server, and serializing/deserializing
+	of domain objects.
+	<li>Communication with caCORE server is transparent to the user.
+</ul>
+
+<h2><a name="installing">Installing CaCOREperl</a></h2>
 
 Perl comes installed on Unix and Linux platforms. For window based systems, you can download
 a Perl version from www.activestate.com.
 
-<h3>Install CaCORE and its required Perl modules</h3>
-
-<p>This step installs CaCORE and its dependend modules. In addition to the CaCORE itself,
-CaCOREperl utilizes the XML::DOM module. You must install both CaCORE and XML::DOM.
+CaCOREperl is depened on two Perl modules, XML::DOM and LWP::UserAgent.
+You must install both XML::DOM and LWP::UserAgent in addition to CaCOREperl.
 
 <p>There are multiple ways to installing Perl modules, the following are three of them.</p>
 
-<h4>Using make</h4>
-<p>First unzip the CaCORE to a temporary folder.Then open a Command window,
+<h3>Using make</h3>
+<p>First unzip the CaCORE to a temporary folder. Then open a Command window,
 cd to the directory that contains this README file and type the following.<br/>
 <DD>
 <code>perl Makefile.PL</code><br/>
@@ -84,126 +96,186 @@ If you have write access to the perl library directories, you may then install b
 <code>make install</code><br/>
 </DD>
 
-<h4>Using Perl Module Manager (PPM)</h4>
-This works on Windows platform only. In addition:
-<ul>
-	<li>The installed Perl is ActivePerl from ActiveState, version 5.6.1 or above (may work for versions below, but I have not tried);</li>
-	<li>When the ActivePerl was installed, you also installed the Perl Module Manager (PPM) that comes standard with the download.</li>
-	<li>WActivestate Perl Module servers have a copy of the module.</li>
-</ul>
-Then you can start PPM (depends on the version, this can be done through the Start->Programs->ActiveState Perl, or from a command prompt, cd to the <your Perl folder>\bin, and run ppm). This will bring up a command prompt PPM dialogue. From this dialogue, type in:<br/>
+<h3>Using Perl Package Manager (PPM)</h3>
+Perl Package Manager (PPM) is a tool that comes with the ActiveState Perl installation. It can be used to manage your
+Perl packages.
+
+After installing ActiveState Perl, you can start PPM (depends on the version, this can be done through the Start->Programs->ActiveState Perl, or from a command prompt, cd to the <your Perl folder>\bin, and run ppm). This will bring up a command prompt PPM dialogue. From this dialogue, type in:<br/>
 <DD>
 <code>install XML-DOM</code><br/>
 </DD>
 This will install the XML::DOM module on your PC.
 
-<h4>Using CPAN</h4>
+<h3>Using CPAN</h3>
 <p>This will work on any platform, any Perl version. Run the command:<br/>
 <DD>
 <code>perl -MCPAN -e shell</code><br/>
 </DD>
-<DD>
 Refer to the <a href=http://www.perldoc.com/perl5.6/lib/CPAN.html>CPAN documentation</a> for more details on how to
 use this command.
-</DD>
 
-<h4>Manual installation</h4>
-<p>This is only recommened only if all else failed. You can unzip this distribution, and copy the entire CaCORE folder under the
-lib folder to the lib/site folder in your Perl installation folder. For example, assume that you unzip this distribtion
+<h3>Manual installation</h3>
+<p>This is only recommended if all else failed. You can unzip this distribution, and copy the entire CaCORE folder under the
+lib folder to the lib/site folder in your Perl installation folder. For example, assume that you unzip this distribution
 to C:\temp, and your Perl installation is in C:\Perl, you can open a command prompt and type:<br/>
 <DD>
 <code>copy C:\temp\CaCORE\lib\CaCORE C:\Perl\lib\site</code><br/>
 </DD>
 
+<h2><a name="Using_CaCOREperl">Getting Started</a></h2>
 
-<h3>Sample Scripts</h3>
-
-<p>You can find sample scripts in the examples folder. This folder contains example code that illustrates actual use of the package.</p>
-
-<p>In the <code>/t/caBIO</code> and <code>/t/caMOD</code> directory of your
-CaCOREperl install there is also a collection of sample
-scripts with <code>.pl</code> entension.</p>
+<p>You can find sample scripts in the examples folder. It contains examples for using CaBIO, EVS, and CaDSR objects. The
+CaBIO test example (caBIOtest.pl) contains multiple examples that illustrate the multiple search mechanisms implemented
+in CaCOREperl. If you successfully install CaCOREperl, you can run these example programs directly as a starting point.</p>
 
 <h2><a name="Object_Desc">CaCORE Object descriptions</a></h2>
 
-<p>Each object in CaCORE follows the basic principles of object oriented pattern:</p>
+<p>Domain objects, such as gene, are represented as objects in CaCOREperl. All objects in CaCOREperl follows a set
+of identical patterns:</p>
 <ul>
-	<li>A new instance of the object is created via the <code>new</code> method. For example: <code>my $gene = new CaCORE::CaBIO::Gene</code>;</li>
-	<li>Each attribute of the object can be accessed by the getter/setter method; Example: <code>$gene->setSymbol("NAT2")</code> and <code>$gene->getFullName</code></li>
-	<li>All objects that are associated with the current object can be access via the <code>getX</code> (for many-to-one associations)
+	<li>A domain object can be created with a constructor method <code>new</code>;</li>
+	<li>All attributes of the domain object are accessible via getter and setter methods;</li>
+	<li>All domain objects that are associated with a domain objects are accessible via getter and setter methods.</li>
+</ul>
+
+<p>Details of each domain object can be obtained in the object description. Here we describe the general pattern that applies
+to all domain objects. Refer to <a href=index.html>index.html</a> for description of CaCORE objects.</p>
+
+<h3>Package Name</h3>
+Each domain object has a fully qualified name in the format of CaCORE::{Package}::{Object}. For example, gene has a fully qualified
+name of CaCORE::CaBIO::Gene.
+
+<h3>Object Creation</h3>
+<p>A new instance of the object is created via the <code>new</code> method. The following code creates a new gene instance.</p>
+<DD>
+<code>my $gene = new CaCORE::CaBIO::Gene;</code><br/>
+</DD>
+
+<h3>Object Attributes</h3>
+Each object contains a set of attributes. For example, gene has the following attributes:
+<ul>
+	<li>clusterId
+    <li>fullName
+    <li>id
+    <li>symbol
+</ul>
+
+To set or retrieve the value of each attribute, there is a setter and a getter method.
+<ul>
+	<li>The setter method is defined as <code>set<em>Object</em></code> where <em>Object</em> is the name of the attribute, for example, <code>$gene->setSymbol</code>. When calling
+		this method, the value of symbol should be passed in as a parameter. For example: <code>$gene->setSymbol("NAT2")</code> sets the $gene
+		instance's symbol attribute to "NAT2";</li>
+	<li>The getter method is defined as <code>get<em>Object</em></code> where <em>Object</em> is the name of the attribute, for example, <code>$gene->getSymbol</code>. When calling
+		this method, the return value is the value of the attribute. For example, <code>$gene->getFullName</code> returns the full name of the $gene.</li>
+</ul>
+
+Since CaCOREperl is mainly a query application, in most cases, setter methods are used to set search criteria. Getter methods are
+used to obtain the details of an object after searches.
+
+<h3>Object Associations</h3>
+Each domain object is related to certain objects. For example, gene is directly related to the following objects:
+<ul>
+	<li>Chromosome
+    <li>DatabaseCrossReference
+    <li>ExpressionFeature
+    <li>GeneAlias
+    <li>GeneOntology
+	<li>GeneRelativeLocation
+    <li>GenericReporter
+    <li>Histopathology
+    <li>HomologousAssociation
+	<li>Library
+    <li>Location
+    <li>NucleicAcidSequence
+    <li>OrganOntology
+	<li>Pathway
+    <li>Protein
+    <li>Target
+    <li>Taxon
+</ul>
+
+<p>The relationship between two objects can be one-to-many or many-to-one. For example, one Gene is related to multiple Pathway objects
+(one-to-many), and many Genes can be related to one Taxon (many-to-one).</p>
+
+<p>All objects that are associated with the current object can be access via the <code>getX</code> (for many-to-one associations)
 	or <code>getXCollection</code> (for one-to-many associations) methods. Where "X" is the name of the associated object.
 	Example: <code>$gene->getTaxon</code> retrieves the Taxon object associated with the Gene object, since one Taxon
 	object is associated with many Gene objects, and <code>$gene->getPathwayCollection</code> retrieves all the Pathway objects associated,
-	with the Gene object. Since one Gene object is associated with many Pathway objects.</li>
+	with the Gene object. Since one Gene object is associated with many Pathway objects.</p>
+
+<p>The following table is a description of all objects associated with Gene, how they are related, and the methods of retrieving them.
+
+<TABLE border="1"
+          summary="This table gives some statistics about fruit
+                   flies: average height and weight, and percentage
+                   with red eyes (for both males and females).">
+<CAPTION><EM>Gene associations</EM></CAPTION>
+<TR><TH>Association Object Name<TH>Relationship<TH>Getter
+	<TR><TH>Chromosome<TD>Many to one<TD>getChromosome
+	<TR><TH>DatabaseCrossReference<TD>One to many<TD>getDatabaseCrossReferenceCollection
+	<TR><TH>ExpressionFeature<TD>One to many<TD>getExpressionFeatureCollection
+	<TR><TH>GeneAlias<TD>One to many<TD>getGeneAliasCollection
+	<TR><TH>GeneOntology<TD>One to many<TD>getGeneOntologyCollection
+	<TR><TH>GeneRelativeLocation<TD>One to many<TD>getGeneRelativeLocationCollection
+	<TR><TH>GenericReporter<TD>One to many<TD>getGenericReporterCollection
+	<TR><TH>Histopathology<TD>One to many<TD>getHistopathologyCollection
+	<TR><TH>HomologousAssociation<TD>One to many<TD>getHomologousAssociationCollection
+	<TR><TH>Library<TD>One to many<TD>getLibraryCollection
+	<TR><TH>Location<TD>One to many<TD>getLocationCollection
+	<TR><TH>NucleicAcidSequence<TD>One to many<TD>getNucleicAcidSequenceCollection
+	<TR><TH>OrganOntology<TD>One to many<TD>getOrganOntologyCollection
+	<TR><TH>Pathway<TD>One to many<TD>getPathwayCollection
+	<TR><TH>Protein<TD>One to many<TD>getProteinCollection
+	<TR><TH>Target<TD>One to many<TD>getTargetCollection
+	<TR><TH>Taxon<TD>Many to one<TD>getTaxon
+</TABLE>
+
+
+<h3>Differences between Attributes and Associations</h3>
+The following applies to all domain object packages, except for EVS objects, which is discussed in the following section.
+
+Attributes are generally used for:
+<ul>
+	<li>Create search criteria. You can invoke the attribute setter methods to define the information you have in a search;
+	<li>Examine the details of search result. Once the search results return (via calling ApplicationService methods or getter
+	methods of associations), you can invoke the attribute getter methods to retrieve detail information of a domain object.
 </ul>
 
-<p>Refer to <a href=index.html>index.html</a> for descirption of CaCORE objects.</p>
+Associations, on the other hand, are generally used for querying purposes. You can not call the setter methods. The getter methods
+are searching methods. Under the hood, the getter methods invoke the ApplicationService search methods, which will make remote
+webservice calls to the caCORE server.
 
-<h2><a name="Association_Search">Search via object associations</a></h2>
+<p><em>Lazy Fetch.</em> caCORE server supports (except for EVS) the so called "lazy fetch" kind of searches. This means that when you query for certain objects, only the
+attributes of the objects are retrieved and returned. None of the objects associated with the target object(s) are returned.
+For example, when you call $gene->getPathwayCollection, the caCORE server only retrieves and returns all the pathway objects associated with
+the $gene object. It will not return any objects that are associated with the pathway objects. To retrieve those objects, you
+must make subsequent calls.</p>
 
-<p>Use the getX method to retrieve associated object X with many-to-one relationships.</p>
-<code>
-<DD># search by association: many to one<br/></DD>
-<DD>my $chromo1 = $chromos[0];<br/></DD>
-<DD>print "start chormosome id=" . $chromo1->getId . "\n";<br/></DD>
-<DD>my $taxon = $chromo1->getTaxon;<br/></DD>
-<DD>print "find taxon: id= " . $taxon->getId . " scientificName=" . $taxon->getScientificName ."\n";<br/></DD>
-</code>
+<h3>EVS Object Associations</h3>
+EVS objects are a little different than objects of other packages.
+<ul>
+	<li>Search entry points are limited to DescLogicConcept and MetaThesaurusConcept. This means that when you invoke the
+	ApplicationService->query and ApplicationService->queryObject methods, you can only pass in the name of these two objects
+	as the target class.
+	<li>Searches are "pre-fetch" instead of "lazy fetch". This means that all navigably
+	associated objects, instead of directly related objects, are fetched and returned. For example, if you search for
+	DescLogicConcept object, in addition to the objects that are directly related to the DescLogicConcept objects (including
+	Property, HistoryRecord, EdgeProperties, TreeNode, Role, and Association), objects that are associated with these association
+	objects (including Qualifier, History, and AttributeSetDescriptor), are also retrieved and returned. So when calling the
+	association getter methods of these objects, CaCOREperl returns them from the local memory, instead of making a remote webservice
+	call to the caCORE server.
+	<li>Setter methods exist for association objects. You can call these setter methods to create search criteria.
+</ul>
 
-<p>Use the getXCollection method to retrieve a list of associated object X with one-to-many relationships.</p>
-<code>
-<DD># test 3: use association: one to many<br/></DD>
-<DD>my @genes = $chromo1->getGeneCollection;<br/></DD>
-<DD>foreach my $gn (@genes) {<br/></DD>
-<DD><DD>	print "Gene: id= " . $gn->getId . "  symbol=" . $gn->getSymbol . "\n";<br/></DD></DD>
-<DD>}<br/></DD>
-<DD>my $num = $#genes + 1;<br/></DD>
-<DD>print "number of result: " . $num . "\n";<br/></DD>
-</code>
+<h2><a name="limitations">Limitations</a></h2>
 
-<h2><a name="AppSvc_Search">Search via ApplicationService utility</a></h2>
+Since CaCOREperl completely depends on caCORE server, all limitations on the caCORE server, most notably the webservice API, are imposed on CaCOREperl as well.
+The most notable ones being:
 
-<p>The ApplicationService class exposes two methods: queryObject and query for search. In fact, the get association methods on the
-domain objects are just wrappers for these methods.</p>
-<code>
-<DD>use CaCORE::ApplicationService;<br/></DD>
-<DD>use CaCORE::CaBIO;<br/></DD>
-<DD>my $gene = new CaCORE::CaBIO::Gene;<br/></DD>
-<DD>$gene->setSymbol("NAT2");<br/></DD>
-<DD>my $appsvc = CaCORE::ApplicationService-></DD>
-<DD><DD>instance("http://cabio.nci.nih.gov/cacore30/ws/caCOREService");<br/></DD></DD>
-<DD>my @chromos = $appsvc->queryObject("CaCORE::CaBIO::Chromosome", $gene);<br/></DD>
-</code>
-
-<h2><a name="Nest_Search">Nested Search</a></h2>
-
-<p>The first parameter in the search method can be constructed as a "navigation path" to the target object.
-This example retrives all the Taxons related to the Chromosomes that are related to a Gene object:
-<code>
-<DD>my @taxons = $appsvc->queryObject("CaCORE::CaBIO::Taxon,CaCORE::CaBIO::Chromosome", $gene);<br/></DD>
-<DD>foreach my $tx (@taxons){<br/></DD>
-<DD><DD>	print "id= " . $tx->getId . " scientificName=" . $tx->getScientificName ."\n";<br/></DD></DD>
-<DD>}<br/></DD>
-</code>
-
-</p>
-
-<h2><a name="Throttle_Mechanism">Result set control</a></h2>
-
-<p>Depending on the search criteria, a search may yield a large result set, which cause slower response time
-and increase the likelihood of error. A throttle mechanism is provided by:<br/>
-<DD>
-<code>ApplicationService->query(targetClassName, knowSourceObject, startingIndex, requestedSize)</code><br/>
-</DD>
-For example:<br/>
-<DD>
-<code>my @geneSet = $appsvc->query("CaCORE::CaBIO::Gene", $chromo1, 10, 20);</code><br/>
-</DD>
-This will retrieve related Gene objects from a Chromosome object, the result set starts from index number 10,
-and contains up to 20 Gene objects.</p>
-
-<p>Currently, in order to control performance, the ApplicationService->search method returns up to 1000 objects
-by default.</p>
+<ul>
+	<li>By default, when calling ApplicationService->queryObject, the caCORE server automatically trim the resultset to 1000 objects if the there more than 1000. So in reality, if you want to retrieve anything beyond 1000, you must use ApplicationService->query.
+	<li>As of the time of writing, some queries take a long time to execute on the caCORE server. A few of them may cause a webservice timeout (default is 600 seconds).
+</ul>
 
 <h2><a name="Troubleshooting_FAQ">More info</a></h2>
 

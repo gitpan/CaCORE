@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------
 package CaCORE::Common::DatabaseCrossReference;
 
-#use 5.005;
+use 5.005;
 #use strict;
 use warnings;
 
@@ -9,11 +9,11 @@ require Exporter;
 
 use XML::DOM;
 
-$VERSION = '3.012';
-
 ## begin import objects ##
 use CaCORE::ApplicationService;
 ## end import objects ##
+
+$VERSION = '3.091';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -41,51 +41,41 @@ sub new {
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:DatabaseCrossReferenceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":DatabaseCrossReference\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.common.nci.nih.gov\">";
 	my $tmpstr = "";
+	$current_id ++;
 	
 	## begin attribute to XML ##
-	# id
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$str = $str . $tmpstr;
-	
-	# dataSourceName;
-	if( defined( $self->getDataSourceName ) ) {
-		$tmpstr = "<dataSourceName xsi:type=\"xsd:string\">" . $self->getDataSourceName . "</dataSourceName>";
-	} else {
-		$tmpstr = "<dataSourceName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
-
-	# summary;
-	if( defined( $self->getSummary ) ) {
-		$tmpstr = "<summary xsi:type=\"xsd:string\">" . $self->getSummary . "</summary>";
-	} else {
-		$tmpstr = "<summary xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
-
 	# crossReferenceId;
 	if( defined( $self->getCrossReferenceId ) ) {
 		$tmpstr = "<crossReferenceId xsi:type=\"xsd:string\">" . $self->getCrossReferenceId . "</crossReferenceId>";
 	} else {
 		$tmpstr = "<crossReferenceId xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	# dataSourceName;
+	if( defined( $self->getDataSourceName ) ) {
+		$tmpstr = "<dataSourceName xsi:type=\"xsd:string\">" . $self->getDataSourceName . "</dataSourceName>";
 	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+		$tmpstr = "<dataSourceName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
 
 	# sourceType;
 	if( defined( $self->getSourceType ) ) {
@@ -93,103 +83,134 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<sourceType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
+
+	# summary;
+	if( defined( $self->getSummary ) ) {
+		$tmpstr = "<summary xsi:type=\"xsd:string\">" . $self->getSummary . "</summary>";
+	} else {
+		$tmpstr = "<summary xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
 
 	## end attribute to XML ##
 	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
+	## begin association to XML ##
+	## end association to XML ##
 	
 	# add trailing close tags
-	$str = $str . "</multiRef>";
+	$result .= "</multiRef>";
 	
-	return $str;
+	return ($result, $current_id, %worklist);
 }
 
-# parse a given xml, construct a list of DatabaseCrossReference objects
+# parse a given webservice response xml, construct a list of DatabaseCrossReference objects
 # param: xml doc
 # returns: list of DatabaseCrossReference objects
 sub fromWebserviceXML {
+	my $self = shift;
 	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
+	my $docnode = $parser->parse(shift);
 	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
 	
-	my @DatabaseCrossReferenceNodes = $root->getChildNodes;
-	my $DatabaseCrossReferenceLength = $#DatabaseCrossReferenceNodes;
-	#print "total bean count = $DatabaseCrossReferenceLength\n";
-	
-	# parse all DatabaseCrossReference nodes
-	my @obj_list = ();
-	foreach my $DatabaseCrossReferenceNode (@DatabaseCrossReferenceNodes) {
-		#print "\tDatabaseCrossReference\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $dataSourceName;
-		my $summary;
-		my $crossReferenceId;
-		my $type;
-		my $sourceType;
-		## end ELEMENT_NODE children ##
+	return $self->fromWSXMLListNode($root);
+}
 
-		# get all children for this node
-		for my $childrenNode ($DatabaseCrossReferenceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "dataSourceName") {
-				$dataSourceName=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "summary") {
-				$summary=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "crossReferenceId") {
-				$crossReferenceId=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "sourceType") {
-				$sourceType=$textNode->getNodeValue;
-			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::DatabaseCrossReference;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setDataSourceName($dataSourceName);
-		$newobj->setSummary($summary);
-		$newobj->setCrossReferenceId($crossReferenceId);
-		$newobj->setType($type);
-		$newobj->setSourceType($sourceType);
-		## end set attr ##
+# parse a given xml node, construct a list of DatabaseCrossReference objects
+# param: xml node
+# returns: a list of DatabaseCrossReference objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
 		push @obj_list, $newobj;
+	    }
 	}
 	
 	return @obj_list;
 }
 
-## begin getters and setters ##
-sub getId {
-	my $self = shift;
-	return $self->{id};
+# parse a given xml node, construct one DatabaseCrossReference object
+# param: xml node
+# returns: one DatabaseCrossReference object
+sub fromWSXMLNode {
+	my $DatabaseCrossReferenceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $crossReferenceId;
+		my $dataSourceName;
+		my $id;
+		my $sourceType;
+		my $summary;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($DatabaseCrossReferenceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "crossReferenceId") {
+				$crossReferenceId=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "dataSourceName") {
+				$dataSourceName=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "sourceType") {
+				$sourceType=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "summary") {
+				$summary=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::DatabaseCrossReference;
+	## begin set attr ##
+		$newobj->setCrossReferenceId($crossReferenceId);
+		$newobj->setDataSourceName($dataSourceName);
+		$newobj->setId($id);
+		$newobj->setSourceType($sourceType);
+		$newobj->setSummary($summary);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
 }
 
-sub setId {
+## begin getters and setters ##
+
+sub getCrossReferenceId {
 	my $self = shift;
-	$self->{id} = shift;
+	return $self->{crossReferenceId};
+}
+
+sub setCrossReferenceId {
+	my $self = shift;
+	$self->{crossReferenceId} = shift;
 }
 
 sub getDataSourceName {
@@ -202,34 +223,14 @@ sub setDataSourceName {
 	$self->{dataSourceName} = shift;
 }
 
-sub getSummary {
+sub getId {
 	my $self = shift;
-	return $self->{summary};
+	return $self->{id};
 }
 
-sub setSummary {
+sub setId {
 	my $self = shift;
-	$self->{summary} = shift;
-}
-
-sub getCrossReferenceId {
-	my $self = shift;
-	return $self->{crossReferenceId};
-}
-
-sub setCrossReferenceId {
-	my $self = shift;
-	$self->{crossReferenceId} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
+	$self->{id} = shift;
 }
 
 sub getSourceType {
@@ -242,9 +243,57 @@ sub setSourceType {
 	$self->{sourceType} = shift;
 }
 
+sub getSummary {
+	my $self = shift;
+	return $self->{summary};
+}
+
+sub setSummary {
+	my $self = shift;
+	$self->{summary} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
 ## end getters and setters ##
 
 ## begin bean association methods ##
+
+sub getSNP {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::SNP", $self);
+	return $results[0];
+}
+
+sub getEngineeredGene {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaMOD::EngineeredGene", $self);
+	return $results[0];
+}
+
+sub getGene {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return $results[0];
+}
+
+sub getNucleicAcidSequence {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::NucleicAcidSequence", $self);
+	return $results[0];
+}
 
 ## end bean association methods ##
 
@@ -258,38 +307,31 @@ sub setSourceType {
 
 CaCORE::Common::DatabaseCrossReference - Perl extension for DatabaseCrossReference.
 
-=head2 Abstract
+=head2 ABSTRACT
 
 The CaCORE::Common::DatabaseCrossReference is a Perl object representation of the
-caBIO DatabaseCrossReference object.
-
-=head2 Description
+CaCORE DatabaseCrossReference object.
 
 
+=head2 SYNOPSIS
 
-=head2 Attributes of DatabaseCrossReference
+See L<CaCORE::ApplicationService>.
+
+=head2 DESCRIPTION
+
+
+
+=head2 ATTRIBUTES of DatabaseCrossReference
 
 The following are all the attributes of the DatabaseCrossReference object and their data types:
 
 =over 4
 
-=item dataSourceName
-
-data type: C<string>
-
-=item summary
-
-data type: C<string>
-
 =item crossReferenceId
 
 data type: C<string>
 
-=item type
-
-data type: C<string>
-
-=item sourceType
+=item dataSourceName
 
 data type: C<string>
 
@@ -297,7 +339,18 @@ data type: C<string>
 
 data type: C<long>
 
-  End Attributes
+=item sourceType
+
+data type: C<string>
+
+=item summary
+
+data type: C<string>
+
+=item type
+
+data type: C<string>
+
 
 =back
 
@@ -305,15 +358,39 @@ data type: C<long>
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head2 Associations of DatabaseCrossReference
+=head2 ASSOCIATIONS of DatabaseCrossReference
 
 The following are all the objects that are associated with the DatabaseCrossReference:
 
 =over 4
 
-  End Associations and related methods
+=item Collection of L</SNP>:
+
+Many to one assoication, use C<getSNP> to get the associated SNP.
+
+=item Collection of L</EngineeredGene>:
+
+Many to one assoication, use C<getEngineeredGene> to get the associated EngineeredGene.
+
+=item Collection of L</Gene>:
+
+Many to one assoication, use C<getGene> to get the associated Gene.
+
+=item Collection of L</NucleicAcidSequence>:
+
+Many to one assoication, use C<getNucleicAcidSequence> to get the associated NucleicAcidSequence.
+
 
 =back
+
+=head2 SUPPORT
+
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
+
+=head2 AUTHOR
+
+Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 

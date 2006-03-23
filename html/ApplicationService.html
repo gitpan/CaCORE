@@ -42,7 +42,7 @@
 </p>
 <h2><a name="synopsis">Synopsis</a></h2>
 <pre>
-  <span class="keyword">my</span> <span class="variable">$appsvc</span> <span class="operator">=</span> <span class="variable">CaCORE::ApplicationService</span><span class="operator">-&gt;</span><span class="variable">instance</span><span class="operator">(</span><span class="string">"http://cabio.nci.nih.gov/cacore30/ws/caCOREService"</span><span class="operator">);</span>
+  <span class="keyword">my</span> <span class="variable">$appsvc</span> <span class="operator">=</span> <span class="variable">CaCORE::ApplicationService</span><span class="operator">-&gt;</span><span class="variable">instance</span><span class="operator">(</span><span class="string">"http://cabio.nci.nih.gov/cacore31/ws/caCOREService"</span><span class="operator">);</span>
   <span class="keyword">my</span> <span class="variable">$gene</span> <span class="operator">=</span> <span class="variable">new</span> <span class="variable">CaCORE::CaBIO::Gene</span><span class="operator">;</span>
   <span class="variable">$gene</span><span class="operator">-&gt;</span><span class="variable">setSymbol</span><span class="operator">(</span><span class="string">"NAT2"</span><span class="operator">);</span>
   <span class="keyword">my</span> <span class="variable">@chromos</span> <span class="operator">=</span> <span class="variable">$appsvc</span><span class="operator">-&gt;</span><span class="variable">queryObject</span><span class="operator">(</span><span class="string">"CaCORE::CaBIO::Chromosome"</span><span class="operator">,</span> <span class="variable">$gene</span><span class="operator">);</span>
@@ -78,7 +78,7 @@
   <span class="keyword">use</span> <span class="variable">CaCORE::CaBIO</span><span class="operator">;</span>
   <span class="keyword">my</span> <span class="variable">$gene</span> <span class="operator">=</span> <span class="variable">new</span> <span class="variable">CaCORE::CaBIO::Gene</span><span class="operator">;</span>
   <span class="variable">$gene</span><span class="operator">-&gt;</span><span class="variable">setSymbol</span><span class="operator">(</span><span class="string">"NAT2"</span><span class="operator">);</span>
-  <span class="keyword">my</span> <span class="variable">$appsvc</span> <span class="operator">=</span> <span class="variable">CaCORE::ApplicationService</span><span class="operator">-&gt;</span><span class="variable">instance</span><span class="operator">(</span><span class="string">"http://cabio.nci.nih.gov/cacore30/ws/caCOREService"</span><span class="operator">);</span>
+  <span class="keyword">my</span> <span class="variable">$appsvc</span> <span class="operator">=</span> <span class="variable">CaCORE::ApplicationService</span><span class="operator">-&gt;</span><span class="variable">instance</span><span class="operator">(</span><span class="string">"http://cabio.nci.nih.gov/cacore31/ws/caCOREService"</span><span class="operator">);</span>
   <span class="keyword">my</span> <span class="variable">@chromos</span> <span class="operator">=</span> <span class="variable">$appsvc</span><span class="operator">-&gt;</span><span class="variable">queryObject</span><span class="operator">(</span><span class="string">"CaCORE::CaBIO::Chromosome"</span><span class="operator">,</span> <span class="variable">$gene</span><span class="operator">);</span>
 </pre>
 <p>

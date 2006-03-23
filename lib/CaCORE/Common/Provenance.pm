@@ -1,197 +1,7 @@
 # ------------------------------------------------------------------------------------------
-package CaCORE::Common::Provenance::SourceReference;
-
-#use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-$VERSION = '3.012';
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the SourceReference object
-# returns: a SourceReference object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new SourceReference\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this SourceReference intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	
-	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:SourceReferenceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
-	my $tmpstr = "";
-	
-	## begin attribute to XML ##
-	# id
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$str = $str . $tmpstr;
-	
-	# sourceReferenceType;
-	if( defined( $self->getSourceReferenceType ) ) {
-		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\">" . $self->getSourceReferenceType . "</sourceReferenceType>";
-	} else {
-		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
-
-	# reference;
-	if( defined( $self->getReference ) ) {
-		$tmpstr = "<reference xsi:type=\"xsd:string\">" . $self->getReference . "</reference>";
-	} else {
-		$tmpstr = "<reference xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
-	
-	# add trailing close tags
-	$str = $str . "</multiRef>";
-	
-	return $str;
-}
-
-# parse a given xml, construct a list of SourceReference objects
-# param: xml doc
-# returns: list of SourceReference objects
-sub fromWebserviceXML {
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	my @SourceReferenceNodes = $root->getChildNodes;
-	my $SourceReferenceLength = $#SourceReferenceNodes;
-	#print "total bean count = $SourceReferenceLength\n";
-	
-	# parse all SourceReference nodes
-	my @obj_list = ();
-	foreach my $SourceReferenceNode (@SourceReferenceNodes) {
-		#print "\tSourceReference\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $sourceReferenceType;
-		my $reference;
-		## end ELEMENT_NODE children ##
-
-		# get all children for this node
-		for my $childrenNode ($SourceReferenceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "sourceReferenceType") {
-				$sourceReferenceType=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "reference") {
-				$reference=$textNode->getNodeValue;
-			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::Provenance::SourceReference;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setSourceReferenceType($sourceReferenceType);
-		$newobj->setReference($reference);
-		## end set attr ##
-		push @obj_list, $newobj;
-	}
-	
-	return @obj_list;
-}
-
-## begin getters and setters ##
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getSourceReferenceType {
-	my $self = shift;
-	return $self->{sourceReferenceType};
-}
-
-sub setSourceReferenceType {
-	my $self = shift;
-	$self->{sourceReferenceType} = shift;
-}
-
-sub getReference {
-	my $self = shift;
-	return $self->{reference};
-}
-
-sub setReference {
-	my $self = shift;
-	$self->{reference} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getProvenanceCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::Provenance", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
 package CaCORE::Common::Provenance::Source;
 
-#use 5.005;
+use 5.005;
 #use strict;
 use warnings;
 
@@ -202,6 +12,8 @@ use XML::DOM;
 ## begin import objects ##
 use CaCORE::ApplicationService;
 ## end import objects ##
+
+$VERSION = '3.091';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -229,95 +41,116 @@ sub new {
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:SourceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Source\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
 	my $tmpstr = "";
+	$current_id ++;
 	
 	## begin attribute to XML ##
-	# id
+	# id;
 	if( defined( $self->getId ) ) {
 		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
 	} else {
 		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
 	}
-	$str = $str . $tmpstr;
-	
+	$result .= $tmpstr;
+
 	# name;
 	if( defined( $self->getName ) ) {
 		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
 	} else {
 		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	## end attribute to XML ##
 	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
+	## begin association to XML ##
+	## end association to XML ##
 	
 	# add trailing close tags
-	$str = $str . "</multiRef>";
+	$result .= "</multiRef>";
 	
-	return $str;
+	return ($result, $current_id, %worklist);
 }
 
-# parse a given xml, construct a list of Source objects
+# parse a given webservice response xml, construct a list of Source objects
 # param: xml doc
 # returns: list of Source objects
 sub fromWebserviceXML {
+	my $self = shift;
 	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
+	my $docnode = $parser->parse(shift);
 	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
 	
-	my @SourceNodes = $root->getChildNodes;
-	my $SourceLength = $#SourceNodes;
-	#print "total bean count = $SourceLength\n";
-	
-	# parse all Source nodes
-	my @obj_list = ();
-	foreach my $SourceNode (@SourceNodes) {
-		#print "\tSource\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $name;
-		## end ELEMENT_NODE children ##
+	return $self->fromWSXMLListNode($root);
+}
 
-		# get all children for this node
-		for my $childrenNode ($SourceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::Provenance::Source;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setName($name);
-		## end set attr ##
+# parse a given xml node, construct a list of Source objects
+# param: xml node
+# returns: a list of Source objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
 		push @obj_list, $newobj;
+	    }
 	}
 	
 	return @obj_list;
 }
 
+# parse a given xml node, construct one Source object
+# param: xml node
+# returns: one Source object
+sub fromWSXMLNode {
+	my $SourceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $id;
+		my $name;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($SourceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::Provenance::Source;
+	## begin set attr ##
+		$newobj->setId($id);
+		$newobj->setName($name);
+	## end set attr ##
+	
+	return $newobj;
+}
+
 ## begin getters and setters ##
+
 sub getId {
 	my $self = shift;
 	return $self->{id};
@@ -347,9 +180,9 @@ sub setName {
 1;
 #end
 # ------------------------------------------------------------------------------------------
-package CaCORE::Common::Provenance::Provenance;
+package CaCORE::Common::Provenance::SourceReference;
 
-#use 5.005;
+use 5.005;
 #use strict;
 use warnings;
 
@@ -360,6 +193,217 @@ use XML::DOM;
 ## begin import objects ##
 use CaCORE::ApplicationService;
 ## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the SourceReference object
+# returns: a SourceReference object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new SourceReference\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this SourceReference intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":SourceReference\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# reference;
+	if( defined( $self->getReference ) ) {
+		$tmpstr = "<reference xsi:type=\"xsd:string\">" . $self->getReference . "</reference>";
+	} else {
+		$tmpstr = "<reference xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# sourceReferenceType;
+	if( defined( $self->getSourceReferenceType ) ) {
+		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\">" . $self->getSourceReferenceType . "</sourceReferenceType>";
+	} else {
+		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of SourceReference objects
+# param: xml doc
+# returns: list of SourceReference objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of SourceReference objects
+# param: xml node
+# returns: a list of SourceReference objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one SourceReference object
+# param: xml node
+# returns: one SourceReference object
+sub fromWSXMLNode {
+	my $SourceReferenceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $id;
+		my $reference;
+		my $sourceReferenceType;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($SourceReferenceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "reference") {
+				$reference=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "sourceReferenceType") {
+				$sourceReferenceType=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::Provenance::SourceReference;
+	## begin set attr ##
+		$newobj->setId($id);
+		$newobj->setReference($reference);
+		$newobj->setSourceReferenceType($sourceReferenceType);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getReference {
+	my $self = shift;
+	return $self->{reference};
+}
+
+sub setReference {
+	my $self = shift;
+	$self->{reference} = shift;
+}
+
+sub getSourceReferenceType {
+	my $self = shift;
+	return $self->{sourceReferenceType};
+}
+
+sub setSourceReferenceType {
+	my $self = shift;
+	$self->{sourceReferenceType} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getProvenanceCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::Provenance", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::Common::Provenance::Provenance;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -387,108 +431,214 @@ sub new {
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:ProvenanceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Provenance\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
 	my $tmpstr = "";
+	$current_id ++;
 	
 	## begin attribute to XML ##
-	# id
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$str = $str . $tmpstr;
-	
-	# transformation;
-	if( defined( $self->getTransformation ) ) {
-		$tmpstr = "<transformation xsi:type=\"xsd:string\">" . $self->getTransformation . "</transformation>";
-	} else {
-		$tmpstr = "<transformation xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
-
 	# evidenceCode;
 	if( defined( $self->getEvidenceCode ) ) {
 		$tmpstr = "<evidenceCode xsi:type=\"xsd:string\">" . $self->getEvidenceCode . "</evidenceCode>";
 	} else {
 		$tmpstr = "<evidenceCode xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
+
+	# fullyQualifiedClassName;
+	if( defined( $self->getFullyQualifiedClassName ) ) {
+		$tmpstr = "<fullyQualifiedClassName xsi:type=\"xsd:string\">" . $self->getFullyQualifiedClassName . "</fullyQualifiedClassName>";
+	} else {
+		$tmpstr = "<fullyQualifiedClassName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# immediateSourceId;
+	if( defined( $self->getImmediateSourceId ) ) {
+		$tmpstr = "<immediateSourceId xsi:type=\"xsd:long\">" . $self->getImmediateSourceId . "</immediateSourceId>";
+	} else {
+		$tmpstr = "<immediateSourceId xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# objectIdentifier;
+	if( defined( $self->getObjectIdentifier ) ) {
+		$tmpstr = "<objectIdentifier xsi:type=\"xsd:string\">" . $self->getObjectIdentifier . "</objectIdentifier>";
+	} else {
+		$tmpstr = "<objectIdentifier xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# originalSourceId;
+	if( defined( $self->getOriginalSourceId ) ) {
+		$tmpstr = "<originalSourceId xsi:type=\"xsd:long\">" . $self->getOriginalSourceId . "</originalSourceId>";
+	} else {
+		$tmpstr = "<originalSourceId xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# supplyingSourceId;
+	if( defined( $self->getSupplyingSourceId ) ) {
+		$tmpstr = "<supplyingSourceId xsi:type=\"xsd:long\">" . $self->getSupplyingSourceId . "</supplyingSourceId>";
+	} else {
+		$tmpstr = "<supplyingSourceId xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# transformation;
+	if( defined( $self->getTransformation ) ) {
+		$tmpstr = "<transformation xsi:type=\"xsd:string\">" . $self->getTransformation . "</transformation>";
+	} else {
+		$tmpstr = "<transformation xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
 
 	## end attribute to XML ##
 	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
+	## begin association to XML ##
+	## end association to XML ##
 	
 	# add trailing close tags
-	$str = $str . "</multiRef>";
+	$result .= "</multiRef>";
 	
-	return $str;
+	return ($result, $current_id, %worklist);
 }
 
-# parse a given xml, construct a list of Provenance objects
+# parse a given webservice response xml, construct a list of Provenance objects
 # param: xml doc
 # returns: list of Provenance objects
 sub fromWebserviceXML {
+	my $self = shift;
 	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
+	my $docnode = $parser->parse(shift);
 	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
 	
-	my @ProvenanceNodes = $root->getChildNodes;
-	my $ProvenanceLength = $#ProvenanceNodes;
-	#print "total bean count = $ProvenanceLength\n";
-	
-	# parse all Provenance nodes
-	my @obj_list = ();
-	foreach my $ProvenanceNode (@ProvenanceNodes) {
-		#print "\tProvenance\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $transformation;
-		my $evidenceCode;
-		## end ELEMENT_NODE children ##
+	return $self->fromWSXMLListNode($root);
+}
 
-		# get all children for this node
-		for my $childrenNode ($ProvenanceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "transformation") {
-				$transformation=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "evidenceCode") {
-				$evidenceCode=$textNode->getNodeValue;
-			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::Provenance::Provenance;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setTransformation($transformation);
-		$newobj->setEvidenceCode($evidenceCode);
-		## end set attr ##
+# parse a given xml node, construct a list of Provenance objects
+# param: xml node
+# returns: a list of Provenance objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
 		push @obj_list, $newobj;
+	    }
 	}
 	
 	return @obj_list;
 }
 
+# parse a given xml node, construct one Provenance object
+# param: xml node
+# returns: one Provenance object
+sub fromWSXMLNode {
+	my $ProvenanceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $evidenceCode;
+		my $fullyQualifiedClassName;
+		my $id;
+		my $immediateSourceId;
+		my $objectIdentifier;
+		my $originalSourceId;
+		my $supplyingSourceId;
+		my $transformation;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($ProvenanceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "evidenceCode") {
+				$evidenceCode=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "fullyQualifiedClassName") {
+				$fullyQualifiedClassName=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "immediateSourceId") {
+				$immediateSourceId=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "objectIdentifier") {
+				$objectIdentifier=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "originalSourceId") {
+				$originalSourceId=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "supplyingSourceId") {
+				$supplyingSourceId=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "transformation") {
+				$transformation=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::Provenance::Provenance;
+	## begin set attr ##
+		$newobj->setEvidenceCode($evidenceCode);
+		$newobj->setFullyQualifiedClassName($fullyQualifiedClassName);
+		$newobj->setId($id);
+		$newobj->setImmediateSourceId($immediateSourceId);
+		$newobj->setObjectIdentifier($objectIdentifier);
+		$newobj->setOriginalSourceId($originalSourceId);
+		$newobj->setSupplyingSourceId($supplyingSourceId);
+		$newobj->setTransformation($transformation);
+	## end set attr ##
+	
+	return $newobj;
+}
+
 ## begin getters and setters ##
+
+sub getEvidenceCode {
+	my $self = shift;
+	return $self->{evidenceCode};
+}
+
+sub setEvidenceCode {
+	my $self = shift;
+	$self->{evidenceCode} = shift;
+}
+
+sub getFullyQualifiedClassName {
+	my $self = shift;
+	return $self->{fullyQualifiedClassName};
+}
+
+sub setFullyQualifiedClassName {
+	my $self = shift;
+	$self->{fullyQualifiedClassName} = shift;
+}
+
 sub getId {
 	my $self = shift;
 	return $self->{id};
@@ -497,6 +647,46 @@ sub getId {
 sub setId {
 	my $self = shift;
 	$self->{id} = shift;
+}
+
+sub getImmediateSourceId {
+	my $self = shift;
+	return $self->{immediateSourceId};
+}
+
+sub setImmediateSourceId {
+	my $self = shift;
+	$self->{immediateSourceId} = shift;
+}
+
+sub getObjectIdentifier {
+	my $self = shift;
+	return $self->{objectIdentifier};
+}
+
+sub setObjectIdentifier {
+	my $self = shift;
+	$self->{objectIdentifier} = shift;
+}
+
+sub getOriginalSourceId {
+	my $self = shift;
+	return $self->{originalSourceId};
+}
+
+sub setOriginalSourceId {
+	my $self = shift;
+	$self->{originalSourceId} = shift;
+}
+
+sub getSupplyingSourceId {
+	my $self = shift;
+	return $self->{supplyingSourceId};
+}
+
+sub setSupplyingSourceId {
+	my $self = shift;
+	$self->{supplyingSourceId} = shift;
 }
 
 sub getTransformation {
@@ -509,19 +699,23 @@ sub setTransformation {
 	$self->{transformation} = shift;
 }
 
-sub getEvidenceCode {
-	my $self = shift;
-	return $self->{evidenceCode};
-}
-
-sub setEvidenceCode {
-	my $self = shift;
-	$self->{evidenceCode} = shift;
-}
-
 ## end getters and setters ##
 
 ## begin bean association methods ##
+
+sub getImmediateSource {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::Source", $self);
+	return $results[0];
+}
+
+sub getOriginalSource {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::Source", $self);
+	return $results[0];
+}
 
 sub getSourceReference {
 	my $self = shift;
@@ -530,24 +724,10 @@ sub getSourceReference {
 	return $results[0];
 }
 
-sub getOriginalSource {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::OriginalSource", $self);
-	return $results[0];
-}
-
-sub getImmediateSource {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::ImmediateSource", $self);
-	return $results[0];
-}
-
 sub getSupplyingSource {
 	my $self = shift;
 	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::SupplyingSource", $self);
+	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::Source", $self);
 	return $results[0];
 }
 
@@ -558,7 +738,7 @@ sub getSupplyingSource {
 # ------------------------------------------------------------------------------------------
 package CaCORE::Common::Provenance::URLSourceReference;
 
-#use 5.005;
+use 5.005;
 #use strict;
 use warnings;
 
@@ -570,8 +750,8 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-@ISA = qw(CaCORE::DomainObjectI);
 
+@ISA = qw(CaCORE::Common::Provenance::SourceReference);
 our %EXPORT_TAGS = ( 'all' => [ qw(
 	
 ) ] );
@@ -596,35 +776,33 @@ sub new {
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:URLSourceReferenceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":URLSourceReference\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
 	my $tmpstr = "";
+	$current_id ++;
 	
 	## begin attribute to XML ##
-	# id
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$str = $str . $tmpstr;
-	
 	# sourceURL;
 	if( defined( $self->getSourceURL ) ) {
 		$tmpstr = "<sourceURL xsi:type=\"xsd:string\">" . $self->getSourceURL . "</sourceURL>";
 	} else {
 		$tmpstr = "<sourceURL xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
-	# sourceReferenceType;
-	if( defined( $self->getSourceReferenceType ) ) {
-		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\">" . $self->getSourceReferenceType . "</sourceReferenceType>";
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
 	} else {
-		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	# reference;
 	if( defined( $self->getReference ) ) {
@@ -632,94 +810,107 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<reference xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
+
+	# sourceReferenceType;
+	if( defined( $self->getSourceReferenceType ) ) {
+		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\">" . $self->getSourceReferenceType . "</sourceReferenceType>";
+	} else {
+		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
 
 	## end attribute to XML ##
 	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
+	## begin association to XML ##
+	## end association to XML ##
 	
 	# add trailing close tags
-	$str = $str . "</multiRef>";
+	$result .= "</multiRef>";
 	
-	return $str;
+	return ($result, $current_id, %worklist);
 }
 
-# parse a given xml, construct a list of URLSourceReference objects
+# parse a given webservice response xml, construct a list of URLSourceReference objects
 # param: xml doc
 # returns: list of URLSourceReference objects
 sub fromWebserviceXML {
+	my $self = shift;
 	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
+	my $docnode = $parser->parse(shift);
 	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
 	
-	my @URLSourceReferenceNodes = $root->getChildNodes;
-	my $URLSourceReferenceLength = $#URLSourceReferenceNodes;
-	#print "total bean count = $URLSourceReferenceLength\n";
-	
-	# parse all URLSourceReference nodes
-	my @obj_list = ();
-	foreach my $URLSourceReferenceNode (@URLSourceReferenceNodes) {
-		#print "\tURLSourceReference\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $sourceURL;
-		my $sourceReferenceType;
-		my $reference;
-		## end ELEMENT_NODE children ##
+	return $self->fromWSXMLListNode($root);
+}
 
-		# get all children for this node
-		for my $childrenNode ($URLSourceReferenceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "sourceURL") {
-				$sourceURL=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "sourceReferenceType") {
-				$sourceReferenceType=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "reference") {
-				$reference=$textNode->getNodeValue;
-			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::Provenance::URLSourceReference;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setSourceURL($sourceURL);
-		$newobj->setSourceReferenceType($sourceReferenceType);
-		$newobj->setReference($reference);
-		## end set attr ##
+# parse a given xml node, construct a list of URLSourceReference objects
+# param: xml node
+# returns: a list of URLSourceReference objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
 		push @obj_list, $newobj;
+	    }
 	}
 	
 	return @obj_list;
 }
 
-## begin getters and setters ##
-sub getId {
-	my $self = shift;
-	return $self->{id};
+# parse a given xml node, construct one URLSourceReference object
+# param: xml node
+# returns: one URLSourceReference object
+sub fromWSXMLNode {
+	my $URLSourceReferenceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $sourceURL;
+		my $id;
+		my $reference;
+		my $sourceReferenceType;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($URLSourceReferenceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "sourceURL") {
+				$sourceURL=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "reference") {
+				$reference=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "sourceReferenceType") {
+				$sourceReferenceType=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::Provenance::URLSourceReference;
+	## begin set attr ##
+		$newobj->setSourceURL($sourceURL);
+		$newobj->setId($id);
+		$newobj->setReference($reference);
+		$newobj->setSourceReferenceType($sourceReferenceType);
+	## end set attr ##
+	
+	return $newobj;
 }
 
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
+## begin getters and setters ##
 
 sub getSourceURL {
 	my $self = shift;
@@ -731,14 +922,14 @@ sub setSourceURL {
 	$self->{sourceURL} = shift;
 }
 
-sub getSourceReferenceType {
+sub getId {
 	my $self = shift;
-	return $self->{sourceReferenceType};
+	return $self->{id};
 }
 
-sub setSourceReferenceType {
+sub setId {
 	my $self = shift;
-	$self->{sourceReferenceType} = shift;
+	$self->{id} = shift;
 }
 
 sub getReference {
@@ -751,9 +942,26 @@ sub setReference {
 	$self->{reference} = shift;
 }
 
+sub getSourceReferenceType {
+	my $self = shift;
+	return $self->{sourceReferenceType};
+}
+
+sub setSourceReferenceType {
+	my $self = shift;
+	$self->{sourceReferenceType} = shift;
+}
+
 ## end getters and setters ##
 
 ## begin bean association methods ##
+
+sub getProvenanceCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::Provenance", $self);
+	return @results;
+}
 
 ## end bean association methods ##
 
@@ -762,7 +970,7 @@ sub setReference {
 # ------------------------------------------------------------------------------------------
 package CaCORE::Common::Provenance::PublicationSource;
 
-#use 5.005;
+use 5.005;
 #use strict;
 use warnings;
 
@@ -774,8 +982,8 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-@ISA = qw(CaCORE::DomainObjectI);
 
+@ISA = qw(CaCORE::Common::Provenance::Source);
 our %EXPORT_TAGS = ( 'all' => [ qw(
 	
 ) ] );
@@ -800,27 +1008,25 @@ sub new {
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:PublicationSourceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":PublicationSource\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
 	my $tmpstr = "";
+	$current_id ++;
 	
 	## begin attribute to XML ##
-	# id
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	# authors;
+	if( defined( $self->getAuthors ) ) {
+		$tmpstr = "<authors xsi:type=\"xsd:string\">" . $self->getAuthors . "</authors>";
 	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+		$tmpstr = "<authors xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str = $str . $tmpstr;
-	
-	# volume;
-	if( defined( $self->getVolume ) ) {
-		$tmpstr = "<volume xsi:type=\"xsd:int\">" . $self->getVolume . "</volume>";
-	} else {
-		$tmpstr = "<volume xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	# endPage;
 	if( defined( $self->getEndPage ) ) {
@@ -828,23 +1034,7 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<endPage xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
-
-	# year;
-	if( defined( $self->getYear ) ) {
-		$tmpstr = "<year xsi:type=\"xsd:int\">" . $self->getYear . "</year>";
-	} else {
-		$tmpstr = "<year xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
-
-	# title;
-	if( defined( $self->getTitle ) ) {
-		$tmpstr = "<title xsi:type=\"xsd:string\">" . $self->getTitle . "</title>";
-	} else {
-		$tmpstr = "<title xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	# startPage;
 	if( defined( $self->getStartPage ) ) {
@@ -852,15 +1042,39 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<startPage xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
-	# authors;
-	if( defined( $self->getAuthors ) ) {
-		$tmpstr = "<authors xsi:type=\"xsd:string\">" . $self->getAuthors . "</authors>";
+	# title;
+	if( defined( $self->getTitle ) ) {
+		$tmpstr = "<title xsi:type=\"xsd:string\">" . $self->getTitle . "</title>";
 	} else {
-		$tmpstr = "<authors xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+		$tmpstr = "<title xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
+
+	# volume;
+	if( defined( $self->getVolume ) ) {
+		$tmpstr = "<volume xsi:type=\"xsd:int\">" . $self->getVolume . "</volume>";
+	} else {
+		$tmpstr = "<volume xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# year;
+	if( defined( $self->getYear ) ) {
+		$tmpstr = "<year xsi:type=\"xsd:int\">" . $self->getYear . "</year>";
+	} else {
+		$tmpstr = "<year xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
 
 	# name;
 	if( defined( $self->getName ) ) {
@@ -868,123 +1082,128 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	## end attribute to XML ##
 	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
+	## begin association to XML ##
+	## end association to XML ##
 	
 	# add trailing close tags
-	$str = $str . "</multiRef>";
+	$result .= "</multiRef>";
 	
-	return $str;
+	return ($result, $current_id, %worklist);
 }
 
-# parse a given xml, construct a list of PublicationSource objects
+# parse a given webservice response xml, construct a list of PublicationSource objects
 # param: xml doc
 # returns: list of PublicationSource objects
 sub fromWebserviceXML {
+	my $self = shift;
 	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
+	my $docnode = $parser->parse(shift);
 	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
 	
-	my @PublicationSourceNodes = $root->getChildNodes;
-	my $PublicationSourceLength = $#PublicationSourceNodes;
-	#print "total bean count = $PublicationSourceLength\n";
-	
-	# parse all PublicationSource nodes
-	my @obj_list = ();
-	foreach my $PublicationSourceNode (@PublicationSourceNodes) {
-		#print "\tPublicationSource\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $volume;
-		my $endPage;
-		my $year;
-		my $title;
-		my $startPage;
-		my $authors;
-		my $name;
-		## end ELEMENT_NODE children ##
+	return $self->fromWSXMLListNode($root);
+}
 
-		# get all children for this node
-		for my $childrenNode ($PublicationSourceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "volume") {
-				$volume=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "endPage") {
-				$endPage=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "year") {
-				$year=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "title") {
-				$title=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "startPage") {
-				$startPage=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "authors") {
-				$authors=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::Provenance::PublicationSource;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setVolume($volume);
-		$newobj->setEndPage($endPage);
-		$newobj->setYear($year);
-		$newobj->setTitle($title);
-		$newobj->setStartPage($startPage);
-		$newobj->setAuthors($authors);
-		$newobj->setName($name);
-		## end set attr ##
+# parse a given xml node, construct a list of PublicationSource objects
+# param: xml node
+# returns: a list of PublicationSource objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
 		push @obj_list, $newobj;
+	    }
 	}
 	
 	return @obj_list;
 }
 
+# parse a given xml node, construct one PublicationSource object
+# param: xml node
+# returns: one PublicationSource object
+sub fromWSXMLNode {
+	my $PublicationSourceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $authors;
+		my $endPage;
+		my $startPage;
+		my $title;
+		my $volume;
+		my $year;
+		my $id;
+		my $name;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($PublicationSourceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "authors") {
+				$authors=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "endPage") {
+				$endPage=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "startPage") {
+				$startPage=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "title") {
+				$title=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "volume") {
+				$volume=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "year") {
+				$year=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::Provenance::PublicationSource;
+	## begin set attr ##
+		$newobj->setAuthors($authors);
+		$newobj->setEndPage($endPage);
+		$newobj->setStartPage($startPage);
+		$newobj->setTitle($title);
+		$newobj->setVolume($volume);
+		$newobj->setYear($year);
+		$newobj->setId($id);
+		$newobj->setName($name);
+	## end set attr ##
+	
+	return $newobj;
+}
+
 ## begin getters and setters ##
-sub getId {
+
+sub getAuthors {
 	my $self = shift;
-	return $self->{id};
+	return $self->{authors};
 }
 
-sub setId {
+sub setAuthors {
 	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getVolume {
-	my $self = shift;
-	return $self->{volume};
-}
-
-sub setVolume {
-	my $self = shift;
-	$self->{volume} = shift;
+	$self->{authors} = shift;
 }
 
 sub getEndPage {
@@ -997,14 +1216,14 @@ sub setEndPage {
 	$self->{endPage} = shift;
 }
 
-sub getYear {
+sub getStartPage {
 	my $self = shift;
-	return $self->{year};
+	return $self->{startPage};
 }
 
-sub setYear {
+sub setStartPage {
 	my $self = shift;
-	$self->{year} = shift;
+	$self->{startPage} = shift;
 }
 
 sub getTitle {
@@ -1017,24 +1236,34 @@ sub setTitle {
 	$self->{title} = shift;
 }
 
-sub getStartPage {
+sub getVolume {
 	my $self = shift;
-	return $self->{startPage};
+	return $self->{volume};
 }
 
-sub setStartPage {
+sub setVolume {
 	my $self = shift;
-	$self->{startPage} = shift;
+	$self->{volume} = shift;
 }
 
-sub getAuthors {
+sub getYear {
 	my $self = shift;
-	return $self->{authors};
+	return $self->{year};
 }
 
-sub setAuthors {
+sub setYear {
 	my $self = shift;
-	$self->{authors} = shift;
+	$self->{year} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
 }
 
 sub getName {
@@ -1058,7 +1287,7 @@ sub setName {
 # ------------------------------------------------------------------------------------------
 package CaCORE::Common::Provenance::ResearchInstitutionSource;
 
-#use 5.005;
+use 5.005;
 #use strict;
 use warnings;
 
@@ -1070,8 +1299,8 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-@ISA = qw(CaCORE::DomainObjectI);
 
+@ISA = qw(CaCORE::Common::Provenance::Source);
 our %EXPORT_TAGS = ( 'all' => [ qw(
 	
 ) ] );
@@ -1096,35 +1325,25 @@ sub new {
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:ResearchInstitutionSourceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ResearchInstitutionSource\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
 	my $tmpstr = "";
+	$current_id ++;
 	
 	## begin attribute to XML ##
-	# id
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$str = $str . $tmpstr;
-	
-	# institutionPersons;
-	if( defined( $self->getInstitutionPersons ) ) {
-		$tmpstr = "<institutionPersons xsi:type=\"xsd:string\">" . $self->getInstitutionPersons . "</institutionPersons>";
-	} else {
-		$tmpstr = "<institutionPersons xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
-
 	# institutionAddress;
 	if( defined( $self->getInstitutionAddress ) ) {
 		$tmpstr = "<institutionAddress xsi:type=\"xsd:string\">" . $self->getInstitutionAddress . "</institutionAddress>";
 	} else {
 		$tmpstr = "<institutionAddress xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	# institutionDepartment;
 	if( defined( $self->getInstitutionDepartment ) ) {
@@ -1132,7 +1351,7 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<institutionDepartment xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	# institutionName;
 	if( defined( $self->getInstitutionName ) ) {
@@ -1140,7 +1359,23 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<institutionName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
+
+	# institutionPersons;
+	if( defined( $self->getInstitutionPersons ) ) {
+		$tmpstr = "<institutionPersons xsi:type=\"xsd:string\">" . $self->getInstitutionPersons . "</institutionPersons>";
+	} else {
+		$tmpstr = "<institutionPersons xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
 
 	# name;
 	if( defined( $self->getName ) ) {
@@ -1148,64 +1383,74 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	## end attribute to XML ##
 	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
+	## begin association to XML ##
+	## end association to XML ##
 	
 	# add trailing close tags
-	$str = $str . "</multiRef>";
+	$result .= "</multiRef>";
 	
-	return $str;
+	return ($result, $current_id, %worklist);
 }
 
-# parse a given xml, construct a list of ResearchInstitutionSource objects
+# parse a given webservice response xml, construct a list of ResearchInstitutionSource objects
 # param: xml doc
 # returns: list of ResearchInstitutionSource objects
 sub fromWebserviceXML {
+	my $self = shift;
 	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
+	my $docnode = $parser->parse(shift);
 	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
 	
-	my @ResearchInstitutionSourceNodes = $root->getChildNodes;
-	my $ResearchInstitutionSourceLength = $#ResearchInstitutionSourceNodes;
-	#print "total bean count = $ResearchInstitutionSourceLength\n";
-	
-	# parse all ResearchInstitutionSource nodes
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of ResearchInstitutionSource objects
+# param: xml node
+# returns: a list of ResearchInstitutionSource objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
 	my @obj_list = ();
-	foreach my $ResearchInstitutionSourceNode (@ResearchInstitutionSourceNodes) {
-		#print "\tResearchInstitutionSource\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $institutionPersons;
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one ResearchInstitutionSource object
+# param: xml node
+# returns: one ResearchInstitutionSource object
+sub fromWSXMLNode {
+	my $ResearchInstitutionSourceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
 		my $institutionAddress;
 		my $institutionDepartment;
 		my $institutionName;
+		my $institutionPersons;
+		my $id;
 		my $name;
-		## end ELEMENT_NODE children ##
+	## end ELEMENT_NODE children ##
 
-		# get all children for this node
-		for my $childrenNode ($ResearchInstitutionSourceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "institutionPersons") {
-				$institutionPersons=$textNode->getNodeValue;
-			}
+	# get all children for this node
+	for my $childrenNode ($ResearchInstitutionSourceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
 			elsif ($childrenNode->getNodeName eq "institutionAddress") {
 				$institutionAddress=$textNode->getNodeValue;
 			}
@@ -1215,47 +1460,32 @@ sub fromWebserviceXML {
 			elsif ($childrenNode->getNodeName eq "institutionName") {
 				$institutionName=$textNode->getNodeValue;
 			}
+			elsif ($childrenNode->getNodeName eq "institutionPersons") {
+				$institutionPersons=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "name") {
 				$name=$textNode->getNodeValue;
 			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::Provenance::ResearchInstitutionSource;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setInstitutionPersons($institutionPersons);
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::Provenance::ResearchInstitutionSource;
+	## begin set attr ##
 		$newobj->setInstitutionAddress($institutionAddress);
 		$newobj->setInstitutionDepartment($institutionDepartment);
 		$newobj->setInstitutionName($institutionName);
+		$newobj->setInstitutionPersons($institutionPersons);
+		$newobj->setId($id);
 		$newobj->setName($name);
-		## end set attr ##
-		push @obj_list, $newobj;
-	}
+	## end set attr ##
 	
-	return @obj_list;
+	return $newobj;
 }
 
 ## begin getters and setters ##
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getInstitutionPersons {
-	my $self = shift;
-	return $self->{institutionPersons};
-}
-
-sub setInstitutionPersons {
-	my $self = shift;
-	$self->{institutionPersons} = shift;
-}
 
 sub getInstitutionAddress {
 	my $self = shift;
@@ -1287,6 +1517,26 @@ sub setInstitutionName {
 	$self->{institutionName} = shift;
 }
 
+sub getInstitutionPersons {
+	my $self = shift;
+	return $self->{institutionPersons};
+}
+
+sub setInstitutionPersons {
+	my $self = shift;
+	$self->{institutionPersons} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
 sub getName {
 	my $self = shift;
 	return $self->{name};
@@ -1308,7 +1558,7 @@ sub setName {
 # ------------------------------------------------------------------------------------------
 package CaCORE::Common::Provenance::WebServicesSourceReference;
 
-#use 5.005;
+use 5.005;
 #use strict;
 use warnings;
 
@@ -1320,8 +1570,8 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-@ISA = qw(CaCORE::DomainObjectI);
 
+@ISA = qw(CaCORE::Common::Provenance::SourceReference);
 our %EXPORT_TAGS = ( 'all' => [ qw(
 	
 ) ] );
@@ -1346,35 +1596,33 @@ sub new {
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:WebServicesSourceReferenceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":WebServicesSourceReference\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
 	my $tmpstr = "";
+	$current_id ++;
 	
 	## begin attribute to XML ##
-	# id
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$str = $str . $tmpstr;
-	
 	# request;
 	if( defined( $self->getRequest ) ) {
 		$tmpstr = "<request xsi:type=\"xsd:string\">" . $self->getRequest . "</request>";
 	} else {
 		$tmpstr = "<request xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
-	# sourceReferenceType;
-	if( defined( $self->getSourceReferenceType ) ) {
-		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\">" . $self->getSourceReferenceType . "</sourceReferenceType>";
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
 	} else {
-		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	# reference;
 	if( defined( $self->getReference ) ) {
@@ -1382,94 +1630,107 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<reference xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
+
+	# sourceReferenceType;
+	if( defined( $self->getSourceReferenceType ) ) {
+		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\">" . $self->getSourceReferenceType . "</sourceReferenceType>";
+	} else {
+		$tmpstr = "<sourceReferenceType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
 
 	## end attribute to XML ##
 	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
+	## begin association to XML ##
+	## end association to XML ##
 	
 	# add trailing close tags
-	$str = $str . "</multiRef>";
+	$result .= "</multiRef>";
 	
-	return $str;
+	return ($result, $current_id, %worklist);
 }
 
-# parse a given xml, construct a list of WebServicesSourceReference objects
+# parse a given webservice response xml, construct a list of WebServicesSourceReference objects
 # param: xml doc
 # returns: list of WebServicesSourceReference objects
 sub fromWebserviceXML {
+	my $self = shift;
 	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
+	my $docnode = $parser->parse(shift);
 	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
 	
-	my @WebServicesSourceReferenceNodes = $root->getChildNodes;
-	my $WebServicesSourceReferenceLength = $#WebServicesSourceReferenceNodes;
-	#print "total bean count = $WebServicesSourceReferenceLength\n";
-	
-	# parse all WebServicesSourceReference nodes
-	my @obj_list = ();
-	foreach my $WebServicesSourceReferenceNode (@WebServicesSourceReferenceNodes) {
-		#print "\tWebServicesSourceReference\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $request;
-		my $sourceReferenceType;
-		my $reference;
-		## end ELEMENT_NODE children ##
+	return $self->fromWSXMLListNode($root);
+}
 
-		# get all children for this node
-		for my $childrenNode ($WebServicesSourceReferenceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "request") {
-				$request=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "sourceReferenceType") {
-				$sourceReferenceType=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "reference") {
-				$reference=$textNode->getNodeValue;
-			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::Provenance::WebServicesSourceReference;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setRequest($request);
-		$newobj->setSourceReferenceType($sourceReferenceType);
-		$newobj->setReference($reference);
-		## end set attr ##
+# parse a given xml node, construct a list of WebServicesSourceReference objects
+# param: xml node
+# returns: a list of WebServicesSourceReference objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
 		push @obj_list, $newobj;
+	    }
 	}
 	
 	return @obj_list;
 }
 
-## begin getters and setters ##
-sub getId {
-	my $self = shift;
-	return $self->{id};
+# parse a given xml node, construct one WebServicesSourceReference object
+# param: xml node
+# returns: one WebServicesSourceReference object
+sub fromWSXMLNode {
+	my $WebServicesSourceReferenceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $request;
+		my $id;
+		my $reference;
+		my $sourceReferenceType;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($WebServicesSourceReferenceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "request") {
+				$request=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "reference") {
+				$reference=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "sourceReferenceType") {
+				$sourceReferenceType=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::Provenance::WebServicesSourceReference;
+	## begin set attr ##
+		$newobj->setRequest($request);
+		$newobj->setId($id);
+		$newobj->setReference($reference);
+		$newobj->setSourceReferenceType($sourceReferenceType);
+	## end set attr ##
+	
+	return $newobj;
 }
 
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
+## begin getters and setters ##
 
 sub getRequest {
 	my $self = shift;
@@ -1481,14 +1742,14 @@ sub setRequest {
 	$self->{request} = shift;
 }
 
-sub getSourceReferenceType {
+sub getId {
 	my $self = shift;
-	return $self->{sourceReferenceType};
+	return $self->{id};
 }
 
-sub setSourceReferenceType {
+sub setId {
 	my $self = shift;
-	$self->{sourceReferenceType} = shift;
+	$self->{id} = shift;
 }
 
 sub getReference {
@@ -1501,9 +1762,26 @@ sub setReference {
 	$self->{reference} = shift;
 }
 
+sub getSourceReferenceType {
+	my $self = shift;
+	return $self->{sourceReferenceType};
+}
+
+sub setSourceReferenceType {
+	my $self = shift;
+	$self->{sourceReferenceType} = shift;
+}
+
 ## end getters and setters ##
 
 ## begin bean association methods ##
+
+sub getProvenanceCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::Common::Provenance::Provenance", $self);
+	return @results;
+}
 
 ## end bean association methods ##
 
@@ -1512,7 +1790,7 @@ sub setReference {
 # ------------------------------------------------------------------------------------------
 package CaCORE::Common::Provenance::InternetSource;
 
-#use 5.005;
+use 5.005;
 #use strict;
 use warnings;
 
@@ -1524,8 +1802,8 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-@ISA = qw(CaCORE::DomainObjectI);
 
+@ISA = qw(CaCORE::Common::Provenance::Source);
 our %EXPORT_TAGS = ( 'all' => [ qw(
 	
 ) ] );
@@ -1550,35 +1828,25 @@ sub new {
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	my $str = "<multiRef id=\"id0\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns2:InternetSourceImpl\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns2=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":InternetSource\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.provenance.common.nci.nih.gov\">";
 	my $tmpstr = "";
+	$current_id ++;
 	
 	## begin attribute to XML ##
-	# id
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$str = $str . $tmpstr;
-	
 	# ownerInstitution;
 	if( defined( $self->getOwnerInstitution ) ) {
 		$tmpstr = "<ownerInstitution xsi:type=\"xsd:string\">" . $self->getOwnerInstitution . "</ownerInstitution>";
 	} else {
 		$tmpstr = "<ownerInstitution xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
-
-	# sourceURI;
-	if( defined( $self->getSourceURI ) ) {
-		$tmpstr = "<sourceURI xsi:type=\"xsd:string\">" . $self->getSourceURI . "</sourceURI>";
-	} else {
-		$tmpstr = "<sourceURI xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	# ownerPersons;
 	if( defined( $self->getOwnerPersons ) ) {
@@ -1586,7 +1854,23 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<ownerPersons xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
+
+	# sourceURI;
+	if( defined( $self->getSourceURI ) ) {
+		$tmpstr = "<sourceURI xsi:type=\"xsd:string\">" . $self->getSourceURI . "</sourceURI>";
+	} else {
+		$tmpstr = "<sourceURI xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
 
 	# name;
 	if( defined( $self->getName ) ) {
@@ -1594,99 +1878,104 @@ sub toWebserviceXML {
 	} else {
 		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
-	$str .= $tmpstr;
+	$result .= $tmpstr;
 
 	## end attribute to XML ##
 	
-	## for now, no need to set association objects since they should all be set to nil. -- tested and works 08/13/2005
-	
-	## for now, set singleton assoication as nil object
-	## begin singleton association to XML
-	## end singleton association to XML
-	
-	## for now, set plural assoication as empty array
-	## begin plural association to XML
-	## end plural association to XML
+	## begin association to XML ##
+	## end association to XML ##
 	
 	# add trailing close tags
-	$str = $str . "</multiRef>";
+	$result .= "</multiRef>";
 	
-	return $str;
+	return ($result, $current_id, %worklist);
 }
 
-# parse a given xml, construct a list of InternetSource objects
+# parse a given webservice response xml, construct a list of InternetSource objects
 # param: xml doc
 # returns: list of InternetSource objects
 sub fromWebserviceXML {
+	my $self = shift;
 	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse($_[1]);
+	my $docnode = $parser->parse(shift);
 	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
 	
-	my @InternetSourceNodes = $root->getChildNodes;
-	my $InternetSourceLength = $#InternetSourceNodes;
-	#print "total bean count = $InternetSourceLength\n";
-	
-	# parse all InternetSource nodes
-	my @obj_list = ();
-	foreach my $InternetSourceNode (@InternetSourceNodes) {
-		#print "\tInternetSource\n";
-		
-		## begin ELEMENT_NODE children ##
-		my $id;
-		my $ownerInstitution;
-		my $sourceURI;
-		my $ownerPersons;
-		my $name;
-		## end ELEMENT_NODE children ##
+	return $self->fromWSXMLListNode($root);
+}
 
-		# get all children for this node
-		for my $childrenNode ($InternetSourceNode->getChildNodes) {
-		    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-			if( ! defined($childrenNode->getFirstChild) ){ next; };
-			my $textNode = $childrenNode->getFirstChild;
-			## begin iterate ELEMENT_NODE ##
-			if ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "ownerInstitution") {
-				$ownerInstitution=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "sourceURI") {
-				$sourceURI=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "ownerPersons") {
-				$ownerPersons=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-			## end iterate ELEMENT_NODE ##
-		    }
-		}
-		my $newobj = new CaCORE::Common::Provenance::InternetSource;
-		## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setOwnerInstitution($ownerInstitution);
-		$newobj->setSourceURI($sourceURI);
-		$newobj->setOwnerPersons($ownerPersons);
-		$newobj->setName($name);
-		## end set attr ##
+# parse a given xml node, construct a list of InternetSource objects
+# param: xml node
+# returns: a list of InternetSource objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
 		push @obj_list, $newobj;
+	    }
 	}
 	
 	return @obj_list;
 }
 
-## begin getters and setters ##
-sub getId {
-	my $self = shift;
-	return $self->{id};
+# parse a given xml node, construct one InternetSource object
+# param: xml node
+# returns: one InternetSource object
+sub fromWSXMLNode {
+	my $InternetSourceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $ownerInstitution;
+		my $ownerPersons;
+		my $sourceURI;
+		my $id;
+		my $name;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($InternetSourceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "ownerInstitution") {
+				$ownerInstitution=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "ownerPersons") {
+				$ownerPersons=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "sourceURI") {
+				$sourceURI=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::Common::Provenance::InternetSource;
+	## begin set attr ##
+		$newobj->setOwnerInstitution($ownerInstitution);
+		$newobj->setOwnerPersons($ownerPersons);
+		$newobj->setSourceURI($sourceURI);
+		$newobj->setId($id);
+		$newobj->setName($name);
+	## end set attr ##
+	
+	return $newobj;
 }
 
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
+## begin getters and setters ##
 
 sub getOwnerInstitution {
 	my $self = shift;
@@ -1696,6 +1985,16 @@ sub getOwnerInstitution {
 sub setOwnerInstitution {
 	my $self = shift;
 	$self->{ownerInstitution} = shift;
+}
+
+sub getOwnerPersons {
+	my $self = shift;
+	return $self->{ownerPersons};
+}
+
+sub setOwnerPersons {
+	my $self = shift;
+	$self->{ownerPersons} = shift;
 }
 
 sub getSourceURI {
@@ -1708,14 +2007,14 @@ sub setSourceURI {
 	$self->{sourceURI} = shift;
 }
 
-sub getOwnerPersons {
+sub getId {
 	my $self = shift;
-	return $self->{ownerPersons};
+	return $self->{id};
 }
 
-sub setOwnerPersons {
+sub setId {
 	my $self = shift;
-	$self->{ownerPersons} = shift;
+	$self->{id} = shift;
 }
 
 sub getName {
@@ -1736,42 +2035,47 @@ sub setName {
 
 1;
 #end
-# Below is module documentation for SourceReference
+# Below is module documentation for InternetSource
 
 =pod
 
-=head1 SourceReference
+=head1 InternetSource
 
-CaCORE::Common::Provenance::SourceReference - Perl extension for SourceReference.
+CaCORE::Common::Provenance::InternetSource - Perl extension for InternetSource.
 
-=head2 Abstract
+=head2 ABSTRACT
 
-The CaCORE::Common::Provenance::SourceReference is a Perl object representation of the
-caBIO SourceReference object.
+The CaCORE::Common::Provenance::InternetSource is a Perl object representation of the
+CaCORE InternetSource object.
 
-=head2 Description
+InternetSource extends from domain object L<"Source">.
 
-A reference (an electronic reference, publication citation, etc.) to the untransformed data at a source.
+=head2 SYNOPSIS
 
-=head2 Attributes of SourceReference
+See L<CaCORE::ApplicationService>.
 
-The following are all the attributes of the SourceReference object and their data types:
+=head2 DESCRIPTION
+
+
+
+=head2 ATTRIBUTES of InternetSource
+
+The following are all the attributes of the InternetSource object and their data types:
 
 =over 4
 
-=item sourceReferenceType
+=item ownerInstitution
 
 data type: C<string>
 
-=item id
-
-data type: C<long>
-
-=item reference
+=item ownerPersons
 
 data type: C<string>
 
-  End Attributes
+=item sourceURI
+
+data type: C<string>
+
 
 =back
 
@@ -1779,70 +2083,23 @@ data type: C<string>
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head2 Associations of SourceReference
+=head2 ASSOCIATIONS of InternetSource
 
-The following are all the objects that are associated with the SourceReference:
-
-=over 4
-
-=item L<"Provenance">: 	
-
-One to many assoication, use C<getProvenanceCollection> to get a collection of associated Provenance.
-
-  End Associations and related methods
-
-=back
-
-=cut
-
-# Below is module documentation for Source
-
-=pod
-
-=head1 Source
-
-CaCORE::Common::Provenance::Source - Perl extension for Source.
-
-=head2 Abstract
-
-The CaCORE::Common::Provenance::Source is a Perl object representation of the
-caBIO Source object.
-
-=head2 Description
-
-An abstract class representing a source. Will be subclassed into a variety of specialized classes.
-
-=head2 Attributes of Source
-
-The following are all the attributes of the Source object and their data types:
+The following are all the objects that are associated with the InternetSource:
 
 =over 4
 
-=item name
-
-data type: C<string>
-
-=item id
-
-data type: C<long>
-
-  End Attributes
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+=head2 SUPPORT
 
-=head2 Associations of Source
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
 
-The following are all the objects that are associated with the Source:
+=head2 AUTHOR
 
-=over 4
-
-  End Associations and related methods
-
-=back
+Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -1854,26 +2111,31 @@ The following are all the objects that are associated with the Source:
 
 CaCORE::Common::Provenance::Provenance - Perl extension for Provenance.
 
-=head2 Abstract
+=head2 ABSTRACT
 
 The CaCORE::Common::Provenance::Provenance is a Perl object representation of the
-caBIO Provenance object.
+CaCORE Provenance object.
 
-=head2 Description
 
-A record describing the source of an assertion (datum) contained in an object.
+=head2 SYNOPSIS
 
-=head2 Attributes of Provenance
+See L<CaCORE::ApplicationService>.
+
+=head2 DESCRIPTION
+
+
+
+=head2 ATTRIBUTES of Provenance
 
 The following are all the attributes of the Provenance object and their data types:
 
 =over 4
 
-=item transformation
+=item evidenceCode
 
 data type: C<string>
 
-=item evidenceCode
+=item fullyQualifiedClassName
 
 data type: C<string>
 
@@ -1881,7 +2143,26 @@ data type: C<string>
 
 data type: C<long>
 
-  End Attributes
+=item immediateSourceId
+
+data type: C<long>
+
+=item objectIdentifier
+
+data type: C<string>
+
+=item originalSourceId
+
+data type: C<long>
+
+=item supplyingSourceId
+
+data type: C<long>
+
+=item transformation
+
+data type: C<string>
+
 
 =back
 
@@ -1889,78 +2170,39 @@ data type: C<long>
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head2 Associations of Provenance
+=head2 ASSOCIATIONS of Provenance
 
 The following are all the objects that are associated with the Provenance:
 
 =over 4
 
-=item L<"SourceReference">: 	
-
-Many to one assoication, use C<getSourceReference> to get the associated SourceReference.
-
-=item L<"OriginalSource">: 	
-
-Many to one assoication, use C<getOriginalSource> to get the associated OriginalSource.
-
-=item L<"ImmediateSource">: 	
+=item Collection of L</ImmediateSource>:
 
 Many to one assoication, use C<getImmediateSource> to get the associated ImmediateSource.
 
-=item L<"SupplyingSource">: 	
+=item Collection of L</OriginalSource>:
+
+Many to one assoication, use C<getOriginalSource> to get the associated OriginalSource.
+
+=item Collection of L</SourceReference>:
+
+Many to one assoication, use C<getSourceReference> to get the associated SourceReference.
+
+=item Collection of L</SupplyingSource>:
 
 Many to one assoication, use C<getSupplyingSource> to get the associated SupplyingSource.
 
-  End Associations and related methods
 
 =back
 
-=cut
+=head2 SUPPORT
 
-# Below is module documentation for URLSourceReference
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
 
-=pod
+=head2 AUTHOR
 
-=head1 URLSourceReference
-
-CaCORE::Common::Provenance::URLSourceReference - Perl extension for URLSourceReference.
-
-=head2 Abstract
-
-The CaCORE::Common::Provenance::URLSourceReference is a Perl object representation of the
-caBIO URLSourceReference object.
-
-=head2 Description
-
-An implementation of the abstract SourceReference that contains a URL to the original information.
-
-=head2 Attributes of URLSourceReference
-
-The following are all the attributes of the URLSourceReference object and their data types:
-
-=over 4
-
-=item sourceURL
-
-data type: C<string>
-
-  End Attributes
-
-=back
-
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-=head2 Associations of URLSourceReference
-
-The following are all the objects that are associated with the URLSourceReference:
-
-=over 4
-
-  End Associations and related methods
-
-=back
+Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -1972,30 +2214,36 @@ The following are all the objects that are associated with the URLSourceReferenc
 
 CaCORE::Common::Provenance::PublicationSource - Perl extension for PublicationSource.
 
-=head2 Abstract
+=head2 ABSTRACT
 
 The CaCORE::Common::Provenance::PublicationSource is a Perl object representation of the
-caBIO PublicationSource object.
+CaCORE PublicationSource object.
 
-=head2 Description
+PublicationSource extends from domain object L<"Source">.
 
-An implementing subclass of Source. Describes a source for which an electronic online version is not available, but for which a printed version of the data is available.
+=head2 SYNOPSIS
 
-=head2 Attributes of PublicationSource
+See L<CaCORE::ApplicationService>.
+
+=head2 DESCRIPTION
+
+
+
+=head2 ATTRIBUTES of PublicationSource
 
 The following are all the attributes of the PublicationSource object and their data types:
 
 =over 4
 
-=item volume
+=item authors
 
-data type: C<int>
+data type: C<string>
 
 =item endPage
 
 data type: C<int>
 
-=item year
+=item startPage
 
 data type: C<int>
 
@@ -2003,15 +2251,14 @@ data type: C<int>
 
 data type: C<string>
 
-=item startPage
+=item volume
 
 data type: C<int>
 
-=item authors
+=item year
 
-data type: C<string>
+data type: C<int>
 
-  End Attributes
 
 =back
 
@@ -2019,15 +2266,23 @@ data type: C<string>
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head2 Associations of PublicationSource
+=head2 ASSOCIATIONS of PublicationSource
 
 The following are all the objects that are associated with the PublicationSource:
 
 =over 4
 
-  End Associations and related methods
 
 =back
+
+=head2 SUPPORT
+
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
+
+=head2 AUTHOR
+
+Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -2039,24 +2294,26 @@ The following are all the objects that are associated with the PublicationSource
 
 CaCORE::Common::Provenance::ResearchInstitutionSource - Perl extension for ResearchInstitutionSource.
 
-=head2 Abstract
+=head2 ABSTRACT
 
 The CaCORE::Common::Provenance::ResearchInstitutionSource is a Perl object representation of the
-caBIO ResearchInstitutionSource object.
+CaCORE ResearchInstitutionSource object.
 
-=head2 Description
+ResearchInstitutionSource extends from domain object L<"Source">.
 
-An implementing subclass of Source that describes a research institution (commercial, academic, or government). This is used for information with attribution, but that lack an online electronic format.
+=head2 SYNOPSIS
 
-=head2 Attributes of ResearchInstitutionSource
+See L<CaCORE::ApplicationService>.
+
+=head2 DESCRIPTION
+
+
+
+=head2 ATTRIBUTES of ResearchInstitutionSource
 
 The following are all the attributes of the ResearchInstitutionSource object and their data types:
 
 =over 4
-
-=item institutionPersons
-
-data type: C<string>
 
 =item institutionAddress
 
@@ -2070,7 +2327,10 @@ data type: C<string>
 
 data type: C<string>
 
-  End Attributes
+=item institutionPersons
+
+data type: C<string>
+
 
 =back
 
@@ -2078,15 +2338,217 @@ data type: C<string>
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head2 Associations of ResearchInstitutionSource
+=head2 ASSOCIATIONS of ResearchInstitutionSource
 
 The following are all the objects that are associated with the ResearchInstitutionSource:
 
 =over 4
 
-  End Associations and related methods
 
 =back
+
+=head2 SUPPORT
+
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
+
+=head2 AUTHOR
+
+Shan Jiang <jiangs@mail.nih.gov>
+
+=cut
+
+# Below is module documentation for Source
+
+=pod
+
+=head1 Source
+
+CaCORE::Common::Provenance::Source - Perl extension for Source.
+
+=head2 ABSTRACT
+
+The CaCORE::Common::Provenance::Source is a Perl object representation of the
+CaCORE Source object.
+
+
+=head2 SYNOPSIS
+
+See L<CaCORE::ApplicationService>.
+
+=head2 DESCRIPTION
+
+
+
+=head2 ATTRIBUTES of Source
+
+The following are all the attributes of the Source object and their data types:
+
+=over 4
+
+=item id
+
+data type: C<long>
+
+=item name
+
+data type: C<string>
+
+
+=back
+
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+=head2 ASSOCIATIONS of Source
+
+The following are all the objects that are associated with the Source:
+
+=over 4
+
+
+=back
+
+=head2 SUPPORT
+
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
+
+=head2 AUTHOR
+
+Shan Jiang <jiangs@mail.nih.gov>
+
+=cut
+
+# Below is module documentation for SourceReference
+
+=pod
+
+=head1 SourceReference
+
+CaCORE::Common::Provenance::SourceReference - Perl extension for SourceReference.
+
+=head2 ABSTRACT
+
+The CaCORE::Common::Provenance::SourceReference is a Perl object representation of the
+CaCORE SourceReference object.
+
+
+=head2 SYNOPSIS
+
+See L<CaCORE::ApplicationService>.
+
+=head2 DESCRIPTION
+
+
+
+=head2 ATTRIBUTES of SourceReference
+
+The following are all the attributes of the SourceReference object and their data types:
+
+=over 4
+
+=item id
+
+data type: C<long>
+
+=item reference
+
+data type: C<string>
+
+=item sourceReferenceType
+
+data type: C<string>
+
+
+=back
+
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+=head2 ASSOCIATIONS of SourceReference
+
+The following are all the objects that are associated with the SourceReference:
+
+=over 4
+
+=item Instance of L</Provenance>:
+
+One to many assoication, use C<getProvenanceCollection> to get a collection of associated Provenance.
+
+
+=back
+
+=head2 SUPPORT
+
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
+
+=head2 AUTHOR
+
+Shan Jiang <jiangs@mail.nih.gov>
+
+=cut
+
+# Below is module documentation for URLSourceReference
+
+=pod
+
+=head1 URLSourceReference
+
+CaCORE::Common::Provenance::URLSourceReference - Perl extension for URLSourceReference.
+
+=head2 ABSTRACT
+
+The CaCORE::Common::Provenance::URLSourceReference is a Perl object representation of the
+CaCORE URLSourceReference object.
+
+URLSourceReference extends from domain object L<"SourceReference">.
+
+=head2 SYNOPSIS
+
+See L<CaCORE::ApplicationService>.
+
+=head2 DESCRIPTION
+
+
+
+=head2 ATTRIBUTES of URLSourceReference
+
+The following are all the attributes of the URLSourceReference object and their data types:
+
+=over 4
+
+=item sourceURL
+
+data type: C<string>
+
+
+=back
+
+  Note: Although you can also use the corresponding setter methods to set the
+  attribute values, it is not recommended to do so unless you absolutely have
+  to change the object's attributes.
+
+=head2 ASSOCIATIONS of URLSourceReference
+
+The following are all the objects that are associated with the URLSourceReference:
+
+=over 4
+
+
+=back
+
+=head2 SUPPORT
+
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
+
+=head2 AUTHOR
+
+Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -2098,16 +2560,22 @@ The following are all the objects that are associated with the ResearchInstituti
 
 CaCORE::Common::Provenance::WebServicesSourceReference - Perl extension for WebServicesSourceReference.
 
-=head2 Abstract
+=head2 ABSTRACT
 
 The CaCORE::Common::Provenance::WebServicesSourceReference is a Perl object representation of the
-caBIO WebServicesSourceReference object.
+CaCORE WebServicesSourceReference object.
 
-=head2 Description
+WebServicesSourceReference extends from domain object L<"SourceReference">.
+
+=head2 SYNOPSIS
+
+See L<CaCORE::ApplicationService>.
+
+=head2 DESCRIPTION
 
 
 
-=head2 Attributes of WebServicesSourceReference
+=head2 ATTRIBUTES of WebServicesSourceReference
 
 The following are all the attributes of the WebServicesSourceReference object and their data types:
 
@@ -2117,7 +2585,6 @@ The following are all the attributes of the WebServicesSourceReference object an
 
 data type: C<string>
 
-  End Attributes
 
 =back
 
@@ -2125,70 +2592,23 @@ data type: C<string>
   attribute values, it is not recommended to do so unless you absolutely have
   to change the object's attributes.
 
-=head2 Associations of WebServicesSourceReference
+=head2 ASSOCIATIONS of WebServicesSourceReference
 
 The following are all the objects that are associated with the WebServicesSourceReference:
 
 =over 4
 
-  End Associations and related methods
 
 =back
 
-=cut
+=head2 SUPPORT
 
-# Below is module documentation for InternetSource
+Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
+support or report a bug.
 
-=pod
+=head2 AUTHOR
 
-=head1 InternetSource
-
-CaCORE::Common::Provenance::InternetSource - Perl extension for InternetSource.
-
-=head2 Abstract
-
-The CaCORE::Common::Provenance::InternetSource is a Perl object representation of the
-caBIO InternetSource object.
-
-=head2 Description
-
-
-
-=head2 Attributes of InternetSource
-
-The following are all the attributes of the InternetSource object and their data types:
-
-=over 4
-
-=item ownerInstitution
-
-data type: C<string>
-
-=item sourceURI
-
-data type: C<string>
-
-=item ownerPersons
-
-data type: C<string>
-
-  End Attributes
-
-=back
-
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-=head2 Associations of InternetSource
-
-The following are all the objects that are associated with the InternetSource:
-
-=over 4
-
-  End Associations and related methods
-
-=back
+Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 

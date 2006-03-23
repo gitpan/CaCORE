@@ -9,27 +9,30 @@ BEGIN {
 	use HTTP::Request::Common;
 }
 
-
-$VERSION = '3.012';
+$VERSION = '3.091';
 
 # These are default values
-my $default_proxy = "http://cabio.nci.nih.gov/cacore30/ws/caCOREService";
+my $default_proxy = "http://cabio.nci.nih.gov/cacore31/ws/caCOREService";
 
 # CPAN namespace mapping to Java package mapping
 my %cpan2java;
 $cpan2java{"CaCORE::Common::Provenance"} = "gov.nih.nci.common.provenance.domain";
 $cpan2java{"CaCORE::Common"} = "gov.nih.nci.common.domain";
+$cpan2java{"CaCORE::CaDSR::UMLProject"} = "gov.nih.nci.cadsr.umlproject.domain";
 $cpan2java{"CaCORE::CaDSR"} = "gov.nih.nci.cadsr.domain";
 $cpan2java{"CaCORE::CaMOD"} = "gov.nih.nci.camod.domain";
 $cpan2java{"CaCORE::CaBIO"} = "gov.nih.nci.cabio.domain";
+$cpan2java{"CaCORE::EVS"} = "gov.nih.nci.evs.domain";
 
 # CPAN namespace mapping to webservice
 my %cpan2ws;
 $cpan2ws{"CaCORE::Common::Provenance"} = "urn:ws.domain.provenance.common.nci.nih.gov";
 $cpan2ws{"CaCORE::Common"} = "urn:ws.domain.common.nci.nih.gov";
+$cpan2ws{"CaCORE::CaDSR::UMLProject"} = "urn:ws.domain.umlproject.cadsr.nci.nih.gov";
 $cpan2ws{"CaCORE::CaDSR"} = "urn:ws.domain.cadsr.nci.nih.gov";
 $cpan2ws{"CaCORE::CaMOD"} = "urn:ws.domain.camod.nci.nih.gov";
 $cpan2ws{"CaCORE::CaBIO"} = "urn:ws.domain.cabio.nci.nih.gov";
+$cpan2ws{"CaCORE::EVS"} = "urn:ws.domain.evs.nci.nih.gov";
 
 
 # instance()
@@ -70,6 +73,9 @@ sub queryObject {
 	my $pTgt = shift;
 	my $pSrc = shift;
 
+	# test value
+	
+
 	my $proxy = $self->{proxy};
 	my $uri='caCOREService';
 	my $action = "$uri/queryObject";
@@ -109,7 +115,24 @@ sub queryObject {
 	my $api_body_suffix = "</arg1><arg2 href=\"#id0\"/></ns1:queryObject>";
 	
 	# param 2: the WSDL xml representation of the domain object
-	my $arg2_body = $pSrc->toWebserviceXML;
+	my $arg2_body;
+	my $idx = 0;
+	my $gbl = 1;
+	my %worklist;
+	($arg2_body, $gbl, %worklist) = $pSrc->toWebserviceXML($arg2_body, $idx, $gbl, \%worklist);
+	# this should only apply to EVS objects
+	my @workkeys = keys(%worklist);
+	while( $#workkeys >= 0 ) {
+		# get next key from work list
+		$assigned_id = $workkeys[0];
+		# get next object from worklist
+		$obj = $worklist{$assigned_id};
+		# delete key/object from worklist
+		delete $worklist{$assigned_id};
+
+		($arg2_body, $gbl, %worklist) = $obj->toWebserviceXML($arg2_body, $assigned_id, $gbl, \%worklist);
+		@workkeys = keys(%worklist);
+	} 
 
 	my $message = $msg_prefix . $api_body_prefix . $arg1_body . $api_body_suffix . $arg2_body . $msg_suffix;
 	#print"Request:\n$message\n";
@@ -119,13 +142,18 @@ sub queryObject {
 			SOAPAction => $action,
 			Content => $message);
 	
-	print $response->error_as_HTML unless $response->is_success;
 	#print $response->as_string;
-	
-	# construct a object of target instance
-	my $fac = CaCORE::DomainObjectFac->instance;
-	my $doi = $fac->create($firstpkgname, $firstobjname);
-	return $doi->fromWebserviceXML($response->content);
+	if( $response->is_success ){
+		# sometimes the server returns an empty body, check it
+		if( $response->content eq "" ) { return ();}
+		
+		# construct a object of target instance
+		my $fac = CaCORE::DomainObjectFac->instance;
+		my $doi = $fac->create($firstpkgname, $firstobjname);
+		return $doi->fromWebserviceXML($response->content);
+	} else {
+		die $response->content;
+	}
 }
 
 # construct a SOAP request to the caCORE server
@@ -135,6 +163,9 @@ sub query {
 	my $pSrc = shift;
 	my $start = shift;
 	my $size = shift;
+
+	# test value
+	
 
 	my $proxy = $self->{proxy};
 	my $uri='caCOREService';
@@ -181,7 +212,24 @@ sub query {
 	my $api_body_suffix = "</arg1><arg2 href=\"#id0\"/>" . $arg3 . $arg4 . "</ns1:query>";
 	
 	# param 2 definition: the WSDL xml representation of the domain object
-	my $arg2_body = $pSrc->toWebserviceXML;
+	my $arg2_body;
+	my $idx = 0;
+	my $gbl = 1;
+	my %worklist;
+	($arg2_body, $gbl, %worklist) = $pSrc->toWebserviceXML($arg2_body, $idx, $gbl, \%worklist);
+	# this should only apply to EVS objects
+	my @workkeys = keys(%worklist);
+	while( $#workkeys >= 0 ) {
+		# get next key from work list
+		$assigned_id = $workkeys[0];
+		# get next object from worklist
+		$obj = $worklist{$assigned_id};
+		# delete key/object from worklist
+		delete $worklist{$assigned_id};
+
+		($arg2_body, $gbl, %worklist) = $obj->toWebserviceXML($arg2_body, $assigned_id, $gbl, \%worklist);
+		@workkeys = keys(%worklist);
+	} 
 	
 	my $message = $msg_prefix . $api_body_prefix . $arg1_body . $api_body_suffix . $arg2_body . $msg_suffix;
 	#print"Request:\n$message\n";
@@ -191,13 +239,18 @@ sub query {
 			SOAPAction => $action,
 			Content => $message);
 	
-	print $response->error_as_HTML unless $response->is_success;
 	#print $response->as_string;
-	
-	# construct a object of target instance
-	my $fac = CaCORE::DomainObjectFac->instance;
-	my $doi = $fac->create($firstpkgname, $firstobjname);
-	return $doi->fromWebserviceXML($response->content);
+	if( $response->is_success ){
+		# sometimes the server returns an empty body, check it
+		if( $response->content eq "" ) { return ();}
+		
+		# construct a object of target instance
+		my $fac = CaCORE::DomainObjectFac->instance;
+		my $doi = $fac->create($firstpkgname, $firstobjname);
+		return $doi->fromWebserviceXML($response->content);
+	} else {
+		die $response->content;
+	}
 }
 
 
@@ -252,6 +305,7 @@ use CaCORE::Common::Provenance;
 use CaCORE::CaBIO;
 use CaCORE::CaMOD;
 use CaCORE::CaDSR;
+use CaCORE::EVS;
 
 @ISA = qw(Exporter);
 
@@ -293,11 +347,65 @@ sub create {
 	
 	if( 1 == 2 ) { }
 	## begin DOMAIN OBJECT creator ##
-	elsif ($pkgname eq "CaCORE::Common::Provenance" && $objname eq "SourceReference") {
-		$newobj = new CaCORE::Common::Provenance::SourceReference;
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "HashSet") {
+		$newobj = new CaCORE::EVS::HashSet;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "History") {
+		$newobj = new CaCORE::EVS::History;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "SemanticType") {
+		$newobj = new CaCORE::EVS::SemanticType;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "Qualifier") {
+		$newobj = new CaCORE::EVS::Qualifier;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "EdgeProperties") {
+		$newobj = new CaCORE::EVS::EdgeProperties;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "Silo") {
+		$newobj = new CaCORE::EVS::Silo;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "Role") {
+		$newobj = new CaCORE::EVS::Role;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "AttributeSetDescriptor") {
+		$newobj = new CaCORE::EVS::AttributeSetDescriptor;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "EditActionDate") {
+		$newobj = new CaCORE::EVS::EditActionDate;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "MetaThesaurusConcept") {
+		$newobj = new CaCORE::EVS::MetaThesaurusConcept;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "Source") {
+		$newobj = new CaCORE::EVS::Source;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "Atom") {
+		$newobj = new CaCORE::EVS::Atom;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "TreeNode") {
+		$newobj = new CaCORE::EVS::TreeNode;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "DescLogicConcept") {
+		$newobj = new CaCORE::EVS::DescLogicConcept;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "Association") {
+		$newobj = new CaCORE::EVS::Association;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "HistoryRecord") {
+		$newobj = new CaCORE::EVS::HistoryRecord;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "Definition") {
+		$newobj = new CaCORE::EVS::Definition;
+	}
+	elsif ($pkgname eq "CaCORE::EVS" && $objname eq "Property") {
+		$newobj = new CaCORE::EVS::Property;
 	}
 	elsif ($pkgname eq "CaCORE::Common::Provenance" && $objname eq "Source") {
 		$newobj = new CaCORE::Common::Provenance::Source;
+	}
+	elsif ($pkgname eq "CaCORE::Common::Provenance" && $objname eq "SourceReference") {
+		$newobj = new CaCORE::Common::Provenance::SourceReference;
 	}
 	elsif ($pkgname eq "CaCORE::Common::Provenance" && $objname eq "Provenance") {
 		$newobj = new CaCORE::Common::Provenance::Provenance;
@@ -317,143 +425,137 @@ sub create {
 	elsif ($pkgname eq "CaCORE::Common::Provenance" && $objname eq "InternetSource") {
 		$newobj = new CaCORE::Common::Provenance::InternetSource;
 	}
-	elsif ($pkgname eq "CaCORE::Common" && $objname eq "DatabaseCrossReference") {
-		$newobj = new CaCORE::Common::DatabaseCrossReference;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "SNP") {
+		$newobj = new CaCORE::CaBIO::SNP;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Context") {
-		$newobj = new CaCORE::CaDSR::Context;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Taxon") {
+		$newobj = new CaCORE::CaBIO::Taxon;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "AdministeredComponent") {
-		$newobj = new CaCORE::CaDSR::AdministeredComponent;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Chromosome") {
+		$newobj = new CaCORE::CaBIO::Chromosome;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DerivationType") {
-		$newobj = new CaCORE::CaDSR::DerivationType;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Gene") {
+		$newobj = new CaCORE::CaBIO::Gene;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ConceptDerivationRule") {
-		$newobj = new CaCORE::CaDSR::ConceptDerivationRule;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Protocol") {
+		$newobj = new CaCORE::CaBIO::Protocol;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ConceptualDomain") {
-		$newobj = new CaCORE::CaDSR::ConceptualDomain;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Tissue") {
+		$newobj = new CaCORE::CaBIO::Tissue;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ObjectClass") {
-		$newobj = new CaCORE::CaDSR::ObjectClass;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Library") {
+		$newobj = new CaCORE::CaBIO::Library;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Qualifier") {
-		$newobj = new CaCORE::CaDSR::Qualifier;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Clone") {
+		$newobj = new CaCORE::CaBIO::Clone;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Property") {
-		$newobj = new CaCORE::CaDSR::Property;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "CloneRelativeLocation") {
+		$newobj = new CaCORE::CaBIO::CloneRelativeLocation;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElementConcept") {
-		$newobj = new CaCORE::CaDSR::DataElementConcept;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "NucleicAcidSequence") {
+		$newobj = new CaCORE::CaBIO::NucleicAcidSequence;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Representation") {
-		$newobj = new CaCORE::CaDSR::Representation;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Agent") {
+		$newobj = new CaCORE::CaBIO::Agent;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValueDomain") {
-		$newobj = new CaCORE::CaDSR::ValueDomain;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Vocabulary") {
+		$newobj = new CaCORE::CaBIO::Vocabulary;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DerivedDataElement") {
-		$newobj = new CaCORE::CaDSR::DerivedDataElement;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GeneAlias") {
+		$newobj = new CaCORE::CaBIO::GeneAlias;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElement") {
-		$newobj = new CaCORE::CaDSR::DataElement;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Target") {
+		$newobj = new CaCORE::CaBIO::Target;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassificationScheme") {
-		$newobj = new CaCORE::CaDSR::ClassificationScheme;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "ClinicalTrialProtocol") {
+		$newobj = new CaCORE::CaBIO::ClinicalTrialProtocol;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassificationSchemeItem") {
-		$newobj = new CaCORE::CaDSR::ClassificationSchemeItem;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "DiseaseOntology") {
+		$newobj = new CaCORE::CaBIO::DiseaseOntology;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValueMeaning") {
-		$newobj = new CaCORE::CaDSR::ValueMeaning;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "ProtocolAssociation") {
+		$newobj = new CaCORE::CaBIO::ProtocolAssociation;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "PermissibleValue") {
-		$newobj = new CaCORE::CaDSR::PermissibleValue;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Pathway") {
+		$newobj = new CaCORE::CaBIO::Pathway;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ReferenceDocument") {
-		$newobj = new CaCORE::CaDSR::ReferenceDocument;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "OrganOntology") {
+		$newobj = new CaCORE::CaBIO::OrganOntology;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ProtocolFormsTemplate") {
-		$newobj = new CaCORE::CaDSR::ProtocolFormsTemplate;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "OrganOntologyRelationship") {
+		$newobj = new CaCORE::CaBIO::OrganOntologyRelationship;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ProtocolFormsSet") {
-		$newobj = new CaCORE::CaDSR::ProtocolFormsSet;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Histopathology") {
+		$newobj = new CaCORE::CaBIO::Histopathology;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "CaseReportForm") {
-		$newobj = new CaCORE::CaDSR::CaseReportForm;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GeneOntology") {
+		$newobj = new CaCORE::CaBIO::GeneOntology;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Module") {
-		$newobj = new CaCORE::CaDSR::Module;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GeneOntologyRelationship") {
+		$newobj = new CaCORE::CaBIO::GeneOntologyRelationship;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Question") {
-		$newobj = new CaCORE::CaDSR::Question;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "DiseaseOntologyRelationship") {
+		$newobj = new CaCORE::CaBIO::DiseaseOntologyRelationship;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "EnumeratedValueDomain") {
-		$newobj = new CaCORE::CaDSR::EnumeratedValueDomain;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Anomaly") {
+		$newobj = new CaCORE::CaBIO::Anomaly;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Concept") {
-		$newobj = new CaCORE::CaDSR::Concept;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "PopulationFrequency") {
+		$newobj = new CaCORE::CaBIO::PopulationFrequency;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValueDomainPermissibleValue") {
-		$newobj = new CaCORE::CaDSR::ValueDomainPermissibleValue;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "ProteinSequence") {
+		$newobj = new CaCORE::CaBIO::ProteinSequence;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValidValue") {
-		$newobj = new CaCORE::CaDSR::ValidValue;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Protein") {
+		$newobj = new CaCORE::CaBIO::Protein;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Designation") {
-		$newobj = new CaCORE::CaDSR::Designation;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "ProteinAlias") {
+		$newobj = new CaCORE::CaBIO::ProteinAlias;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "NonenumeratedValueDomain") {
-		$newobj = new CaCORE::CaDSR::NonenumeratedValueDomain;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "HomologousAssociation") {
+		$newobj = new CaCORE::CaBIO::HomologousAssociation;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElementConceptRelationship") {
-		$newobj = new CaCORE::CaDSR::DataElementConceptRelationship;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Location") {
+		$newobj = new CaCORE::CaBIO::Location;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassSchemeClassSchemeItem") {
-		$newobj = new CaCORE::CaDSR::ClassSchemeClassSchemeItem;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "PhysicalLocation") {
+		$newobj = new CaCORE::CaBIO::PhysicalLocation;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElementDerivation") {
-		$newobj = new CaCORE::CaDSR::DataElementDerivation;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Cytoband") {
+		$newobj = new CaCORE::CaBIO::Cytoband;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "AdministeredComponentClassSchemeItem") {
-		$newobj = new CaCORE::CaDSR::AdministeredComponentClassSchemeItem;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "CytogeneticLocation") {
+		$newobj = new CaCORE::CaBIO::CytogeneticLocation;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Instruction") {
-		$newobj = new CaCORE::CaDSR::Instruction;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GeneRelativeLocation") {
+		$newobj = new CaCORE::CaBIO::GeneRelativeLocation;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElementRelationship") {
-		$newobj = new CaCORE::CaDSR::DataElementRelationship;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GenericReporter") {
+		$newobj = new CaCORE::CaBIO::GenericReporter;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValueDomainRelationship") {
-		$newobj = new CaCORE::CaDSR::ValueDomainRelationship;
+	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GenericArray") {
+		$newobj = new CaCORE::CaBIO::GenericArray;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassificationSchemeRelationship") {
-		$newobj = new CaCORE::CaDSR::ClassificationSchemeRelationship;
+	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "Conditionality") {
+		$newobj = new CaCORE::CaMOD::Conditionality;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassificationSchemeItemRelationship") {
-		$newobj = new CaCORE::CaDSR::ClassificationSchemeItemRelationship;
+	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "Nomenclature") {
+		$newobj = new CaCORE::CaMOD::Nomenclature;
 	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ObjectClassRelationship") {
-		$newobj = new CaCORE::CaDSR::ObjectClassRelationship;
-	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ComponentConcept") {
-		$newobj = new CaCORE::CaDSR::ComponentConcept;
-	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Definition") {
-		$newobj = new CaCORE::CaDSR::Definition;
-	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DesignationClassSchemeItem") {
-		$newobj = new CaCORE::CaDSR::DesignationClassSchemeItem;
-	}
-	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DefinitionClassSchemeItem") {
-		$newobj = new CaCORE::CaDSR::DefinitionClassSchemeItem;
-	}
-	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "ApprovalStatus") {
-		$newobj = new CaCORE::CaMOD::ApprovalStatus;
+	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "GenotypeSummary") {
+		$newobj = new CaCORE::CaMOD::GenotypeSummary;
 	}
 	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "Availability") {
 		$newobj = new CaCORE::CaMOD::Availability;
+	}
+	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "Image") {
+		$newobj = new CaCORE::CaMOD::Image;
+	}
+	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "EngineeredGene") {
+		$newobj = new CaCORE::CaMOD::EngineeredGene;
+	}
+	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "ApprovalStatus") {
+		$newobj = new CaCORE::CaMOD::ApprovalStatus;
 	}
 	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "AbstractCancerModel") {
 		$newobj = new CaCORE::CaMOD::AbstractCancerModel;
@@ -466,21 +568,6 @@ sub create {
 	}
 	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "TreatmentSchedule") {
 		$newobj = new CaCORE::CaMOD::TreatmentSchedule;
-	}
-	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "Nomenclature") {
-		$newobj = new CaCORE::CaMOD::Nomenclature;
-	}
-	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "GenotypeSummary") {
-		$newobj = new CaCORE::CaMOD::GenotypeSummary;
-	}
-	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "Conditionality") {
-		$newobj = new CaCORE::CaMOD::Conditionality;
-	}
-	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "Image") {
-		$newobj = new CaCORE::CaMOD::Image;
-	}
-	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "EngineeredGene") {
-		$newobj = new CaCORE::CaMOD::EngineeredGene;
 	}
 	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "IntegrationType") {
 		$newobj = new CaCORE::CaMOD::IntegrationType;
@@ -593,116 +680,188 @@ sub create {
 	elsif ($pkgname eq "CaCORE::CaMOD" && $objname eq "CancerModel") {
 		$newobj = new CaCORE::CaMOD::CancerModel;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Taxon") {
-		$newobj = new CaCORE::CaBIO::Taxon;
+	elsif ($pkgname eq "CaCORE::Common" && $objname eq "DatabaseCrossReference") {
+		$newobj = new CaCORE::Common::DatabaseCrossReference;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Agent") {
-		$newobj = new CaCORE::CaBIO::Agent;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Context") {
+		$newobj = new CaCORE::CaDSR::Context;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Chromosome") {
-		$newobj = new CaCORE::CaBIO::Chromosome;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "AdministeredComponent") {
+		$newobj = new CaCORE::CaDSR::AdministeredComponent;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Gene") {
-		$newobj = new CaCORE::CaBIO::Gene;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DerivationType") {
+		$newobj = new CaCORE::CaDSR::DerivationType;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Vocabulary") {
-		$newobj = new CaCORE::CaBIO::Vocabulary;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ConceptDerivationRule") {
+		$newobj = new CaCORE::CaDSR::ConceptDerivationRule;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Protocol") {
-		$newobj = new CaCORE::CaBIO::Protocol;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ConceptualDomain") {
+		$newobj = new CaCORE::CaDSR::ConceptualDomain;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Tissue") {
-		$newobj = new CaCORE::CaBIO::Tissue;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ObjectClass") {
+		$newobj = new CaCORE::CaDSR::ObjectClass;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "SNP") {
-		$newobj = new CaCORE::CaBIO::SNP;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Property") {
+		$newobj = new CaCORE::CaDSR::Property;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GeneAlias") {
-		$newobj = new CaCORE::CaBIO::GeneAlias;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElementConcept") {
+		$newobj = new CaCORE::CaDSR::DataElementConcept;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Library") {
-		$newobj = new CaCORE::CaBIO::Library;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DerivedDataElement") {
+		$newobj = new CaCORE::CaDSR::DerivedDataElement;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Clone") {
-		$newobj = new CaCORE::CaBIO::Clone;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Representation") {
+		$newobj = new CaCORE::CaDSR::Representation;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Target") {
-		$newobj = new CaCORE::CaBIO::Target;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValueDomain") {
+		$newobj = new CaCORE::CaDSR::ValueDomain;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Location") {
-		$newobj = new CaCORE::CaBIO::Location;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElement") {
+		$newobj = new CaCORE::CaDSR::DataElement;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "CloneRelativeLocation") {
-		$newobj = new CaCORE::CaBIO::CloneRelativeLocation;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassificationScheme") {
+		$newobj = new CaCORE::CaDSR::ClassificationScheme;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "NucleicAcidSequence") {
-		$newobj = new CaCORE::CaBIO::NucleicAcidSequence;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassificationSchemeItem") {
+		$newobj = new CaCORE::CaDSR::ClassificationSchemeItem;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "DiseaseOntology") {
-		$newobj = new CaCORE::CaBIO::DiseaseOntology;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValueMeaning") {
+		$newobj = new CaCORE::CaDSR::ValueMeaning;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "ClinicalTrialProtocol") {
-		$newobj = new CaCORE::CaBIO::ClinicalTrialProtocol;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "PermissibleValue") {
+		$newobj = new CaCORE::CaDSR::PermissibleValue;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "ProtocolAssociation") {
-		$newobj = new CaCORE::CaBIO::ProtocolAssociation;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassSchemeClassSchemeItem") {
+		$newobj = new CaCORE::CaDSR::ClassSchemeClassSchemeItem;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Pathway") {
-		$newobj = new CaCORE::CaBIO::Pathway;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ReferenceDocument") {
+		$newobj = new CaCORE::CaDSR::ReferenceDocument;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "OrganOntology") {
-		$newobj = new CaCORE::CaBIO::OrganOntology;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "FormElement") {
+		$newobj = new CaCORE::CaDSR::FormElement;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "OrganOntologyRelationship") {
-		$newobj = new CaCORE::CaBIO::OrganOntologyRelationship;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Form") {
+		$newobj = new CaCORE::CaDSR::Form;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Histopathology") {
-		$newobj = new CaCORE::CaBIO::Histopathology;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Module") {
+		$newobj = new CaCORE::CaDSR::Module;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GeneOntology") {
-		$newobj = new CaCORE::CaBIO::GeneOntology;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Protocol") {
+		$newobj = new CaCORE::CaDSR::Protocol;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GeneOntologyRelationship") {
-		$newobj = new CaCORE::CaBIO::GeneOntologyRelationship;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Question") {
+		$newobj = new CaCORE::CaDSR::Question;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "DiseaseOntologyRelationship") {
-		$newobj = new CaCORE::CaBIO::DiseaseOntologyRelationship;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Concept") {
+		$newobj = new CaCORE::CaDSR::Concept;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Anomaly") {
-		$newobj = new CaCORE::CaBIO::Anomaly;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "EnumeratedValueDomain") {
+		$newobj = new CaCORE::CaDSR::EnumeratedValueDomain;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "PopulationFrequency") {
-		$newobj = new CaCORE::CaBIO::PopulationFrequency;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValueDomainPermissibleValue") {
+		$newobj = new CaCORE::CaDSR::ValueDomainPermissibleValue;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "ProteinSequence") {
-		$newobj = new CaCORE::CaBIO::ProteinSequence;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValidValue") {
+		$newobj = new CaCORE::CaDSR::ValidValue;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Protein") {
-		$newobj = new CaCORE::CaBIO::Protein;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Designation") {
+		$newobj = new CaCORE::CaDSR::Designation;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "ProteinAlias") {
-		$newobj = new CaCORE::CaBIO::ProteinAlias;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "NonenumeratedValueDomain") {
+		$newobj = new CaCORE::CaDSR::NonenumeratedValueDomain;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "HomologousAssociation") {
-		$newobj = new CaCORE::CaBIO::HomologousAssociation;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElementConceptRelationship") {
+		$newobj = new CaCORE::CaDSR::DataElementConceptRelationship;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "PhysicalLocation") {
-		$newobj = new CaCORE::CaBIO::PhysicalLocation;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Function") {
+		$newobj = new CaCORE::CaDSR::Function;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "Cytoband") {
-		$newobj = new CaCORE::CaBIO::Cytoband;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElementDerivation") {
+		$newobj = new CaCORE::CaDSR::DataElementDerivation;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "CytogeneticLocation") {
-		$newobj = new CaCORE::CaBIO::CytogeneticLocation;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "AdministeredComponentClassSchemeItem") {
+		$newobj = new CaCORE::CaDSR::AdministeredComponentClassSchemeItem;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GeneRelativeLocation") {
-		$newobj = new CaCORE::CaBIO::GeneRelativeLocation;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Instruction") {
+		$newobj = new CaCORE::CaDSR::Instruction;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GenericReporter") {
-		$newobj = new CaCORE::CaBIO::GenericReporter;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DataElementRelationship") {
+		$newobj = new CaCORE::CaDSR::DataElementRelationship;
 	}
-	elsif ($pkgname eq "CaCORE::CaBIO" && $objname eq "GenericArray") {
-		$newobj = new CaCORE::CaBIO::GenericArray;
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ValueDomainRelationship") {
+		$newobj = new CaCORE::CaDSR::ValueDomainRelationship;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassificationSchemeRelationship") {
+		$newobj = new CaCORE::CaDSR::ClassificationSchemeRelationship;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ClassificationSchemeItemRelationship") {
+		$newobj = new CaCORE::CaDSR::ClassificationSchemeItemRelationship;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ObjectClassRelationship") {
+		$newobj = new CaCORE::CaDSR::ObjectClassRelationship;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ComponentLevel") {
+		$newobj = new CaCORE::CaDSR::ComponentLevel;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "ComponentConcept") {
+		$newobj = new CaCORE::CaDSR::ComponentConcept;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Definition") {
+		$newobj = new CaCORE::CaDSR::Definition;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DesignationClassSchemeItem") {
+		$newobj = new CaCORE::CaDSR::DesignationClassSchemeItem;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "DefinitionClassSchemeItem") {
+		$newobj = new CaCORE::CaDSR::DefinitionClassSchemeItem;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Organization") {
+		$newobj = new CaCORE::CaDSR::Organization;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Person") {
+		$newobj = new CaCORE::CaDSR::Person;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "AdministeredComponentContact") {
+		$newobj = new CaCORE::CaDSR::AdministeredComponentContact;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "Address") {
+		$newobj = new CaCORE::CaDSR::Address;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "TriggerAction") {
+		$newobj = new CaCORE::CaDSR::TriggerAction;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR" && $objname eq "QuestionRepetition") {
+		$newobj = new CaCORE::CaDSR::QuestionRepetition;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "Project") {
+		$newobj = new CaCORE::CaDSR::UMLProject::Project;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "SubProject") {
+		$newobj = new CaCORE::CaDSR::UMLProject::SubProject;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "UMLPackageMetadata") {
+		$newobj = new CaCORE::CaDSR::UMLProject::UMLPackageMetadata;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "UMLGeneralizationMetadata") {
+		$newobj = new CaCORE::CaDSR::UMLProject::UMLGeneralizationMetadata;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "UMLClassMetadata") {
+		$newobj = new CaCORE::CaDSR::UMLProject::UMLClassMetadata;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "AttributeTypeMetadata") {
+		$newobj = new CaCORE::CaDSR::UMLProject::AttributeTypeMetadata;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "UMLAttributeMetadata") {
+		$newobj = new CaCORE::CaDSR::UMLProject::UMLAttributeMetadata;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "SemanticMetadata") {
+		$newobj = new CaCORE::CaDSR::UMLProject::SemanticMetadata;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "UMLAssociationMetadata") {
+		$newobj = new CaCORE::CaDSR::UMLProject::UMLAssociationMetadata;
+	}
+	elsif ($pkgname eq "CaCORE::CaDSR::UMLProject" && $objname eq "TypeEnumerationMetadata") {
+		$newobj = new CaCORE::CaDSR::UMLProject::TypeEnumerationMetadata;
 	}
 	## end DOMAIN OBJECT creator ##
 
@@ -723,7 +882,7 @@ __END__
 
 =head2 Synopsis
 
-  my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore30/ws/caCOREService");
+  my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore31/ws/caCOREService");
   my $gene = new CaCORE::CaBIO::Gene;
   $gene->setSymbol("NAT2");
   my @chromos = $appsvc->queryObject("CaCORE::CaBIO::Chromosome", $gene);
@@ -755,7 +914,7 @@ __END__
   use CaCORE::CaBIO;
   my $gene = new CaCORE::CaBIO::Gene;
   $gene->setSymbol("NAT2");
-  my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore30/ws/caCOREService");
+  my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore31/ws/caCOREService");
   my @chromos = $appsvc->queryObject("CaCORE::CaBIO::Chromosome", $gene);
 
 =head3 Nested Search
@@ -788,8 +947,4 @@ __END__
   By default, when calling ApplicationService->queryObject, the caCORE server automatically trim the resultset to 1000 objects if the there more than 1000. So in reality, if you want to retrieve anything beyond 1000, you must use ApplicationService->query.
 
 =cut
-
-
-
-__END__
 

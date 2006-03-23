@@ -3,9 +3,10 @@
 
 #########################
 
-use Test::Simple tests => 8;
+use Test::Simple tests => 11;
 use CaCORE::ApplicationService;
 use CaCORE::CaBIO;
+use CaCORE::EVS;
 use CaCORE::CaDSR;
 use CaCORE::Common;
 
@@ -20,6 +21,13 @@ $gene->setSymbol("NAT2");
 ok( defined $gene, " Domain object CaCORE::CaBIO::Gene constructor" );
 ok( $gene->isa('CaCORE::CaBIO::Gene'), " Validate class for Gene"  );
 ok( $gene->getSymbol eq "NAT2", " Correct Gene getter and setter methods" );
+
+# test create an EVS domain object
+my $dlConcept = new CaCORE::EVS::DescLogicConcept;
+$dlConcept->setCode("C12756");
+ok( defined $dlConcept, " Domain object CaCORE::EVS::DescLogicConcept constructor" );
+ok( $dlConcept->isa('CaCORE::EVS::DescLogicConcept'), " Validate class for DescLogicConcept"  );
+ok( $dlConcept->getCode eq "C12756", " Correct DescLogicConcept getter and setter methods" );
 
 # test create a CaDSR domain object
 print "test CaDSR 1: retrieve caDSR object AdministeredComponent\n";

@@ -1,7 +1,5 @@
 			Perl module: CaCORE
 
-Patches welcome!  Send them to jiangs@mail.nih.gov
-
 ========= DEPENDENCIES =========================================================
 
 You need the following modules (all available at CPAN):
@@ -38,7 +36,12 @@ install by typing:
 
 ============= CaCORE =========================================================
 
-This is a Perl application programming interface to caCORE hosted vocabulary, metadata, and biomedical data.
+This is a Perl application programming interface to caCORE hosted vocabulary, metadata,
+and biomedical data.
+
+============= Author =========================================================
+
+Shan Jiang <jiangs@mail.nih.gov>
 
 ============= COPYRIGHT AND LICENSE ============================================
 
