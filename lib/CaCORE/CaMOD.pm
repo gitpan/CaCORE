@@ -13,7 +13,7 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-$VERSION = '3.091';
+$VERSION = '3.092';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -10604,15 +10604,6 @@ One to many assoication, use C<getPublicationCollection> to get a collection of 
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for AnimalModel
@@ -10636,7 +10627,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An animal model which develops cancer or can be used to generate a model that develops cancer.
 
 =head2 ATTRIBUTES of AnimalModel
 
@@ -10724,15 +10715,6 @@ One to many assoication, use C<getXenograftCollection> to get a collection of as
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ApprovalStatus
@@ -10787,15 +10769,6 @@ The following are all the objects that are associated with the ApprovalStatus:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Availability
@@ -10818,7 +10791,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Dates on which a animal model record was entered, modified or release to the intended viewing audience.
 
 =head2 ATTRIBUTES of Availability
 
@@ -10861,15 +10834,6 @@ The following are all the objects that are associated with the Availability:
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -10921,15 +10885,6 @@ The following are all the objects that are associated with the CancerModel:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for CarcinogenicIntervention
@@ -10952,7 +10907,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Treatment or procedure that the animal model was exposed to in order to initiate or support the development of neoplastic lesions.
 
 =head2 ATTRIBUTES of CarcinogenicIntervention
 
@@ -10988,15 +10943,6 @@ Many to one assoication, use C<getTreatmentSchedule> to get the associated Treat
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for CellLine
@@ -11019,7 +10965,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Cell lines generated from the animal model.
 
 =head2 ATTRIBUTES of CellLine
 
@@ -11067,15 +11013,6 @@ One to many assoication, use C<getPublicationCollection> to get a collection of 
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Conditionality
@@ -11098,7 +11035,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Indicates if a transgene or targeted modification is done conditionally (time or tissue specific).
 
 =head2 ATTRIBUTES of Conditionality
 
@@ -11134,15 +11071,6 @@ The following are all the objects that are associated with the Conditionality:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ContactInfo
@@ -11165,7 +11093,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Information regarding the person who submitted the data.
 
 =head2 ATTRIBUTES of ContactInfo
 
@@ -11233,15 +11161,6 @@ One to many assoication, use C<getPartyCollection> to get a collection of associ
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for EndpointCode
@@ -11264,7 +11183,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A endpoint code captures the parameter for measuring success of anti-drug screen test; mean tumor weightm median survival time, etc.
 
 =head2 ATTRIBUTES of EndpointCode
 
@@ -11300,15 +11219,6 @@ The following are all the objects that are associated with the EndpointCode:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for EngineeredGene
@@ -11331,7 +11241,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Manipulated Gene introduced in the animal model.
 
 =head2 ATTRIBUTES of EngineeredGene
 
@@ -11391,15 +11301,6 @@ Many to one assoication, use C<getImage> to get the associated Image.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for EnvironmentalFactor
@@ -11422,7 +11323,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Chemical, radiation, hormone treatment or other environmental factor that initiates or supports development of neoplasias.
 
 =head2 ATTRIBUTES of EnvironmentalFactor
 
@@ -11462,15 +11363,6 @@ One to many assoication, use C<getInducedMutationCollection> to get a collection
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ExpressionFeature
@@ -11493,7 +11385,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The expression feature object describes expression pattern of the engineered gene in the cancer model.
 
 =head2 ATTRIBUTES of ExpressionFeature
 
@@ -11525,15 +11417,6 @@ One to many assoication, use C<getOrganOntologyCollection> to get a collection o
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GeneDelivery
@@ -11556,7 +11439,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Gene is delivered to specific organs or specific receptors within the animal model. using viral vectors
 
 =head2 ATTRIBUTES of GeneDelivery
 
@@ -11592,15 +11475,6 @@ Many to one assoication, use C<getEngineeredGene> to get the associated Engineer
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GeneFunction
@@ -11623,7 +11497,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Functions of the engineered genes.
 
 =head2 ATTRIBUTES of GeneFunction
 
@@ -11659,15 +11533,6 @@ Many to one assoication, use C<getEngineeredGene> to get the associated Engineer
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GeneticAlteration
@@ -11690,7 +11555,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Genetic alterations found in the neoplastic lesions of the animal model. These alterations are not made intentionally.
 
 =head2 ATTRIBUTES of GeneticAlteration
 
@@ -11726,15 +11591,6 @@ The following are all the objects that are associated with the GeneticAlteration
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GenomicSegment
@@ -11757,7 +11613,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Genomic segment extracted from a library e.g. BAC or YAC library to be used in the genetic manipulation of the animal model.
 
 =head2 ATTRIBUTES of GenomicSegment
 
@@ -11805,15 +11661,6 @@ Many to one assoication, use C<getSegmentType> to get the associated SegmentType
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GenotypeSummary
@@ -11836,7 +11683,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Listing of the genetic changes made deliberately in order to generate the animal model.
 
 =head2 ATTRIBUTES of GenotypeSummary
 
@@ -11876,15 +11723,6 @@ Many to one assoication, use C<getNomenclature> to get the associated Nomenclatu
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Image
@@ -11907,7 +11745,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Images related to the animal model e.g. histology images, blots, and graphics.
 
 =head2 ATTRIBUTES of Image
 
@@ -11951,15 +11789,6 @@ Many to one assoication, use C<getAvailability> to get the associated Availabili
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for InducedMutation
@@ -11982,7 +11811,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Induced mutations are defined as mutations triggered by radiation, chemicals or other means. Progeny of the treated animal inherits the mutation.
 
 =head2 ATTRIBUTES of InducedMutation
 
@@ -12018,15 +11847,6 @@ Many to one assoication, use C<getEnvironmentalFactor> to get the associated Env
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for IntegrationType
@@ -12049,7 +11869,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Location of the integration of the engineered gene e.g. random or targeted.
 
 =head2 ATTRIBUTES of IntegrationType
 
@@ -12089,15 +11909,6 @@ One to many assoication, use C<getTransgeneCollection> to get a collection of as
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for InvivoResult
@@ -12120,7 +11931,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An Invivo Result captures the results of anti-tumor drug screening.
 
 =head2 ATTRIBUTES of InvivoResult
 
@@ -12172,15 +11983,6 @@ Many to one assoication, use C<getTreatmentSchedule> to get the associated Treat
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for JaxInfo
@@ -12203,7 +12005,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Identification number (stock number) of strain at the Jackson Laboratory, number can be used for ordering the strain; http://www.jax.org.
 
 =head2 ATTRIBUTES of JaxInfo
 
@@ -12235,15 +12037,6 @@ The following are all the objects that are associated with the JaxInfo:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for MicroArrayData
@@ -12266,7 +12059,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Data of microarray experiments generated from the animal model.
 
 =head2 ATTRIBUTES of MicroArrayData
 
@@ -12305,15 +12098,6 @@ Many to one assoication, use C<getAvailability> to get the associated Availabili
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -12373,15 +12157,6 @@ One to many assoication, use C<getTargetedModificationCollection> to get a colle
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Nomenclature
@@ -12404,7 +12179,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Official nomenclature name for mouse and rat models.
 
 =head2 ATTRIBUTES of Nomenclature
 
@@ -12436,15 +12211,6 @@ The following are all the objects that are associated with the Nomenclature:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Organization
@@ -12467,7 +12233,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Organizational unit like a laboratory, institute or consortium.
 
 =head2 ATTRIBUTES of Organization
 
@@ -12503,15 +12269,6 @@ The following are all the objects that are associated with the Organization:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Party
@@ -12534,7 +12291,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Entity that has access to the data, either a person or an organization.
 
 =head2 ATTRIBUTES of Party
 
@@ -12570,15 +12327,6 @@ One to many assoication, use C<getPartyRoleCollection> to get a collection of as
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for PartyRole
@@ -12601,7 +12349,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Object connects the party (organization or person) with the animal model.
 
 =head2 ATTRIBUTES of PartyRole
 
@@ -12641,15 +12389,6 @@ Many to one assoication, use C<getRole> to get the associated Role.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Person
@@ -12673,7 +12412,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Person's first and last name and the connection to the party.
 
 =head2 ATTRIBUTES of Person
 
@@ -12709,15 +12448,6 @@ The following are all the objects that are associated with the Person:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Phenotype
@@ -12740,7 +12470,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Phenotype displayed by the animal model such as neoplastic lesions, other diseases, behavioral problem.
 
 =head2 ATTRIBUTES of Phenotype
 
@@ -12780,15 +12510,6 @@ Many to one assoication, use C<getSexDistribution> to get the associated SexDist
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Promoter
@@ -12811,7 +12532,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Promoter is a subcategory of the regulatory element.
 
 =head2 ATTRIBUTES of Promoter
 
@@ -12847,15 +12568,6 @@ Many to one assoication, use C<getRegulatoryElement> to get the associated Regul
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Publication
@@ -12878,7 +12590,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Publications describing the animal model itself or experiments in which the animal model was used.
 
 =head2 ATTRIBUTES of Publication
 
@@ -12942,15 +12654,6 @@ Many to one assoication, use C<getPublicationStatus> to get the associated Publi
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for PublicationStatus
@@ -12973,7 +12676,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Status of the publication e.g. published, submitted.
 
 =head2 ATTRIBUTES of PublicationStatus
 
@@ -13005,15 +12708,6 @@ The following are all the objects that are associated with the PublicationStatus
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for RegulatoryElement
@@ -13036,7 +12730,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A regulatory element controls the expression of a gene and/or and engineered gene.
 
 =head2 ATTRIBUTES of RegulatoryElement
 
@@ -13080,15 +12774,6 @@ Many to one assoication, use C<getTaxon> to get the associated Taxon.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for RegulatoryElementType
@@ -13111,7 +12796,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Type of the regulatory element e.g. promoter, polyA signal.
 
 =head2 ATTRIBUTES of RegulatoryElementType
 
@@ -13143,15 +12828,6 @@ The following are all the objects that are associated with the RegulatoryElement
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for RepositoryInfo
@@ -13174,7 +12850,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Some animal models are distributed by the MMHCC mouse repository. Object contains information about the availability of a particular model from the repository. A submitter of data to the cancer models database can also indicate if their model should be submitted to the repository.
 
 =head2 ATTRIBUTES of RepositoryInfo
 
@@ -13214,15 +12890,6 @@ The following are all the objects that are associated with the RepositoryInfo:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Role
@@ -13245,7 +12912,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Defines a relationship between two concepts. 
 
 =head2 ATTRIBUTES of Role
 
@@ -13281,15 +12948,6 @@ One to many assoication, use C<getPartyRoleCollection> to get a collection of as
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ScreeningResult
@@ -13312,7 +12970,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A Screening Result captures the results of the tens of thousands of compounds screened for their ability to inhibit the growth of selected yeast strains altered in DNA damage repair or cell cycle control.
 
 =head2 ATTRIBUTES of ScreeningResult
 
@@ -13364,15 +13022,6 @@ Many to one assoication, use C<getTreatmentSchedule> to get the associated Treat
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for SegmentType
@@ -13395,7 +13044,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+specifies the type of library that the genomic segment was retrieved from such as BAC or YAC.
 
 =head2 ATTRIBUTES of SegmentType
 
@@ -13427,15 +13076,6 @@ The following are all the objects that are associated with the SegmentType:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for SexDistribution
@@ -13458,7 +13098,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Object indicated if the phenotype was observed in both sexes or only in one.
 
 =head2 ATTRIBUTES of SexDistribution
 
@@ -13490,15 +13130,6 @@ The following are all the objects that are associated with the SexDistribution:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for TargetedModification
@@ -13521,7 +13152,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Modification targeted to a specific gene or a specific part of the gene to either suppress the function of the gene or insert marker sequences like loxP sites.
 
 =head2 ATTRIBUTES of TargetedModification
 
@@ -13569,15 +13200,6 @@ Many to one assoication, use C<getYeastModel> to get the associated YeastModel.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Therapy
@@ -13600,7 +13222,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Pre-clinical trials experiment conducted on the animal model with the goal to reduce cancer burden.
 
 =head2 ATTRIBUTES of Therapy
 
@@ -13652,15 +13274,6 @@ Many to one assoication, use C<getTreatmentSchedule> to get the associated Treat
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Transgene
@@ -13684,7 +13297,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A transgene is an engineered gene consisting at least of a regulatory element and a coding sequence; regulatory element and coding sequence can come from different species.
 
 =head2 ATTRIBUTES of Transgene
 
@@ -13724,15 +13337,6 @@ One to many assoication, use C<getRegulatoryElementCollection> to get a collecti
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for TreatmentSchedule
@@ -13755,7 +13359,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Treatment schedule for the pre-clinical trial / therapeutic experiment describing the dosages of the drug and the times of the treatment.
 
 =head2 ATTRIBUTES of TreatmentSchedule
 
@@ -13791,15 +13395,6 @@ The following are all the objects that are associated with the TreatmentSchedule
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for TumorCode
@@ -13822,7 +13417,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A tumor code captures the tumor type and origin species used for a drug screen test.
 
 =head2 ATTRIBUTES of TumorCode
 
@@ -13858,15 +13453,6 @@ The following are all the objects that are associated with the TumorCode:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Xenograft
@@ -13890,7 +13476,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+This object describes to xenografts (implanting tissue or cell lines from a different species) and allografts (implanting tissue or cell lines form the same species). The grafts are transplanted in immuno-compromised animals where they grow and, depending on the graft material, form tumors.
 
 =head2 ATTRIBUTES of Xenograft
 
@@ -13954,15 +13540,6 @@ Many to one assoication, use C<getTumorCode> to get the associated TumorCode.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for YeastModel
@@ -13986,7 +13563,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A yeast model captures the yeast strains altered in the NCI Yeast Anticancer Drug Screen.
 
 =head2 ATTRIBUTES of YeastModel
 
@@ -14018,14 +13595,63 @@ One to many assoication, use C<getTargetedModificationCollection> to get a colle
 
 =back
 
-=head2 SUPPORT
+=cut
+
+
+=pod
+
+=head1 SUPPORT
 
 Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
 support or report a bug.
 
-=head2 AUTHOR
+=head1 AUTHOR
 
 Shan Jiang <jiangs@mail.nih.gov>
 
+=head1 COPYRIGHT AND LICENSE
+
+The CaCORE Software License, Version 1.0
+
+  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
+  National Cancer Institute, and so to the extent government employees are co-authors,
+  any rights in such works shall be subject to Title 17 of the United States Code,
+  section 105. Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+  1. Redistributions of source code must retain the above copyright notice, this list
+     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
+     form must reproduce the above copyright notice, this list of conditions and the
+     disclaimer of Article 5 in the documentation and/or other materials provided with
+     the distribution.
+   
+  2. The end-user documentation included with the redistribution, if any, must include
+     the following acknowledgment: "This product includes software developed by SAIC and
+     the National Cancer Institute." If no such end-user documentation is to be included,
+     this acknowledgment shall appear in the software itself, wherever such third-party
+     acknowledgments normally appear.
+   
+  3. The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to
+     endorse or promote products derived from this software. This license does not
+     authorize the licensee to use any trademarks owned by either NCI or SAIC.
+   
+  4. This license does not authorize or prohibit the incorporation of this software into
+     any third party proprietary programs. Licensee is expressly made responsible for
+     obtaining any permission required to incorporate this software into third party
+     proprietary programs and for informing licensee's end-users of their obligation
+     to secure any required permissions before incorporating this software into third
+     party proprietary software programs.
+   
+  5. THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
+     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
+     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
+     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
+     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 =cut
+
 

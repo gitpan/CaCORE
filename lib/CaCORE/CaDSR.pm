@@ -13,7 +13,7 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-$VERSION = '3.091';
+$VERSION = '3.092';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -24906,15 +24906,6 @@ Many to one assoication, use C<getPerson> to get the associated Person.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for AdministeredComponent
@@ -24937,7 +24928,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A component for which attributes (or characteristics) are collected; Data Elements are one type of administered component. Other administered components have relationships to data elements as well as each other.
 
 =head2 ATTRIBUTES of AdministeredComponent
 
@@ -25065,15 +25056,6 @@ One to many assoication, use C<getReferenceDocumentCollection> to get a collecti
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for AdministeredComponentClassSchemeItem
@@ -25096,7 +25078,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A class that serves to allow many to many relationships between Administered Component and ClassSchemeClassSchemeItem, providing uniqueness to the CS/CSI pairing to an AC.
 
 =head2 ATTRIBUTES of AdministeredComponentClassSchemeItem
 
@@ -25143,15 +25125,6 @@ Many to one assoication, use C<getClassSchemeClassSchemeItem> to get the associa
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -25243,15 +25216,6 @@ Many to one assoication, use C<getPerson> to get the associated Person.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ClassSchemeClassSchemeItem
@@ -25274,7 +25238,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Information pertaining to the association between Classification Schemes and Classification Scheme Items.  This information is used to get all Classification Scheme Items that belong to a particular Classification Scheme as well as the information about t
 
 =head2 ATTRIBUTES of ClassSchemeClassSchemeItem
 
@@ -25358,15 +25322,6 @@ One to many assoication, use C<getReferenceDocumentCollection> to get a collecti
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ClassificationScheme
@@ -25390,7 +25345,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An arrangement or division of objects into groups based on characteristics that the objects have in common, e.g., origin, composition, structure, application, function, etc.  Adds information not easily included in definitions, helps organize the registry and facilitates access to the registry.  ISO DEF: the descriptive information for an arrangement or division of objects into groups based on characterisitics, which the objects have in common.
 
 =head2 ATTRIBUTES of ClassificationScheme
 
@@ -25438,15 +25393,6 @@ One to many assoication, use C<getParentClassificationSchemeRelationshipCollecti
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ClassificationSchemeItem
@@ -25469,7 +25415,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A component of content in a Classification Scheme. This may be a node in a taxonomy or ontology or a term in a thesaurus, etc.
 
 =head2 ATTRIBUTES of ClassificationSchemeItem
 
@@ -25553,15 +25499,6 @@ One to many assoication, use C<getReferenceDocumentCollection> to get a collecti
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ClassificationSchemeItemRelationship
@@ -25584,7 +25521,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The affiliation between two occurrences of Classification Scheme Items.
 
 =head2 ATTRIBUTES of ClassificationSchemeItemRelationship
 
@@ -25640,15 +25577,6 @@ Many to one assoication, use C<getParentClassificationSchemeItem> to get the ass
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ClassificationSchemeRelationship
@@ -25671,7 +25599,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The affiliation between two occurrences of Classification Schemes.
 
 =head2 ATTRIBUTES of ClassificationSchemeRelationship
 
@@ -25731,15 +25659,6 @@ Many to one assoication, use C<getParentClassificationScheme> to get the associa
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ComponentConcept
@@ -25762,7 +25681,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The concept component(s) used for a concept derivation
 
 =head2 ATTRIBUTES of ComponentConcept
 
@@ -25809,15 +25728,6 @@ Many to one assoication, use C<getDerivationRule> to get the associated Derivati
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -25877,15 +25787,6 @@ The following are all the objects that are associated with the ComponentLevel:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Concept
@@ -25909,7 +25810,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The concept for an administered component
 
 =head2 ATTRIBUTES of Concept
 
@@ -25949,15 +25850,6 @@ One to many assoication, use C<getValueDomainPermissibleValueCollection> to get 
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ConceptDerivationRule
@@ -25980,7 +25872,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The derivation rule between one or more concepts. 
 
 =head2 ATTRIBUTES of ConceptDerivationRule
 
@@ -26068,15 +25960,6 @@ One to many assoication, use C<getValueMeaningCollection> to get a collection of
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ConceptualDomain
@@ -26100,7 +25983,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The set of all possible Valid Value meanings of a Data Element Concept expressed without representation.
 
 =head2 ATTRIBUTES of ConceptualDomain
 
@@ -26144,15 +26027,6 @@ One to many assoication, use C<getValueMeaningCollection> to get a collection of
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Context
@@ -26175,7 +26049,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A designation or description of the application environment or discipline in which a name is applied or from which it originates.
 
 =head2 ATTRIBUTES of Context
 
@@ -26251,15 +26125,6 @@ One to many assoication, use C<getReferenceDocumentCollection> to get a collecti
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DataElement
@@ -26283,7 +26148,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A unit of data for which the definition, identification, representation and permissible values are specified by means of a set of attributes.
 
 =head2 ATTRIBUTES of DataElement
 
@@ -26335,15 +26200,6 @@ Many to one assoication, use C<getValueDomain> to get the associated ValueDomain
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DataElementConcept
@@ -26367,7 +26223,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A concept that can be represented in the form of a data element, described independently of any particular representation.
 
 =head2 ATTRIBUTES of DataElementConcept
 
@@ -26415,15 +26271,6 @@ Many to one assoication, use C<getProperty> to get the associated Property.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DataElementConceptRelationship
@@ -26446,7 +26293,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A description of the affiliation between two occurrences of Data Element Concepts.
 
 =head2 ATTRIBUTES of DataElementConceptRelationship
 
@@ -26506,15 +26353,6 @@ Many to one assoication, use C<getParentDataElementConcept> to get the associate
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DataElementDerivation
@@ -26537,7 +26375,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The data element component(s) used for a derived data element.
 
 =head2 ATTRIBUTES of DataElementDerivation
 
@@ -26605,15 +26443,6 @@ Many to one assoication, use C<getLeftOperand> to get the associated LeftOperand
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DataElementRelationship
@@ -26636,7 +26465,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The affiliation between two occurrences of Data Elements.
 
 =head2 ATTRIBUTES of DataElementRelationship
 
@@ -26692,15 +26521,6 @@ Many to one assoication, use C<getParentDataElement> to get the associated Paren
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Definition
@@ -26723,7 +26543,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Textual definition from an identified source
 
 =head2 ATTRIBUTES of Definition
 
@@ -26786,15 +26606,6 @@ One to many assoication, use C<getDefinitionClassSchemeItemCollection> to get a 
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -26870,15 +26681,6 @@ Many to one assoication, use C<getDefinition> to get the associated Definition.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DerivationType
@@ -26901,7 +26703,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The type of Derived Data Element that is being created. For example a Data Element that is derived/created by subtracting two dates represented by other data elements would be a Calculated Representation Type.   Types include: Calculated, Complex Recode, Compound, Concatenation, Object Class, and Simple Recode.
 
 =head2 ATTRIBUTES of DerivationType
 
@@ -26961,15 +26763,6 @@ One to many assoication, use C<getDerivedDataElementCollection> to get a collect
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DerivedDataElement
@@ -26992,7 +26785,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The Data Element that is derived from one or more data elements. ISO DEF: the relationship among a Data Element which is derived, the rule controlling its derivation, and the Data Element(s) from which it is derived.
 
 =head2 ATTRIBUTES of DerivedDataElement
 
@@ -27060,15 +26853,6 @@ Many to one assoication, use C<getDerivationType> to get the associated Derivati
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Designation
@@ -27091,7 +26875,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A name by which an Administered Component is known in a specific Context. Also a placeholder to track the usage of Administered Components by different Contexts.
 
 =head2 ATTRIBUTES of Designation
 
@@ -27155,15 +26939,6 @@ One to many assoication, use C<getDesignationClassSchemeItemCollection> to get a
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DesignationClassSchemeItem
@@ -27186,7 +26961,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A class that serves to allow many to many relationships between Designation and ClassSchemeClassSchemeItem, providing uniqueness to the CS/CSI pairing to an Designation.
 
 =head2 ATTRIBUTES of DesignationClassSchemeItem
 
@@ -27237,15 +27012,6 @@ Many to one assoication, use C<getDesignation> to get the associated Designation
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -27298,15 +27064,6 @@ One to many assoication, use C<getValueDomainPermissibleValueCollection> to get 
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Form
@@ -27330,7 +27087,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A questionnaire that documents all the patient data stipulated in the protocol and used by clinicians to record information about patient's visits while on the clinical trial.
 
 =head2 ATTRIBUTES of Form
 
@@ -27370,15 +27127,6 @@ One to many assoication, use C<getProtocolCollection> to get a collection of ass
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for FormElement
@@ -27402,7 +27150,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The element of a Form
 
 =head2 ATTRIBUTES of FormElement
 
@@ -27429,15 +27177,6 @@ One to many assoication, use C<getInstructionCollection> to get a collection of 
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -27517,15 +27256,6 @@ Many to one assoication, use C<getConceptDerivationRule> to get the associated C
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Instruction
@@ -27549,7 +27279,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Instruction for a Form, Module, Question or Valid Value on a Form
 
 =head2 ATTRIBUTES of Instruction
 
@@ -27581,15 +27311,6 @@ Many to one assoication, use C<getFormElement> to get the associated FormElement
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Module
@@ -27613,7 +27334,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A collection of data elements, or Common Data Elements, logically grouped on a case report form.
 
 =head2 ATTRIBUTES of Module
 
@@ -27653,15 +27374,6 @@ One to many assoication, use C<getQuestionCollection> to get a collection of ass
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for NonenumeratedValueDomain
@@ -27685,7 +27397,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A value domain not expressed as a list of all permissible values.
 
 =head2 ATTRIBUTES of NonenumeratedValueDomain
 
@@ -27708,15 +27420,6 @@ The following are all the objects that are associated with the NonenumeratedValu
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -27741,7 +27444,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A set of ideas, abstractions, or things in the real world that can be identified with explicit boundaries and meaning and whose properties and behavior follow the same rules.
 
 =head2 ATTRIBUTES of ObjectClass
 
@@ -27785,15 +27488,6 @@ One to many assoication, use C<getTargetObjectClassRelationshipCollection> to ge
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ObjectClassRelationship
@@ -27817,7 +27511,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A description of the affiliation between two occurrences of Object  Classes
 
 =head2 ATTRIBUTES of ObjectClassRelationship
 
@@ -27881,15 +27575,6 @@ Many to one assoication, use C<getTargetObjectClass> to get the associated Targe
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Organization
@@ -27912,7 +27597,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Organizational unit like a laboratory, institute or consortium.
 
 =head2 ATTRIBUTES of Organization
 
@@ -27972,15 +27657,6 @@ One to many assoication, use C<getPersonCollection> to get a collection of assoc
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for PermissibleValue
@@ -28003,7 +27679,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The exact names, codes and text that can be stored in a data field in an information management system.  ISO DEF: An expression of a value meaning in a specific value domain.
 
 =head2 ATTRIBUTES of PermissibleValue
 
@@ -28067,15 +27743,6 @@ Many to one assoication, use C<getValueMeaning> to get the associated ValueMeani
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Person
@@ -28098,7 +27765,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Person's first and last name and the connection to the party.
 
 =head2 ATTRIBUTES of Person
 
@@ -28174,15 +27841,6 @@ Many to one assoication, use C<getOrganization> to get the associated Organizati
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Property
@@ -28206,7 +27864,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Property is an attribute of a concept. Examples of properties are "Synonym", "Preferred_Name", "Semantic_Type" etc.
 
 =head2 ATTRIBUTES of Property
 
@@ -28242,15 +27900,6 @@ One to many assoication, use C<getDataElementConceptCollection> to get a collect
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Protocol
@@ -28274,7 +27923,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representation of the protocol used in assembling a clone library.
 
 =head2 ATTRIBUTES of Protocol
 
@@ -28342,15 +27991,6 @@ One to many assoication, use C<getFormCollection> to get a collection of associa
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Question
@@ -28374,7 +28014,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The actual text of the data element as specified on a Case Report Form of a Protocol.
 
 =head2 ATTRIBUTES of Question
 
@@ -28433,15 +28073,6 @@ Many to one assoication, use C<getValueDomain> to get the associated ValueDomain
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -28506,15 +28137,6 @@ Many to one assoication, use C<getDefaultValidValue> to get the associated Defau
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ReferenceDocument
@@ -28537,7 +28159,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A place to document additional information about Administered Components that is not readily stored elsewhere.
 
 =head2 ATTRIBUTES of ReferenceDocument
 
@@ -28625,15 +28247,6 @@ Many to one assoication, use C<getContext> to get the associated Context.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Representation
@@ -28657,7 +28270,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Mechanism by which the functional and/or presentational category of an item maybe conveyed to a user. Component of a Data Element Name that describes how data are represented (i.e. the combination of a Value Domain, data type, and if necessary a unit of measure or a character set.)  The Representation occupies the last position in the Data Element name (i.e. rightmost).   Examples: Code - A system of valid symbols that substitute for specified values e.g. alpha, numeric, symbols and/or combinations. Count ? Non-monetary numeric value arrived at by counting. Currency ? Monetary representation. Date ? Calendar representation e.g. YYYY-MM-DD Graphic ? Diagrams, graphs, mathematical curves, or the like ? usually a vector image. Icon ? A sign or representation that stands for its object by virtue of a resemblance or analogy to it. Picture ? A visual representation of a person, object, or scene ? usually a raster image. Quantity ? A continuous number such as the linear dimensions, capacity/amount (non-monetary) of an object. Text ? A text field that is usually unformatted. Time ? Time of day or duration e.g. HH:MM:SS.SSSS.
 
 =head2 ATTRIBUTES of Representation
 
@@ -28693,15 +28306,6 @@ One to many assoication, use C<getValueDomainCollection> to get a collection of 
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for TriggerAction
@@ -28724,7 +28328,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+a
 
 =head2 ATTRIBUTES of TriggerAction
 
@@ -28804,15 +28408,6 @@ Many to one assoication, use C<getTargetFormElement> to get the associated Targe
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ValidValue
@@ -28836,7 +28431,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The allowable values for a given data element (question) on a Case Report Form.
 
 =head2 ATTRIBUTES of ValidValue
 
@@ -28872,15 +28467,6 @@ Many to one assoication, use C<getValueDomainPermissibleValue> to get the associ
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ValueDomain
@@ -28904,7 +28490,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A set of permissible values for a data element.
 
 =head2 ATTRIBUTES of ValueDomain
 
@@ -28992,15 +28578,6 @@ Many to one assoication, use C<getRepresention> to get the associated Representi
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ValueDomainPermissibleValue
@@ -29023,7 +28600,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+This captures the many-to-many relationship between value domain and permissible values and allows to associate a value domain to a permissible value.
 
 =head2 ATTRIBUTES of ValueDomainPermissibleValue
 
@@ -29095,15 +28672,6 @@ One to many assoication, use C<getValidValueCollection> to get a collection of a
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ValueDomainRelationship
@@ -29126,7 +28694,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The affiliation between two occurrences of Value Domains.
 
 =head2 ATTRIBUTES of ValueDomainRelationship
 
@@ -29182,15 +28750,6 @@ Many to one assoication, use C<getParentValueDomain> to get the associated Paren
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ValueMeaning
@@ -29213,7 +28772,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The significance associated with an allowable/permissible value.
 
 =head2 ATTRIBUTES of ValueMeaning
 
@@ -29289,14 +28848,63 @@ One to many assoication, use C<getPermissibleValueCollection> to get a collectio
 
 =back
 
-=head2 SUPPORT
+=cut
+
+
+=pod
+
+=head1 SUPPORT
 
 Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
 support or report a bug.
 
-=head2 AUTHOR
+=head1 AUTHOR
 
 Shan Jiang <jiangs@mail.nih.gov>
 
+=head1 COPYRIGHT AND LICENSE
+
+The CaCORE Software License, Version 1.0
+
+  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
+  National Cancer Institute, and so to the extent government employees are co-authors,
+  any rights in such works shall be subject to Title 17 of the United States Code,
+  section 105. Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+  1. Redistributions of source code must retain the above copyright notice, this list
+     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
+     form must reproduce the above copyright notice, this list of conditions and the
+     disclaimer of Article 5 in the documentation and/or other materials provided with
+     the distribution.
+   
+  2. The end-user documentation included with the redistribution, if any, must include
+     the following acknowledgment: "This product includes software developed by SAIC and
+     the National Cancer Institute." If no such end-user documentation is to be included,
+     this acknowledgment shall appear in the software itself, wherever such third-party
+     acknowledgments normally appear.
+   
+  3. The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to
+     endorse or promote products derived from this software. This license does not
+     authorize the licensee to use any trademarks owned by either NCI or SAIC.
+   
+  4. This license does not authorize or prohibit the incorporation of this software into
+     any third party proprietary programs. Licensee is expressly made responsible for
+     obtaining any permission required to incorporate this software into third party
+     proprietary programs and for informing licensee's end-users of their obligation
+     to secure any required permissions before incorporating this software into third
+     party proprietary software programs.
+   
+  5. THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
+     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
+     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
+     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
+     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 =cut
+
 

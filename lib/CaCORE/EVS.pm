@@ -13,7 +13,7 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-$VERSION = '3.091';
+$VERSION = '3.092';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -4073,7 +4073,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An Association class relates a concept or a term to another concept or term. Association falls into 3 categories; concept association, term association and synonyms which are concept-term associations.
 
 =head2 ATTRIBUTES of Association
 
@@ -4109,15 +4109,6 @@ One to many assoication, use C<getQualifierCollection> to get a collection of as
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Atom
@@ -4140,7 +4131,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Atom is an occurence of a term in a source.
 
 =head2 ATTRIBUTES of Atom
 
@@ -4184,15 +4175,6 @@ Many to one assoication, use C<getSource> to get the associated Source.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for AttributeSetDescriptor
@@ -4215,7 +4197,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+AttributeSetDescriptor class specifies the set of concept attributes that should be retrieved by a given operation. 
 
 =head2 ATTRIBUTES of AttributeSetDescriptor
 
@@ -4251,15 +4233,6 @@ One to many assoication, use C<getRoleCollection> to get a collection of associa
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Definition
@@ -4282,7 +4255,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Textual definition from an identified source
 
 =head2 ATTRIBUTES of Definition
 
@@ -4314,15 +4287,6 @@ Many to one assoication, use C<getSource> to get the associated Source.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DescLogicConcept
@@ -4345,7 +4309,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The DescLogicConcept class represents the fundermental vocabulary entity in the NCI Thesaurus. 
 
 =head2 ATTRIBUTES of DescLogicConcept
 
@@ -4429,15 +4393,6 @@ Many to one assoication, use C<getTreeNode> to get the associated TreeNode.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for EdgeProperties
@@ -4460,7 +4415,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The EdgeProperties class specifies the relationshop between a concept and it's immediate parent when a  TREE is generated using the getTree method. 
 
 =head2 ATTRIBUTES of EdgeProperties
 
@@ -4500,15 +4455,6 @@ One to many assoication, use C<getLinksCollection> to get a collection of associ
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for EditActionDate
@@ -4531,7 +4477,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+GenericDescription
 
 =head2 ATTRIBUTES of EditActionDate
 
@@ -4563,15 +4509,6 @@ The following are all the objects that are associated with the EditActionDate:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for HashSet
@@ -4594,7 +4531,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+GenericDescription
 
 =head2 ATTRIBUTES of HashSet
 
@@ -4618,15 +4555,6 @@ The following are all the objects that are associated with the HashSet:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for History
@@ -4649,7 +4577,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The History class stores the concept history information.
 
 =head2 ATTRIBUTES of History
 
@@ -4689,15 +4617,6 @@ The following are all the objects that are associated with the History:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for HistoryRecord
@@ -4720,7 +4639,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The HistoryRecord holds history information for the specifed concept
 
 =head2 ATTRIBUTES of HistoryRecord
 
@@ -4752,15 +4671,6 @@ One to many assoication, use C<getHistoryCollection> to get a collection of asso
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for MetaThesaurusConcept
@@ -4783,7 +4693,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+MetaThesaurusConcept is the fundermental vocabulary entity in the NCI MetaThesaurus.
 
 =head2 ATTRIBUTES of MetaThesaurusConcept
 
@@ -4835,15 +4745,6 @@ One to many assoication, use C<getSynonymCollection> to get a collection of asso
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Property
@@ -4866,7 +4767,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Property is an attribute of a concept. Examples of properties are "Synonym", "Preferred_Name", "Semantic_Type" etc.
 
 =head2 ATTRIBUTES of Property
 
@@ -4902,15 +4803,6 @@ One to many assoication, use C<getQualifierCollection> to get a collection of as
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Qualifier
@@ -4933,7 +4825,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A Qualifier is  attached to associations and properties of a concept. 
 
 =head2 ATTRIBUTES of Qualifier
 
@@ -4965,15 +4857,6 @@ The following are all the objects that are associated with the Qualifier:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Role
@@ -4996,7 +4879,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Defines a relationship between two concepts. 
 
 =head2 ATTRIBUTES of Role
 
@@ -5028,15 +4911,6 @@ The following are all the objects that are associated with the Role:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for SemanticType
@@ -5059,7 +4933,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Semantic type is a category defined in the semantic network that can be used to group similar concepts
 
 =head2 ATTRIBUTES of SemanticType
 
@@ -5091,15 +4965,6 @@ The following are all the objects that are associated with the SemanticType:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Silo
@@ -5122,7 +4987,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Silo is a repository of customized concept terminology data from a knowledgebase. There can be a single silo or multiple silos, each consisting of semantically related concepts and extracted character strings associated with those concepts.
 
 =head2 ATTRIBUTES of Silo
 
@@ -5154,15 +5019,6 @@ The following are all the objects that are associated with the Silo:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Source
@@ -5185,7 +5041,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The source is a knowledge base.
 
 =head2 ATTRIBUTES of Source
 
@@ -5217,15 +5073,6 @@ The following are all the objects that are associated with the Source:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for TreeNode
@@ -5248,7 +5095,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The TreeNode class specifies the relationshop between a concept and it's immediate parent when a  TREE is generated using the getTree method. 
 
 =head2 ATTRIBUTES of TreeNode
 
@@ -5288,14 +5135,63 @@ One to many assoication, use C<getLinksCollection> to get a collection of associ
 
 =back
 
-=head2 SUPPORT
+=cut
+
+
+=pod
+
+=head1 SUPPORT
 
 Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
 support or report a bug.
 
-=head2 AUTHOR
+=head1 AUTHOR
 
 Shan Jiang <jiangs@mail.nih.gov>
 
+=head1 COPYRIGHT AND LICENSE
+
+The CaCORE Software License, Version 1.0
+
+  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
+  National Cancer Institute, and so to the extent government employees are co-authors,
+  any rights in such works shall be subject to Title 17 of the United States Code,
+  section 105. Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+  1. Redistributions of source code must retain the above copyright notice, this list
+     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
+     form must reproduce the above copyright notice, this list of conditions and the
+     disclaimer of Article 5 in the documentation and/or other materials provided with
+     the distribution.
+   
+  2. The end-user documentation included with the redistribution, if any, must include
+     the following acknowledgment: "This product includes software developed by SAIC and
+     the National Cancer Institute." If no such end-user documentation is to be included,
+     this acknowledgment shall appear in the software itself, wherever such third-party
+     acknowledgments normally appear.
+   
+  3. The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to
+     endorse or promote products derived from this software. This license does not
+     authorize the licensee to use any trademarks owned by either NCI or SAIC.
+   
+  4. This license does not authorize or prohibit the incorporation of this software into
+     any third party proprietary programs. Licensee is expressly made responsible for
+     obtaining any permission required to incorporate this software into third party
+     proprietary programs and for informing licensee's end-users of their obligation
+     to secure any required permissions before incorporating this software into third
+     party proprietary software programs.
+   
+  5. THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
+     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
+     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
+     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
+     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 =cut
+
 

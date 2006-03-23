@@ -13,7 +13,7 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-$VERSION = '3.091';
+$VERSION = '3.092';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -2092,15 +2092,6 @@ The following are all the objects that are associated with the InternetSource:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Provenance
@@ -2123,7 +2114,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A record describing the source of an assertion (datum) contained in an object.
 
 =head2 ATTRIBUTES of Provenance
 
@@ -2195,15 +2186,6 @@ Many to one assoication, use C<getSupplyingSource> to get the associated Supplyi
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for PublicationSource
@@ -2227,7 +2209,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An implementing subclass of Source. Describes a source for which an electronic online version is not available, but for which a printed version of the data is available.
 
 =head2 ATTRIBUTES of PublicationSource
 
@@ -2275,15 +2257,6 @@ The following are all the objects that are associated with the PublicationSource
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ResearchInstitutionSource
@@ -2307,7 +2280,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An implementing subclass of Source that describes a research institution (commercial, academic, or government). This is used for information with attribution, but that lack an online electronic format.
 
 =head2 ATTRIBUTES of ResearchInstitutionSource
 
@@ -2347,15 +2320,6 @@ The following are all the objects that are associated with the ResearchInstituti
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Source
@@ -2378,7 +2342,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The source is a knowledge base.
 
 =head2 ATTRIBUTES of Source
 
@@ -2410,15 +2374,6 @@ The following are all the objects that are associated with the Source:
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for SourceReference
@@ -2441,7 +2396,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A reference (an electronic reference, publication citation, etc.) to the untransformed data at a source.
 
 =head2 ATTRIBUTES of SourceReference
 
@@ -2481,15 +2436,6 @@ One to many assoication, use C<getProvenanceCollection> to get a collection of a
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for URLSourceReference
@@ -2513,7 +2459,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An implementation of the abstract SourceReference that contains a URL to the original information.
 
 =head2 ATTRIBUTES of URLSourceReference
 
@@ -2540,15 +2486,6 @@ The following are all the objects that are associated with the URLSourceReferenc
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -2601,14 +2538,63 @@ The following are all the objects that are associated with the WebServicesSource
 
 =back
 
-=head2 SUPPORT
+=cut
+
+
+=pod
+
+=head1 SUPPORT
 
 Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
 support or report a bug.
 
-=head2 AUTHOR
+=head1 AUTHOR
 
 Shan Jiang <jiangs@mail.nih.gov>
 
+=head1 COPYRIGHT AND LICENSE
+
+The CaCORE Software License, Version 1.0
+
+  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
+  National Cancer Institute, and so to the extent government employees are co-authors,
+  any rights in such works shall be subject to Title 17 of the United States Code,
+  section 105. Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+  1. Redistributions of source code must retain the above copyright notice, this list
+     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
+     form must reproduce the above copyright notice, this list of conditions and the
+     disclaimer of Article 5 in the documentation and/or other materials provided with
+     the distribution.
+   
+  2. The end-user documentation included with the redistribution, if any, must include
+     the following acknowledgment: "This product includes software developed by SAIC and
+     the National Cancer Institute." If no such end-user documentation is to be included,
+     this acknowledgment shall appear in the software itself, wherever such third-party
+     acknowledgments normally appear.
+   
+  3. The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to
+     endorse or promote products derived from this software. This license does not
+     authorize the licensee to use any trademarks owned by either NCI or SAIC.
+   
+  4. This license does not authorize or prohibit the incorporation of this software into
+     any third party proprietary programs. Licensee is expressly made responsible for
+     obtaining any permission required to incorporate this software into third party
+     proprietary programs and for informing licensee's end-users of their obligation
+     to secure any required permissions before incorporating this software into third
+     party proprietary software programs.
+   
+  5. THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
+     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
+     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
+     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
+     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 =cut
+
 

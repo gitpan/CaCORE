@@ -13,7 +13,7 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-$VERSION = '3.091';
+$VERSION = '3.092';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -9584,7 +9584,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A therapeutic agent (drug, intervention therapy) used in a clinical trail protocol.
 
 =head2 ATTRIBUTES of Agent
 
@@ -9644,15 +9644,6 @@ One to many assoication, use C<getTargetCollection> to get a collection of assoc
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Anomaly
@@ -9675,7 +9666,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An irregularity in either the expression of a gene or its structure (i.e., a mutation).
 
 =head2 ATTRIBUTES of Anomaly
 
@@ -9719,15 +9710,6 @@ One to many assoication, use C<getVocabularyCollection> to get a collection of a
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Chromosome
@@ -9750,7 +9732,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representing a specific chromosome for a specific taxon; provides access to all known genes contained in the chromosome and to the taxon.
 
 =head2 ATTRIBUTES of Chromosome
 
@@ -9793,15 +9775,6 @@ Many to one assoication, use C<getTaxon> to get the associated Taxon.
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -9917,15 +9890,6 @@ One to many assoication, use C<getProtocolAssociationCollection> to get a collec
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Clone
@@ -9948,7 +9912,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object used to hold information pertaining to I.M.A.G.E. clones; provides access to sequence information, associated trace files, and the clone's library.
 
 =head2 ATTRIBUTES of Clone
 
@@ -10003,15 +9967,6 @@ One to many assoication, use C<getTaxonCollection> to get a collection of associ
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -10075,15 +10030,6 @@ Many to one assoication, use C<getNucleicAcidSequence> to get the associated Nuc
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Cytoband
@@ -10141,15 +10087,6 @@ Many to one assoication, use C<getPhysicalLocation> to get the associated Physic
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -10214,15 +10151,6 @@ Many to one assoication, use C<getStartCytoband> to get the associated StartCyto
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DiseaseOntology
@@ -10245,7 +10173,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Disease objects specify a disease name and ID; disease objects also provide access to: ontological relations to other diseases; clinical trial protocols treating the disease; and specific histologies associated with instances of the disease.
 
 =head2 ATTRIBUTES of DiseaseOntology
 
@@ -10293,15 +10221,6 @@ One to many assoication, use C<getParentDiseaseOntologyRelationshipCollection> t
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for DiseaseOntologyRelationship
@@ -10324,7 +10243,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The diseaser relationship specifies the relationship among diseases.
 
 =head2 ATTRIBUTES of DiseaseOntologyRelationship
 
@@ -10364,15 +10283,6 @@ Many to one assoication, use C<getParentDiseaseOntology> to get the associated P
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Gene
@@ -10395,7 +10305,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Gene objects are the effective portal to most of the genomic information provided by the caBIO data services; organs, diseases, chromosomes, pathways, sequence data, and expression experiments are among the many objects accessible via a gene.
 
 =head2 ATTRIBUTES of Gene
 
@@ -10503,15 +10413,6 @@ Many to one assoication, use C<getTaxon> to get the associated Taxon.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GeneAlias
@@ -10534,7 +10435,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+This object describes the gene alias.
 
 =head2 ATTRIBUTES of GeneAlias
 
@@ -10574,15 +10475,6 @@ One to many assoication, use C<getGeneCollection> to get a collection of associa
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GeneOntology
@@ -10605,7 +10497,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object providing entry to a Gene object's position in the Gene Ontology Consortium's controlled vocabularies, as recorded by LocusLink; provides access to gene objects corresponding to the ontological term, as well as to ancestor and descendant terms in the ontology tree.
 
 =head2 ATTRIBUTES of GeneOntology
 
@@ -10649,15 +10541,6 @@ One to many assoication, use C<getParentGeneOntologyRelationshipCollection> to g
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GeneOntologyRelationship
@@ -10680,7 +10563,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+This object specifies GoOntologyrRelationship.
 
 =head2 ATTRIBUTES of GeneOntologyRelationship
 
@@ -10719,15 +10602,6 @@ Many to one assoication, use C<getParentGeneOntology> to get the associated Pare
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -10782,15 +10656,6 @@ The following are all the objects that are associated with the GeneRelativeLocat
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -10858,15 +10723,6 @@ One to many assoication, use C<getGenericReporterCollection> to get a collection
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for GenericReporter
@@ -10933,15 +10789,6 @@ One to many assoication, use C<getGenericArrayCollection> to get a collection of
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Histopathology
@@ -10964,7 +10811,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representing anatomical changes in a diseased tissue sample associated with an expression experiment; captures the relationship between organ and disease.
 
 =head2 ATTRIBUTES of Histopathology
 
@@ -11048,15 +10895,6 @@ Many to one assoication, use C<getOrganOntology> to get the associated OrganOnto
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for HomologousAssociation
@@ -11119,15 +10957,6 @@ Many to one assoication, use C<getHomologousGene> to get the associated Homologo
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Library
@@ -11150,7 +10979,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representing a CGAP library; provides access to information about: the tissue sample and its method of preparation, the library protocol that was used, the clones contained in the library, and the sequence information derived from the library.
 
 =head2 ATTRIBUTES of Library
 
@@ -11254,15 +11083,6 @@ Many to one assoication, use C<getTissue> to get the associated Tissue.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Location
@@ -11329,15 +11149,6 @@ Many to one assoication, use C<getNucleicAcidSequence> to get the associated Nuc
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for NucleicAcidSequence
@@ -11360,7 +11171,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representation of a nucleic acid sequence; provides access to the clones from which it was derived.
 
 =head2 ATTRIBUTES of NucleicAcidSequence
 
@@ -11424,15 +11235,6 @@ One to many assoication, use C<getLocationCollection> to get a collection of ass
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for OrganOntology
@@ -11455,7 +11257,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A representation of an organ whose name occurs in a controlled vocabulary; provides access to any Histopathology objects for the organ, and, because it is $quot;ontolog-able,$quot; provides access to its ancestral and descendant terms in the vocabulary.
 
 =head2 ATTRIBUTES of OrganOntology
 
@@ -11511,15 +11313,6 @@ One to many assoication, use C<getParentOrganOntologyRelationshipCollection> to 
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for OrganOntologyRelationship
@@ -11542,7 +11335,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+Organ relationship object describes relationships among organs.
 
 =head2 ATTRIBUTES of OrganOntologyRelationship
 
@@ -11582,15 +11375,6 @@ Many to one assoication, use C<getParentOrganOntology> to get the associated Par
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Pathway
@@ -11613,7 +11397,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representation of a molecular/cellular pathway compiled by BioCarta. Pathways are associated with specific Taxon objects, and contain multiple Gene objects, which may be Targets for treatment.
 
 =head2 ATTRIBUTES of Pathway
 
@@ -11668,15 +11452,6 @@ Many to one assoication, use C<getTaxon> to get the associated Taxon.
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -11736,15 +11511,6 @@ One to many assoication, use C<getCytobandCollection> to get a collection of ass
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -11823,15 +11589,6 @@ Many to one assoication, use C<getSNP> to get the associated SNP.
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -11923,15 +11680,6 @@ One to many assoication, use C<getTaxonCollection> to get a collection of associ
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ProteinAlias
@@ -11989,15 +11737,6 @@ One to many assoication, use C<getProteinCollection> to get a collection of asso
 
 
 =back
-
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
 
 =cut
 
@@ -12069,15 +11808,6 @@ Many to one assoication, use C<getProtein> to get the associated Protein.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Protocol
@@ -12100,7 +11830,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representation of the protocol used in assembling a clone library.
 
 =head2 ATTRIBUTES of Protocol
 
@@ -12148,15 +11878,6 @@ One to many assoication, use C<getTissueCollection> to get a collection of assoc
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for ProtocolAssociation
@@ -12179,7 +11900,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An association class relating between Clinical Trial Protocols to Diseases.
 
 =head2 ATTRIBUTES of ProtocolAssociation
 
@@ -12231,15 +11952,6 @@ Many to one assoication, use C<getDiseaseOntology> to get the associated Disease
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for SNP
@@ -12262,7 +11974,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representing a Single Nucleotide Polymorphism; provides access to the clones and the trace files from which it was identified, the two most common substitutions at that position, the offset of the SNP in the parent sequence, and a confidence score.
 
 =head2 ATTRIBUTES of SNP
 
@@ -12322,15 +12034,6 @@ One to many assoication, use C<getPopulationFrequencyCollection> to get a collec
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Target
@@ -12353,7 +12056,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A gene thought to be at the root of a disease etiology, and which is targeted for therapeutic intervention in a clinical trial.
 
 =head2 ATTRIBUTES of Target
 
@@ -12401,15 +12104,6 @@ One to many assoication, use C<getGeneCollection> to get a collection of associa
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Taxon
@@ -12432,7 +12126,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+An object representing the various names (scientific, common, abbreviated, etc.) for a species associated with a specific instance of a Gene, Chromosome, Pathway, Protein, or Tissue.
 
 =head2 ATTRIBUTES of Taxon
 
@@ -12500,15 +12194,6 @@ One to many assoication, use C<getTissueCollection> to get a collection of assoc
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Tissue
@@ -12531,7 +12216,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+A group of similar cells united to perform a specific function.
 
 =head2 ATTRIBUTES of Tissue
 
@@ -12611,15 +12296,6 @@ Many to one assoication, use C<getTaxon> to get the associated Taxon.
 
 =back
 
-=head2 SUPPORT
-
-Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
-support or report a bug.
-
-=head2 AUTHOR
-
-Shan Jiang <jiangs@mail.nih.gov>
-
 =cut
 
 # Below is module documentation for Vocabulary
@@ -12642,7 +12318,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-
+The object describes the vocabulary.
 
 =head2 ATTRIBUTES of Vocabulary
 
@@ -12682,14 +12358,63 @@ One to many assoication, use C<getAnomalyCollection> to get a collection of asso
 
 =back
 
-=head2 SUPPORT
+=cut
+
+
+=pod
+
+=head1 SUPPORT
 
 Please do not contact author directly. Send email to ncicb@pop.nci.nih.gov to request
 support or report a bug.
 
-=head2 AUTHOR
+=head1 AUTHOR
 
 Shan Jiang <jiangs@mail.nih.gov>
 
+=head1 COPYRIGHT AND LICENSE
+
+The CaCORE Software License, Version 1.0
+
+  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
+  National Cancer Institute, and so to the extent government employees are co-authors,
+  any rights in such works shall be subject to Title 17 of the United States Code,
+  section 105. Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+  1. Redistributions of source code must retain the above copyright notice, this list
+     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
+     form must reproduce the above copyright notice, this list of conditions and the
+     disclaimer of Article 5 in the documentation and/or other materials provided with
+     the distribution.
+   
+  2. The end-user documentation included with the redistribution, if any, must include
+     the following acknowledgment: "This product includes software developed by SAIC and
+     the National Cancer Institute." If no such end-user documentation is to be included,
+     this acknowledgment shall appear in the software itself, wherever such third-party
+     acknowledgments normally appear.
+   
+  3. The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to
+     endorse or promote products derived from this software. This license does not
+     authorize the licensee to use any trademarks owned by either NCI or SAIC.
+   
+  4. This license does not authorize or prohibit the incorporation of this software into
+     any third party proprietary programs. Licensee is expressly made responsible for
+     obtaining any permission required to incorporate this software into third party
+     proprietary programs and for informing licensee's end-users of their obligation
+     to secure any required permissions before incorporating this software into third
+     party proprietary software programs.
+   
+  5. THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
+     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
+     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
+     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
+     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 =cut
+
 
