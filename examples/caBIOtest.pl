@@ -17,7 +17,6 @@ use CaCORE::CaDSR;
 # The URL being passed to the intance method is the service endpoint of the caCORE webservice.
 # If no such URL is provided in the program, it will default to the caCORE production server, "http://cabio.nci.nih.gov/cacore30/ws/caCOREService"
 #
-#my $appsvc = CaCORE::ApplicationService->instance("http://cbioqa101.nci.nih.gov:49080/cacore31/ws/caCOREService"); # qa
 my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore31/ws/caCOREService");
 
 # test CaBIO 1: use ApplicationService

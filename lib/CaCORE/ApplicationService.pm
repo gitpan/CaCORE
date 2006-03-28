@@ -9,7 +9,7 @@ BEGIN {
 	use HTTP::Request::Common;
 }
 
-$VERSION = '3.092';
+$VERSION = '3.1';
 
 # These are default values
 my $default_proxy = "http://cabio.nci.nih.gov/cacore31/ws/caCOREService";

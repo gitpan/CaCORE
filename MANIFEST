@@ -4,6 +4,7 @@ examples/EVStest.pl
 html/architecture.jpg
 html/index.html
 html/intro.html
+html/Release_Notes.txt
 html/searching.html
 html/toc.html
 lib/CaCORE/ApplicationService.pm

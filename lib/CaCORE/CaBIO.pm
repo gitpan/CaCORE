@@ -13,7 +13,7 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-$VERSION = '3.092';
+$VERSION = '3.1';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
