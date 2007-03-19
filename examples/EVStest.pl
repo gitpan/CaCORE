@@ -14,7 +14,7 @@ use CaCORE::EVS;
 # The URL being passed to the intance method is the service endpoint of the caCORE webservice.
 # If no such URL is provided in the program, it will default to the caCORE production server, "http://cabio.nci.nih.gov/cacore30/ws/caCOREService"
 #
-my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore31/ws/caCOREService");
+my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore32/ws/caCOREService");
 
 my $num2 = 0;
 
@@ -31,7 +31,7 @@ my @atoms = ();
 push @atoms, $atom;
 # Second create a Source object and sets its abbreviation attributes
 my $source = new CaCORE::EVS::Source;
-$source->setAbbreviation("CSP2004");
+$source->setAbbreviation("CSP2005");
 my @sources = ($source);
 # create a MetaThesaurusConcept instance and sets its Atom and Source relations
 my $mtc = new CaCORE::EVS::MetaThesaurusConcept;

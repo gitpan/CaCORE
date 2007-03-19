@@ -1,7 +1,9 @@
+<?xml version="1.0" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>CaCORE::CaBIO</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rev="made" href="mailto:" />
 </head>
 
@@ -406,7 +408,6 @@ CaCORE Agent object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A therapeutic agent (drug, intervention therapy) used in a clinical trail protocol.</p>
 <p>
 </p>
 <h2><a name="attributes_of_agent">ATTRIBUTES of Agent</a></h2>
@@ -422,6 +423,12 @@ CaCORE Agent object.</p>
 
 <dd>
 <p>data type: <code>long</code></p>
+</dd>
+</li>
+<dt><strong><a name="item_bigid">bigid</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
 </dd>
 </li>
 <dt><strong><a name="item_comment">comment</a></strong>
@@ -455,10 +462,9 @@ CaCORE Agent object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_agent">ASSOCIATIONS of Agent</a></h2>
@@ -494,12 +500,17 @@ CaCORE Anomaly object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An irregularity in either the expression of a gene or its structure (i.e., a mutation).</p>
 <p>
 </p>
 <h2><a name="attributes_of_anomaly">ATTRIBUTES of Anomaly</a></h2>
 <p>The following are all the attributes of the Anomaly object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_description">description</a></strong>
 
 <dd>
@@ -513,10 +524,9 @@ CaCORE Anomaly object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_anomaly">ASSOCIATIONS of Anomaly</a></h2>
@@ -558,12 +568,17 @@ CaCORE Chromosome object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representing a specific chromosome for a specific taxon; provides access to all known genes contained in the chromosome and to the taxon.</p>
 <p>
 </p>
 <h2><a name="attributes_of_chromosome">ATTRIBUTES of Chromosome</a></h2>
 <p>The following are all the attributes of the Chromosome object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -577,10 +592,9 @@ CaCORE Chromosome object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_chromosome">ASSOCIATIONS of Chromosome</a></h2>
@@ -640,6 +654,12 @@ CaCORE ClinicalTrialProtocol object.</p>
 </dd>
 </li>
 <dt><strong><a name="item_piname">PIName</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong>bigid</strong>
 
 <dd>
 <p>data type: <code>string</code></p>
@@ -706,10 +726,9 @@ CaCORE ClinicalTrialProtocol object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_clinicaltrialprotocol">ASSOCIATIONS of ClinicalTrialProtocol</a></h2>
@@ -757,12 +776,17 @@ CaCORE Clone object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object used to hold information pertaining to I.M.A.G.E. clones; provides access to sequence information, associated trace files, and the clone's library.</p>
 <p>
 </p>
 <h2><a name="attributes_of_clone">ATTRIBUTES of Clone</a></h2>
 <p>The following are all the attributes of the Clone object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -788,10 +812,9 @@ CaCORE Clone object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_clone">ASSOCIATIONS of Clone</a></h2>
@@ -844,6 +867,12 @@ CaCORE CloneRelativeLocation object.</p>
 <h2><a name="attributes_of_clonerelativelocation">ATTRIBUTES of CloneRelativeLocation</a></h2>
 <p>The following are all the attributes of the CloneRelativeLocation object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -857,10 +886,9 @@ CaCORE CloneRelativeLocation object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_clonerelativelocation">ASSOCIATIONS of CloneRelativeLocation</a></h2>
@@ -901,6 +929,12 @@ CaCORE Cytoband object.</p>
 <h2><a name="attributes_of_cytoband">ATTRIBUTES of Cytoband</a></h2>
 <p>The following are all the attributes of the Cytoband object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -914,10 +948,9 @@ CaCORE Cytoband object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_cytoband">ASSOCIATIONS of Cytoband</a></h2>
@@ -953,6 +986,12 @@ CaCORE CytogeneticLocation object.</p>
 <h2><a name="attributes_of_cytogeneticlocation">ATTRIBUTES of CytogeneticLocation</a></h2>
 <p>The following are all the attributes of the CytogeneticLocation object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_endcytobandlocid">endCytobandLocId</a></strong>
 
 <dd>
@@ -966,10 +1005,9 @@ CaCORE CytogeneticLocation object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_cytogeneticlocation">ASSOCIATIONS of CytogeneticLocation</a></h2>
@@ -1005,12 +1043,17 @@ CaCORE DiseaseOntology object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Disease objects specify a disease name and ID; disease objects also provide access to: ontological relations to other diseases; clinical trial protocols treating the disease; and specific histologies associated with instances of the disease.</p>
 <p>
 </p>
 <h2><a name="attributes_of_diseaseontology">ATTRIBUTES of DiseaseOntology</a></h2>
 <p>The following are all the attributes of the DiseaseOntology object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -1024,10 +1067,9 @@ CaCORE DiseaseOntology object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_diseaseontology">ASSOCIATIONS of DiseaseOntology</a></h2>
@@ -1075,12 +1117,17 @@ CaCORE DiseaseOntologyRelationship object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The diseaser relationship specifies the relationship among diseases.</p>
 <p>
 </p>
 <h2><a name="attributes_of_diseaseontologyrelationship">ATTRIBUTES of DiseaseOntologyRelationship</a></h2>
 <p>The following are all the attributes of the DiseaseOntologyRelationship object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -1094,10 +1141,9 @@ CaCORE DiseaseOntologyRelationship object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_diseaseontologyrelationship">ASSOCIATIONS of DiseaseOntologyRelationship</a></h2>
@@ -1133,12 +1179,17 @@ CaCORE Gene object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Gene objects are the effective portal to most of the genomic information provided by the caBIO data services; organs, diseases, chromosomes, pathways, sequence data, and expression experiments are among the many objects accessible via a gene.</p>
 <p>
 </p>
 <h2><a name="attributes_of_gene">ATTRIBUTES of Gene</a></h2>
 <p>The following are all the attributes of the Gene object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_clusterid">clusterId</a></strong>
 
 <dd>
@@ -1164,10 +1215,9 @@ CaCORE Gene object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_gene">ASSOCIATIONS of Gene</a></h2>
@@ -1183,12 +1233,6 @@ CaCORE Gene object.</p>
 
 <dd>
 <p>One to many assoication, use <code>getDatabaseCrossReferenceCollection</code> to get a collection of associated DatabaseCrossReference.</p>
-</dd>
-</li>
-<dt><strong><a name="item_instance_of__2fexpressionfeature_3a">Instance of <a href="#expressionfeature">ExpressionFeature</a>:</a></strong>
-
-<dd>
-<p>One to many assoication, use <code>getExpressionFeatureCollection</code> to get a collection of associated ExpressionFeature.</p>
 </dd>
 </li>
 <dt><strong><a name="item_instance_of__2fgenealias_3a">Instance of <a href="#genealias">GeneAlias</a>:</a></strong>
@@ -1293,12 +1337,17 @@ CaCORE GeneAlias object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>This object describes the gene alias.</p>
 <p>
 </p>
 <h2><a name="attributes_of_genealias">ATTRIBUTES of GeneAlias</a></h2>
 <p>The following are all the attributes of the GeneAlias object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -1318,10 +1367,9 @@ CaCORE GeneAlias object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_genealias">ASSOCIATIONS of GeneAlias</a></h2>
@@ -1351,12 +1399,17 @@ CaCORE GeneOntology object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object providing entry to a Gene object's position in the Gene Ontology Consortium's controlled vocabularies, as recorded by LocusLink; provides access to gene objects corresponding to the ontological term, as well as to ancestor and descendant terms in the ontology tree.</p>
 <p>
 </p>
 <h2><a name="attributes_of_geneontology">ATTRIBUTES of GeneOntology</a></h2>
 <p>The following are all the attributes of the GeneOntology object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -1370,10 +1423,9 @@ CaCORE GeneOntology object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_geneontology">ASSOCIATIONS of GeneOntology</a></h2>
@@ -1415,12 +1467,17 @@ CaCORE GeneOntologyRelationship object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>This object specifies GoOntologyrRelationship.</p>
 <p>
 </p>
 <h2><a name="attributes_of_geneontologyrelationship">ATTRIBUTES of GeneOntologyRelationship</a></h2>
 <p>The following are all the attributes of the GeneOntologyRelationship object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -1434,10 +1491,9 @@ CaCORE GeneOntologyRelationship object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_geneontologyrelationship">ASSOCIATIONS of GeneOntologyRelationship</a></h2>
@@ -1478,6 +1534,12 @@ CaCORE GeneRelativeLocation object.</p>
 <h2><a name="attributes_of_generelativelocation">ATTRIBUTES of GeneRelativeLocation</a></h2>
 <p>The following are all the attributes of the GeneRelativeLocation object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -1491,10 +1553,9 @@ CaCORE GeneRelativeLocation object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_generelativelocation">ASSOCIATIONS of GeneRelativeLocation</a></h2>
@@ -1527,6 +1588,12 @@ CaCORE GenericArray object.</p>
 <p>data type: <code>string</code></p>
 </dd>
 </li>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -1546,10 +1613,9 @@ CaCORE GenericArray object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_genericarray">ASSOCIATIONS of GenericArray</a></h2>
@@ -1584,6 +1650,12 @@ CaCORE GenericReporter object.</p>
 <h2><a name="attributes_of_genericreporter">ATTRIBUTES of GenericReporter</a></h2>
 <p>The following are all the attributes of the GenericReporter object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -1603,10 +1675,9 @@ CaCORE GenericReporter object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_genericreporter">ASSOCIATIONS of GenericReporter</a></h2>
@@ -1642,7 +1713,6 @@ CaCORE Histopathology object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representing anatomical changes in a diseased tissue sample associated with an expression experiment; captures the relationship between organ and disease.</p>
 <p>
 </p>
 <h2><a name="attributes_of_histopathology">ATTRIBUTES of Histopathology</a></h2>
@@ -1697,10 +1767,9 @@ CaCORE Histopathology object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_histopathology">ASSOCIATIONS of Histopathology</a></h2>
@@ -1771,6 +1840,12 @@ CaCORE HomologousAssociation object.</p>
 <h2><a name="attributes_of_homologousassociation">ATTRIBUTES of HomologousAssociation</a></h2>
 <p>The following are all the attributes of the HomologousAssociation object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_homologousid">homologousId</a></strong>
 
 <dd>
@@ -1790,10 +1865,9 @@ CaCORE HomologousAssociation object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_homologousassociation">ASSOCIATIONS of HomologousAssociation</a></h2>
@@ -1823,12 +1897,17 @@ CaCORE Library object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representing a CGAP library; provides access to information about: the tissue sample and its method of preparation, the library protocol that was used, the clones contained in the library, and the sequence information derived from the library.</p>
 <p>
 </p>
 <h2><a name="attributes_of_library">ATTRIBUTES of Library</a></h2>
 <p>The following are all the attributes of the Library object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_cloneproducer">cloneProducer</a></strong>
 
 <dd>
@@ -1920,10 +1999,9 @@ CaCORE Library object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_library">ASSOCIATIONS of Library</a></h2>
@@ -1989,10 +2067,9 @@ CaCORE Location object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_location">ASSOCIATIONS of Location</a></h2>
@@ -2040,7 +2117,6 @@ CaCORE NucleicAcidSequence object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representation of a nucleic acid sequence; provides access to the clones from which it was derived.</p>
 <p>
 </p>
 <h2><a name="attributes_of_nucleicacidsequence">ATTRIBUTES of NucleicAcidSequence</a></h2>
@@ -2053,6 +2129,12 @@ CaCORE NucleicAcidSequence object.</p>
 </dd>
 </li>
 <dt><strong><a name="item_accessionnumberversion">accessionNumberVersion</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong>bigid</strong>
 
 <dd>
 <p>data type: <code>string</code></p>
@@ -2083,10 +2165,9 @@ CaCORE NucleicAcidSequence object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_nucleicacidsequence">ASSOCIATIONS of NucleicAcidSequence</a></h2>
@@ -2134,12 +2215,17 @@ CaCORE OrganOntology object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A representation of an organ whose name occurs in a controlled vocabulary; provides access to any Histopathology objects for the organ, and, because it is $quot;ontolog-able,$quot; provides access to its ancestral and descendant terms in the vocabulary.</p>
 <p>
 </p>
 <h2><a name="attributes_of_organontology">ATTRIBUTES of OrganOntology</a></h2>
 <p>The following are all the attributes of the OrganOntology object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -2153,10 +2239,9 @@ CaCORE OrganOntology object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_organontology">ASSOCIATIONS of OrganOntology</a></h2>
@@ -2172,12 +2257,6 @@ CaCORE OrganOntology object.</p>
 
 <dd>
 <p>One to many assoication, use <code>getChildOrganOntologyRelationshipCollection</code> to get a collection of associated ChildOrganOntologyRelationship.</p>
-</dd>
-</li>
-<dt><strong>Instance of <a href="#expressionfeature">ExpressionFeature</a>:</strong>
-
-<dd>
-<p>One to many assoication, use <code>getExpressionFeatureCollection</code> to get a collection of associated ExpressionFeature.</p>
 </dd>
 </li>
 <dt><strong>Instance of <a href="#gene">Gene</a>:</strong>
@@ -2216,12 +2295,17 @@ CaCORE OrganOntologyRelationship object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Organ relationship object describes relationships among organs.</p>
 <p>
 </p>
 <h2><a name="attributes_of_organontologyrelationship">ATTRIBUTES of OrganOntologyRelationship</a></h2>
 <p>The following are all the attributes of the OrganOntologyRelationship object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -2235,10 +2319,9 @@ CaCORE OrganOntologyRelationship object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_organontologyrelationship">ASSOCIATIONS of OrganOntologyRelationship</a></h2>
@@ -2274,12 +2357,17 @@ CaCORE Pathway object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representation of a molecular/cellular pathway compiled by BioCarta. Pathways are associated with specific Taxon objects, and contain multiple Gene objects, which may be Targets for treatment.</p>
 <p>
 </p>
 <h2><a name="attributes_of_pathway">ATTRIBUTES of Pathway</a></h2>
 <p>The following are all the attributes of the Pathway object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>description</strong>
 
 <dd>
@@ -2311,10 +2399,9 @@ CaCORE Pathway object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_pathway">ASSOCIATIONS of Pathway</a></h2>
@@ -2375,10 +2462,9 @@ CaCORE PhysicalLocation object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_physicallocation">ASSOCIATIONS of PhysicalLocation</a></h2>
@@ -2413,6 +2499,12 @@ CaCORE PopulationFrequency object.</p>
 <h2><a name="attributes_of_populationfrequency">ATTRIBUTES of PopulationFrequency</a></h2>
 <p>The following are all the attributes of the PopulationFrequency object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_ethnicity">ethnicity</a></strong>
 
 <dd>
@@ -2456,10 +2548,9 @@ CaCORE PopulationFrequency object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_populationfrequency">ASSOCIATIONS of PopulationFrequency</a></h2>
@@ -2494,6 +2585,12 @@ CaCORE Protein object.</p>
 <h2><a name="attributes_of_protein">ATTRIBUTES of Protein</a></h2>
 <p>The following are all the attributes of the Protein object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_copyrightstatement">copyrightStatement</a></strong>
 
 <dd>
@@ -2525,10 +2622,9 @@ CaCORE Protein object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_protein">ASSOCIATIONS of Protein</a></h2>
@@ -2593,6 +2689,12 @@ CaCORE ProteinAlias object.</p>
 <h2><a name="attributes_of_proteinalias">ATTRIBUTES of ProteinAlias</a></h2>
 <p>The following are all the attributes of the ProteinAlias object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -2606,10 +2708,9 @@ CaCORE ProteinAlias object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_proteinalias">ASSOCIATIONS of ProteinAlias</a></h2>
@@ -2644,6 +2745,12 @@ CaCORE ProteinSequence object.</p>
 <h2><a name="attributes_of_proteinsequence">ATTRIBUTES of ProteinSequence</a></h2>
 <p>The following are all the attributes of the ProteinSequence object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_checksum">checkSum</a></strong>
 
 <dd>
@@ -2675,10 +2782,9 @@ CaCORE ProteinSequence object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_proteinsequence">ASSOCIATIONS of ProteinSequence</a></h2>
@@ -2700,50 +2806,41 @@ CaCORE ProteinSequence object.</p>
 </p>
 <h2><a name="abstract">ABSTRACT</a></h2>
 <p>The CaCORE::CaBIO::Protocol is a Perl object representation of the
-CaCORE Protocol object.
-
-</p>
+CaCORE Protocol object.</p>
 <p>
 </p>
 <h2><a name="synopsis">SYNOPSIS</a></h2>
-<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.
-
-</p>
+<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representation of the protocol used in assembling a clone library.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_protocol">ATTRIBUTES of Protocol</a></h2>
-<p>The following are all the attributes of the Protocol object and their data types:
-
-</p>
+<p>The following are all the attributes of the Protocol object and their data types:</p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 <dt><strong>description</strong>
 
 <dd>
-<p>data type: <code>string</code>
-
-</p>
+<p>data type: <code>string</code></p>
 </dd>
 </li>
 <dt><strong>id</strong>
 
 <dd>
-<p>data type: <code>long</code>
-
-</p>
+<p>data type: <code>long</code></p>
 </dd>
 </li>
 <dt><strong>name</strong>
 
 <dd>
-<p>data type: <code>string</code>
-
-</p>
+<p>data type: <code>string</code></p>
 </dd>
 </li>
 <dt><strong>type</strong>
@@ -2755,12 +2852,11 @@ CaCORE Protocol object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_protocol">ASSOCIATIONS of Protocol</a></h2>
@@ -2808,9 +2904,6 @@ CaCORE ProtocolAssociation object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An association class relating between Clinical Trial Protocols to Diseases.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_protocolassociation">ATTRIBUTES of ProtocolAssociation</a></h2>
@@ -2830,6 +2923,14 @@ CaCORE ProtocolAssociation object.
 
 <dd>
 <p>data type: <code>long</code>
+
+</p>
+</dd>
+</li>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code>
 
 </p>
 </dd>
@@ -2859,12 +2960,11 @@ CaCORE ProtocolAssociation object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_protocolassociation">ASSOCIATIONS of ProtocolAssociation</a></h2>
@@ -2912,9 +3012,6 @@ CaCORE SNP object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representing a Single Nucleotide Polymorphism; provides access to the clones and the trace files from which it was identified, the two most common substitutions at that position, the offset of the SNP in the parent sequence, and a confidence score.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_snp">ATTRIBUTES of SNP</a></h2>
@@ -2946,6 +3043,14 @@ CaCORE SNP object.
 </p>
 </dd>
 </li>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -2963,12 +3068,11 @@ CaCORE SNP object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_snp">ASSOCIATIONS of SNP</a></h2>
@@ -3032,9 +3136,6 @@ CaCORE Target object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A gene thought to be at the root of a disease etiology, and which is targeted for therapeutic intervention in a clinical trial.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_target">ATTRIBUTES of Target</a></h2>
@@ -3042,6 +3143,14 @@ CaCORE Target object.
 
 </p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
 <dt><strong>id</strong>
 
 <dd>
@@ -3067,12 +3176,11 @@ CaCORE Target object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_target">ASSOCIATIONS of Target</a></h2>
@@ -3128,9 +3236,6 @@ CaCORE Taxon object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representing the various names (scientific, common, abbreviated, etc.) for a species associated with a specific instance of a Gene, Chromosome, Pathway, Protein, or Tissue.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_taxon">ATTRIBUTES of Taxon</a></h2>
@@ -3139,6 +3244,14 @@ CaCORE Taxon object.
 </p>
 <dl>
 <dt><strong><a name="item_abbreviation">abbreviation</a></strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong>bigid</strong>
 
 <dd>
 <p>data type: <code>string</code>
@@ -3179,12 +3292,11 @@ CaCORE Taxon object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_taxon">ASSOCIATIONS of Taxon</a></h2>
@@ -3264,9 +3376,6 @@ CaCORE Tissue object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A group of similar cells united to perform a specific function.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_tissue">ATTRIBUTES of Tissue</a></h2>
@@ -3363,12 +3472,11 @@ CaCORE Tissue object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_tissue">ASSOCIATIONS of Tissue</a></h2>
@@ -3424,9 +3532,6 @@ CaCORE Vocabulary object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The object describes the vocabulary.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_vocabulary">ATTRIBUTES of Vocabulary</a></h2>
@@ -3434,6 +3539,14 @@ CaCORE Vocabulary object.
 
 </p>
 <dl>
+<dt><strong>bigid</strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
 <dt><strong><a name="item_coreterm">coreTerm</a></strong>
 
 <dd>
@@ -3459,12 +3572,11 @@ CaCORE Vocabulary object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_vocabulary">ASSOCIATIONS of Vocabulary</a></h2>
@@ -3503,49 +3615,36 @@ support or report a bug.
 <p>The CaCORE Software License, Version 1.0
 
 </p>
-<pre>
-  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
-  National Cancer Institute, and so to the extent government employees are co-authors,
-  any rights in such works shall be subject to Title 17 of the United States Code,
-  section 105. Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
+<p>Copyright 2001-2005 SAIC. This software was developed in conjunction with the National Cancer Institute, and so to the extent government employees are co-authors, any rights in such works shall be subject to Title 17 of the United States Code, section 105. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-</pre>
-<pre>
-  1. Redistributions of source code must retain the above copyright notice, this list
-     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
-     form must reproduce the above copyright notice, this list of conditions and the
-     disclaimer of Article 5 in the documentation and/or other materials provided with
-     the distribution.
-   
-  2. The end-user documentation included with the redistribution, if any, must include
-     the following acknowledgment: &quot;This product includes software developed by SAIC and
-     the National Cancer Institute.&quot; If no such end-user documentation is to be included,
-     this acknowledgment shall appear in the software itself, wherever such third-party
-     acknowledgments normally appear.
-   
-  3. The names &quot;The National Cancer Institute&quot;, &quot;NCI&quot; and &quot;SAIC&quot; must not be used to
-     endorse or promote products derived from this software. This license does not
-     authorize the licensee to use any trademarks owned by either NCI or SAIC.
-   
-  4. This license does not authorize or prohibit the incorporation of this software into
-     any third party proprietary programs. Licensee is expressly made responsible for
-     obtaining any permission required to incorporate this software into third party
-     proprietary programs and for informing licensee's end-users of their obligation
-     to secure any required permissions before incorporating this software into third
-     party proprietary software programs.
-   
-  5. THIS SOFTWARE IS PROVIDED &quot;AS IS,&quot; AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
-     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
-     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
-     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
-     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+</p>
+<ol>
+<li>
+<p>Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer of Article 5, below. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer of Article 5 in the documentation and/or other materials provided with the distribution.
 
-</pre>
+</p>
+</li>
+<li>
+<p>The end-user documentation included with the redistribution, if any, must include the following acknowledgment: &quot;This product includes software developed by SAIC and the National Cancer Institute.&quot; If no such end-user documentation is to be included, this acknowledgment shall appear in the software itself, wherever such third-party acknowledgments normally appear.
+
+</p>
+</li>
+<li>
+<p>The names &quot;The National Cancer Institute&quot;, &quot;NCI&quot; and &quot;SAIC&quot; must not be used to endorse or promote products derived from this software. This license does not authorize the licensee to use any trademarks owned by either NCI or SAIC.
+
+</p>
+</li>
+<li>
+<p>This license does not authorize or prohibit the incorporation of this software into any third party proprietary programs. Licensee is expressly made responsible for obtaining any permission required to incorporate this software into third party proprietary programs and for informing licensee's end-users of their obligation to secure any required permissions before incorporating this software into third party proprietary software programs.
+
+</p>
+</li>
+<li>
+<p>THIS SOFTWARE IS PROVIDED &quot;AS IS,&quot; AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+</p>
+</li>
+</ol>
 
 </body>
 

@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------------------
-package CaCORE::Common::DatabaseCrossReference;
+package CaCORE::Security::SecurityToken;
 
 use 5.005;
 #use strict;
@@ -26,18 +26,18 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw(
 );
 
-# create an instance of the DatabaseCrossReference object
-# returns: a DatabaseCrossReference object
+# create an instance of the SecurityToken object
+# returns: a SecurityToken object
 sub new {
 	my $class = shift;
 	my $self = {};
 	bless($self, $class);
-	#print "new DatabaseCrossReference\n";
+	#print "new SecurityToken\n";
 	return $self;
 }
 
 # Construct the specific section of the WSDL request corresponding
-# to this DatabaseCrossReference intance
+# to this SecurityToken intance
 # returns: XML in string format
 sub toWebserviceXML {
 	my $self = shift;
@@ -48,56 +48,32 @@ sub toWebserviceXML {
 	my %worklist = %$l;
 	
 	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":DatabaseCrossReference\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.common.nci.nih.gov\">";
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":SecurityToken\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.security.evs.nci.nih.gov\">";
 	my $tmpstr = "";
 	$current_id ++;
 	
 	## begin attribute to XML ##
-	# crossReferenceId;
-	if( defined( $self->getCrossReferenceId ) ) {
-		$tmpstr = "<crossReferenceId xsi:type=\"xsd:string\">" . $self->getCrossReferenceId . "</crossReferenceId>";
+	# accessToken;
+	if( defined( $self->getAccessToken ) ) {
+		$tmpstr = "<accessToken xsi:type=\"xsd:string\">" . $self->getAccessToken . "</accessToken>";
 	} else {
-		$tmpstr = "<crossReferenceId xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+		$tmpstr = "<accessToken xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
 	$result .= $tmpstr;
 
-	# dataSourceName;
-	if( defined( $self->getDataSourceName ) ) {
-		$tmpstr = "<dataSourceName xsi:type=\"xsd:string\">" . $self->getDataSourceName . "</dataSourceName>";
+	# password;
+	if( defined( $self->getPassword ) ) {
+		$tmpstr = "<password xsi:type=\"xsd:string\">" . $self->getPassword . "</password>";
 	} else {
-		$tmpstr = "<dataSourceName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+		$tmpstr = "<password xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
 	$result .= $tmpstr;
 
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	# userName;
+	if( defined( $self->getUserName ) ) {
+		$tmpstr = "<userName xsi:type=\"xsd:string\">" . $self->getUserName . "</userName>";
 	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# sourceType;
-	if( defined( $self->getSourceType ) ) {
-		$tmpstr = "<sourceType xsi:type=\"xsd:string\">" . $self->getSourceType . "</sourceType>";
-	} else {
-		$tmpstr = "<sourceType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# summary;
-	if( defined( $self->getSummary ) ) {
-		$tmpstr = "<summary xsi:type=\"xsd:string\">" . $self->getSummary . "</summary>";
-	} else {
-		$tmpstr = "<summary xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+		$tmpstr = "<userName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
 	$result .= $tmpstr;
 
@@ -112,9 +88,9 @@ sub toWebserviceXML {
 	return ($result, $current_id, %worklist);
 }
 
-# parse a given webservice response xml, construct a list of DatabaseCrossReference objects
+# parse a given webservice response xml, construct a list of SecurityToken objects
 # param: xml doc
-# returns: list of DatabaseCrossReference objects
+# returns: list of SecurityToken objects
 sub fromWebserviceXML {
 	my $self = shift;
 	my $parser = new XML::DOM::Parser;
@@ -124,9 +100,9 @@ sub fromWebserviceXML {
 	return $self->fromWSXMLListNode($root);
 }
 
-# parse a given xml node, construct a list of DatabaseCrossReference objects
+# parse a given xml node, construct a list of SecurityToken objects
 # param: xml node
-# returns: a list of DatabaseCrossReference objects
+# returns: a list of SecurityToken objects
 sub fromWSXMLListNode {
 	my $self = shift;
 	my $listNode = shift;
@@ -143,23 +119,20 @@ sub fromWSXMLListNode {
 	return @obj_list;
 }
 
-# parse a given xml node, construct one DatabaseCrossReference object
+# parse a given xml node, construct one SecurityToken object
 # param: xml node
-# returns: one DatabaseCrossReference object
+# returns: one SecurityToken object
 sub fromWSXMLNode {
-	my $DatabaseCrossReferenceNode = $_[1];
+	my $SecurityTokenNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
-		my $crossReferenceId;
-		my $dataSourceName;
-		my $id;
-		my $sourceType;
-		my $summary;
-		my $type;
+		my $accessToken;
+		my $password;
+		my $userName;
 	## end ELEMENT_NODE children ##
 
 	# get all children for this node
-	for my $childrenNode ($DatabaseCrossReferenceNode->getChildNodes) {
+	for my $childrenNode ($SecurityTokenNode->getChildNodes) {
 	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
 		if( ! defined($childrenNode->getFirstChild) ){ next; };
 		my $textNode = $childrenNode->getFirstChild;
@@ -167,35 +140,23 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
-			elsif ($childrenNode->getNodeName eq "crossReferenceId") {
-				$crossReferenceId=$textNode->getNodeValue;
+			elsif ($childrenNode->getNodeName eq "accessToken") {
+				$accessToken=$textNode->getNodeValue;
 			}
-			elsif ($childrenNode->getNodeName eq "dataSourceName") {
-				$dataSourceName=$textNode->getNodeValue;
+			elsif ($childrenNode->getNodeName eq "password") {
+				$password=$textNode->getNodeValue;
 			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "sourceType") {
-				$sourceType=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "summary") {
-				$summary=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
+			elsif ($childrenNode->getNodeName eq "userName") {
+				$userName=$textNode->getNodeValue;
 			}
 		## end iterate ELEMENT_NODE ##
 	    }
 	}
-	my $newobj = new CaCORE::Common::DatabaseCrossReference;
+	my $newobj = new CaCORE::Security::SecurityToken;
 	## begin set attr ##
-		$newobj->setCrossReferenceId($crossReferenceId);
-		$newobj->setDataSourceName($dataSourceName);
-		$newobj->setId($id);
-		$newobj->setSourceType($sourceType);
-		$newobj->setSummary($summary);
-		$newobj->setType($type);
+		$newobj->setAccessToken($accessToken);
+		$newobj->setPassword($password);
+		$newobj->setUserName($userName);
 	## end set attr ##
 	
 	return $newobj;
@@ -203,107 +164,56 @@ sub fromWSXMLNode {
 
 ## begin getters and setters ##
 
-sub getCrossReferenceId {
+sub getAccessToken {
 	my $self = shift;
-	return $self->{crossReferenceId};
+	return $self->{accessToken};
 }
 
-sub setCrossReferenceId {
+sub setAccessToken {
 	my $self = shift;
-	$self->{crossReferenceId} = shift;
+	$self->{accessToken} = shift;
 }
 
-sub getDataSourceName {
+sub getPassword {
 	my $self = shift;
-	return $self->{dataSourceName};
+	return $self->{password};
 }
 
-sub setDataSourceName {
+sub setPassword {
 	my $self = shift;
-	$self->{dataSourceName} = shift;
+	$self->{password} = shift;
 }
 
-sub getId {
+sub getUserName {
 	my $self = shift;
-	return $self->{id};
+	return $self->{userName};
 }
 
-sub setId {
+sub setUserName {
 	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getSourceType {
-	my $self = shift;
-	return $self->{sourceType};
-}
-
-sub setSourceType {
-	my $self = shift;
-	$self->{sourceType} = shift;
-}
-
-sub getSummary {
-	my $self = shift;
-	return $self->{summary};
-}
-
-sub setSummary {
-	my $self = shift;
-	$self->{summary} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
+	$self->{userName} = shift;
 }
 
 ## end getters and setters ##
 
 ## begin bean association methods ##
 
-sub getSNP {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::SNP", $self);
-	return $results[0];
-}
-
-sub getGene {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return $results[0];
-}
-
-sub getNucleicAcidSequence {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::NucleicAcidSequence", $self);
-	return $results[0];
-}
-
 ## end bean association methods ##
 
 1;
 #end
-# Below is module documentation for DatabaseCrossReference
+# Below is module documentation for SecurityToken
 
 =pod
 
-=head1 DatabaseCrossReference
+=head1 SecurityToken
 
-CaCORE::Common::DatabaseCrossReference - Perl extension for DatabaseCrossReference.
+CaCORE::Security::SecurityToken - Perl extension for SecurityToken.
 
 =head2 ABSTRACT
 
-The CaCORE::Common::DatabaseCrossReference is a Perl object representation of the
-CaCORE DatabaseCrossReference object.
+The CaCORE::Security::SecurityToken is a Perl object representation of the
+CaCORE SecurityToken object.
 
 
 =head2 SYNOPSIS
@@ -314,33 +224,21 @@ See L<CaCORE::ApplicationService>.
 
 
 
-=head2 ATTRIBUTES of DatabaseCrossReference
+=head2 ATTRIBUTES of SecurityToken
 
-The following are all the attributes of the DatabaseCrossReference object and their data types:
+The following are all the attributes of the SecurityToken object and their data types:
 
 =over 4
 
-=item crossReferenceId
+=item accessToken
 
 data type: C<string>
 
-=item dataSourceName
+=item password
 
 data type: C<string>
 
-=item id
-
-data type: C<long>
-
-=item sourceType
-
-data type: C<string>
-
-=item summary
-
-data type: C<string>
-
-=item type
+=item userName
 
 data type: C<string>
 
@@ -351,23 +249,11 @@ Note: Although you can also use the corresponding setter methods to set the
 attribute values, it is not recommended to do so unless you absolutely have
 to change the object's attributes.
 
-=head2 ASSOCIATIONS of DatabaseCrossReference
+=head2 ASSOCIATIONS of SecurityToken
 
-The following are all the objects that are associated with the DatabaseCrossReference:
+The following are all the objects that are associated with the SecurityToken:
 
 =over 4
-
-=item Collection of L</SNP>:
-
-Many to one assoication, use C<getSNP> to get the associated SNP.
-
-=item Collection of L</Gene>:
-
-Many to one assoication, use C<getGene> to get the associated Gene.
-
-=item Collection of L</NucleicAcidSequence>:
-
-Many to one assoication, use C<getNucleicAcidSequence> to get the associated NucleicAcidSequence.
 
 
 =back

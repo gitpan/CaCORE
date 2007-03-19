@@ -1,7 +1,9 @@
+<?xml version="1.0" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>CaCORE::EVS</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rev="made" href="mailto:" />
 </head>
 
@@ -192,6 +194,16 @@
 		<li><a href="#associations_of_treenode">ASSOCIATIONS of TreeNode</a></li>
 	</ul>
 
+	<li><a href="#vocabulary">Vocabulary</a></li>
+	<ul>
+
+		<li><a href="#abstract">ABSTRACT</a></li>
+		<li><a href="#synopsis">SYNOPSIS</a></li>
+		<li><a href="#description">DESCRIPTION</a></li>
+		<li><a href="#attributes_of_vocabulary">ATTRIBUTES of Vocabulary</a></li>
+		<li><a href="#associations_of_vocabulary">ASSOCIATIONS of Vocabulary</a></li>
+	</ul>
+
 	<li><a href="#support">SUPPORT</a></li>
 	<li><a href="#author">AUTHOR</a></li>
 	<li><a href="#copyright_and_license">COPYRIGHT AND LICENSE</a></li>
@@ -216,7 +228,6 @@ CaCORE Association object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An Association class relates a concept or a term to another concept or term. Association falls into 3 categories; concept association, term association and synonyms which are concept-term associations.</p>
 <p>
 </p>
 <h2><a name="attributes_of_association">ATTRIBUTES of Association</a></h2>
@@ -235,10 +246,9 @@ CaCORE Association object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_association">ASSOCIATIONS of Association</a></h2>
@@ -268,7 +278,6 @@ CaCORE Atom object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Atom is an occurence of a term in a source.</p>
 <p>
 </p>
 <h2><a name="attributes_of_atom">ATTRIBUTES of Atom</a></h2>
@@ -299,10 +308,9 @@ CaCORE Atom object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_atom">ASSOCIATIONS of Atom</a></h2>
@@ -332,7 +340,6 @@ CaCORE AttributeSetDescriptor object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>AttributeSetDescriptor class specifies the set of concept attributes that should be retrieved by a given operation.</p>
 <p>
 </p>
 <h2><a name="attributes_of_attributesetdescriptor">ATTRIBUTES of AttributeSetDescriptor</a></h2>
@@ -345,10 +352,9 @@ CaCORE AttributeSetDescriptor object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_attributesetdescriptor">ASSOCIATIONS of AttributeSetDescriptor</a></h2>
@@ -384,7 +390,6 @@ CaCORE Definition object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Textual definition from an identified source</p>
 <p>
 </p>
 <h2><a name="attributes_of_definition">ATTRIBUTES of Definition</a></h2>
@@ -397,10 +402,9 @@ CaCORE Definition object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_definition">ASSOCIATIONS of Definition</a></h2>
@@ -430,7 +434,6 @@ CaCORE DescLogicConcept object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The DescLogicConcept class represents the fundermental vocabulary entity in the NCI Thesaurus.</p>
 <p>
 </p>
 <h2><a name="attributes_of_desclogicconcept">ATTRIBUTES of DescLogicConcept</a></h2>
@@ -479,10 +482,9 @@ CaCORE DescLogicConcept object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_desclogicconcept">ASSOCIATIONS of DescLogicConcept</a></h2>
@@ -536,6 +538,12 @@ CaCORE DescLogicConcept object.</p>
 <p>Many to one assoication, use <code>getTreeNode</code> to get the associated TreeNode.</p>
 </dd>
 </li>
+<dt><strong><a name="item_collection_of__2fvocabulary_3a">Collection of <a href="#vocabulary">Vocabulary</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getVocabulary</code> to get the associated Vocabulary.</p>
+</dd>
+</li>
 </dl>
 <p>
 </p>
@@ -554,7 +562,6 @@ CaCORE EdgeProperties object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The EdgeProperties class specifies the relationshop between a concept and it's immediate parent when a  TREE is generated using the getTree method.</p>
 <p>
 </p>
 <h2><a name="attributes_of_edgeproperties">ATTRIBUTES of EdgeProperties</a></h2>
@@ -579,10 +586,9 @@ CaCORE EdgeProperties object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_edgeproperties">ASSOCIATIONS of EdgeProperties</a></h2>
@@ -612,7 +618,6 @@ CaCORE EditActionDate object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>GenericDescription</p>
 <p>
 </p>
 <h2><a name="attributes_of_editactiondate">ATTRIBUTES of EditActionDate</a></h2>
@@ -631,10 +636,9 @@ CaCORE EditActionDate object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_editactiondate">ASSOCIATIONS of EditActionDate</a></h2>
@@ -656,15 +660,13 @@ CaCORE HashSet object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>GenericDescription</p>
 <p>
 </p>
 <h2><a name="attributes_of_hashset">ATTRIBUTES of HashSet</a></h2>
 <p>The following are all the attributes of the HashSet object and their data types:</p>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_hashset">ASSOCIATIONS of HashSet</a></h2>
@@ -686,7 +688,6 @@ CaCORE History object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The History class stores the concept history information.</p>
 <p>
 </p>
 <h2><a name="attributes_of_history">ATTRIBUTES of History</a></h2>
@@ -717,10 +718,9 @@ CaCORE History object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_history">ASSOCIATIONS of History</a></h2>
@@ -742,7 +742,6 @@ CaCORE HistoryRecord object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The HistoryRecord holds history information for the specifed concept</p>
 <p>
 </p>
 <h2><a name="attributes_of_historyrecord">ATTRIBUTES of HistoryRecord</a></h2>
@@ -755,10 +754,9 @@ CaCORE HistoryRecord object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_historyrecord">ASSOCIATIONS of HistoryRecord</a></h2>
@@ -788,7 +786,6 @@ CaCORE MetaThesaurusConcept object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>MetaThesaurusConcept is the fundermental vocabulary entity in the NCI MetaThesaurus.</p>
 <p>
 </p>
 <h2><a name="attributes_of_metathesaurusconcept">ATTRIBUTES of MetaThesaurusConcept</a></h2>
@@ -807,10 +804,9 @@ CaCORE MetaThesaurusConcept object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_metathesaurusconcept">ASSOCIATIONS of MetaThesaurusConcept</a></h2>
@@ -864,7 +860,6 @@ CaCORE Property object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Property is an attribute of a concept. Examples of properties are ``Synonym'', ``Preferred_Name'', ``Semantic_Type'' etc.</p>
 <p>
 </p>
 <h2><a name="attributes_of_property">ATTRIBUTES of Property</a></h2>
@@ -883,10 +878,9 @@ CaCORE Property object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_property">ASSOCIATIONS of Property</a></h2>
@@ -916,7 +910,6 @@ CaCORE Qualifier object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A Qualifier is  attached to associations and properties of a concept.</p>
 <p>
 </p>
 <h2><a name="attributes_of_qualifier">ATTRIBUTES of Qualifier</a></h2>
@@ -935,10 +928,9 @@ CaCORE Qualifier object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_qualifier">ASSOCIATIONS of Qualifier</a></h2>
@@ -952,89 +944,60 @@ CaCORE Qualifier object.</p>
 </p>
 <h2><a name="abstract">ABSTRACT</a></h2>
 <p>The CaCORE::EVS::Role is a Perl object representation of the
-CaCORE Role object.
-
-</p>
+CaCORE Role object.</p>
 <p>
 </p>
 <h2><a name="synopsis">SYNOPSIS</a></h2>
-<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.
-
-</p>
+<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Defines a relationship between two concepts. 
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_role">ATTRIBUTES of Role</a></h2>
-<p>The following are all the attributes of the Role object and their data types:
-
-</p>
+<p>The following are all the attributes of the Role object and their data types:</p>
 <dl>
 <dt><strong>name</strong>
 
 <dd>
-<p>data type: <code>string</code>
-
-</p>
+<p>data type: <code>string</code></p>
 </dd>
 </li>
 <dt><strong>value</strong>
 
 <dd>
-<p>data type: <code>string</code>
-
-</p>
+<p>data type: <code>string</code></p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
-
-</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_role">ASSOCIATIONS of Role</a></h2>
-<p>The following are all the objects that are associated with the Role:
-
-</p>
+<p>The following are all the objects that are associated with the Role:</p>
 <p>
 </p>
 <hr />
 <h1><a name="semantictype">SemanticType</a></h1>
-<p>CaCORE::EVS::SemanticType - Perl extension for SemanticType.
-
-</p>
+<p>CaCORE::EVS::SemanticType - Perl extension for SemanticType.</p>
 <p>
 </p>
 <h2><a name="abstract">ABSTRACT</a></h2>
 <p>The CaCORE::EVS::SemanticType is a Perl object representation of the
-CaCORE SemanticType object.
-
-</p>
+CaCORE SemanticType object.</p>
 <p>
 </p>
 <h2><a name="synopsis">SYNOPSIS</a></h2>
-<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.
-
-</p>
+<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Semantic type is a category defined in the semantic network that can be used to group similar concepts
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_semantictype">ATTRIBUTES of SemanticType</a></h2>
-<p>The following are all the attributes of the SemanticType object and their data types:
-
-</p>
+<p>The following are all the attributes of the SemanticType object and their data types:</p>
 <dl>
 <dt><strong><a name="item_id">id</a></strong>
 
@@ -1053,12 +1016,11 @@ CaCORE SemanticType object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_semantictype">ASSOCIATIONS of SemanticType</a></h2>
@@ -1088,9 +1050,6 @@ CaCORE Silo object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Silo is a repository of customized concept terminology data from a knowledgebase. There can be a single silo or multiple silos, each consisting of semantically related concepts and extracted character strings associated with those concepts.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_silo">ATTRIBUTES of Silo</a></h2>
@@ -1115,12 +1074,11 @@ CaCORE Silo object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_silo">ASSOCIATIONS of Silo</a></h2>
@@ -1150,9 +1108,6 @@ CaCORE Source object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The source is a knowledge base.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_source">ATTRIBUTES of Source</a></h2>
@@ -1161,6 +1116,14 @@ CaCORE Source object.
 </p>
 <dl>
 <dt><strong><a name="item_abbreviation">abbreviation</a></strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong>code</strong>
 
 <dd>
 <p>data type: <code>string</code>
@@ -1177,12 +1140,11 @@ CaCORE Source object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_source">ASSOCIATIONS of Source</a></h2>
@@ -1212,9 +1174,6 @@ CaCORE TreeNode object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The TreeNode class specifies the relationshop between a concept and it's immediate parent when a  TREE is generated using the getTree method. 
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_treenode">ATTRIBUTES of TreeNode</a></h2>
@@ -1247,12 +1206,11 @@ CaCORE TreeNode object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_treenode">ASSOCIATIONS of TreeNode</a></h2>
@@ -1264,6 +1222,90 @@ CaCORE TreeNode object.
 
 <dd>
 <p>One to many assoication, use <code>getLinksCollection</code> to get a collection of associated Links.
+
+</p>
+</dd>
+</li>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="vocabulary">Vocabulary</a></h1>
+<p>CaCORE::EVS::Vocabulary - Perl extension for Vocabulary.
+
+</p>
+<p>
+</p>
+<h2><a name="abstract">ABSTRACT</a></h2>
+<p>The CaCORE::EVS::Vocabulary is a Perl object representation of the
+CaCORE Vocabulary object.
+
+</p>
+<p>
+</p>
+<h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.
+
+</p>
+<p>
+</p>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+</p>
+<h2><a name="attributes_of_vocabulary">ATTRIBUTES of Vocabulary</a></h2>
+<p>The following are all the attributes of the Vocabulary object and their data types:
+
+</p>
+<dl>
+<dt><strong>description</strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong>name</strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong>namespaceId</strong>
+
+<dd>
+<p>data type: <code>int</code>
+
+</p>
+</dd>
+</li>
+</dl>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
+
+</p>
+<p>
+</p>
+<h2><a name="associations_of_vocabulary">ASSOCIATIONS of Vocabulary</a></h2>
+<p>The following are all the objects that are associated with the Vocabulary:
+
+</p>
+<dl>
+<dt><strong><a name="item_collection_of__2fsecuritytoken_3a">Collection of <a href="#securitytoken">SecurityToken</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getSecurityToken</code> to get the associated SecurityToken.
+
+</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fsilo_3a">Instance of <a href="#silo">Silo</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getSiloCollection</code> to get a collection of associated Silo.
 
 </p>
 </dd>
@@ -1291,49 +1333,36 @@ support or report a bug.
 <p>The CaCORE Software License, Version 1.0
 
 </p>
-<pre>
-  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
-  National Cancer Institute, and so to the extent government employees are co-authors,
-  any rights in such works shall be subject to Title 17 of the United States Code,
-  section 105. Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
+<p>Copyright 2001-2005 SAIC. This software was developed in conjunction with the National Cancer Institute, and so to the extent government employees are co-authors, any rights in such works shall be subject to Title 17 of the United States Code, section 105. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-</pre>
-<pre>
-  1. Redistributions of source code must retain the above copyright notice, this list
-     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
-     form must reproduce the above copyright notice, this list of conditions and the
-     disclaimer of Article 5 in the documentation and/or other materials provided with
-     the distribution.
-   
-  2. The end-user documentation included with the redistribution, if any, must include
-     the following acknowledgment: &quot;This product includes software developed by SAIC and
-     the National Cancer Institute.&quot; If no such end-user documentation is to be included,
-     this acknowledgment shall appear in the software itself, wherever such third-party
-     acknowledgments normally appear.
-   
-  3. The names &quot;The National Cancer Institute&quot;, &quot;NCI&quot; and &quot;SAIC&quot; must not be used to
-     endorse or promote products derived from this software. This license does not
-     authorize the licensee to use any trademarks owned by either NCI or SAIC.
-   
-  4. This license does not authorize or prohibit the incorporation of this software into
-     any third party proprietary programs. Licensee is expressly made responsible for
-     obtaining any permission required to incorporate this software into third party
-     proprietary programs and for informing licensee's end-users of their obligation
-     to secure any required permissions before incorporating this software into third
-     party proprietary software programs.
-   
-  5. THIS SOFTWARE IS PROVIDED &quot;AS IS,&quot; AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
-     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
-     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
-     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
-     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+</p>
+<ol>
+<li>
+<p>Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer of Article 5, below. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer of Article 5 in the documentation and/or other materials provided with the distribution.
 
-</pre>
+</p>
+</li>
+<li>
+<p>The end-user documentation included with the redistribution, if any, must include the following acknowledgment: &quot;This product includes software developed by SAIC and the National Cancer Institute.&quot; If no such end-user documentation is to be included, this acknowledgment shall appear in the software itself, wherever such third-party acknowledgments normally appear.
+
+</p>
+</li>
+<li>
+<p>The names &quot;The National Cancer Institute&quot;, &quot;NCI&quot; and &quot;SAIC&quot; must not be used to endorse or promote products derived from this software. This license does not authorize the licensee to use any trademarks owned by either NCI or SAIC.
+
+</p>
+</li>
+<li>
+<p>This license does not authorize or prohibit the incorporation of this software into any third party proprietary programs. Licensee is expressly made responsible for obtaining any permission required to incorporate this software into third party proprietary programs and for informing licensee's end-users of their obligation to secure any required permissions before incorporating this software into third party proprietary software programs.
+
+</p>
+</li>
+<li>
+<p>THIS SOFTWARE IS PROVIDED &quot;AS IS,&quot; AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+</p>
+</li>
+</ol>
 
 </body>
 

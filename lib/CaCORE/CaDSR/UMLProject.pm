@@ -1,4 +1,176 @@
 # ------------------------------------------------------------------------------------------
+package CaCORE::CaDSR::UMLProject::UMLGeneralizationMetadata;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+$VERSION = '3.2';
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the UMLGeneralizationMetadata object
+# returns: a UMLGeneralizationMetadata object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new UMLGeneralizationMetadata\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this UMLGeneralizationMetadata intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":UMLGeneralizationMetadata\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.umlproject.cadsr.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:string\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of UMLGeneralizationMetadata objects
+# param: xml doc
+# returns: list of UMLGeneralizationMetadata objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of UMLGeneralizationMetadata objects
+# param: xml node
+# returns: a list of UMLGeneralizationMetadata objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one UMLGeneralizationMetadata object
+# param: xml node
+# returns: one UMLGeneralizationMetadata object
+sub fromWSXMLNode {
+	my $UMLGeneralizationMetadataNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $id;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($UMLGeneralizationMetadataNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaDSR::UMLProject::UMLGeneralizationMetadata;
+	## begin set attr ##
+		$newobj->setId($id);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getObjectClassRelationship {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaDSR::ObjectClassRelationship", $self);
+	return $results[0];
+}
+
+sub getSuperUMLClassMetadata {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaDSR::UMLProject::UMLClassMetadata", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
 package CaCORE::CaDSR::UMLProject::Project;
 
 use 5.005;
@@ -13,7 +185,6 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-$VERSION = '3.1';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -738,177 +909,6 @@ sub getSubProject {
 	my $self = shift;
 	my $appSvc = CaCORE::ApplicationService->instance();
 	my @results = $appSvc->queryObject("CaCORE::CaDSR::UMLProject::SubProject", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaDSR::UMLProject::UMLGeneralizationMetadata;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the UMLGeneralizationMetadata object
-# returns: a UMLGeneralizationMetadata object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new UMLGeneralizationMetadata\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this UMLGeneralizationMetadata intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":UMLGeneralizationMetadata\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.umlproject.cadsr.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:string\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of UMLGeneralizationMetadata objects
-# param: xml doc
-# returns: list of UMLGeneralizationMetadata objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of UMLGeneralizationMetadata objects
-# param: xml node
-# returns: a list of UMLGeneralizationMetadata objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one UMLGeneralizationMetadata object
-# param: xml node
-# returns: one UMLGeneralizationMetadata object
-sub fromWSXMLNode {
-	my $UMLGeneralizationMetadataNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($UMLGeneralizationMetadataNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaDSR::UMLProject::UMLGeneralizationMetadata;
-	## begin set attr ##
-		$newobj->setId($id);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getObjectClassRelationship {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaDSR::ObjectClassRelationship", $self);
-	return $results[0];
-}
-
-sub getSuperUMLClassMetadata {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaDSR::UMLProject::UMLClassMetadata", $self);
 	return $results[0];
 }
 
@@ -1677,308 +1677,6 @@ sub getSemanticMetadataCollection {
 1;
 #end
 # ------------------------------------------------------------------------------------------
-package CaCORE::CaDSR::UMLProject::SemanticMetadata;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the SemanticMetadata object
-# returns: a SemanticMetadata object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new SemanticMetadata\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this SemanticMetadata intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":SemanticMetadata\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.umlproject.cadsr.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# conceptCode;
-	if( defined( $self->getConceptCode ) ) {
-		$tmpstr = "<conceptCode xsi:type=\"xsd:string\">" . $self->getConceptCode . "</conceptCode>";
-	} else {
-		$tmpstr = "<conceptCode xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# conceptDefinition;
-	if( defined( $self->getConceptDefinition ) ) {
-		$tmpstr = "<conceptDefinition xsi:type=\"xsd:string\">" . $self->getConceptDefinition . "</conceptDefinition>";
-	} else {
-		$tmpstr = "<conceptDefinition xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# conceptName;
-	if( defined( $self->getConceptName ) ) {
-		$tmpstr = "<conceptName xsi:type=\"xsd:string\">" . $self->getConceptName . "</conceptName>";
-	} else {
-		$tmpstr = "<conceptName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:string\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# isPrimaryConcept;
-	if( defined( $self->getIsPrimaryConcept ) ) {
-		$tmpstr = "<isPrimaryConcept xsi:type=\"xsd:boolean\">" . $self->getIsPrimaryConcept . "</isPrimaryConcept>";
-	} else {
-		$tmpstr = "<isPrimaryConcept xsi:type=\"xsd:boolean\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# order;
-	if( defined( $self->getOrder ) ) {
-		$tmpstr = "<order xsi:type=\"xsd:int\">" . $self->getOrder . "</order>";
-	} else {
-		$tmpstr = "<order xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# orderLevel;
-	if( defined( $self->getOrderLevel ) ) {
-		$tmpstr = "<orderLevel xsi:type=\"xsd:int\">" . $self->getOrderLevel . "</orderLevel>";
-	} else {
-		$tmpstr = "<orderLevel xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of SemanticMetadata objects
-# param: xml doc
-# returns: list of SemanticMetadata objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of SemanticMetadata objects
-# param: xml node
-# returns: a list of SemanticMetadata objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one SemanticMetadata object
-# param: xml node
-# returns: one SemanticMetadata object
-sub fromWSXMLNode {
-	my $SemanticMetadataNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $conceptCode;
-		my $conceptDefinition;
-		my $conceptName;
-		my $id;
-		my $isPrimaryConcept;
-		my $order;
-		my $orderLevel;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($SemanticMetadataNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "conceptCode") {
-				$conceptCode=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "conceptDefinition") {
-				$conceptDefinition=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "conceptName") {
-				$conceptName=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "isPrimaryConcept") {
-				$isPrimaryConcept=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "order") {
-				$order=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "orderLevel") {
-				$orderLevel=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaDSR::UMLProject::SemanticMetadata;
-	## begin set attr ##
-		$newobj->setConceptCode($conceptCode);
-		$newobj->setConceptDefinition($conceptDefinition);
-		$newobj->setConceptName($conceptName);
-		$newobj->setId($id);
-		$newobj->setIsPrimaryConcept($isPrimaryConcept);
-		$newobj->setOrder($order);
-		$newobj->setOrderLevel($orderLevel);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getConceptCode {
-	my $self = shift;
-	return $self->{conceptCode};
-}
-
-sub setConceptCode {
-	my $self = shift;
-	$self->{conceptCode} = shift;
-}
-
-sub getConceptDefinition {
-	my $self = shift;
-	return $self->{conceptDefinition};
-}
-
-sub setConceptDefinition {
-	my $self = shift;
-	$self->{conceptDefinition} = shift;
-}
-
-sub getConceptName {
-	my $self = shift;
-	return $self->{conceptName};
-}
-
-sub setConceptName {
-	my $self = shift;
-	$self->{conceptName} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getIsPrimaryConcept {
-	my $self = shift;
-	return $self->{isPrimaryConcept};
-}
-
-sub setIsPrimaryConcept {
-	my $self = shift;
-	$self->{isPrimaryConcept} = shift;
-}
-
-sub getOrder {
-	my $self = shift;
-	return $self->{order};
-}
-
-sub setOrder {
-	my $self = shift;
-	$self->{order} = shift;
-}
-
-sub getOrderLevel {
-	my $self = shift;
-	return $self->{orderLevel};
-}
-
-sub setOrderLevel {
-	my $self = shift;
-	$self->{orderLevel} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getConcept {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaDSR::Concept", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
 package CaCORE::CaDSR::UMLProject::UMLAssociationMetadata;
 
 use 5.005;
@@ -2332,6 +2030,308 @@ sub getTargetUMLClassMetadata {
 1;
 #end
 # ------------------------------------------------------------------------------------------
+package CaCORE::CaDSR::UMLProject::SemanticMetadata;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the SemanticMetadata object
+# returns: a SemanticMetadata object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new SemanticMetadata\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this SemanticMetadata intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":SemanticMetadata\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.umlproject.cadsr.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# conceptCode;
+	if( defined( $self->getConceptCode ) ) {
+		$tmpstr = "<conceptCode xsi:type=\"xsd:string\">" . $self->getConceptCode . "</conceptCode>";
+	} else {
+		$tmpstr = "<conceptCode xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# conceptDefinition;
+	if( defined( $self->getConceptDefinition ) ) {
+		$tmpstr = "<conceptDefinition xsi:type=\"xsd:string\">" . $self->getConceptDefinition . "</conceptDefinition>";
+	} else {
+		$tmpstr = "<conceptDefinition xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# conceptName;
+	if( defined( $self->getConceptName ) ) {
+		$tmpstr = "<conceptName xsi:type=\"xsd:string\">" . $self->getConceptName . "</conceptName>";
+	} else {
+		$tmpstr = "<conceptName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:string\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# isPrimaryConcept;
+	if( defined( $self->getIsPrimaryConcept ) ) {
+		$tmpstr = "<isPrimaryConcept xsi:type=\"xsd:boolean\">" . $self->getIsPrimaryConcept . "</isPrimaryConcept>";
+	} else {
+		$tmpstr = "<isPrimaryConcept xsi:type=\"xsd:boolean\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# order;
+	if( defined( $self->getOrder ) ) {
+		$tmpstr = "<order xsi:type=\"xsd:int\">" . $self->getOrder . "</order>";
+	} else {
+		$tmpstr = "<order xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# orderLevel;
+	if( defined( $self->getOrderLevel ) ) {
+		$tmpstr = "<orderLevel xsi:type=\"xsd:int\">" . $self->getOrderLevel . "</orderLevel>";
+	} else {
+		$tmpstr = "<orderLevel xsi:type=\"xsd:int\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of SemanticMetadata objects
+# param: xml doc
+# returns: list of SemanticMetadata objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of SemanticMetadata objects
+# param: xml node
+# returns: a list of SemanticMetadata objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one SemanticMetadata object
+# param: xml node
+# returns: one SemanticMetadata object
+sub fromWSXMLNode {
+	my $SemanticMetadataNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $conceptCode;
+		my $conceptDefinition;
+		my $conceptName;
+		my $id;
+		my $isPrimaryConcept;
+		my $order;
+		my $orderLevel;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($SemanticMetadataNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "conceptCode") {
+				$conceptCode=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "conceptDefinition") {
+				$conceptDefinition=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "conceptName") {
+				$conceptName=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "isPrimaryConcept") {
+				$isPrimaryConcept=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "order") {
+				$order=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "orderLevel") {
+				$orderLevel=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaDSR::UMLProject::SemanticMetadata;
+	## begin set attr ##
+		$newobj->setConceptCode($conceptCode);
+		$newobj->setConceptDefinition($conceptDefinition);
+		$newobj->setConceptName($conceptName);
+		$newobj->setId($id);
+		$newobj->setIsPrimaryConcept($isPrimaryConcept);
+		$newobj->setOrder($order);
+		$newobj->setOrderLevel($orderLevel);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getConceptCode {
+	my $self = shift;
+	return $self->{conceptCode};
+}
+
+sub setConceptCode {
+	my $self = shift;
+	$self->{conceptCode} = shift;
+}
+
+sub getConceptDefinition {
+	my $self = shift;
+	return $self->{conceptDefinition};
+}
+
+sub setConceptDefinition {
+	my $self = shift;
+	$self->{conceptDefinition} = shift;
+}
+
+sub getConceptName {
+	my $self = shift;
+	return $self->{conceptName};
+}
+
+sub setConceptName {
+	my $self = shift;
+	$self->{conceptName} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getIsPrimaryConcept {
+	my $self = shift;
+	return $self->{isPrimaryConcept};
+}
+
+sub setIsPrimaryConcept {
+	my $self = shift;
+	$self->{isPrimaryConcept} = shift;
+}
+
+sub getOrder {
+	my $self = shift;
+	return $self->{order};
+}
+
+sub setOrder {
+	my $self = shift;
+	$self->{order} = shift;
+}
+
+sub getOrderLevel {
+	my $self = shift;
+	return $self->{orderLevel};
+}
+
+sub setOrderLevel {
+	my $self = shift;
+	$self->{orderLevel} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getConcept {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaDSR::Concept", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
 package CaCORE::CaDSR::UMLProject::TypeEnumerationMetadata;
 
 use 5.005;
@@ -2584,9 +2584,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of AttributeTypeMetadata
 
@@ -2631,7 +2631,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-e.g caCore
+
 
 =head2 ATTRIBUTES of Project
 
@@ -2662,9 +2662,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Project
 
@@ -2760,9 +2760,9 @@ data type: C<int>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of SemanticMetadata
 
@@ -2799,7 +2799,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-e.g. caBIO
+
 
 =head2 ATTRIBUTES of SubProject
 
@@ -2822,9 +2822,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of SubProject
 
@@ -2892,9 +2892,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of TypeEnumerationMetadata
 
@@ -2974,9 +2974,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of UMLAssociationMetadata
 
@@ -3056,9 +3056,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of UMLAttributeMetadata
 
@@ -3138,9 +3138,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of UMLClassMetadata
 
@@ -3216,9 +3216,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of UMLGeneralizationMetadata
 
@@ -3259,7 +3259,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-CSI type = UMLPACKAGE
+
 
 =head2 ATTRIBUTES of UMLPackageMetadata
 
@@ -3282,9 +3282,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of UMLPackageMetadata
 
@@ -3329,44 +3329,31 @@ Shan Jiang <jiangs@mail.nih.gov>
 
 The CaCORE Software License, Version 1.0
 
-  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
-  National Cancer Institute, and so to the extent government employees are co-authors,
-  any rights in such works shall be subject to Title 17 of the United States Code,
-  section 105. Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
+Copyright 2001-2005 SAIC. This software was developed in conjunction with the National Cancer Institute, and so to the extent government employees are co-authors, any rights in such works shall be subject to Title 17 of the United States Code, section 105. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-  1. Redistributions of source code must retain the above copyright notice, this list
-     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
-     form must reproduce the above copyright notice, this list of conditions and the
-     disclaimer of Article 5 in the documentation and/or other materials provided with
-     the distribution.
-   
-  2. The end-user documentation included with the redistribution, if any, must include
-     the following acknowledgment: "This product includes software developed by SAIC and
-     the National Cancer Institute." If no such end-user documentation is to be included,
-     this acknowledgment shall appear in the software itself, wherever such third-party
-     acknowledgments normally appear.
-   
-  3. The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to
-     endorse or promote products derived from this software. This license does not
-     authorize the licensee to use any trademarks owned by either NCI or SAIC.
-   
-  4. This license does not authorize or prohibit the incorporation of this software into
-     any third party proprietary programs. Licensee is expressly made responsible for
-     obtaining any permission required to incorporate this software into third party
-     proprietary programs and for informing licensee's end-users of their obligation
-     to secure any required permissions before incorporating this software into third
-     party proprietary software programs.
-   
-  5. THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
-     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
-     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
-     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
-     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+=over 1
+
+=item 1
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer of Article 5, below. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer of Article 5 in the documentation and/or other materials provided with the distribution.
+
+=item 2
+
+The end-user documentation included with the redistribution, if any, must include the following acknowledgment: "This product includes software developed by SAIC and the National Cancer Institute." If no such end-user documentation is to be included, this acknowledgment shall appear in the software itself, wherever such third-party acknowledgments normally appear.
+
+=item 3
+
+The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to endorse or promote products derived from this software. This license does not authorize the licensee to use any trademarks owned by either NCI or SAIC.
+
+=item 4
+
+This license does not authorize or prohibit the incorporation of this software into any third party proprietary programs. Licensee is expressly made responsible for obtaining any permission required to incorporate this software into third party proprietary programs and for informing licensee's end-users of their obligation to secure any required permissions before incorporating this software into third party proprietary software programs.
+
+=item 5
+
+THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+=back
 
 =cut
 

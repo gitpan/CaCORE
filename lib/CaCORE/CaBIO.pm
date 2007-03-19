@@ -13,7 +13,7 @@ use XML::DOM;
 use CaCORE::ApplicationService;
 ## end import objects ##
 
-$VERSION = '3.1';
+$VERSION = '3.2';
 
 @ISA = qw(CaCORE::DomainObjectI);
 
@@ -74,6 +74,14 @@ sub toWebserviceXML {
 		$tmpstr = "<alleleB xsi:type=\"xsd:string\">" . $self->getAlleleB . "</alleleB>";
 	} else {
 		$tmpstr = "<alleleB xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
 	}
 	$result .= $tmpstr;
 
@@ -145,6 +153,7 @@ sub fromWSXMLNode {
 		my $DBSNPID;
 		my $alleleA;
 		my $alleleB;
+		my $bigid;
 		my $id;
 		my $validationStatus;
 	## end ELEMENT_NODE children ##
@@ -167,6 +176,9 @@ sub fromWSXMLNode {
 			elsif ($childrenNode->getNodeName eq "alleleB") {
 				$alleleB=$textNode->getNodeValue;
 			}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "id") {
 				$id=$textNode->getNodeValue;
 			}
@@ -181,6 +193,7 @@ sub fromWSXMLNode {
 		$newobj->setDBSNPID($DBSNPID);
 		$newobj->setAlleleA($alleleA);
 		$newobj->setAlleleB($alleleB);
+		$newobj->setBigid($bigid);
 		$newobj->setId($id);
 		$newobj->setValidationStatus($validationStatus);
 	## end set attr ##
@@ -218,6 +231,16 @@ sub getAlleleB {
 sub setAlleleB {
 	my $self = shift;
 	$self->{alleleB} = shift;
+}
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
 }
 
 sub getId {
@@ -338,6 +361,14 @@ sub toWebserviceXML {
 	}
 	$result .= $tmpstr;
 
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# commonName;
 	if( defined( $self->getCommonName ) ) {
 		$tmpstr = "<commonName xsi:type=\"xsd:string\">" . $self->getCommonName . "</commonName>";
@@ -420,6 +451,7 @@ sub fromWSXMLNode {
 	
 	## begin ELEMENT_NODE children ##
 		my $abbreviation;
+		my $bigid;
 		my $commonName;
 		my $ethnicityStrain;
 		my $id;
@@ -437,6 +469,9 @@ sub fromWSXMLNode {
 		}
 			elsif ($childrenNode->getNodeName eq "abbreviation") {
 				$abbreviation=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
 			}
 			elsif ($childrenNode->getNodeName eq "commonName") {
 				$commonName=$textNode->getNodeValue;
@@ -456,6 +491,7 @@ sub fromWSXMLNode {
 	my $newobj = new CaCORE::CaBIO::Taxon;
 	## begin set attr ##
 		$newobj->setAbbreviation($abbreviation);
+		$newobj->setBigid($bigid);
 		$newobj->setCommonName($commonName);
 		$newobj->setEthnicityStrain($ethnicityStrain);
 		$newobj->setId($id);
@@ -475,6 +511,16 @@ sub getAbbreviation {
 sub setAbbreviation {
 	my $self = shift;
 	$self->{abbreviation} = shift;
+}
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
 }
 
 sub getCommonName {
@@ -621,6 +667,14 @@ sub toWebserviceXML {
 	$current_id ++;
 	
 	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# id;
 	if( defined( $self->getId ) ) {
 		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
@@ -686,6 +740,7 @@ sub fromWSXMLNode {
 	my $ChromosomeNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
+		my $bigid;
 		my $id;
 		my $number;
 	## end ELEMENT_NODE children ##
@@ -699,6 +754,9 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "id") {
 				$id=$textNode->getNodeValue;
 			}
@@ -710,6 +768,7 @@ sub fromWSXMLNode {
 	}
 	my $newobj = new CaCORE::CaBIO::Chromosome;
 	## begin set attr ##
+		$newobj->setBigid($bigid);
 		$newobj->setId($id);
 		$newobj->setNumber($number);
 	## end set attr ##
@@ -718,6 +777,16 @@ sub fromWSXMLNode {
 }
 
 ## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
 
 sub getId {
 	my $self = shift;
@@ -822,6 +891,14 @@ sub toWebserviceXML {
 	$current_id ++;
 	
 	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# clusterId;
 	if( defined( $self->getClusterId ) ) {
 		$tmpstr = "<clusterId xsi:type=\"xsd:long\">" . $self->getClusterId . "</clusterId>";
@@ -903,6 +980,7 @@ sub fromWSXMLNode {
 	my $GeneNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
+		my $bigid;
 		my $clusterId;
 		my $fullName;
 		my $id;
@@ -918,6 +996,9 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "clusterId") {
 				$clusterId=$textNode->getNodeValue;
 			}
@@ -935,6 +1016,7 @@ sub fromWSXMLNode {
 	}
 	my $newobj = new CaCORE::CaBIO::Gene;
 	## begin set attr ##
+		$newobj->setBigid($bigid);
 		$newobj->setClusterId($clusterId);
 		$newobj->setFullName($fullName);
 		$newobj->setId($id);
@@ -945,6 +1027,16 @@ sub fromWSXMLNode {
 }
 
 ## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
 
 sub getClusterId {
 	my $self = shift;
@@ -1001,13 +1093,6 @@ sub getDatabaseCrossReferenceCollection {
 	my $self = shift;
 	my $appSvc = CaCORE::ApplicationService->instance();
 	my @results = $appSvc->queryObject("CaCORE::Common::DatabaseCrossReference", $self);
-	return @results;
-}
-
-sub getExpressionFeatureCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaMOD::ExpressionFeature", $self);
 	return @results;
 }
 
@@ -1167,6 +1252,14 @@ sub toWebserviceXML {
 	$current_id ++;
 	
 	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# description;
 	if( defined( $self->getDescription ) ) {
 		$tmpstr = "<description xsi:type=\"xsd:string\">" . $self->getDescription . "</description>";
@@ -1248,6 +1341,7 @@ sub fromWSXMLNode {
 	my $ProtocolNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
+		my $bigid;
 		my $description;
 		my $id;
 		my $name;
@@ -1263,6 +1357,9 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "description") {
 				$description=$textNode->getNodeValue;
 			}
@@ -1280,6 +1377,7 @@ sub fromWSXMLNode {
 	}
 	my $newobj = new CaCORE::CaBIO::Protocol;
 	## begin set attr ##
+		$newobj->setBigid($bigid);
 		$newobj->setDescription($description);
 		$newobj->setId($id);
 		$newobj->setName($name);
@@ -1290,6 +1388,16 @@ sub fromWSXMLNode {
 }
 
 ## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
 
 sub getDescription {
 	my $self = shift;
@@ -1815,6 +1923,14 @@ sub toWebserviceXML {
 	$current_id ++;
 	
 	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# cloneProducer;
 	if( defined( $self->getCloneProducer ) ) {
 		$tmpstr = "<cloneProducer xsi:type=\"xsd:string\">" . $self->getCloneProducer . "</cloneProducer>";
@@ -1984,6 +2100,7 @@ sub fromWSXMLNode {
 	my $LibraryNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
+		my $bigid;
 		my $cloneProducer;
 		my $cloneVector;
 		my $cloneVectorType;
@@ -2010,6 +2127,9 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "cloneProducer") {
 				$cloneProducer=$textNode->getNodeValue;
 			}
@@ -2060,6 +2180,7 @@ sub fromWSXMLNode {
 	}
 	my $newobj = new CaCORE::CaBIO::Library;
 	## begin set attr ##
+		$newobj->setBigid($bigid);
 		$newobj->setCloneProducer($cloneProducer);
 		$newobj->setCloneVector($cloneVector);
 		$newobj->setCloneVectorType($cloneVectorType);
@@ -2081,6 +2202,16 @@ sub fromWSXMLNode {
 }
 
 ## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
 
 sub getCloneProducer {
 	my $self = shift;
@@ -2329,6 +2460,14 @@ sub toWebserviceXML {
 	$current_id ++;
 	
 	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# id;
 	if( defined( $self->getId ) ) {
 		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
@@ -2410,6 +2549,7 @@ sub fromWSXMLNode {
 	my $CloneNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
+		my $bigid;
 		my $id;
 		my $insertSize;
 		my $name;
@@ -2425,6 +2565,9 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "id") {
 				$id=$textNode->getNodeValue;
 			}
@@ -2442,6 +2585,7 @@ sub fromWSXMLNode {
 	}
 	my $newobj = new CaCORE::CaBIO::Clone;
 	## begin set attr ##
+		$newobj->setBigid($bigid);
 		$newobj->setId($id);
 		$newobj->setInsertSize($insertSize);
 		$newobj->setName($name);
@@ -2452,6 +2596,16 @@ sub fromWSXMLNode {
 }
 
 ## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
 
 sub getId {
 	my $self = shift;
@@ -2583,6 +2737,14 @@ sub toWebserviceXML {
 	$current_id ++;
 	
 	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# id;
 	if( defined( $self->getId ) ) {
 		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
@@ -2648,6 +2810,7 @@ sub fromWSXMLNode {
 	my $CloneRelativeLocationNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
+		my $bigid;
 		my $id;
 		my $type;
 	## end ELEMENT_NODE children ##
@@ -2661,6 +2824,9 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "id") {
 				$id=$textNode->getNodeValue;
 			}
@@ -2672,6 +2838,7 @@ sub fromWSXMLNode {
 	}
 	my $newobj = new CaCORE::CaBIO::CloneRelativeLocation;
 	## begin set attr ##
+		$newobj->setBigid($bigid);
 		$newobj->setId($id);
 		$newobj->setType($type);
 	## end set attr ##
@@ -2680,6 +2847,16 @@ sub fromWSXMLNode {
 }
 
 ## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
 
 sub getId {
 	my $self = shift;
@@ -2793,6 +2970,14 @@ sub toWebserviceXML {
 	}
 	$result .= $tmpstr;
 
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# id;
 	if( defined( $self->getId ) ) {
 		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
@@ -2876,6 +3061,7 @@ sub fromWSXMLNode {
 	## begin ELEMENT_NODE children ##
 		my $accessionNumber;
 		my $accessionNumberVersion;
+		my $bigid;
 		my $id;
 		my $length;
 		my $type;
@@ -2897,6 +3083,9 @@ sub fromWSXMLNode {
 			elsif ($childrenNode->getNodeName eq "accessionNumberVersion") {
 				$accessionNumberVersion=$textNode->getNodeValue;
 			}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "id") {
 				$id=$textNode->getNodeValue;
 			}
@@ -2916,6 +3105,7 @@ sub fromWSXMLNode {
 	## begin set attr ##
 		$newobj->setAccessionNumber($accessionNumber);
 		$newobj->setAccessionNumberVersion($accessionNumberVersion);
+		$newobj->setBigid($bigid);
 		$newobj->setId($id);
 		$newobj->setLength($length);
 		$newobj->setType($type);
@@ -2945,6 +3135,16 @@ sub getAccessionNumberVersion {
 sub setAccessionNumberVersion {
 	my $self = shift;
 	$self->{accessionNumberVersion} = shift;
+}
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
 }
 
 sub getId {
@@ -3017,5064 +3217,6 @@ sub getLocationCollection {
 	my $appSvc = CaCORE::ApplicationService->instance();
 	my @results = $appSvc->queryObject("CaCORE::CaBIO::Location", $self);
 	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::Agent;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the Agent object
-# returns: a Agent object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new Agent\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this Agent intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Agent\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# EVSId;
-	if( defined( $self->getEVSId ) ) {
-		$tmpstr = "<EVSId xsi:type=\"xsd:string\">" . $self->getEVSId . "</EVSId>";
-	} else {
-		$tmpstr = "<EVSId xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# NSCNumber;
-	if( defined( $self->getNSCNumber ) ) {
-		$tmpstr = "<NSCNumber xsi:type=\"xsd:long\">" . $self->getNSCNumber . "</NSCNumber>";
-	} else {
-		$tmpstr = "<NSCNumber xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# comment;
-	if( defined( $self->getComment ) ) {
-		$tmpstr = "<comment xsi:type=\"xsd:string\">" . $self->getComment . "</comment>";
-	} else {
-		$tmpstr = "<comment xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# isCMAPAgent;
-	if( defined( $self->getIsCMAPAgent ) ) {
-		$tmpstr = "<isCMAPAgent xsi:type=\"xsd:boolean\">" . $self->getIsCMAPAgent . "</isCMAPAgent>";
-	} else {
-		$tmpstr = "<isCMAPAgent xsi:type=\"xsd:boolean\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# source;
-	if( defined( $self->getSource ) ) {
-		$tmpstr = "<source xsi:type=\"xsd:string\">" . $self->getSource . "</source>";
-	} else {
-		$tmpstr = "<source xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of Agent objects
-# param: xml doc
-# returns: list of Agent objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of Agent objects
-# param: xml node
-# returns: a list of Agent objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one Agent object
-# param: xml node
-# returns: one Agent object
-sub fromWSXMLNode {
-	my $AgentNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $EVSId;
-		my $NSCNumber;
-		my $comment;
-		my $id;
-		my $isCMAPAgent;
-		my $name;
-		my $source;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($AgentNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "EVSId") {
-				$EVSId=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "NSCNumber") {
-				$NSCNumber=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "comment") {
-				$comment=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "isCMAPAgent") {
-				$isCMAPAgent=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "source") {
-				$source=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::Agent;
-	## begin set attr ##
-		$newobj->setEVSId($EVSId);
-		$newobj->setNSCNumber($NSCNumber);
-		$newobj->setComment($comment);
-		$newobj->setId($id);
-		$newobj->setIsCMAPAgent($isCMAPAgent);
-		$newobj->setName($name);
-		$newobj->setSource($source);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getEVSId {
-	my $self = shift;
-	return $self->{EVSId};
-}
-
-sub setEVSId {
-	my $self = shift;
-	$self->{EVSId} = shift;
-}
-
-sub getNSCNumber {
-	my $self = shift;
-	return $self->{NSCNumber};
-}
-
-sub setNSCNumber {
-	my $self = shift;
-	$self->{NSCNumber} = shift;
-}
-
-sub getComment {
-	my $self = shift;
-	return $self->{comment};
-}
-
-sub setComment {
-	my $self = shift;
-	$self->{comment} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getIsCMAPAgent {
-	my $self = shift;
-	return $self->{isCMAPAgent};
-}
-
-sub setIsCMAPAgent {
-	my $self = shift;
-	$self->{isCMAPAgent} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-sub getSource {
-	my $self = shift;
-	return $self->{source};
-}
-
-sub setSource {
-	my $self = shift;
-	$self->{source} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getClinicalTrialProtocolCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::ClinicalTrialProtocol", $self);
-	return @results;
-}
-
-sub getTargetCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Target", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::Vocabulary;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the Vocabulary object
-# returns: a Vocabulary object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new Vocabulary\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this Vocabulary intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Vocabulary\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# coreTerm;
-	if( defined( $self->getCoreTerm ) ) {
-		$tmpstr = "<coreTerm xsi:type=\"xsd:string\">" . $self->getCoreTerm . "</coreTerm>";
-	} else {
-		$tmpstr = "<coreTerm xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# generalTerm;
-	if( defined( $self->getGeneralTerm ) ) {
-		$tmpstr = "<generalTerm xsi:type=\"xsd:string\">" . $self->getGeneralTerm . "</generalTerm>";
-	} else {
-		$tmpstr = "<generalTerm xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of Vocabulary objects
-# param: xml doc
-# returns: list of Vocabulary objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of Vocabulary objects
-# param: xml node
-# returns: a list of Vocabulary objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one Vocabulary object
-# param: xml node
-# returns: one Vocabulary object
-sub fromWSXMLNode {
-	my $VocabularyNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $coreTerm;
-		my $generalTerm;
-		my $id;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($VocabularyNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "coreTerm") {
-				$coreTerm=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "generalTerm") {
-				$generalTerm=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::Vocabulary;
-	## begin set attr ##
-		$newobj->setCoreTerm($coreTerm);
-		$newobj->setGeneralTerm($generalTerm);
-		$newobj->setId($id);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getCoreTerm {
-	my $self = shift;
-	return $self->{coreTerm};
-}
-
-sub setCoreTerm {
-	my $self = shift;
-	$self->{coreTerm} = shift;
-}
-
-sub getGeneralTerm {
-	my $self = shift;
-	return $self->{generalTerm};
-}
-
-sub setGeneralTerm {
-	my $self = shift;
-	$self->{generalTerm} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getAnomalyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Anomaly", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::GeneAlias;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the GeneAlias object
-# returns: a GeneAlias object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new GeneAlias\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this GeneAlias intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GeneAlias\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of GeneAlias objects
-# param: xml doc
-# returns: list of GeneAlias objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of GeneAlias objects
-# param: xml node
-# returns: a list of GeneAlias objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one GeneAlias object
-# param: xml node
-# returns: one GeneAlias object
-sub fromWSXMLNode {
-	my $GeneAliasNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $name;
-		my $type;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($GeneAliasNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::GeneAlias;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setName($name);
-		$newobj->setType($type);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getGeneCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::Target;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the Target object
-# returns: a Target object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new Target\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this Target intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Target\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of Target objects
-# param: xml doc
-# returns: list of Target objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of Target objects
-# param: xml node
-# returns: a list of Target objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one Target object
-# param: xml node
-# returns: one Target object
-sub fromWSXMLNode {
-	my $TargetNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $name;
-		my $type;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($TargetNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::Target;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setName($name);
-		$newobj->setType($type);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getAgentCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Agent", $self);
-	return @results;
-}
-
-sub getAnomalyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Anomaly", $self);
-	return @results;
-}
-
-sub getGeneCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::ClinicalTrialProtocol;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the ClinicalTrialProtocol object
-# returns: a ClinicalTrialProtocol object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new ClinicalTrialProtocol\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this ClinicalTrialProtocol intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ClinicalTrialProtocol\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# NIHAdminCode;
-	if( defined( $self->getNIHAdminCode ) ) {
-		$tmpstr = "<NIHAdminCode xsi:type=\"xsd:string\">" . $self->getNIHAdminCode . "</NIHAdminCode>";
-	} else {
-		$tmpstr = "<NIHAdminCode xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# PDQIdentifier;
-	if( defined( $self->getPDQIdentifier ) ) {
-		$tmpstr = "<PDQIdentifier xsi:type=\"xsd:string\">" . $self->getPDQIdentifier . "</PDQIdentifier>";
-	} else {
-		$tmpstr = "<PDQIdentifier xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# PIName;
-	if( defined( $self->getPIName ) ) {
-		$tmpstr = "<PIName xsi:type=\"xsd:string\">" . $self->getPIName . "</PIName>";
-	} else {
-		$tmpstr = "<PIName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# currentStatus;
-	if( defined( $self->getCurrentStatus ) ) {
-		$tmpstr = "<currentStatus xsi:type=\"xsd:string\">" . $self->getCurrentStatus . "</currentStatus>";
-	} else {
-		$tmpstr = "<currentStatus xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# currentStatusDate;
-	if( defined( $self->getCurrentStatusDate ) ) {
-		$tmpstr = "<currentStatusDate xsi:type=\"xsd:dateTime\">" . $self->getCurrentStatusDate . "</currentStatusDate>";
-	} else {
-		$tmpstr = "<currentStatusDate xsi:type=\"xsd:dateTime\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# documentNumber;
-	if( defined( $self->getDocumentNumber ) ) {
-		$tmpstr = "<documentNumber xsi:type=\"xsd:string\">" . $self->getDocumentNumber . "</documentNumber>";
-	} else {
-		$tmpstr = "<documentNumber xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# leadOrganizationId;
-	if( defined( $self->getLeadOrganizationId ) ) {
-		$tmpstr = "<leadOrganizationId xsi:type=\"xsd:string\">" . $self->getLeadOrganizationId . "</leadOrganizationId>";
-	} else {
-		$tmpstr = "<leadOrganizationId xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# leadOrganizationName;
-	if( defined( $self->getLeadOrganizationName ) ) {
-		$tmpstr = "<leadOrganizationName xsi:type=\"xsd:string\">" . $self->getLeadOrganizationName . "</leadOrganizationName>";
-	} else {
-		$tmpstr = "<leadOrganizationName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# participationType;
-	if( defined( $self->getParticipationType ) ) {
-		$tmpstr = "<participationType xsi:type=\"xsd:string\">" . $self->getParticipationType . "</participationType>";
-	} else {
-		$tmpstr = "<participationType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# phase;
-	if( defined( $self->getPhase ) ) {
-		$tmpstr = "<phase xsi:type=\"xsd:string\">" . $self->getPhase . "</phase>";
-	} else {
-		$tmpstr = "<phase xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# title;
-	if( defined( $self->getTitle ) ) {
-		$tmpstr = "<title xsi:type=\"xsd:string\">" . $self->getTitle . "</title>";
-	} else {
-		$tmpstr = "<title xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# treatmentFlag;
-	if( defined( $self->getTreatmentFlag ) ) {
-		$tmpstr = "<treatmentFlag xsi:type=\"xsd:string\">" . $self->getTreatmentFlag . "</treatmentFlag>";
-	} else {
-		$tmpstr = "<treatmentFlag xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of ClinicalTrialProtocol objects
-# param: xml doc
-# returns: list of ClinicalTrialProtocol objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of ClinicalTrialProtocol objects
-# param: xml node
-# returns: a list of ClinicalTrialProtocol objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one ClinicalTrialProtocol object
-# param: xml node
-# returns: one ClinicalTrialProtocol object
-sub fromWSXMLNode {
-	my $ClinicalTrialProtocolNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $NIHAdminCode;
-		my $PDQIdentifier;
-		my $PIName;
-		my $currentStatus;
-		my $currentStatusDate;
-		my $documentNumber;
-		my $id;
-		my $leadOrganizationId;
-		my $leadOrganizationName;
-		my $participationType;
-		my $phase;
-		my $title;
-		my $treatmentFlag;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($ClinicalTrialProtocolNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "NIHAdminCode") {
-				$NIHAdminCode=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "PDQIdentifier") {
-				$PDQIdentifier=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "PIName") {
-				$PIName=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "currentStatus") {
-				$currentStatus=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "currentStatusDate") {
-				$currentStatusDate=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "documentNumber") {
-				$documentNumber=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "leadOrganizationId") {
-				$leadOrganizationId=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "leadOrganizationName") {
-				$leadOrganizationName=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "participationType") {
-				$participationType=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "phase") {
-				$phase=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "title") {
-				$title=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "treatmentFlag") {
-				$treatmentFlag=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::ClinicalTrialProtocol;
-	## begin set attr ##
-		$newobj->setNIHAdminCode($NIHAdminCode);
-		$newobj->setPDQIdentifier($PDQIdentifier);
-		$newobj->setPIName($PIName);
-		$newobj->setCurrentStatus($currentStatus);
-		$newobj->setCurrentStatusDate($currentStatusDate);
-		$newobj->setDocumentNumber($documentNumber);
-		$newobj->setId($id);
-		$newobj->setLeadOrganizationId($leadOrganizationId);
-		$newobj->setLeadOrganizationName($leadOrganizationName);
-		$newobj->setParticipationType($participationType);
-		$newobj->setPhase($phase);
-		$newobj->setTitle($title);
-		$newobj->setTreatmentFlag($treatmentFlag);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getNIHAdminCode {
-	my $self = shift;
-	return $self->{NIHAdminCode};
-}
-
-sub setNIHAdminCode {
-	my $self = shift;
-	$self->{NIHAdminCode} = shift;
-}
-
-sub getPDQIdentifier {
-	my $self = shift;
-	return $self->{PDQIdentifier};
-}
-
-sub setPDQIdentifier {
-	my $self = shift;
-	$self->{PDQIdentifier} = shift;
-}
-
-sub getPIName {
-	my $self = shift;
-	return $self->{PIName};
-}
-
-sub setPIName {
-	my $self = shift;
-	$self->{PIName} = shift;
-}
-
-sub getCurrentStatus {
-	my $self = shift;
-	return $self->{currentStatus};
-}
-
-sub setCurrentStatus {
-	my $self = shift;
-	$self->{currentStatus} = shift;
-}
-
-sub getCurrentStatusDate {
-	my $self = shift;
-	return $self->{currentStatusDate};
-}
-
-sub setCurrentStatusDate {
-	my $self = shift;
-	$self->{currentStatusDate} = shift;
-}
-
-sub getDocumentNumber {
-	my $self = shift;
-	return $self->{documentNumber};
-}
-
-sub setDocumentNumber {
-	my $self = shift;
-	$self->{documentNumber} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getLeadOrganizationId {
-	my $self = shift;
-	return $self->{leadOrganizationId};
-}
-
-sub setLeadOrganizationId {
-	my $self = shift;
-	$self->{leadOrganizationId} = shift;
-}
-
-sub getLeadOrganizationName {
-	my $self = shift;
-	return $self->{leadOrganizationName};
-}
-
-sub setLeadOrganizationName {
-	my $self = shift;
-	$self->{leadOrganizationName} = shift;
-}
-
-sub getParticipationType {
-	my $self = shift;
-	return $self->{participationType};
-}
-
-sub setParticipationType {
-	my $self = shift;
-	$self->{participationType} = shift;
-}
-
-sub getPhase {
-	my $self = shift;
-	return $self->{phase};
-}
-
-sub setPhase {
-	my $self = shift;
-	$self->{phase} = shift;
-}
-
-sub getTitle {
-	my $self = shift;
-	return $self->{title};
-}
-
-sub setTitle {
-	my $self = shift;
-	$self->{title} = shift;
-}
-
-sub getTreatmentFlag {
-	my $self = shift;
-	return $self->{treatmentFlag};
-}
-
-sub setTreatmentFlag {
-	my $self = shift;
-	$self->{treatmentFlag} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getAgentCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Agent", $self);
-	return @results;
-}
-
-sub getDiseaseOntologyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
-	return @results;
-}
-
-sub getHistopathologyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
-	return @results;
-}
-
-sub getProtocolAssociationCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::ProtocolAssociation", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::DiseaseOntology;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the DiseaseOntology object
-# returns: a DiseaseOntology object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new DiseaseOntology\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this DiseaseOntology intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":DiseaseOntology\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of DiseaseOntology objects
-# param: xml doc
-# returns: list of DiseaseOntology objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of DiseaseOntology objects
-# param: xml node
-# returns: a list of DiseaseOntology objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one DiseaseOntology object
-# param: xml node
-# returns: one DiseaseOntology object
-sub fromWSXMLNode {
-	my $DiseaseOntologyNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $name;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($DiseaseOntologyNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::DiseaseOntology;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setName($name);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getChildDiseaseOntologyRelationshipCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntologyRelationship", $self);
-	return @results;
-}
-
-sub getClinicalTrialProtocolCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::ClinicalTrialProtocol", $self);
-	return @results;
-}
-
-sub getHistopathologyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
-	return @results;
-}
-
-sub getParentDiseaseOntologyRelationshipCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntologyRelationship", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::ProtocolAssociation;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the ProtocolAssociation object
-# returns: a ProtocolAssociation object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new ProtocolAssociation\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this ProtocolAssociation intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ProtocolAssociation\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# CTEPNAME;
-	if( defined( $self->getCTEPNAME ) ) {
-		$tmpstr = "<CTEPNAME xsi:type=\"xsd:string\">" . $self->getCTEPNAME . "</CTEPNAME>";
-	} else {
-		$tmpstr = "<CTEPNAME xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# IMTCODE;
-	if( defined( $self->getIMTCODE ) ) {
-		$tmpstr = "<IMTCODE xsi:type=\"xsd:long\">" . $self->getIMTCODE . "</IMTCODE>";
-	} else {
-		$tmpstr = "<IMTCODE xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# diseaseCategory;
-	if( defined( $self->getDiseaseCategory ) ) {
-		$tmpstr = "<diseaseCategory xsi:type=\"xsd:string\">" . $self->getDiseaseCategory . "</diseaseCategory>";
-	} else {
-		$tmpstr = "<diseaseCategory xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# diseaseSubCategory;
-	if( defined( $self->getDiseaseSubCategory ) ) {
-		$tmpstr = "<diseaseSubCategory xsi:type=\"xsd:string\">" . $self->getDiseaseSubCategory . "</diseaseSubCategory>";
-	} else {
-		$tmpstr = "<diseaseSubCategory xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of ProtocolAssociation objects
-# param: xml doc
-# returns: list of ProtocolAssociation objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of ProtocolAssociation objects
-# param: xml node
-# returns: a list of ProtocolAssociation objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one ProtocolAssociation object
-# param: xml node
-# returns: one ProtocolAssociation object
-sub fromWSXMLNode {
-	my $ProtocolAssociationNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $CTEPNAME;
-		my $IMTCODE;
-		my $diseaseCategory;
-		my $diseaseSubCategory;
-		my $id;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($ProtocolAssociationNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "CTEPNAME") {
-				$CTEPNAME=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "IMTCODE") {
-				$IMTCODE=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "diseaseCategory") {
-				$diseaseCategory=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "diseaseSubCategory") {
-				$diseaseSubCategory=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::ProtocolAssociation;
-	## begin set attr ##
-		$newobj->setCTEPNAME($CTEPNAME);
-		$newobj->setIMTCODE($IMTCODE);
-		$newobj->setDiseaseCategory($diseaseCategory);
-		$newobj->setDiseaseSubCategory($diseaseSubCategory);
-		$newobj->setId($id);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getCTEPNAME {
-	my $self = shift;
-	return $self->{CTEPNAME};
-}
-
-sub setCTEPNAME {
-	my $self = shift;
-	$self->{CTEPNAME} = shift;
-}
-
-sub getIMTCODE {
-	my $self = shift;
-	return $self->{IMTCODE};
-}
-
-sub setIMTCODE {
-	my $self = shift;
-	$self->{IMTCODE} = shift;
-}
-
-sub getDiseaseCategory {
-	my $self = shift;
-	return $self->{diseaseCategory};
-}
-
-sub setDiseaseCategory {
-	my $self = shift;
-	$self->{diseaseCategory} = shift;
-}
-
-sub getDiseaseSubCategory {
-	my $self = shift;
-	return $self->{diseaseSubCategory};
-}
-
-sub setDiseaseSubCategory {
-	my $self = shift;
-	$self->{diseaseSubCategory} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getClinicalTrialProtocol {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::ClinicalTrialProtocol", $self);
-	return $results[0];
-}
-
-sub getDiseaseOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::Pathway;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the Pathway object
-# returns: a Pathway object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new Pathway\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this Pathway intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Pathway\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# description;
-	if( defined( $self->getDescription ) ) {
-		$tmpstr = "<description xsi:type=\"xsd:string\">" . $self->getDescription . "</description>";
-	} else {
-		$tmpstr = "<description xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# diagram;
-	if( defined( $self->getDiagram ) ) {
-		$tmpstr = "<diagram xsi:type=\"xsd:string\">" . $self->getDiagram . "</diagram>";
-	} else {
-		$tmpstr = "<diagram xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# displayValue;
-	if( defined( $self->getDisplayValue ) ) {
-		$tmpstr = "<displayValue xsi:type=\"xsd:string\">" . $self->getDisplayValue . "</displayValue>";
-	} else {
-		$tmpstr = "<displayValue xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of Pathway objects
-# param: xml doc
-# returns: list of Pathway objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of Pathway objects
-# param: xml node
-# returns: a list of Pathway objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one Pathway object
-# param: xml node
-# returns: one Pathway object
-sub fromWSXMLNode {
-	my $PathwayNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $description;
-		my $diagram;
-		my $displayValue;
-		my $id;
-		my $name;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($PathwayNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "description") {
-				$description=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "diagram") {
-				$diagram=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "displayValue") {
-				$displayValue=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::Pathway;
-	## begin set attr ##
-		$newobj->setDescription($description);
-		$newobj->setDiagram($diagram);
-		$newobj->setDisplayValue($displayValue);
-		$newobj->setId($id);
-		$newobj->setName($name);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getDescription {
-	my $self = shift;
-	return $self->{description};
-}
-
-sub setDescription {
-	my $self = shift;
-	$self->{description} = shift;
-}
-
-sub getDiagram {
-	my $self = shift;
-	return $self->{diagram};
-}
-
-sub setDiagram {
-	my $self = shift;
-	$self->{diagram} = shift;
-}
-
-sub getDisplayValue {
-	my $self = shift;
-	return $self->{displayValue};
-}
-
-sub setDisplayValue {
-	my $self = shift;
-	$self->{displayValue} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getGeneCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return @results;
-}
-
-sub getHistopathologyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
-	return @results;
-}
-
-sub getTaxon {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Taxon", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::OrganOntology;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the OrganOntology object
-# returns: a OrganOntology object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new OrganOntology\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this OrganOntology intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":OrganOntology\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of OrganOntology objects
-# param: xml doc
-# returns: list of OrganOntology objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of OrganOntology objects
-# param: xml node
-# returns: a list of OrganOntology objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one OrganOntology object
-# param: xml node
-# returns: one OrganOntology object
-sub fromWSXMLNode {
-	my $OrganOntologyNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $name;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($OrganOntologyNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::OrganOntology;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setName($name);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getAnomalyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Anomaly", $self);
-	return @results;
-}
-
-sub getChildOrganOntologyRelationshipCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntologyRelationship", $self);
-	return @results;
-}
-
-sub getExpressionFeatureCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaMOD::ExpressionFeature", $self);
-	return @results;
-}
-
-sub getGeneCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return @results;
-}
-
-sub getHistopathologyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
-	return @results;
-}
-
-sub getParentOrganOntologyRelationshipCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntologyRelationship", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::OrganOntologyRelationship;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the OrganOntologyRelationship object
-# returns: a OrganOntologyRelationship object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new OrganOntologyRelationship\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this OrganOntologyRelationship intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":OrganOntologyRelationship\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of OrganOntologyRelationship objects
-# param: xml doc
-# returns: list of OrganOntologyRelationship objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of OrganOntologyRelationship objects
-# param: xml node
-# returns: a list of OrganOntologyRelationship objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one OrganOntologyRelationship object
-# param: xml node
-# returns: one OrganOntologyRelationship object
-sub fromWSXMLNode {
-	my $OrganOntologyRelationshipNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $type;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($OrganOntologyRelationshipNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::OrganOntologyRelationship;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setType($type);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getChildOrganOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntology", $self);
-	return $results[0];
-}
-
-sub getParentOrganOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntology", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::Histopathology;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the Histopathology object
-# returns: a Histopathology object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new Histopathology\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this Histopathology intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Histopathology\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# ageOfOnset;
-	if( defined( $self->getAgeOfOnset ) ) {
-		$tmpstr = "<ageOfOnset xsi:type=\"xsd:string\">" . $self->getAgeOfOnset . "</ageOfOnset>";
-	} else {
-		$tmpstr = "<ageOfOnset xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# comments;
-	if( defined( $self->getComments ) ) {
-		$tmpstr = "<comments xsi:type=\"xsd:string\">" . $self->getComments . "</comments>";
-	} else {
-		$tmpstr = "<comments xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# grossDescription;
-	if( defined( $self->getGrossDescription ) ) {
-		$tmpstr = "<grossDescription xsi:type=\"xsd:string\">" . $self->getGrossDescription . "</grossDescription>";
-	} else {
-		$tmpstr = "<grossDescription xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# microscopicDescription;
-	if( defined( $self->getMicroscopicDescription ) ) {
-		$tmpstr = "<microscopicDescription xsi:type=\"xsd:string\">" . $self->getMicroscopicDescription . "</microscopicDescription>";
-	} else {
-		$tmpstr = "<microscopicDescription xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# relationalOperation;
-	if( defined( $self->getRelationalOperation ) ) {
-		$tmpstr = "<relationalOperation xsi:type=\"xsd:string\">" . $self->getRelationalOperation . "</relationalOperation>";
-	} else {
-		$tmpstr = "<relationalOperation xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# survivalInfo;
-	if( defined( $self->getSurvivalInfo ) ) {
-		$tmpstr = "<survivalInfo xsi:type=\"xsd:string\">" . $self->getSurvivalInfo . "</survivalInfo>";
-	} else {
-		$tmpstr = "<survivalInfo xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# tumorIncidenceRate;
-	if( defined( $self->getTumorIncidenceRate ) ) {
-		$tmpstr = "<tumorIncidenceRate xsi:type=\"xsd:float\">" . $self->getTumorIncidenceRate . "</tumorIncidenceRate>";
-	} else {
-		$tmpstr = "<tumorIncidenceRate xsi:type=\"xsd:float\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	# MetastasisCollection;
-	if( defined( $self->getMetastasisCollection ) ) {
-		my @assoclist = $self->getMetastasisCollection;
-		if( $#assoclist >= 0 ) {
-			$result .= "<metastasisCollection>";
-			foreach my $node ($self->getMetastasisCollection) {
-				$result .= "<metastasisCollection xsi:type=\"xsd:string\"> . $node . </metastasisCollection>";
-			}
-			$result .= "</metastasisCollection>";
-		}
-	}
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of Histopathology objects
-# param: xml doc
-# returns: list of Histopathology objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of Histopathology objects
-# param: xml node
-# returns: a list of Histopathology objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one Histopathology object
-# param: xml node
-# returns: one Histopathology object
-sub fromWSXMLNode {
-	my $HistopathologyNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $ageOfOnset;
-		my $comments;
-		my $grossDescription;
-		my $id;
-		my $microscopicDescription;
-		my $relationalOperation;
-		my $survivalInfo;
-		my $tumorIncidenceRate;
-		my @metastasis = ();
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($HistopathologyNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "ageOfOnset") {
-				$ageOfOnset=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "comments") {
-				$comments=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "grossDescription") {
-				$grossDescription=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "microscopicDescription") {
-				$microscopicDescription=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "relationalOperation") {
-				$relationalOperation=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "survivalInfo") {
-				$survivalInfo=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "tumorIncidenceRate") {
-				$tumorIncidenceRate=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "metastasisCollection") {
-				for my $node ($childrenNode->getChildNodes) {
-					if( $node->getNodeName eq "empty" ){ next; };
-					if( ! defined($node->getFirstChild) ){ next; };
-					my $txnode = $node->getFirstChild;
-					push @metastasis, $txnode->getNodeValue;
-				}
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::Histopathology;
-	## begin set attr ##
-		$newobj->setAgeOfOnset($ageOfOnset);
-		$newobj->setComments($comments);
-		$newobj->setGrossDescription($grossDescription);
-		$newobj->setId($id);
-		$newobj->setMicroscopicDescription($microscopicDescription);
-		$newobj->setRelationalOperation($relationalOperation);
-		$newobj->setSurvivalInfo($survivalInfo);
-		$newobj->setTumorIncidenceRate($tumorIncidenceRate);
-		$newobj->setMetastasisCollection(@metastasis);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getAgeOfOnset {
-	my $self = shift;
-	return $self->{ageOfOnset};
-}
-
-sub setAgeOfOnset {
-	my $self = shift;
-	$self->{ageOfOnset} = shift;
-}
-
-sub getComments {
-	my $self = shift;
-	return $self->{comments};
-}
-
-sub setComments {
-	my $self = shift;
-	$self->{comments} = shift;
-}
-
-sub getGrossDescription {
-	my $self = shift;
-	return $self->{grossDescription};
-}
-
-sub setGrossDescription {
-	my $self = shift;
-	$self->{grossDescription} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getMicroscopicDescription {
-	my $self = shift;
-	return $self->{microscopicDescription};
-}
-
-sub setMicroscopicDescription {
-	my $self = shift;
-	$self->{microscopicDescription} = shift;
-}
-
-sub getRelationalOperation {
-	my $self = shift;
-	return $self->{relationalOperation};
-}
-
-sub setRelationalOperation {
-	my $self = shift;
-	$self->{relationalOperation} = shift;
-}
-
-sub getSurvivalInfo {
-	my $self = shift;
-	return $self->{survivalInfo};
-}
-
-sub setSurvivalInfo {
-	my $self = shift;
-	$self->{survivalInfo} = shift;
-}
-
-sub getTumorIncidenceRate {
-	my $self = shift;
-	return $self->{tumorIncidenceRate};
-}
-
-sub setTumorIncidenceRate {
-	my $self = shift;
-	$self->{tumorIncidenceRate} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getAnomalyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Anomaly", $self);
-	return @results;
-}
-
-sub getClinicalTrialProtocolCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::ClinicalTrialProtocol", $self);
-	return @results;
-}
-
-sub getDiseaseOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
-	return $results[0];
-}
-
-sub getGeneCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return @results;
-}
-
-sub getLibraryCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Library", $self);
-	return @results;
-}
-
-sub getMetastasisCollection {
-	my $self = shift;
-	if( defined($self->{metastasis}) ) {
-		return @{$self->{metastasis}};
-	} else {
-		return ();
-	}
-}
-
-sub setMetastasisCollection {
-	my ($self, @set) = @_;
-	push @{$self->{metastasis}}, @set;
-}
-
-sub getOrganOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntology", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::GeneOntology;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the GeneOntology object
-# returns: a GeneOntology object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new GeneOntology\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this GeneOntology intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GeneOntology\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of GeneOntology objects
-# param: xml doc
-# returns: list of GeneOntology objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of GeneOntology objects
-# param: xml node
-# returns: a list of GeneOntology objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one GeneOntology object
-# param: xml node
-# returns: one GeneOntology object
-sub fromWSXMLNode {
-	my $GeneOntologyNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $name;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($GeneOntologyNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::GeneOntology;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setName($name);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getChildGeneOntologyRelationshipCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::GeneOntologyRelationship", $self);
-	return @results;
-}
-
-sub getGeneCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return @results;
-}
-
-sub getParentGeneOntologyRelationshipCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::GeneOntologyRelationship", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::GeneOntologyRelationship;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the GeneOntologyRelationship object
-# returns: a GeneOntologyRelationship object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new GeneOntologyRelationship\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this GeneOntologyRelationship intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GeneOntologyRelationship\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# relationshipType;
-	if( defined( $self->getRelationshipType ) ) {
-		$tmpstr = "<relationshipType xsi:type=\"xsd:string\">" . $self->getRelationshipType . "</relationshipType>";
-	} else {
-		$tmpstr = "<relationshipType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of GeneOntologyRelationship objects
-# param: xml doc
-# returns: list of GeneOntologyRelationship objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of GeneOntologyRelationship objects
-# param: xml node
-# returns: a list of GeneOntologyRelationship objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one GeneOntologyRelationship object
-# param: xml node
-# returns: one GeneOntologyRelationship object
-sub fromWSXMLNode {
-	my $GeneOntologyRelationshipNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $relationshipType;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($GeneOntologyRelationshipNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "relationshipType") {
-				$relationshipType=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::GeneOntologyRelationship;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setRelationshipType($relationshipType);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getRelationshipType {
-	my $self = shift;
-	return $self->{relationshipType};
-}
-
-sub setRelationshipType {
-	my $self = shift;
-	$self->{relationshipType} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getChildGeneOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::GeneOntology", $self);
-	return $results[0];
-}
-
-sub getParentGeneOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::GeneOntology", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::DiseaseOntologyRelationship;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the DiseaseOntologyRelationship object
-# returns: a DiseaseOntologyRelationship object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new DiseaseOntologyRelationship\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this DiseaseOntologyRelationship intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":DiseaseOntologyRelationship\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of DiseaseOntologyRelationship objects
-# param: xml doc
-# returns: list of DiseaseOntologyRelationship objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of DiseaseOntologyRelationship objects
-# param: xml node
-# returns: a list of DiseaseOntologyRelationship objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one DiseaseOntologyRelationship object
-# param: xml node
-# returns: one DiseaseOntologyRelationship object
-sub fromWSXMLNode {
-	my $DiseaseOntologyRelationshipNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $type;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($DiseaseOntologyRelationshipNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::DiseaseOntologyRelationship;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setType($type);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getChildDiseaseOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
-	return $results[0];
-}
-
-sub getParentDiseaseOntology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::Anomaly;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the Anomaly object
-# returns: a Anomaly object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new Anomaly\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this Anomaly intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Anomaly\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# description;
-	if( defined( $self->getDescription ) ) {
-		$tmpstr = "<description xsi:type=\"xsd:string\">" . $self->getDescription . "</description>";
-	} else {
-		$tmpstr = "<description xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of Anomaly objects
-# param: xml doc
-# returns: list of Anomaly objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of Anomaly objects
-# param: xml node
-# returns: a list of Anomaly objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one Anomaly object
-# param: xml node
-# returns: one Anomaly object
-sub fromWSXMLNode {
-	my $AnomalyNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $description;
-		my $id;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($AnomalyNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "description") {
-				$description=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::Anomaly;
-	## begin set attr ##
-		$newobj->setDescription($description);
-		$newobj->setId($id);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getDescription {
-	my $self = shift;
-	return $self->{description};
-}
-
-sub setDescription {
-	my $self = shift;
-	$self->{description} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getHistopathology {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
-	return $results[0];
-}
-
-sub getOrganOntologyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntology", $self);
-	return @results;
-}
-
-sub getVocabularyCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Vocabulary", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::PopulationFrequency;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the PopulationFrequency object
-# returns: a PopulationFrequency object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new PopulationFrequency\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this PopulationFrequency intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":PopulationFrequency\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# ethnicity;
-	if( defined( $self->getEthnicity ) ) {
-		$tmpstr = "<ethnicity xsi:type=\"xsd:string\">" . $self->getEthnicity . "</ethnicity>";
-	} else {
-		$tmpstr = "<ethnicity xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# majorAllele;
-	if( defined( $self->getMajorAllele ) ) {
-		$tmpstr = "<majorAllele xsi:type=\"xsd:string\">" . $self->getMajorAllele . "</majorAllele>";
-	} else {
-		$tmpstr = "<majorAllele xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# majorFrequency;
-	if( defined( $self->getMajorFrequency ) ) {
-		$tmpstr = "<majorFrequency xsi:type=\"xsd:double\">" . $self->getMajorFrequency . "</majorFrequency>";
-	} else {
-		$tmpstr = "<majorFrequency xsi:type=\"xsd:double\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# minorAllele;
-	if( defined( $self->getMinorAllele ) ) {
-		$tmpstr = "<minorAllele xsi:type=\"xsd:string\">" . $self->getMinorAllele . "</minorAllele>";
-	} else {
-		$tmpstr = "<minorAllele xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# minorFrequency;
-	if( defined( $self->getMinorFrequency ) ) {
-		$tmpstr = "<minorFrequency xsi:type=\"xsd:double\">" . $self->getMinorFrequency . "</minorFrequency>";
-	} else {
-		$tmpstr = "<minorFrequency xsi:type=\"xsd:double\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of PopulationFrequency objects
-# param: xml doc
-# returns: list of PopulationFrequency objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of PopulationFrequency objects
-# param: xml node
-# returns: a list of PopulationFrequency objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one PopulationFrequency object
-# param: xml node
-# returns: one PopulationFrequency object
-sub fromWSXMLNode {
-	my $PopulationFrequencyNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $ethnicity;
-		my $id;
-		my $majorAllele;
-		my $majorFrequency;
-		my $minorAllele;
-		my $minorFrequency;
-		my $type;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($PopulationFrequencyNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "ethnicity") {
-				$ethnicity=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "majorAllele") {
-				$majorAllele=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "majorFrequency") {
-				$majorFrequency=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "minorAllele") {
-				$minorAllele=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "minorFrequency") {
-				$minorFrequency=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::PopulationFrequency;
-	## begin set attr ##
-		$newobj->setEthnicity($ethnicity);
-		$newobj->setId($id);
-		$newobj->setMajorAllele($majorAllele);
-		$newobj->setMajorFrequency($majorFrequency);
-		$newobj->setMinorAllele($minorAllele);
-		$newobj->setMinorFrequency($minorFrequency);
-		$newobj->setType($type);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getEthnicity {
-	my $self = shift;
-	return $self->{ethnicity};
-}
-
-sub setEthnicity {
-	my $self = shift;
-	$self->{ethnicity} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getMajorAllele {
-	my $self = shift;
-	return $self->{majorAllele};
-}
-
-sub setMajorAllele {
-	my $self = shift;
-	$self->{majorAllele} = shift;
-}
-
-sub getMajorFrequency {
-	my $self = shift;
-	return $self->{majorFrequency};
-}
-
-sub setMajorFrequency {
-	my $self = shift;
-	$self->{majorFrequency} = shift;
-}
-
-sub getMinorAllele {
-	my $self = shift;
-	return $self->{minorAllele};
-}
-
-sub setMinorAllele {
-	my $self = shift;
-	$self->{minorAllele} = shift;
-}
-
-sub getMinorFrequency {
-	my $self = shift;
-	return $self->{minorFrequency};
-}
-
-sub setMinorFrequency {
-	my $self = shift;
-	$self->{minorFrequency} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getSNP {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::SNP", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::ProteinSequence;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the ProteinSequence object
-# returns: a ProteinSequence object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new ProteinSequence\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this ProteinSequence intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ProteinSequence\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# checkSum;
-	if( defined( $self->getCheckSum ) ) {
-		$tmpstr = "<checkSum xsi:type=\"xsd:string\">" . $self->getCheckSum . "</checkSum>";
-	} else {
-		$tmpstr = "<checkSum xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# length;
-	if( defined( $self->getLength ) ) {
-		$tmpstr = "<length xsi:type=\"xsd:long\">" . $self->getLength . "</length>";
-	} else {
-		$tmpstr = "<length xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# molecularWeightInDaltons;
-	if( defined( $self->getMolecularWeightInDaltons ) ) {
-		$tmpstr = "<molecularWeightInDaltons xsi:type=\"xsd:double\">" . $self->getMolecularWeightInDaltons . "</molecularWeightInDaltons>";
-	} else {
-		$tmpstr = "<molecularWeightInDaltons xsi:type=\"xsd:double\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# value;
-	if( defined( $self->getValue ) ) {
-		$tmpstr = "<value xsi:type=\"xsd:string\">" . $self->getValue . "</value>";
-	} else {
-		$tmpstr = "<value xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of ProteinSequence objects
-# param: xml doc
-# returns: list of ProteinSequence objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of ProteinSequence objects
-# param: xml node
-# returns: a list of ProteinSequence objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one ProteinSequence object
-# param: xml node
-# returns: one ProteinSequence object
-sub fromWSXMLNode {
-	my $ProteinSequenceNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $checkSum;
-		my $id;
-		my $length;
-		my $molecularWeightInDaltons;
-		my $value;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($ProteinSequenceNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "checkSum") {
-				$checkSum=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "length") {
-				$length=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "molecularWeightInDaltons") {
-				$molecularWeightInDaltons=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "value") {
-				$value=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::ProteinSequence;
-	## begin set attr ##
-		$newobj->setCheckSum($checkSum);
-		$newobj->setId($id);
-		$newobj->setLength($length);
-		$newobj->setMolecularWeightInDaltons($molecularWeightInDaltons);
-		$newobj->setValue($value);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getCheckSum {
-	my $self = shift;
-	return $self->{checkSum};
-}
-
-sub setCheckSum {
-	my $self = shift;
-	$self->{checkSum} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getLength {
-	my $self = shift;
-	return $self->{length};
-}
-
-sub setLength {
-	my $self = shift;
-	$self->{length} = shift;
-}
-
-sub getMolecularWeightInDaltons {
-	my $self = shift;
-	return $self->{molecularWeightInDaltons};
-}
-
-sub setMolecularWeightInDaltons {
-	my $self = shift;
-	$self->{molecularWeightInDaltons} = shift;
-}
-
-sub getValue {
-	my $self = shift;
-	return $self->{value};
-}
-
-sub setValue {
-	my $self = shift;
-	$self->{value} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getProtein {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Protein", $self);
-	return $results[0];
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::Protein;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the Protein object
-# returns: a Protein object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new Protein\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this Protein intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Protein\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# copyrightStatement;
-	if( defined( $self->getCopyrightStatement ) ) {
-		$tmpstr = "<copyrightStatement xsi:type=\"xsd:string\">" . $self->getCopyrightStatement . "</copyrightStatement>";
-	} else {
-		$tmpstr = "<copyrightStatement xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# primaryAccession;
-	if( defined( $self->getPrimaryAccession ) ) {
-		$tmpstr = "<primaryAccession xsi:type=\"xsd:string\">" . $self->getPrimaryAccession . "</primaryAccession>";
-	} else {
-		$tmpstr = "<primaryAccession xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# uniProtCode;
-	if( defined( $self->getUniProtCode ) ) {
-		$tmpstr = "<uniProtCode xsi:type=\"xsd:string\">" . $self->getUniProtCode . "</uniProtCode>";
-	} else {
-		$tmpstr = "<uniProtCode xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	# KeywordsCollection;
-	if( defined( $self->getKeywordsCollection ) ) {
-		my @assoclist = $self->getKeywordsCollection;
-		if( $#assoclist >= 0 ) {
-			$result .= "<keywordsCollection>";
-			foreach my $node ($self->getKeywordsCollection) {
-				$result .= "<keywordsCollection xsi:type=\"xsd:string\"> . $node . </keywordsCollection>";
-			}
-			$result .= "</keywordsCollection>";
-		}
-	}
-	# SecondaryAccessionCollection;
-	if( defined( $self->getSecondaryAccessionCollection ) ) {
-		my @assoclist = $self->getSecondaryAccessionCollection;
-		if( $#assoclist >= 0 ) {
-			$result .= "<secondaryAccessionCollection>";
-			foreach my $node ($self->getSecondaryAccessionCollection) {
-				$result .= "<secondaryAccessionCollection xsi:type=\"xsd:string\"> . $node . </secondaryAccessionCollection>";
-			}
-			$result .= "</secondaryAccessionCollection>";
-		}
-	}
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of Protein objects
-# param: xml doc
-# returns: list of Protein objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of Protein objects
-# param: xml node
-# returns: a list of Protein objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one Protein object
-# param: xml node
-# returns: one Protein object
-sub fromWSXMLNode {
-	my $ProteinNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $copyrightStatement;
-		my $id;
-		my $name;
-		my $primaryAccession;
-		my $uniProtCode;
-		my @keywords = ();
-		my @secondaryAccession = ();
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($ProteinNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "copyrightStatement") {
-				$copyrightStatement=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "primaryAccession") {
-				$primaryAccession=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "uniProtCode") {
-				$uniProtCode=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "keywords") {
-				for my $node ($childrenNode->getChildNodes) {
-					if( $node->getNodeName eq "empty" ){ next; };
-					if( ! defined($node->getFirstChild) ){ next; };
-					my $txnode = $node->getFirstChild;
-					push @keywords, $txnode->getNodeValue;
-				}
-			}
-			elsif ($childrenNode->getNodeName eq "secondaryAccession") {
-				for my $node ($childrenNode->getChildNodes) {
-					if( $node->getNodeName eq "empty" ){ next; };
-					if( ! defined($node->getFirstChild) ){ next; };
-					my $txnode = $node->getFirstChild;
-					push @secondaryAccession, $txnode->getNodeValue;
-				}
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::Protein;
-	## begin set attr ##
-		$newobj->setCopyrightStatement($copyrightStatement);
-		$newobj->setId($id);
-		$newobj->setName($name);
-		$newobj->setPrimaryAccession($primaryAccession);
-		$newobj->setUniProtCode($uniProtCode);
-		$newobj->setKeywordsCollection(@keywords);
-		$newobj->setSecondaryAccessionCollection(@secondaryAccession);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getCopyrightStatement {
-	my $self = shift;
-	return $self->{copyrightStatement};
-}
-
-sub setCopyrightStatement {
-	my $self = shift;
-	$self->{copyrightStatement} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-sub getPrimaryAccession {
-	my $self = shift;
-	return $self->{primaryAccession};
-}
-
-sub setPrimaryAccession {
-	my $self = shift;
-	$self->{primaryAccession} = shift;
-}
-
-sub getUniProtCode {
-	my $self = shift;
-	return $self->{uniProtCode};
-}
-
-sub setUniProtCode {
-	my $self = shift;
-	$self->{uniProtCode} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getGeneCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return @results;
-}
-
-sub getKeywordsCollection {
-	my $self = shift;
-	if( defined($self->{keywords}) ) {
-		return @{$self->{keywords}};
-	} else {
-		return ();
-	}
-}
-
-sub setKeywordsCollection {
-	my ($self, @set) = @_;
-	push @{$self->{keywords}}, @set;
-}
-
-sub getProteinAliasCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::ProteinAlias", $self);
-	return @results;
-}
-
-sub getProteinSequence {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::ProteinSequence", $self);
-	return $results[0];
-}
-
-sub getSecondaryAccessionCollection {
-	my $self = shift;
-	if( defined($self->{secondaryAccession}) ) {
-		return @{$self->{secondaryAccession}};
-	} else {
-		return ();
-	}
-}
-
-sub setSecondaryAccessionCollection {
-	my ($self, @set) = @_;
-	push @{$self->{secondaryAccession}}, @set;
-}
-
-sub getTaxonCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Taxon", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::ProteinAlias;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the ProteinAlias object
-# returns: a ProteinAlias object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new ProteinAlias\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this ProteinAlias intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ProteinAlias\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of ProteinAlias objects
-# param: xml doc
-# returns: list of ProteinAlias objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of ProteinAlias objects
-# param: xml node
-# returns: a list of ProteinAlias objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one ProteinAlias object
-# param: xml node
-# returns: one ProteinAlias object
-sub fromWSXMLNode {
-	my $ProteinAliasNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $name;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($ProteinAliasNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::ProteinAlias;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setName($name);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getProteinCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Protein", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::HomologousAssociation;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the HomologousAssociation object
-# returns: a HomologousAssociation object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new HomologousAssociation\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this HomologousAssociation intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":HomologousAssociation\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# homologousId;
-	if( defined( $self->getHomologousId ) ) {
-		$tmpstr = "<homologousId xsi:type=\"xsd:long\">" . $self->getHomologousId . "</homologousId>";
-	} else {
-		$tmpstr = "<homologousId xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# similarityPercentage;
-	if( defined( $self->getSimilarityPercentage ) ) {
-		$tmpstr = "<similarityPercentage xsi:type=\"xsd:float\">" . $self->getSimilarityPercentage . "</similarityPercentage>";
-	} else {
-		$tmpstr = "<similarityPercentage xsi:type=\"xsd:float\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of HomologousAssociation objects
-# param: xml doc
-# returns: list of HomologousAssociation objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of HomologousAssociation objects
-# param: xml node
-# returns: a list of HomologousAssociation objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one HomologousAssociation object
-# param: xml node
-# returns: one HomologousAssociation object
-sub fromWSXMLNode {
-	my $HomologousAssociationNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $homologousId;
-		my $id;
-		my $similarityPercentage;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($HomologousAssociationNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "homologousId") {
-				$homologousId=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "similarityPercentage") {
-				$similarityPercentage=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::HomologousAssociation;
-	## begin set attr ##
-		$newobj->setHomologousId($homologousId);
-		$newobj->setId($id);
-		$newobj->setSimilarityPercentage($similarityPercentage);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getHomologousId {
-	my $self = shift;
-	return $self->{homologousId};
-}
-
-sub setHomologousId {
-	my $self = shift;
-	$self->{homologousId} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getSimilarityPercentage {
-	my $self = shift;
-	return $self->{similarityPercentage};
-}
-
-sub setSimilarityPercentage {
-	my $self = shift;
-	$self->{similarityPercentage} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getHomologousGene {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return $results[0];
 }
 
 ## end bean association methods ##
@@ -8504,6 +3646,998 @@ sub getNucleicAcidSequence {
 1;
 #end
 # ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::DiseaseOntology;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the DiseaseOntology object
+# returns: a DiseaseOntology object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new DiseaseOntology\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this DiseaseOntology intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":DiseaseOntology\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of DiseaseOntology objects
+# param: xml doc
+# returns: list of DiseaseOntology objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of DiseaseOntology objects
+# param: xml node
+# returns: a list of DiseaseOntology objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one DiseaseOntology object
+# param: xml node
+# returns: one DiseaseOntology object
+sub fromWSXMLNode {
+	my $DiseaseOntologyNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $name;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($DiseaseOntologyNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::DiseaseOntology;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setName($name);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getChildDiseaseOntologyRelationshipCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntologyRelationship", $self);
+	return @results;
+}
+
+sub getClinicalTrialProtocolCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::ClinicalTrialProtocol", $self);
+	return @results;
+}
+
+sub getHistopathologyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
+	return @results;
+}
+
+sub getParentDiseaseOntologyRelationshipCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntologyRelationship", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::GeneRelativeLocation;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the GeneRelativeLocation object
+# returns: a GeneRelativeLocation object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new GeneRelativeLocation\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this GeneRelativeLocation intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GeneRelativeLocation\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of GeneRelativeLocation objects
+# param: xml doc
+# returns: list of GeneRelativeLocation objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of GeneRelativeLocation objects
+# param: xml node
+# returns: a list of GeneRelativeLocation objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one GeneRelativeLocation object
+# param: xml node
+# returns: one GeneRelativeLocation object
+sub fromWSXMLNode {
+	my $GeneRelativeLocationNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($GeneRelativeLocationNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::GeneRelativeLocation;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::PopulationFrequency;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the PopulationFrequency object
+# returns: a PopulationFrequency object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new PopulationFrequency\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this PopulationFrequency intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":PopulationFrequency\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# ethnicity;
+	if( defined( $self->getEthnicity ) ) {
+		$tmpstr = "<ethnicity xsi:type=\"xsd:string\">" . $self->getEthnicity . "</ethnicity>";
+	} else {
+		$tmpstr = "<ethnicity xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# majorAllele;
+	if( defined( $self->getMajorAllele ) ) {
+		$tmpstr = "<majorAllele xsi:type=\"xsd:string\">" . $self->getMajorAllele . "</majorAllele>";
+	} else {
+		$tmpstr = "<majorAllele xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# majorFrequency;
+	if( defined( $self->getMajorFrequency ) ) {
+		$tmpstr = "<majorFrequency xsi:type=\"xsd:double\">" . $self->getMajorFrequency . "</majorFrequency>";
+	} else {
+		$tmpstr = "<majorFrequency xsi:type=\"xsd:double\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# minorAllele;
+	if( defined( $self->getMinorAllele ) ) {
+		$tmpstr = "<minorAllele xsi:type=\"xsd:string\">" . $self->getMinorAllele . "</minorAllele>";
+	} else {
+		$tmpstr = "<minorAllele xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# minorFrequency;
+	if( defined( $self->getMinorFrequency ) ) {
+		$tmpstr = "<minorFrequency xsi:type=\"xsd:double\">" . $self->getMinorFrequency . "</minorFrequency>";
+	} else {
+		$tmpstr = "<minorFrequency xsi:type=\"xsd:double\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of PopulationFrequency objects
+# param: xml doc
+# returns: list of PopulationFrequency objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of PopulationFrequency objects
+# param: xml node
+# returns: a list of PopulationFrequency objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one PopulationFrequency object
+# param: xml node
+# returns: one PopulationFrequency object
+sub fromWSXMLNode {
+	my $PopulationFrequencyNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $ethnicity;
+		my $id;
+		my $majorAllele;
+		my $majorFrequency;
+		my $minorAllele;
+		my $minorFrequency;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($PopulationFrequencyNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "ethnicity") {
+				$ethnicity=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "majorAllele") {
+				$majorAllele=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "majorFrequency") {
+				$majorFrequency=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "minorAllele") {
+				$minorAllele=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "minorFrequency") {
+				$minorFrequency=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::PopulationFrequency;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setEthnicity($ethnicity);
+		$newobj->setId($id);
+		$newobj->setMajorAllele($majorAllele);
+		$newobj->setMajorFrequency($majorFrequency);
+		$newobj->setMinorAllele($minorAllele);
+		$newobj->setMinorFrequency($minorFrequency);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getEthnicity {
+	my $self = shift;
+	return $self->{ethnicity};
+}
+
+sub setEthnicity {
+	my $self = shift;
+	$self->{ethnicity} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getMajorAllele {
+	my $self = shift;
+	return $self->{majorAllele};
+}
+
+sub setMajorAllele {
+	my $self = shift;
+	$self->{majorAllele} = shift;
+}
+
+sub getMajorFrequency {
+	my $self = shift;
+	return $self->{majorFrequency};
+}
+
+sub setMajorFrequency {
+	my $self = shift;
+	$self->{majorFrequency} = shift;
+}
+
+sub getMinorAllele {
+	my $self = shift;
+	return $self->{minorAllele};
+}
+
+sub setMinorAllele {
+	my $self = shift;
+	$self->{minorAllele} = shift;
+}
+
+sub getMinorFrequency {
+	my $self = shift;
+	return $self->{minorFrequency};
+}
+
+sub setMinorFrequency {
+	my $self = shift;
+	$self->{minorFrequency} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getSNP {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::SNP", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::HomologousAssociation;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the HomologousAssociation object
+# returns: a HomologousAssociation object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new HomologousAssociation\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this HomologousAssociation intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":HomologousAssociation\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# homologousId;
+	if( defined( $self->getHomologousId ) ) {
+		$tmpstr = "<homologousId xsi:type=\"xsd:long\">" . $self->getHomologousId . "</homologousId>";
+	} else {
+		$tmpstr = "<homologousId xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# similarityPercentage;
+	if( defined( $self->getSimilarityPercentage ) ) {
+		$tmpstr = "<similarityPercentage xsi:type=\"xsd:float\">" . $self->getSimilarityPercentage . "</similarityPercentage>";
+	} else {
+		$tmpstr = "<similarityPercentage xsi:type=\"xsd:float\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of HomologousAssociation objects
+# param: xml doc
+# returns: list of HomologousAssociation objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of HomologousAssociation objects
+# param: xml node
+# returns: a list of HomologousAssociation objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one HomologousAssociation object
+# param: xml node
+# returns: one HomologousAssociation object
+sub fromWSXMLNode {
+	my $HomologousAssociationNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $homologousId;
+		my $id;
+		my $similarityPercentage;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($HomologousAssociationNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "homologousId") {
+				$homologousId=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "similarityPercentage") {
+				$similarityPercentage=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::HomologousAssociation;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setHomologousId($homologousId);
+		$newobj->setId($id);
+		$newobj->setSimilarityPercentage($similarityPercentage);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getHomologousId {
+	my $self = shift;
+	return $self->{homologousId};
+}
+
+sub setHomologousId {
+	my $self = shift;
+	$self->{homologousId} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getSimilarityPercentage {
+	my $self = shift;
+	return $self->{similarityPercentage};
+}
+
+sub setSimilarityPercentage {
+	my $self = shift;
+	$self->{similarityPercentage} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getHomologousGene {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
 package CaCORE::CaBIO::Cytoband;
 
 use 5.005;
@@ -8557,6 +4691,14 @@ sub toWebserviceXML {
 	$current_id ++;
 	
 	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# id;
 	if( defined( $self->getId ) ) {
 		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
@@ -8622,6 +4764,7 @@ sub fromWSXMLNode {
 	my $CytobandNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
+		my $bigid;
 		my $id;
 		my $name;
 	## end ELEMENT_NODE children ##
@@ -8635,6 +4778,9 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "id") {
 				$id=$textNode->getNodeValue;
 			}
@@ -8646,6 +4792,7 @@ sub fromWSXMLNode {
 	}
 	my $newobj = new CaCORE::CaBIO::Cytoband;
 	## begin set attr ##
+		$newobj->setBigid($bigid);
 		$newobj->setId($id);
 		$newobj->setName($name);
 	## end set attr ##
@@ -8654,6 +4801,16 @@ sub fromWSXMLNode {
 }
 
 ## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
 
 sub getId {
 	my $self = shift;
@@ -8683,6 +4840,5201 @@ sub getPhysicalLocation {
 	my $self = shift;
 	my $appSvc = CaCORE::ApplicationService->instance();
 	my @results = $appSvc->queryObject("CaCORE::CaBIO::PhysicalLocation", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::GeneOntology;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the GeneOntology object
+# returns: a GeneOntology object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new GeneOntology\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this GeneOntology intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GeneOntology\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of GeneOntology objects
+# param: xml doc
+# returns: list of GeneOntology objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of GeneOntology objects
+# param: xml node
+# returns: a list of GeneOntology objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one GeneOntology object
+# param: xml node
+# returns: one GeneOntology object
+sub fromWSXMLNode {
+	my $GeneOntologyNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $name;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($GeneOntologyNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::GeneOntology;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setName($name);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getChildGeneOntologyRelationshipCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::GeneOntologyRelationship", $self);
+	return @results;
+}
+
+sub getGeneCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return @results;
+}
+
+sub getParentGeneOntologyRelationshipCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::GeneOntologyRelationship", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::OrganOntology;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the OrganOntology object
+# returns: a OrganOntology object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new OrganOntology\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this OrganOntology intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":OrganOntology\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of OrganOntology objects
+# param: xml doc
+# returns: list of OrganOntology objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of OrganOntology objects
+# param: xml node
+# returns: a list of OrganOntology objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one OrganOntology object
+# param: xml node
+# returns: one OrganOntology object
+sub fromWSXMLNode {
+	my $OrganOntologyNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $name;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($OrganOntologyNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::OrganOntology;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setName($name);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getAnomalyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Anomaly", $self);
+	return @results;
+}
+
+sub getChildOrganOntologyRelationshipCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntologyRelationship", $self);
+	return @results;
+}
+
+sub getGeneCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return @results;
+}
+
+sub getHistopathologyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
+	return @results;
+}
+
+sub getParentOrganOntologyRelationshipCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntologyRelationship", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::Histopathology;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the Histopathology object
+# returns: a Histopathology object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new Histopathology\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this Histopathology intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Histopathology\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# ageOfOnset;
+	if( defined( $self->getAgeOfOnset ) ) {
+		$tmpstr = "<ageOfOnset xsi:type=\"xsd:string\">" . $self->getAgeOfOnset . "</ageOfOnset>";
+	} else {
+		$tmpstr = "<ageOfOnset xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# comments;
+	if( defined( $self->getComments ) ) {
+		$tmpstr = "<comments xsi:type=\"xsd:string\">" . $self->getComments . "</comments>";
+	} else {
+		$tmpstr = "<comments xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# grossDescription;
+	if( defined( $self->getGrossDescription ) ) {
+		$tmpstr = "<grossDescription xsi:type=\"xsd:string\">" . $self->getGrossDescription . "</grossDescription>";
+	} else {
+		$tmpstr = "<grossDescription xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# microscopicDescription;
+	if( defined( $self->getMicroscopicDescription ) ) {
+		$tmpstr = "<microscopicDescription xsi:type=\"xsd:string\">" . $self->getMicroscopicDescription . "</microscopicDescription>";
+	} else {
+		$tmpstr = "<microscopicDescription xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# relationalOperation;
+	if( defined( $self->getRelationalOperation ) ) {
+		$tmpstr = "<relationalOperation xsi:type=\"xsd:string\">" . $self->getRelationalOperation . "</relationalOperation>";
+	} else {
+		$tmpstr = "<relationalOperation xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# survivalInfo;
+	if( defined( $self->getSurvivalInfo ) ) {
+		$tmpstr = "<survivalInfo xsi:type=\"xsd:string\">" . $self->getSurvivalInfo . "</survivalInfo>";
+	} else {
+		$tmpstr = "<survivalInfo xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# tumorIncidenceRate;
+	if( defined( $self->getTumorIncidenceRate ) ) {
+		$tmpstr = "<tumorIncidenceRate xsi:type=\"xsd:float\">" . $self->getTumorIncidenceRate . "</tumorIncidenceRate>";
+	} else {
+		$tmpstr = "<tumorIncidenceRate xsi:type=\"xsd:float\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	# MetastasisCollection;
+	if( defined( $self->getMetastasisCollection ) ) {
+		my @assoclist = $self->getMetastasisCollection;
+		if( $#assoclist >= 0 ) {
+			$result .= "<metastasisCollection>";
+			foreach my $node ($self->getMetastasisCollection) {
+				$result .= "<metastasisCollection xsi:type=\"xsd:string\"> . $node . </metastasisCollection>";
+			}
+			$result .= "</metastasisCollection>";
+		}
+	}
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of Histopathology objects
+# param: xml doc
+# returns: list of Histopathology objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of Histopathology objects
+# param: xml node
+# returns: a list of Histopathology objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one Histopathology object
+# param: xml node
+# returns: one Histopathology object
+sub fromWSXMLNode {
+	my $HistopathologyNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $ageOfOnset;
+		my $comments;
+		my $grossDescription;
+		my $id;
+		my $microscopicDescription;
+		my $relationalOperation;
+		my $survivalInfo;
+		my $tumorIncidenceRate;
+		my @metastasis = ();
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($HistopathologyNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "ageOfOnset") {
+				$ageOfOnset=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "comments") {
+				$comments=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "grossDescription") {
+				$grossDescription=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "microscopicDescription") {
+				$microscopicDescription=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "relationalOperation") {
+				$relationalOperation=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "survivalInfo") {
+				$survivalInfo=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "tumorIncidenceRate") {
+				$tumorIncidenceRate=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "metastasisCollection") {
+				for my $node ($childrenNode->getChildNodes) {
+					if( $node->getNodeName eq "empty" ){ next; };
+					if( ! defined($node->getFirstChild) ){ next; };
+					my $txnode = $node->getFirstChild;
+					push @metastasis, $txnode->getNodeValue;
+				}
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::Histopathology;
+	## begin set attr ##
+		$newobj->setAgeOfOnset($ageOfOnset);
+		$newobj->setComments($comments);
+		$newobj->setGrossDescription($grossDescription);
+		$newobj->setId($id);
+		$newobj->setMicroscopicDescription($microscopicDescription);
+		$newobj->setRelationalOperation($relationalOperation);
+		$newobj->setSurvivalInfo($survivalInfo);
+		$newobj->setTumorIncidenceRate($tumorIncidenceRate);
+		$newobj->setMetastasisCollection(@metastasis);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getAgeOfOnset {
+	my $self = shift;
+	return $self->{ageOfOnset};
+}
+
+sub setAgeOfOnset {
+	my $self = shift;
+	$self->{ageOfOnset} = shift;
+}
+
+sub getComments {
+	my $self = shift;
+	return $self->{comments};
+}
+
+sub setComments {
+	my $self = shift;
+	$self->{comments} = shift;
+}
+
+sub getGrossDescription {
+	my $self = shift;
+	return $self->{grossDescription};
+}
+
+sub setGrossDescription {
+	my $self = shift;
+	$self->{grossDescription} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getMicroscopicDescription {
+	my $self = shift;
+	return $self->{microscopicDescription};
+}
+
+sub setMicroscopicDescription {
+	my $self = shift;
+	$self->{microscopicDescription} = shift;
+}
+
+sub getRelationalOperation {
+	my $self = shift;
+	return $self->{relationalOperation};
+}
+
+sub setRelationalOperation {
+	my $self = shift;
+	$self->{relationalOperation} = shift;
+}
+
+sub getSurvivalInfo {
+	my $self = shift;
+	return $self->{survivalInfo};
+}
+
+sub setSurvivalInfo {
+	my $self = shift;
+	$self->{survivalInfo} = shift;
+}
+
+sub getTumorIncidenceRate {
+	my $self = shift;
+	return $self->{tumorIncidenceRate};
+}
+
+sub setTumorIncidenceRate {
+	my $self = shift;
+	$self->{tumorIncidenceRate} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getAnomalyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Anomaly", $self);
+	return @results;
+}
+
+sub getClinicalTrialProtocolCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::ClinicalTrialProtocol", $self);
+	return @results;
+}
+
+sub getDiseaseOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
+	return $results[0];
+}
+
+sub getGeneCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return @results;
+}
+
+sub getLibraryCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Library", $self);
+	return @results;
+}
+
+sub getMetastasisCollection {
+	my $self = shift;
+	if( defined($self->{metastasis}) ) {
+		return @{$self->{metastasis}};
+	} else {
+		return ();
+	}
+}
+
+sub setMetastasisCollection {
+	my ($self, @set) = @_;
+	push @{$self->{metastasis}}, @set;
+}
+
+sub getOrganOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntology", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::ProteinSequence;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the ProteinSequence object
+# returns: a ProteinSequence object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new ProteinSequence\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this ProteinSequence intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ProteinSequence\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# checkSum;
+	if( defined( $self->getCheckSum ) ) {
+		$tmpstr = "<checkSum xsi:type=\"xsd:string\">" . $self->getCheckSum . "</checkSum>";
+	} else {
+		$tmpstr = "<checkSum xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# length;
+	if( defined( $self->getLength ) ) {
+		$tmpstr = "<length xsi:type=\"xsd:long\">" . $self->getLength . "</length>";
+	} else {
+		$tmpstr = "<length xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# molecularWeightInDaltons;
+	if( defined( $self->getMolecularWeightInDaltons ) ) {
+		$tmpstr = "<molecularWeightInDaltons xsi:type=\"xsd:double\">" . $self->getMolecularWeightInDaltons . "</molecularWeightInDaltons>";
+	} else {
+		$tmpstr = "<molecularWeightInDaltons xsi:type=\"xsd:double\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# value;
+	if( defined( $self->getValue ) ) {
+		$tmpstr = "<value xsi:type=\"xsd:string\">" . $self->getValue . "</value>";
+	} else {
+		$tmpstr = "<value xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of ProteinSequence objects
+# param: xml doc
+# returns: list of ProteinSequence objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of ProteinSequence objects
+# param: xml node
+# returns: a list of ProteinSequence objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one ProteinSequence object
+# param: xml node
+# returns: one ProteinSequence object
+sub fromWSXMLNode {
+	my $ProteinSequenceNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $checkSum;
+		my $id;
+		my $length;
+		my $molecularWeightInDaltons;
+		my $value;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($ProteinSequenceNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "checkSum") {
+				$checkSum=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "length") {
+				$length=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "molecularWeightInDaltons") {
+				$molecularWeightInDaltons=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "value") {
+				$value=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::ProteinSequence;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setCheckSum($checkSum);
+		$newobj->setId($id);
+		$newobj->setLength($length);
+		$newobj->setMolecularWeightInDaltons($molecularWeightInDaltons);
+		$newobj->setValue($value);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getCheckSum {
+	my $self = shift;
+	return $self->{checkSum};
+}
+
+sub setCheckSum {
+	my $self = shift;
+	$self->{checkSum} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getLength {
+	my $self = shift;
+	return $self->{length};
+}
+
+sub setLength {
+	my $self = shift;
+	$self->{length} = shift;
+}
+
+sub getMolecularWeightInDaltons {
+	my $self = shift;
+	return $self->{molecularWeightInDaltons};
+}
+
+sub setMolecularWeightInDaltons {
+	my $self = shift;
+	$self->{molecularWeightInDaltons} = shift;
+}
+
+sub getValue {
+	my $self = shift;
+	return $self->{value};
+}
+
+sub setValue {
+	my $self = shift;
+	$self->{value} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getProtein {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Protein", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::Protein;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the Protein object
+# returns: a Protein object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new Protein\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this Protein intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Protein\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# copyrightStatement;
+	if( defined( $self->getCopyrightStatement ) ) {
+		$tmpstr = "<copyrightStatement xsi:type=\"xsd:string\">" . $self->getCopyrightStatement . "</copyrightStatement>";
+	} else {
+		$tmpstr = "<copyrightStatement xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# primaryAccession;
+	if( defined( $self->getPrimaryAccession ) ) {
+		$tmpstr = "<primaryAccession xsi:type=\"xsd:string\">" . $self->getPrimaryAccession . "</primaryAccession>";
+	} else {
+		$tmpstr = "<primaryAccession xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# uniProtCode;
+	if( defined( $self->getUniProtCode ) ) {
+		$tmpstr = "<uniProtCode xsi:type=\"xsd:string\">" . $self->getUniProtCode . "</uniProtCode>";
+	} else {
+		$tmpstr = "<uniProtCode xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	# KeywordsCollection;
+	if( defined( $self->getKeywordsCollection ) ) {
+		my @assoclist = $self->getKeywordsCollection;
+		if( $#assoclist >= 0 ) {
+			$result .= "<keywordsCollection>";
+			foreach my $node ($self->getKeywordsCollection) {
+				$result .= "<keywordsCollection xsi:type=\"xsd:string\"> . $node . </keywordsCollection>";
+			}
+			$result .= "</keywordsCollection>";
+		}
+	}
+	# SecondaryAccessionCollection;
+	if( defined( $self->getSecondaryAccessionCollection ) ) {
+		my @assoclist = $self->getSecondaryAccessionCollection;
+		if( $#assoclist >= 0 ) {
+			$result .= "<secondaryAccessionCollection>";
+			foreach my $node ($self->getSecondaryAccessionCollection) {
+				$result .= "<secondaryAccessionCollection xsi:type=\"xsd:string\"> . $node . </secondaryAccessionCollection>";
+			}
+			$result .= "</secondaryAccessionCollection>";
+		}
+	}
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of Protein objects
+# param: xml doc
+# returns: list of Protein objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of Protein objects
+# param: xml node
+# returns: a list of Protein objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one Protein object
+# param: xml node
+# returns: one Protein object
+sub fromWSXMLNode {
+	my $ProteinNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $copyrightStatement;
+		my $id;
+		my $name;
+		my $primaryAccession;
+		my $uniProtCode;
+		my @keywords = ();
+		my @secondaryAccession = ();
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($ProteinNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "copyrightStatement") {
+				$copyrightStatement=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "primaryAccession") {
+				$primaryAccession=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "uniProtCode") {
+				$uniProtCode=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "keywords") {
+				for my $node ($childrenNode->getChildNodes) {
+					if( $node->getNodeName eq "empty" ){ next; };
+					if( ! defined($node->getFirstChild) ){ next; };
+					my $txnode = $node->getFirstChild;
+					push @keywords, $txnode->getNodeValue;
+				}
+			}
+			elsif ($childrenNode->getNodeName eq "secondaryAccession") {
+				for my $node ($childrenNode->getChildNodes) {
+					if( $node->getNodeName eq "empty" ){ next; };
+					if( ! defined($node->getFirstChild) ){ next; };
+					my $txnode = $node->getFirstChild;
+					push @secondaryAccession, $txnode->getNodeValue;
+				}
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::Protein;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setCopyrightStatement($copyrightStatement);
+		$newobj->setId($id);
+		$newobj->setName($name);
+		$newobj->setPrimaryAccession($primaryAccession);
+		$newobj->setUniProtCode($uniProtCode);
+		$newobj->setKeywordsCollection(@keywords);
+		$newobj->setSecondaryAccessionCollection(@secondaryAccession);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getCopyrightStatement {
+	my $self = shift;
+	return $self->{copyrightStatement};
+}
+
+sub setCopyrightStatement {
+	my $self = shift;
+	$self->{copyrightStatement} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+sub getPrimaryAccession {
+	my $self = shift;
+	return $self->{primaryAccession};
+}
+
+sub setPrimaryAccession {
+	my $self = shift;
+	$self->{primaryAccession} = shift;
+}
+
+sub getUniProtCode {
+	my $self = shift;
+	return $self->{uniProtCode};
+}
+
+sub setUniProtCode {
+	my $self = shift;
+	$self->{uniProtCode} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getGeneCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return @results;
+}
+
+sub getKeywordsCollection {
+	my $self = shift;
+	if( defined($self->{keywords}) ) {
+		return @{$self->{keywords}};
+	} else {
+		return ();
+	}
+}
+
+sub setKeywordsCollection {
+	my ($self, @set) = @_;
+	push @{$self->{keywords}}, @set;
+}
+
+sub getProteinAliasCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::ProteinAlias", $self);
+	return @results;
+}
+
+sub getProteinSequence {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::ProteinSequence", $self);
+	return $results[0];
+}
+
+sub getSecondaryAccessionCollection {
+	my $self = shift;
+	if( defined($self->{secondaryAccession}) ) {
+		return @{$self->{secondaryAccession}};
+	} else {
+		return ();
+	}
+}
+
+sub setSecondaryAccessionCollection {
+	my ($self, @set) = @_;
+	push @{$self->{secondaryAccession}}, @set;
+}
+
+sub getTaxonCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Taxon", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::ProteinAlias;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the ProteinAlias object
+# returns: a ProteinAlias object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new ProteinAlias\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this ProteinAlias intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ProteinAlias\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of ProteinAlias objects
+# param: xml doc
+# returns: list of ProteinAlias objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of ProteinAlias objects
+# param: xml node
+# returns: a list of ProteinAlias objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one ProteinAlias object
+# param: xml node
+# returns: one ProteinAlias object
+sub fromWSXMLNode {
+	my $ProteinAliasNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $name;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($ProteinAliasNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::ProteinAlias;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setName($name);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getProteinCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Protein", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::Target;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the Target object
+# returns: a Target object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new Target\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this Target intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Target\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of Target objects
+# param: xml doc
+# returns: list of Target objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of Target objects
+# param: xml node
+# returns: a list of Target objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one Target object
+# param: xml node
+# returns: one Target object
+sub fromWSXMLNode {
+	my $TargetNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $name;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($TargetNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::Target;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setName($name);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getAgentCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Agent", $self);
+	return @results;
+}
+
+sub getAnomalyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Anomaly", $self);
+	return @results;
+}
+
+sub getGeneCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::GeneAlias;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the GeneAlias object
+# returns: a GeneAlias object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new GeneAlias\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this GeneAlias intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GeneAlias\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of GeneAlias objects
+# param: xml doc
+# returns: list of GeneAlias objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of GeneAlias objects
+# param: xml node
+# returns: a list of GeneAlias objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one GeneAlias object
+# param: xml node
+# returns: one GeneAlias object
+sub fromWSXMLNode {
+	my $GeneAliasNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $name;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($GeneAliasNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::GeneAlias;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setName($name);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getGeneCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::GenericArray;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the GenericArray object
+# returns: a GenericArray object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new GenericArray\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this GenericArray intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GenericArray\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# arrayName;
+	if( defined( $self->getArrayName ) ) {
+		$tmpstr = "<arrayName xsi:type=\"xsd:string\">" . $self->getArrayName . "</arrayName>";
+	} else {
+		$tmpstr = "<arrayName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# platform;
+	if( defined( $self->getPlatform ) ) {
+		$tmpstr = "<platform xsi:type=\"xsd:string\">" . $self->getPlatform . "</platform>";
+	} else {
+		$tmpstr = "<platform xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of GenericArray objects
+# param: xml doc
+# returns: list of GenericArray objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of GenericArray objects
+# param: xml node
+# returns: a list of GenericArray objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one GenericArray object
+# param: xml node
+# returns: one GenericArray object
+sub fromWSXMLNode {
+	my $GenericArrayNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $arrayName;
+		my $bigid;
+		my $id;
+		my $platform;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($GenericArrayNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "arrayName") {
+				$arrayName=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "platform") {
+				$platform=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::GenericArray;
+	## begin set attr ##
+		$newobj->setArrayName($arrayName);
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setPlatform($platform);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getArrayName {
+	my $self = shift;
+	return $self->{arrayName};
+}
+
+sub setArrayName {
+	my $self = shift;
+	$self->{arrayName} = shift;
+}
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getPlatform {
+	my $self = shift;
+	return $self->{platform};
+}
+
+sub setPlatform {
+	my $self = shift;
+	$self->{platform} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getGenericReporterCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::GenericReporter", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::Vocabulary;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the Vocabulary object
+# returns: a Vocabulary object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new Vocabulary\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this Vocabulary intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Vocabulary\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# coreTerm;
+	if( defined( $self->getCoreTerm ) ) {
+		$tmpstr = "<coreTerm xsi:type=\"xsd:string\">" . $self->getCoreTerm . "</coreTerm>";
+	} else {
+		$tmpstr = "<coreTerm xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# generalTerm;
+	if( defined( $self->getGeneralTerm ) ) {
+		$tmpstr = "<generalTerm xsi:type=\"xsd:string\">" . $self->getGeneralTerm . "</generalTerm>";
+	} else {
+		$tmpstr = "<generalTerm xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of Vocabulary objects
+# param: xml doc
+# returns: list of Vocabulary objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of Vocabulary objects
+# param: xml node
+# returns: a list of Vocabulary objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one Vocabulary object
+# param: xml node
+# returns: one Vocabulary object
+sub fromWSXMLNode {
+	my $VocabularyNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $coreTerm;
+		my $generalTerm;
+		my $id;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($VocabularyNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "coreTerm") {
+				$coreTerm=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "generalTerm") {
+				$generalTerm=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::Vocabulary;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setCoreTerm($coreTerm);
+		$newobj->setGeneralTerm($generalTerm);
+		$newobj->setId($id);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getCoreTerm {
+	my $self = shift;
+	return $self->{coreTerm};
+}
+
+sub setCoreTerm {
+	my $self = shift;
+	$self->{coreTerm} = shift;
+}
+
+sub getGeneralTerm {
+	my $self = shift;
+	return $self->{generalTerm};
+}
+
+sub setGeneralTerm {
+	my $self = shift;
+	$self->{generalTerm} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getAnomalyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Anomaly", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::OrganOntologyRelationship;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the OrganOntologyRelationship object
+# returns: a OrganOntologyRelationship object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new OrganOntologyRelationship\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this OrganOntologyRelationship intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":OrganOntologyRelationship\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of OrganOntologyRelationship objects
+# param: xml doc
+# returns: list of OrganOntologyRelationship objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of OrganOntologyRelationship objects
+# param: xml node
+# returns: a list of OrganOntologyRelationship objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one OrganOntologyRelationship object
+# param: xml node
+# returns: one OrganOntologyRelationship object
+sub fromWSXMLNode {
+	my $OrganOntologyRelationshipNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($OrganOntologyRelationshipNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::OrganOntologyRelationship;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getChildOrganOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntology", $self);
+	return $results[0];
+}
+
+sub getParentOrganOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntology", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::Anomaly;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the Anomaly object
+# returns: a Anomaly object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new Anomaly\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this Anomaly intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Anomaly\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# description;
+	if( defined( $self->getDescription ) ) {
+		$tmpstr = "<description xsi:type=\"xsd:string\">" . $self->getDescription . "</description>";
+	} else {
+		$tmpstr = "<description xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of Anomaly objects
+# param: xml doc
+# returns: list of Anomaly objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of Anomaly objects
+# param: xml node
+# returns: a list of Anomaly objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one Anomaly object
+# param: xml node
+# returns: one Anomaly object
+sub fromWSXMLNode {
+	my $AnomalyNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $description;
+		my $id;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($AnomalyNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "description") {
+				$description=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::Anomaly;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setDescription($description);
+		$newobj->setId($id);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getDescription {
+	my $self = shift;
+	return $self->{description};
+}
+
+sub setDescription {
+	my $self = shift;
+	$self->{description} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getHistopathology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
+	return $results[0];
+}
+
+sub getOrganOntologyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::OrganOntology", $self);
+	return @results;
+}
+
+sub getVocabularyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Vocabulary", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::Agent;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the Agent object
+# returns: a Agent object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new Agent\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this Agent intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Agent\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# EVSId;
+	if( defined( $self->getEVSId ) ) {
+		$tmpstr = "<EVSId xsi:type=\"xsd:string\">" . $self->getEVSId . "</EVSId>";
+	} else {
+		$tmpstr = "<EVSId xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# NSCNumber;
+	if( defined( $self->getNSCNumber ) ) {
+		$tmpstr = "<NSCNumber xsi:type=\"xsd:long\">" . $self->getNSCNumber . "</NSCNumber>";
+	} else {
+		$tmpstr = "<NSCNumber xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# comment;
+	if( defined( $self->getComment ) ) {
+		$tmpstr = "<comment xsi:type=\"xsd:string\">" . $self->getComment . "</comment>";
+	} else {
+		$tmpstr = "<comment xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# isCMAPAgent;
+	if( defined( $self->getIsCMAPAgent ) ) {
+		$tmpstr = "<isCMAPAgent xsi:type=\"xsd:boolean\">" . $self->getIsCMAPAgent . "</isCMAPAgent>";
+	} else {
+		$tmpstr = "<isCMAPAgent xsi:type=\"xsd:boolean\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# source;
+	if( defined( $self->getSource ) ) {
+		$tmpstr = "<source xsi:type=\"xsd:string\">" . $self->getSource . "</source>";
+	} else {
+		$tmpstr = "<source xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of Agent objects
+# param: xml doc
+# returns: list of Agent objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of Agent objects
+# param: xml node
+# returns: a list of Agent objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one Agent object
+# param: xml node
+# returns: one Agent object
+sub fromWSXMLNode {
+	my $AgentNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $EVSId;
+		my $NSCNumber;
+		my $bigid;
+		my $comment;
+		my $id;
+		my $isCMAPAgent;
+		my $name;
+		my $source;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($AgentNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "EVSId") {
+				$EVSId=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "NSCNumber") {
+				$NSCNumber=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "comment") {
+				$comment=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "isCMAPAgent") {
+				$isCMAPAgent=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "source") {
+				$source=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::Agent;
+	## begin set attr ##
+		$newobj->setEVSId($EVSId);
+		$newobj->setNSCNumber($NSCNumber);
+		$newobj->setBigid($bigid);
+		$newobj->setComment($comment);
+		$newobj->setId($id);
+		$newobj->setIsCMAPAgent($isCMAPAgent);
+		$newobj->setName($name);
+		$newobj->setSource($source);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getEVSId {
+	my $self = shift;
+	return $self->{EVSId};
+}
+
+sub setEVSId {
+	my $self = shift;
+	$self->{EVSId} = shift;
+}
+
+sub getNSCNumber {
+	my $self = shift;
+	return $self->{NSCNumber};
+}
+
+sub setNSCNumber {
+	my $self = shift;
+	$self->{NSCNumber} = shift;
+}
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getComment {
+	my $self = shift;
+	return $self->{comment};
+}
+
+sub setComment {
+	my $self = shift;
+	$self->{comment} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getIsCMAPAgent {
+	my $self = shift;
+	return $self->{isCMAPAgent};
+}
+
+sub setIsCMAPAgent {
+	my $self = shift;
+	$self->{isCMAPAgent} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+sub getSource {
+	my $self = shift;
+	return $self->{source};
+}
+
+sub setSource {
+	my $self = shift;
+	$self->{source} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getClinicalTrialProtocolCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::ClinicalTrialProtocol", $self);
+	return @results;
+}
+
+sub getTargetCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Target", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::ClinicalTrialProtocol;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the ClinicalTrialProtocol object
+# returns: a ClinicalTrialProtocol object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new ClinicalTrialProtocol\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this ClinicalTrialProtocol intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ClinicalTrialProtocol\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# NIHAdminCode;
+	if( defined( $self->getNIHAdminCode ) ) {
+		$tmpstr = "<NIHAdminCode xsi:type=\"xsd:string\">" . $self->getNIHAdminCode . "</NIHAdminCode>";
+	} else {
+		$tmpstr = "<NIHAdminCode xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# PDQIdentifier;
+	if( defined( $self->getPDQIdentifier ) ) {
+		$tmpstr = "<PDQIdentifier xsi:type=\"xsd:string\">" . $self->getPDQIdentifier . "</PDQIdentifier>";
+	} else {
+		$tmpstr = "<PDQIdentifier xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# PIName;
+	if( defined( $self->getPIName ) ) {
+		$tmpstr = "<PIName xsi:type=\"xsd:string\">" . $self->getPIName . "</PIName>";
+	} else {
+		$tmpstr = "<PIName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# currentStatus;
+	if( defined( $self->getCurrentStatus ) ) {
+		$tmpstr = "<currentStatus xsi:type=\"xsd:string\">" . $self->getCurrentStatus . "</currentStatus>";
+	} else {
+		$tmpstr = "<currentStatus xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# currentStatusDate;
+	if( defined( $self->getCurrentStatusDate ) ) {
+		$tmpstr = "<currentStatusDate xsi:type=\"xsd:dateTime\">" . $self->getCurrentStatusDate . "</currentStatusDate>";
+	} else {
+		$tmpstr = "<currentStatusDate xsi:type=\"xsd:dateTime\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# documentNumber;
+	if( defined( $self->getDocumentNumber ) ) {
+		$tmpstr = "<documentNumber xsi:type=\"xsd:string\">" . $self->getDocumentNumber . "</documentNumber>";
+	} else {
+		$tmpstr = "<documentNumber xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# leadOrganizationId;
+	if( defined( $self->getLeadOrganizationId ) ) {
+		$tmpstr = "<leadOrganizationId xsi:type=\"xsd:string\">" . $self->getLeadOrganizationId . "</leadOrganizationId>";
+	} else {
+		$tmpstr = "<leadOrganizationId xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# leadOrganizationName;
+	if( defined( $self->getLeadOrganizationName ) ) {
+		$tmpstr = "<leadOrganizationName xsi:type=\"xsd:string\">" . $self->getLeadOrganizationName . "</leadOrganizationName>";
+	} else {
+		$tmpstr = "<leadOrganizationName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# participationType;
+	if( defined( $self->getParticipationType ) ) {
+		$tmpstr = "<participationType xsi:type=\"xsd:string\">" . $self->getParticipationType . "</participationType>";
+	} else {
+		$tmpstr = "<participationType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# phase;
+	if( defined( $self->getPhase ) ) {
+		$tmpstr = "<phase xsi:type=\"xsd:string\">" . $self->getPhase . "</phase>";
+	} else {
+		$tmpstr = "<phase xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# title;
+	if( defined( $self->getTitle ) ) {
+		$tmpstr = "<title xsi:type=\"xsd:string\">" . $self->getTitle . "</title>";
+	} else {
+		$tmpstr = "<title xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# treatmentFlag;
+	if( defined( $self->getTreatmentFlag ) ) {
+		$tmpstr = "<treatmentFlag xsi:type=\"xsd:string\">" . $self->getTreatmentFlag . "</treatmentFlag>";
+	} else {
+		$tmpstr = "<treatmentFlag xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of ClinicalTrialProtocol objects
+# param: xml doc
+# returns: list of ClinicalTrialProtocol objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of ClinicalTrialProtocol objects
+# param: xml node
+# returns: a list of ClinicalTrialProtocol objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one ClinicalTrialProtocol object
+# param: xml node
+# returns: one ClinicalTrialProtocol object
+sub fromWSXMLNode {
+	my $ClinicalTrialProtocolNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $NIHAdminCode;
+		my $PDQIdentifier;
+		my $PIName;
+		my $bigid;
+		my $currentStatus;
+		my $currentStatusDate;
+		my $documentNumber;
+		my $id;
+		my $leadOrganizationId;
+		my $leadOrganizationName;
+		my $participationType;
+		my $phase;
+		my $title;
+		my $treatmentFlag;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($ClinicalTrialProtocolNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "NIHAdminCode") {
+				$NIHAdminCode=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "PDQIdentifier") {
+				$PDQIdentifier=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "PIName") {
+				$PIName=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "currentStatus") {
+				$currentStatus=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "currentStatusDate") {
+				$currentStatusDate=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "documentNumber") {
+				$documentNumber=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "leadOrganizationId") {
+				$leadOrganizationId=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "leadOrganizationName") {
+				$leadOrganizationName=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "participationType") {
+				$participationType=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "phase") {
+				$phase=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "title") {
+				$title=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "treatmentFlag") {
+				$treatmentFlag=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::ClinicalTrialProtocol;
+	## begin set attr ##
+		$newobj->setNIHAdminCode($NIHAdminCode);
+		$newobj->setPDQIdentifier($PDQIdentifier);
+		$newobj->setPIName($PIName);
+		$newobj->setBigid($bigid);
+		$newobj->setCurrentStatus($currentStatus);
+		$newobj->setCurrentStatusDate($currentStatusDate);
+		$newobj->setDocumentNumber($documentNumber);
+		$newobj->setId($id);
+		$newobj->setLeadOrganizationId($leadOrganizationId);
+		$newobj->setLeadOrganizationName($leadOrganizationName);
+		$newobj->setParticipationType($participationType);
+		$newobj->setPhase($phase);
+		$newobj->setTitle($title);
+		$newobj->setTreatmentFlag($treatmentFlag);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getNIHAdminCode {
+	my $self = shift;
+	return $self->{NIHAdminCode};
+}
+
+sub setNIHAdminCode {
+	my $self = shift;
+	$self->{NIHAdminCode} = shift;
+}
+
+sub getPDQIdentifier {
+	my $self = shift;
+	return $self->{PDQIdentifier};
+}
+
+sub setPDQIdentifier {
+	my $self = shift;
+	$self->{PDQIdentifier} = shift;
+}
+
+sub getPIName {
+	my $self = shift;
+	return $self->{PIName};
+}
+
+sub setPIName {
+	my $self = shift;
+	$self->{PIName} = shift;
+}
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getCurrentStatus {
+	my $self = shift;
+	return $self->{currentStatus};
+}
+
+sub setCurrentStatus {
+	my $self = shift;
+	$self->{currentStatus} = shift;
+}
+
+sub getCurrentStatusDate {
+	my $self = shift;
+	return $self->{currentStatusDate};
+}
+
+sub setCurrentStatusDate {
+	my $self = shift;
+	$self->{currentStatusDate} = shift;
+}
+
+sub getDocumentNumber {
+	my $self = shift;
+	return $self->{documentNumber};
+}
+
+sub setDocumentNumber {
+	my $self = shift;
+	$self->{documentNumber} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getLeadOrganizationId {
+	my $self = shift;
+	return $self->{leadOrganizationId};
+}
+
+sub setLeadOrganizationId {
+	my $self = shift;
+	$self->{leadOrganizationId} = shift;
+}
+
+sub getLeadOrganizationName {
+	my $self = shift;
+	return $self->{leadOrganizationName};
+}
+
+sub setLeadOrganizationName {
+	my $self = shift;
+	$self->{leadOrganizationName} = shift;
+}
+
+sub getParticipationType {
+	my $self = shift;
+	return $self->{participationType};
+}
+
+sub setParticipationType {
+	my $self = shift;
+	$self->{participationType} = shift;
+}
+
+sub getPhase {
+	my $self = shift;
+	return $self->{phase};
+}
+
+sub setPhase {
+	my $self = shift;
+	$self->{phase} = shift;
+}
+
+sub getTitle {
+	my $self = shift;
+	return $self->{title};
+}
+
+sub setTitle {
+	my $self = shift;
+	$self->{title} = shift;
+}
+
+sub getTreatmentFlag {
+	my $self = shift;
+	return $self->{treatmentFlag};
+}
+
+sub setTreatmentFlag {
+	my $self = shift;
+	$self->{treatmentFlag} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getAgentCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Agent", $self);
+	return @results;
+}
+
+sub getDiseaseOntologyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
+	return @results;
+}
+
+sub getHistopathologyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
+	return @results;
+}
+
+sub getProtocolAssociationCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::ProtocolAssociation", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::ProtocolAssociation;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the ProtocolAssociation object
+# returns: a ProtocolAssociation object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new ProtocolAssociation\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this ProtocolAssociation intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":ProtocolAssociation\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# CTEPNAME;
+	if( defined( $self->getCTEPNAME ) ) {
+		$tmpstr = "<CTEPNAME xsi:type=\"xsd:string\">" . $self->getCTEPNAME . "</CTEPNAME>";
+	} else {
+		$tmpstr = "<CTEPNAME xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# IMTCODE;
+	if( defined( $self->getIMTCODE ) ) {
+		$tmpstr = "<IMTCODE xsi:type=\"xsd:long\">" . $self->getIMTCODE . "</IMTCODE>";
+	} else {
+		$tmpstr = "<IMTCODE xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# diseaseCategory;
+	if( defined( $self->getDiseaseCategory ) ) {
+		$tmpstr = "<diseaseCategory xsi:type=\"xsd:string\">" . $self->getDiseaseCategory . "</diseaseCategory>";
+	} else {
+		$tmpstr = "<diseaseCategory xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# diseaseSubCategory;
+	if( defined( $self->getDiseaseSubCategory ) ) {
+		$tmpstr = "<diseaseSubCategory xsi:type=\"xsd:string\">" . $self->getDiseaseSubCategory . "</diseaseSubCategory>";
+	} else {
+		$tmpstr = "<diseaseSubCategory xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of ProtocolAssociation objects
+# param: xml doc
+# returns: list of ProtocolAssociation objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of ProtocolAssociation objects
+# param: xml node
+# returns: a list of ProtocolAssociation objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one ProtocolAssociation object
+# param: xml node
+# returns: one ProtocolAssociation object
+sub fromWSXMLNode {
+	my $ProtocolAssociationNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $CTEPNAME;
+		my $IMTCODE;
+		my $bigid;
+		my $diseaseCategory;
+		my $diseaseSubCategory;
+		my $id;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($ProtocolAssociationNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "CTEPNAME") {
+				$CTEPNAME=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "IMTCODE") {
+				$IMTCODE=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "diseaseCategory") {
+				$diseaseCategory=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "diseaseSubCategory") {
+				$diseaseSubCategory=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::ProtocolAssociation;
+	## begin set attr ##
+		$newobj->setCTEPNAME($CTEPNAME);
+		$newobj->setIMTCODE($IMTCODE);
+		$newobj->setBigid($bigid);
+		$newobj->setDiseaseCategory($diseaseCategory);
+		$newobj->setDiseaseSubCategory($diseaseSubCategory);
+		$newobj->setId($id);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getCTEPNAME {
+	my $self = shift;
+	return $self->{CTEPNAME};
+}
+
+sub setCTEPNAME {
+	my $self = shift;
+	$self->{CTEPNAME} = shift;
+}
+
+sub getIMTCODE {
+	my $self = shift;
+	return $self->{IMTCODE};
+}
+
+sub setIMTCODE {
+	my $self = shift;
+	$self->{IMTCODE} = shift;
+}
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getDiseaseCategory {
+	my $self = shift;
+	return $self->{diseaseCategory};
+}
+
+sub setDiseaseCategory {
+	my $self = shift;
+	$self->{diseaseCategory} = shift;
+}
+
+sub getDiseaseSubCategory {
+	my $self = shift;
+	return $self->{diseaseSubCategory};
+}
+
+sub setDiseaseSubCategory {
+	my $self = shift;
+	$self->{diseaseSubCategory} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getClinicalTrialProtocol {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::ClinicalTrialProtocol", $self);
+	return $results[0];
+}
+
+sub getDiseaseOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::GeneOntologyRelationship;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the GeneOntologyRelationship object
+# returns: a GeneOntologyRelationship object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new GeneOntologyRelationship\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this GeneOntologyRelationship intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GeneOntologyRelationship\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# relationshipType;
+	if( defined( $self->getRelationshipType ) ) {
+		$tmpstr = "<relationshipType xsi:type=\"xsd:string\">" . $self->getRelationshipType . "</relationshipType>";
+	} else {
+		$tmpstr = "<relationshipType xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of GeneOntologyRelationship objects
+# param: xml doc
+# returns: list of GeneOntologyRelationship objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of GeneOntologyRelationship objects
+# param: xml node
+# returns: a list of GeneOntologyRelationship objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one GeneOntologyRelationship object
+# param: xml node
+# returns: one GeneOntologyRelationship object
+sub fromWSXMLNode {
+	my $GeneOntologyRelationshipNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $relationshipType;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($GeneOntologyRelationshipNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "relationshipType") {
+				$relationshipType=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::GeneOntologyRelationship;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setRelationshipType($relationshipType);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getRelationshipType {
+	my $self = shift;
+	return $self->{relationshipType};
+}
+
+sub setRelationshipType {
+	my $self = shift;
+	$self->{relationshipType} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getChildGeneOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::GeneOntology", $self);
+	return $results[0];
+}
+
+sub getParentGeneOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::GeneOntology", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::GenericReporter;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the GenericReporter object
+# returns: a GenericReporter object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new GenericReporter\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this GenericReporter intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GenericReporter\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of GenericReporter objects
+# param: xml doc
+# returns: list of GenericReporter objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of GenericReporter objects
+# param: xml node
+# returns: a list of GenericReporter objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one GenericReporter object
+# param: xml node
+# returns: one GenericReporter object
+sub fromWSXMLNode {
+	my $GenericReporterNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $name;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($GenericReporterNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::GenericReporter;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setName($name);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getGene {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return $results[0];
+}
+
+sub getGenericArrayCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::GenericArray", $self);
+	return @results;
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::Pathway;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the Pathway object
+# returns: a Pathway object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new Pathway\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this Pathway intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":Pathway\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# description;
+	if( defined( $self->getDescription ) ) {
+		$tmpstr = "<description xsi:type=\"xsd:string\">" . $self->getDescription . "</description>";
+	} else {
+		$tmpstr = "<description xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# diagram;
+	if( defined( $self->getDiagram ) ) {
+		$tmpstr = "<diagram xsi:type=\"xsd:string\">" . $self->getDiagram . "</diagram>";
+	} else {
+		$tmpstr = "<diagram xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# displayValue;
+	if( defined( $self->getDisplayValue ) ) {
+		$tmpstr = "<displayValue xsi:type=\"xsd:string\">" . $self->getDisplayValue . "</displayValue>";
+	} else {
+		$tmpstr = "<displayValue xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# name;
+	if( defined( $self->getName ) ) {
+		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
+	} else {
+		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of Pathway objects
+# param: xml doc
+# returns: list of Pathway objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of Pathway objects
+# param: xml node
+# returns: a list of Pathway objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one Pathway object
+# param: xml node
+# returns: one Pathway object
+sub fromWSXMLNode {
+	my $PathwayNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $description;
+		my $diagram;
+		my $displayValue;
+		my $id;
+		my $name;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($PathwayNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "description") {
+				$description=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "diagram") {
+				$diagram=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "displayValue") {
+				$displayValue=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "name") {
+				$name=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::Pathway;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setDescription($description);
+		$newobj->setDiagram($diagram);
+		$newobj->setDisplayValue($displayValue);
+		$newobj->setId($id);
+		$newobj->setName($name);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getDescription {
+	my $self = shift;
+	return $self->{description};
+}
+
+sub setDescription {
+	my $self = shift;
+	$self->{description} = shift;
+}
+
+sub getDiagram {
+	my $self = shift;
+	return $self->{diagram};
+}
+
+sub setDiagram {
+	my $self = shift;
+	$self->{diagram} = shift;
+}
+
+sub getDisplayValue {
+	my $self = shift;
+	return $self->{displayValue};
+}
+
+sub setDisplayValue {
+	my $self = shift;
+	$self->{displayValue} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub setName {
+	my $self = shift;
+	$self->{name} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getGeneCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
+	return @results;
+}
+
+sub getHistopathologyCollection {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Histopathology", $self);
+	return @results;
+}
+
+sub getTaxon {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::Taxon", $self);
+	return $results[0];
+}
+
+## end bean association methods ##
+
+1;
+#end
+# ------------------------------------------------------------------------------------------
+package CaCORE::CaBIO::DiseaseOntologyRelationship;
+
+use 5.005;
+#use strict;
+use warnings;
+
+require Exporter;
+
+use XML::DOM;
+
+## begin import objects ##
+use CaCORE::ApplicationService;
+## end import objects ##
+
+
+@ISA = qw(CaCORE::DomainObjectI);
+
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
+);
+
+# create an instance of the DiseaseOntologyRelationship object
+# returns: a DiseaseOntologyRelationship object
+sub new {
+	my $class = shift;
+	my $self = {};
+	bless($self, $class);
+	#print "new DiseaseOntologyRelationship\n";
+	return $self;
+}
+
+# Construct the specific section of the WSDL request corresponding
+# to this DiseaseOntologyRelationship intance
+# returns: XML in string format
+sub toWebserviceXML {
+	my $self = shift;
+	my $result = shift;
+	my $assigned_id = shift;
+	my $current_id = shift;
+	my $l = shift;
+	my %worklist = %$l;
+	
+	# prefix portion of the xml
+	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":DiseaseOntologyRelationship\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
+	my $tmpstr = "";
+	$current_id ++;
+	
+	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# id;
+	if( defined( $self->getId ) ) {
+		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
+	} else {
+		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	# type;
+	if( defined( $self->getType ) ) {
+		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
+	} else {
+		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
+	## end attribute to XML ##
+	
+	## begin association to XML ##
+	## end association to XML ##
+	
+	# add trailing close tags
+	$result .= "</multiRef>";
+	
+	return ($result, $current_id, %worklist);
+}
+
+# parse a given webservice response xml, construct a list of DiseaseOntologyRelationship objects
+# param: xml doc
+# returns: list of DiseaseOntologyRelationship objects
+sub fromWebserviceXML {
+	my $self = shift;
+	my $parser = new XML::DOM::Parser;
+	my $docnode = $parser->parse(shift);
+	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
+	
+	return $self->fromWSXMLListNode($root);
+}
+
+# parse a given xml node, construct a list of DiseaseOntologyRelationship objects
+# param: xml node
+# returns: a list of DiseaseOntologyRelationship objects
+sub fromWSXMLListNode {
+	my $self = shift;
+	my $listNode = shift;
+	my @obj_list = ();
+	
+	# get all children for this node
+	for my $childrenNode ($listNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		my $newobj = $self->fromWSXMLNode($childrenNode);
+		push @obj_list, $newobj;
+	    }
+	}
+	
+	return @obj_list;
+}
+
+# parse a given xml node, construct one DiseaseOntologyRelationship object
+# param: xml node
+# returns: one DiseaseOntologyRelationship object
+sub fromWSXMLNode {
+	my $DiseaseOntologyRelationshipNode = $_[1];
+	
+	## begin ELEMENT_NODE children ##
+		my $bigid;
+		my $id;
+		my $type;
+	## end ELEMENT_NODE children ##
+
+	# get all children for this node
+	for my $childrenNode ($DiseaseOntologyRelationshipNode->getChildNodes) {
+	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
+		if( ! defined($childrenNode->getFirstChild) ){ next; };
+		my $textNode = $childrenNode->getFirstChild;
+		## begin iterate ELEMENT_NODE ##
+		if (0) {
+			# do nothing, just a place holder for "if" component
+		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "id") {
+				$id=$textNode->getNodeValue;
+			}
+			elsif ($childrenNode->getNodeName eq "type") {
+				$type=$textNode->getNodeValue;
+			}
+		## end iterate ELEMENT_NODE ##
+	    }
+	}
+	my $newobj = new CaCORE::CaBIO::DiseaseOntologyRelationship;
+	## begin set attr ##
+		$newobj->setBigid($bigid);
+		$newobj->setId($id);
+		$newobj->setType($type);
+	## end set attr ##
+	
+	return $newobj;
+}
+
+## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
+
+sub getId {
+	my $self = shift;
+	return $self->{id};
+}
+
+sub setId {
+	my $self = shift;
+	$self->{id} = shift;
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub setType {
+	my $self = shift;
+	$self->{type} = shift;
+}
+
+## end getters and setters ##
+
+## begin bean association methods ##
+
+sub getChildDiseaseOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
+	return $results[0];
+}
+
+sub getParentDiseaseOntology {
+	my $self = shift;
+	my $appSvc = CaCORE::ApplicationService->instance();
+	my @results = $appSvc->queryObject("CaCORE::CaBIO::DiseaseOntology", $self);
 	return $results[0];
 }
 
@@ -8743,6 +10095,14 @@ sub toWebserviceXML {
 	$current_id ++;
 	
 	## begin attribute to XML ##
+	# bigid;
+	if( defined( $self->getBigid ) ) {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\">" . $self->getBigid . "</bigid>";
+	} else {
+		$tmpstr = "<bigid xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
+	}
+	$result .= $tmpstr;
+
 	# endCytobandLocId;
 	if( defined( $self->getEndCytobandLocId ) ) {
 		$tmpstr = "<endCytobandLocId xsi:type=\"xsd:long\">" . $self->getEndCytobandLocId . "</endCytobandLocId>";
@@ -8816,6 +10176,7 @@ sub fromWSXMLNode {
 	my $CytogeneticLocationNode = $_[1];
 	
 	## begin ELEMENT_NODE children ##
+		my $bigid;
 		my $endCytobandLocId;
 		my $startCytobandLocId;
 		my $id;
@@ -8830,6 +10191,9 @@ sub fromWSXMLNode {
 		if (0) {
 			# do nothing, just a place holder for "if" component
 		}
+			elsif ($childrenNode->getNodeName eq "bigid") {
+				$bigid=$textNode->getNodeValue;
+			}
 			elsif ($childrenNode->getNodeName eq "endCytobandLocId") {
 				$endCytobandLocId=$textNode->getNodeValue;
 			}
@@ -8844,6 +10208,7 @@ sub fromWSXMLNode {
 	}
 	my $newobj = new CaCORE::CaBIO::CytogeneticLocation;
 	## begin set attr ##
+		$newobj->setBigid($bigid);
 		$newobj->setEndCytobandLocId($endCytobandLocId);
 		$newobj->setStartCytobandLocId($startCytobandLocId);
 		$newobj->setId($id);
@@ -8853,6 +10218,16 @@ sub fromWSXMLNode {
 }
 
 ## begin getters and setters ##
+
+sub getBigid {
+	my $self = shift;
+	return $self->{bigid};
+}
+
+sub setBigid {
+	my $self = shift;
+	$self->{bigid} = shift;
+}
 
 sub getEndCytobandLocId {
 	my $self = shift;
@@ -8934,636 +10309,6 @@ sub getNucleicAcidSequence {
 
 1;
 #end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::GeneRelativeLocation;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the GeneRelativeLocation object
-# returns: a GeneRelativeLocation object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new GeneRelativeLocation\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this GeneRelativeLocation intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GeneRelativeLocation\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of GeneRelativeLocation objects
-# param: xml doc
-# returns: list of GeneRelativeLocation objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of GeneRelativeLocation objects
-# param: xml node
-# returns: a list of GeneRelativeLocation objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one GeneRelativeLocation object
-# param: xml node
-# returns: one GeneRelativeLocation object
-sub fromWSXMLNode {
-	my $GeneRelativeLocationNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $type;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($GeneRelativeLocationNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::GeneRelativeLocation;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setType($type);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::GenericReporter;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the GenericReporter object
-# returns: a GenericReporter object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new GenericReporter\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this GenericReporter intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GenericReporter\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# name;
-	if( defined( $self->getName ) ) {
-		$tmpstr = "<name xsi:type=\"xsd:string\">" . $self->getName . "</name>";
-	} else {
-		$tmpstr = "<name xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of GenericReporter objects
-# param: xml doc
-# returns: list of GenericReporter objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of GenericReporter objects
-# param: xml node
-# returns: a list of GenericReporter objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one GenericReporter object
-# param: xml node
-# returns: one GenericReporter object
-sub fromWSXMLNode {
-	my $GenericReporterNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $id;
-		my $name;
-		my $type;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($GenericReporterNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "name") {
-				$name=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::GenericReporter;
-	## begin set attr ##
-		$newobj->setId($id);
-		$newobj->setName($name);
-		$newobj->setType($type);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getName {
-	my $self = shift;
-	return $self->{name};
-}
-
-sub setName {
-	my $self = shift;
-	$self->{name} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getGene {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::Gene", $self);
-	return $results[0];
-}
-
-sub getGenericArrayCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::GenericArray", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
-# ------------------------------------------------------------------------------------------
-package CaCORE::CaBIO::GenericArray;
-
-use 5.005;
-#use strict;
-use warnings;
-
-require Exporter;
-
-use XML::DOM;
-
-## begin import objects ##
-use CaCORE::ApplicationService;
-## end import objects ##
-
-
-@ISA = qw(CaCORE::DomainObjectI);
-
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-);
-
-# create an instance of the GenericArray object
-# returns: a GenericArray object
-sub new {
-	my $class = shift;
-	my $self = {};
-	bless($self, $class);
-	#print "new GenericArray\n";
-	return $self;
-}
-
-# Construct the specific section of the WSDL request corresponding
-# to this GenericArray intance
-# returns: XML in string format
-sub toWebserviceXML {
-	my $self = shift;
-	my $result = shift;
-	my $assigned_id = shift;
-	my $current_id = shift;
-	my $l = shift;
-	my %worklist = %$l;
-	
-	# prefix portion of the xml
-	$result .= "<multiRef id=\"id" . $assigned_id ."\" soapenc:root=\"0\" soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xsi:type=\"ns" . $current_id . ":GenericArray\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns" . $current_id . "=\"urn:ws.domain.cabio.nci.nih.gov\">";
-	my $tmpstr = "";
-	$current_id ++;
-	
-	## begin attribute to XML ##
-	# arrayName;
-	if( defined( $self->getArrayName ) ) {
-		$tmpstr = "<arrayName xsi:type=\"xsd:string\">" . $self->getArrayName . "</arrayName>";
-	} else {
-		$tmpstr = "<arrayName xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# id;
-	if( defined( $self->getId ) ) {
-		$tmpstr = "<id xsi:type=\"xsd:long\">" . $self->getId . "</id>";
-	} else {
-		$tmpstr = "<id xsi:type=\"xsd:long\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# platform;
-	if( defined( $self->getPlatform ) ) {
-		$tmpstr = "<platform xsi:type=\"xsd:string\">" . $self->getPlatform . "</platform>";
-	} else {
-		$tmpstr = "<platform xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	# type;
-	if( defined( $self->getType ) ) {
-		$tmpstr = "<type xsi:type=\"xsd:string\">" . $self->getType . "</type>";
-	} else {
-		$tmpstr = "<type xsi:type=\"xsd:string\" xsi:nil=\"true\" />";
-	}
-	$result .= $tmpstr;
-
-	## end attribute to XML ##
-	
-	## begin association to XML ##
-	## end association to XML ##
-	
-	# add trailing close tags
-	$result .= "</multiRef>";
-	
-	return ($result, $current_id, %worklist);
-}
-
-# parse a given webservice response xml, construct a list of GenericArray objects
-# param: xml doc
-# returns: list of GenericArray objects
-sub fromWebserviceXML {
-	my $self = shift;
-	my $parser = new XML::DOM::Parser;
-	my $docnode = $parser->parse(shift);
-	my $root = $docnode->getFirstChild->getFirstChild->getFirstChild->getFirstChild;
-	
-	return $self->fromWSXMLListNode($root);
-}
-
-# parse a given xml node, construct a list of GenericArray objects
-# param: xml node
-# returns: a list of GenericArray objects
-sub fromWSXMLListNode {
-	my $self = shift;
-	my $listNode = shift;
-	my @obj_list = ();
-	
-	# get all children for this node
-	for my $childrenNode ($listNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		my $newobj = $self->fromWSXMLNode($childrenNode);
-		push @obj_list, $newobj;
-	    }
-	}
-	
-	return @obj_list;
-}
-
-# parse a given xml node, construct one GenericArray object
-# param: xml node
-# returns: one GenericArray object
-sub fromWSXMLNode {
-	my $GenericArrayNode = $_[1];
-	
-	## begin ELEMENT_NODE children ##
-		my $arrayName;
-		my $id;
-		my $platform;
-		my $type;
-	## end ELEMENT_NODE children ##
-
-	# get all children for this node
-	for my $childrenNode ($GenericArrayNode->getChildNodes) {
-	    if ($childrenNode->getNodeType == XML::DOM::ELEMENT_NODE()) {
-		if( ! defined($childrenNode->getFirstChild) ){ next; };
-		my $textNode = $childrenNode->getFirstChild;
-		## begin iterate ELEMENT_NODE ##
-		if (0) {
-			# do nothing, just a place holder for "if" component
-		}
-			elsif ($childrenNode->getNodeName eq "arrayName") {
-				$arrayName=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "id") {
-				$id=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "platform") {
-				$platform=$textNode->getNodeValue;
-			}
-			elsif ($childrenNode->getNodeName eq "type") {
-				$type=$textNode->getNodeValue;
-			}
-		## end iterate ELEMENT_NODE ##
-	    }
-	}
-	my $newobj = new CaCORE::CaBIO::GenericArray;
-	## begin set attr ##
-		$newobj->setArrayName($arrayName);
-		$newobj->setId($id);
-		$newobj->setPlatform($platform);
-		$newobj->setType($type);
-	## end set attr ##
-	
-	return $newobj;
-}
-
-## begin getters and setters ##
-
-sub getArrayName {
-	my $self = shift;
-	return $self->{arrayName};
-}
-
-sub setArrayName {
-	my $self = shift;
-	$self->{arrayName} = shift;
-}
-
-sub getId {
-	my $self = shift;
-	return $self->{id};
-}
-
-sub setId {
-	my $self = shift;
-	$self->{id} = shift;
-}
-
-sub getPlatform {
-	my $self = shift;
-	return $self->{platform};
-}
-
-sub setPlatform {
-	my $self = shift;
-	$self->{platform} = shift;
-}
-
-sub getType {
-	my $self = shift;
-	return $self->{type};
-}
-
-sub setType {
-	my $self = shift;
-	$self->{type} = shift;
-}
-
-## end getters and setters ##
-
-## begin bean association methods ##
-
-sub getGenericReporterCollection {
-	my $self = shift;
-	my $appSvc = CaCORE::ApplicationService->instance();
-	my @results = $appSvc->queryObject("CaCORE::CaBIO::GenericReporter", $self);
-	return @results;
-}
-
-## end bean association methods ##
-
-1;
-#end
 # Below is module documentation for Agent
 
 =pod
@@ -9584,7 +10329,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-A therapeutic agent (drug, intervention therapy) used in a clinical trail protocol.
+
 
 =head2 ATTRIBUTES of Agent
 
@@ -9599,6 +10344,10 @@ data type: C<string>
 =item NSCNumber
 
 data type: C<long>
+
+=item bigid
+
+data type: C<string>
 
 =item comment
 
@@ -9623,9 +10372,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Agent
 
@@ -9666,13 +10415,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An irregularity in either the expression of a gene or its structure (i.e., a mutation).
+
 
 =head2 ATTRIBUTES of Anomaly
 
 The following are all the attributes of the Anomaly object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item description
 
@@ -9685,9 +10438,9 @@ data type: C<long>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Anomaly
 
@@ -9732,13 +10485,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object representing a specific chromosome for a specific taxon; provides access to all known genes contained in the chromosome and to the taxon.
+
 
 =head2 ATTRIBUTES of Chromosome
 
 The following are all the attributes of the Chromosome object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -9751,9 +10508,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Chromosome
 
@@ -9818,6 +10575,10 @@ data type: C<string>
 
 data type: C<string>
 
+=item bigid
+
+data type: C<string>
+
 =item currentStatus
 
 data type: C<string>
@@ -9861,9 +10622,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of ClinicalTrialProtocol
 
@@ -9912,13 +10673,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object used to hold information pertaining to I.M.A.G.E. clones; provides access to sequence information, associated trace files, and the clone's library.
+
 
 =head2 ATTRIBUTES of Clone
 
 The following are all the attributes of the Clone object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -9939,9 +10704,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Clone
 
@@ -9998,6 +10763,10 @@ The following are all the attributes of the CloneRelativeLocation object and the
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item id
 
 data type: C<long>
@@ -10009,9 +10778,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of CloneRelativeLocation
 
@@ -10060,6 +10829,10 @@ The following are all the attributes of the Cytoband object and their data types
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item id
 
 data type: C<long>
@@ -10071,9 +10844,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Cytoband
 
@@ -10119,6 +10892,10 @@ The following are all the attributes of the CytogeneticLocation object and their
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item endCytobandLocId
 
 data type: C<long>
@@ -10130,9 +10907,9 @@ data type: C<long>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of CytogeneticLocation
 
@@ -10173,13 +10950,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-Disease objects specify a disease name and ID; disease objects also provide access to: ontological relations to other diseases; clinical trial protocols treating the disease; and specific histologies associated with instances of the disease.
+
 
 =head2 ATTRIBUTES of DiseaseOntology
 
 The following are all the attributes of the DiseaseOntology object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -10192,9 +10973,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of DiseaseOntology
 
@@ -10243,13 +11024,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-The diseaser relationship specifies the relationship among diseases.
+
 
 =head2 ATTRIBUTES of DiseaseOntologyRelationship
 
 The following are all the attributes of the DiseaseOntologyRelationship object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -10262,9 +11047,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of DiseaseOntologyRelationship
 
@@ -10305,13 +11090,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-Gene objects are the effective portal to most of the genomic information provided by the caBIO data services; organs, diseases, chromosomes, pathways, sequence data, and expression experiments are among the many objects accessible via a gene.
+
 
 =head2 ATTRIBUTES of Gene
 
 The following are all the attributes of the Gene object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item clusterId
 
@@ -10332,9 +11121,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Gene
 
@@ -10349,10 +11138,6 @@ Many to one assoication, use C<getChromosome> to get the associated Chromosome.
 =item Instance of L</DatabaseCrossReference>:
 
 One to many assoication, use C<getDatabaseCrossReferenceCollection> to get a collection of associated DatabaseCrossReference.
-
-=item Instance of L</ExpressionFeature>:
-
-One to many assoication, use C<getExpressionFeatureCollection> to get a collection of associated ExpressionFeature.
 
 =item Instance of L</GeneAlias>:
 
@@ -10435,13 +11220,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-This object describes the gene alias.
+
 
 =head2 ATTRIBUTES of GeneAlias
 
 The following are all the attributes of the GeneAlias object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -10458,9 +11247,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of GeneAlias
 
@@ -10497,13 +11286,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object providing entry to a Gene object's position in the Gene Ontology Consortium's controlled vocabularies, as recorded by LocusLink; provides access to gene objects corresponding to the ontological term, as well as to ancestor and descendant terms in the ontology tree.
+
 
 =head2 ATTRIBUTES of GeneOntology
 
 The following are all the attributes of the GeneOntology object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -10516,9 +11309,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of GeneOntology
 
@@ -10563,13 +11356,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-This object specifies GoOntologyrRelationship.
+
 
 =head2 ATTRIBUTES of GeneOntologyRelationship
 
 The following are all the attributes of the GeneOntologyRelationship object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -10582,9 +11379,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of GeneOntologyRelationship
 
@@ -10633,6 +11430,10 @@ The following are all the attributes of the GeneRelativeLocation object and thei
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item id
 
 data type: C<long>
@@ -10644,9 +11445,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of GeneRelativeLocation
 
@@ -10691,6 +11492,10 @@ The following are all the attributes of the GenericArray object and their data t
 
 data type: C<string>
 
+=item bigid
+
+data type: C<string>
+
 =item id
 
 data type: C<long>
@@ -10706,9 +11511,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of GenericArray
 
@@ -10753,6 +11558,10 @@ The following are all the attributes of the GenericReporter object and their dat
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item id
 
 data type: C<long>
@@ -10768,9 +11577,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of GenericReporter
 
@@ -10811,7 +11620,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object representing anatomical changes in a diseased tissue sample associated with an expression experiment; captures the relationship between organ and disease.
+
 
 =head2 ATTRIBUTES of Histopathology
 
@@ -10854,9 +11663,9 @@ data type: C<float>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Histopathology
 
@@ -10925,6 +11734,10 @@ The following are all the attributes of the HomologousAssociation object and the
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item homologousId
 
 data type: C<long>
@@ -10940,9 +11753,9 @@ data type: C<float>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of HomologousAssociation
 
@@ -10979,13 +11792,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object representing a CGAP library; provides access to information about: the tissue sample and its method of preparation, the library protocol that was used, the clones contained in the library, and the sequence information derived from the library.
+
 
 =head2 ATTRIBUTES of Library
 
 The following are all the attributes of the Library object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item cloneProducer
 
@@ -11050,9 +11867,9 @@ data type: C<long>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Library
 
@@ -11120,9 +11937,9 @@ data type: C<long>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Location
 
@@ -11171,7 +11988,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object representation of a nucleic acid sequence; provides access to the clones from which it was derived.
+
 
 =head2 ATTRIBUTES of NucleicAcidSequence
 
@@ -11184,6 +12001,10 @@ The following are all the attributes of the NucleicAcidSequence object and their
 data type: C<string>
 
 =item accessionNumberVersion
+
+data type: C<string>
+
+=item bigid
 
 data type: C<string>
 
@@ -11206,9 +12027,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of NucleicAcidSequence
 
@@ -11257,13 +12078,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-A representation of an organ whose name occurs in a controlled vocabulary; provides access to any Histopathology objects for the organ, and, because it is $quot;ontolog-able,$quot; provides access to its ancestral and descendant terms in the vocabulary.
+
 
 =head2 ATTRIBUTES of OrganOntology
 
 The following are all the attributes of the OrganOntology object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -11276,9 +12101,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of OrganOntology
 
@@ -11293,10 +12118,6 @@ One to many assoication, use C<getAnomalyCollection> to get a collection of asso
 =item Instance of L</ChildOrganOntologyRelationship>:
 
 One to many assoication, use C<getChildOrganOntologyRelationshipCollection> to get a collection of associated ChildOrganOntologyRelationship.
-
-=item Instance of L</ExpressionFeature>:
-
-One to many assoication, use C<getExpressionFeatureCollection> to get a collection of associated ExpressionFeature.
 
 =item Instance of L</Gene>:
 
@@ -11335,13 +12156,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-Organ relationship object describes relationships among organs.
+
 
 =head2 ATTRIBUTES of OrganOntologyRelationship
 
 The following are all the attributes of the OrganOntologyRelationship object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -11354,9 +12179,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of OrganOntologyRelationship
 
@@ -11397,13 +12222,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object representation of a molecular/cellular pathway compiled by BioCarta. Pathways are associated with specific Taxon objects, and contain multiple Gene objects, which may be Targets for treatment.
+
 
 =head2 ATTRIBUTES of Pathway
 
 The following are all the attributes of the Pathway object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item description
 
@@ -11428,9 +12257,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Pathway
 
@@ -11495,9 +12324,9 @@ data type: C<long>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of PhysicalLocation
 
@@ -11542,6 +12371,10 @@ The following are all the attributes of the PopulationFrequency object and their
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item ethnicity
 
 data type: C<string>
@@ -11573,9 +12406,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of PopulationFrequency
 
@@ -11620,6 +12453,10 @@ The following are all the attributes of the Protein object and their data types:
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item copyrightStatement
 
 data type: C<string>
@@ -11643,9 +12480,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Protein
 
@@ -11710,6 +12547,10 @@ The following are all the attributes of the ProteinAlias object and their data t
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item id
 
 data type: C<long>
@@ -11721,9 +12562,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of ProteinAlias
 
@@ -11768,6 +12609,10 @@ The following are all the attributes of the ProteinSequence object and their dat
 
 =over 4
 
+=item bigid
+
+data type: C<string>
+
 =item checkSum
 
 data type: C<string>
@@ -11791,9 +12636,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of ProteinSequence
 
@@ -11830,13 +12675,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object representation of the protocol used in assembling a clone library.
+
 
 =head2 ATTRIBUTES of Protocol
 
 The following are all the attributes of the Protocol object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item description
 
@@ -11857,9 +12706,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Protocol
 
@@ -11900,7 +12749,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An association class relating between Clinical Trial Protocols to Diseases.
+
 
 =head2 ATTRIBUTES of ProtocolAssociation
 
@@ -11915,6 +12764,10 @@ data type: C<string>
 =item IMTCODE
 
 data type: C<long>
+
+=item bigid
+
+data type: C<string>
 
 =item diseaseCategory
 
@@ -11931,9 +12784,9 @@ data type: C<long>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of ProtocolAssociation
 
@@ -11974,7 +12827,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object representing a Single Nucleotide Polymorphism; provides access to the clones and the trace files from which it was identified, the two most common substitutions at that position, the offset of the SNP in the parent sequence, and a confidence score.
+
 
 =head2 ATTRIBUTES of SNP
 
@@ -11994,6 +12847,10 @@ data type: C<string>
 
 data type: C<string>
 
+=item bigid
+
+data type: C<string>
+
 =item id
 
 data type: C<long>
@@ -12005,9 +12862,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of SNP
 
@@ -12056,13 +12913,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-A gene thought to be at the root of a disease etiology, and which is targeted for therapeutic intervention in a clinical trial.
+
 
 =head2 ATTRIBUTES of Target
 
 The following are all the attributes of the Target object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item id
 
@@ -12079,9 +12940,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Target
 
@@ -12126,7 +12987,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-An object representing the various names (scientific, common, abbreviated, etc.) for a species associated with a specific instance of a Gene, Chromosome, Pathway, Protein, or Tissue.
+
 
 =head2 ATTRIBUTES of Taxon
 
@@ -12135,6 +12996,10 @@ The following are all the attributes of the Taxon object and their data types:
 =over 4
 
 =item abbreviation
+
+data type: C<string>
+
+=item bigid
 
 data type: C<string>
 
@@ -12157,9 +13022,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Taxon
 
@@ -12216,7 +13081,7 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-A group of similar cells united to perform a specific function.
+
 
 =head2 ATTRIBUTES of Tissue
 
@@ -12271,9 +13136,9 @@ data type: C<string>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Tissue
 
@@ -12318,13 +13183,17 @@ See L<CaCORE::ApplicationService>.
 
 =head2 DESCRIPTION
 
-The object describes the vocabulary.
+
 
 =head2 ATTRIBUTES of Vocabulary
 
 The following are all the attributes of the Vocabulary object and their data types:
 
 =over 4
+
+=item bigid
+
+data type: C<string>
 
 =item coreTerm
 
@@ -12341,9 +13210,9 @@ data type: C<long>
 
 =back
 
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
 =head2 ASSOCIATIONS of Vocabulary
 
@@ -12376,44 +13245,31 @@ Shan Jiang <jiangs@mail.nih.gov>
 
 The CaCORE Software License, Version 1.0
 
-  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
-  National Cancer Institute, and so to the extent government employees are co-authors,
-  any rights in such works shall be subject to Title 17 of the United States Code,
-  section 105. Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
+Copyright 2001-2005 SAIC. This software was developed in conjunction with the National Cancer Institute, and so to the extent government employees are co-authors, any rights in such works shall be subject to Title 17 of the United States Code, section 105. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-  1. Redistributions of source code must retain the above copyright notice, this list
-     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
-     form must reproduce the above copyright notice, this list of conditions and the
-     disclaimer of Article 5 in the documentation and/or other materials provided with
-     the distribution.
-   
-  2. The end-user documentation included with the redistribution, if any, must include
-     the following acknowledgment: "This product includes software developed by SAIC and
-     the National Cancer Institute." If no such end-user documentation is to be included,
-     this acknowledgment shall appear in the software itself, wherever such third-party
-     acknowledgments normally appear.
-   
-  3. The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to
-     endorse or promote products derived from this software. This license does not
-     authorize the licensee to use any trademarks owned by either NCI or SAIC.
-   
-  4. This license does not authorize or prohibit the incorporation of this software into
-     any third party proprietary programs. Licensee is expressly made responsible for
-     obtaining any permission required to incorporate this software into third party
-     proprietary programs and for informing licensee's end-users of their obligation
-     to secure any required permissions before incorporating this software into third
-     party proprietary software programs.
-   
-  5. THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
-     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
-     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
-     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
-     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+=over 1
+
+=item 1
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer of Article 5, below. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer of Article 5 in the documentation and/or other materials provided with the distribution.
+
+=item 2
+
+The end-user documentation included with the redistribution, if any, must include the following acknowledgment: "This product includes software developed by SAIC and the National Cancer Institute." If no such end-user documentation is to be included, this acknowledgment shall appear in the software itself, wherever such third-party acknowledgments normally appear.
+
+=item 3
+
+The names "The National Cancer Institute", "NCI" and "SAIC" must not be used to endorse or promote products derived from this software. This license does not authorize the licensee to use any trademarks owned by either NCI or SAIC.
+
+=item 4
+
+This license does not authorize or prohibit the incorporation of this software into any third party proprietary programs. Licensee is expressly made responsible for obtaining any permission required to incorporate this software into third party proprietary programs and for informing licensee's end-users of their obligation to secure any required permissions before incorporating this software into third party proprietary software programs.
+
+=item 5
+
+THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+=back
 
 =cut
 

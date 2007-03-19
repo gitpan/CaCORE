@@ -54,7 +54,7 @@ ApplicationService object follows the Singleton pattern, in that each program wi
 of such class.
 The URL being passed to the <code>instance</code> method is the service endpoint of the caCORE webservice.
 If no such URL is provided in the program, it will default to the caCORE production server,
-"http://cabio.nci.nih.gov/cacore31/ws/caCOREService". The ApplicationService class exposes two methods:
+"http://cabio.nci.nih.gov/cacore32/ws/caCOREService". The ApplicationService class exposes two methods:
 queryObject and query for search. The ApplicationService is the fundamental class that all other search
 methods utilize.</p>
 
@@ -98,7 +98,7 @@ This queryObject() function encapsulates the webservice invocation to the caCORE
 <DD>my $gene = new CaCORE::CaBIO::Gene;<br/></DD>
 <DD>$gene->setSymbol("NAT2");<br/></DD>
 <DD>my $appsvc = CaCORE::ApplicationService-></DD>
-<DD><DD>instance("http://cabio.nci.nih.gov/cacore31/ws/caCOREService");<br/></DD></DD>
+<DD><DD>instance("http://cabio.nci.nih.gov/cacore32/ws/caCOREService");<br/></DD></DD>
 <DD>my @chromos = $appsvc->queryObject("CaCORE::CaBIO::Chromosome", $gene);<br/></DD>
 </code>
 

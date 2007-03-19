@@ -1,8 +1,8 @@
                           Release Notes
     
-             		   CaCOREperl
-                          Version 3.1
-                         March 27, 2006
+             		       CaCOREperl
+                           Version 3.2
+                         December 14, 2006
 
        National Cancer Institute Center for Bioinformatics
 

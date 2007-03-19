@@ -1,7 +1,9 @@
+<?xml version="1.0" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>CaCORE::CaDSR</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rev="made" href="mailto:" />
 </head>
 
@@ -150,6 +152,26 @@
 		<li><a href="#description">DESCRIPTION</a></li>
 		<li><a href="#attributes_of_conceptualdomain">ATTRIBUTES of ConceptualDomain</a></li>
 		<li><a href="#associations_of_conceptualdomain">ASSOCIATIONS of ConceptualDomain</a></li>
+	</ul>
+
+	<li><a href="#conditionmessage">ConditionMessage</a></li>
+	<ul>
+
+		<li><a href="#abstract">ABSTRACT</a></li>
+		<li><a href="#synopsis">SYNOPSIS</a></li>
+		<li><a href="#description">DESCRIPTION</a></li>
+		<li><a href="#attributes_of_conditionmessage">ATTRIBUTES of ConditionMessage</a></li>
+		<li><a href="#associations_of_conditionmessage">ASSOCIATIONS of ConditionMessage</a></li>
+	</ul>
+
+	<li><a href="#contactcommunication">ContactCommunication</a></li>
+	<ul>
+
+		<li><a href="#abstract">ABSTRACT</a></li>
+		<li><a href="#synopsis">SYNOPSIS</a></li>
+		<li><a href="#description">DESCRIPTION</a></li>
+		<li><a href="#attributes_of_contactcommunication">ATTRIBUTES of ContactCommunication</a></li>
+		<li><a href="#associations_of_contactcommunication">ASSOCIATIONS of ContactCommunication</a></li>
 	</ul>
 
 	<li><a href="#context">Context</a></li>
@@ -422,6 +444,26 @@
 		<li><a href="#associations_of_question">ASSOCIATIONS of Question</a></li>
 	</ul>
 
+	<li><a href="#questioncondition">QuestionCondition</a></li>
+	<ul>
+
+		<li><a href="#abstract">ABSTRACT</a></li>
+		<li><a href="#synopsis">SYNOPSIS</a></li>
+		<li><a href="#description">DESCRIPTION</a></li>
+		<li><a href="#attributes_of_questioncondition">ATTRIBUTES of QuestionCondition</a></li>
+		<li><a href="#associations_of_questioncondition">ASSOCIATIONS of QuestionCondition</a></li>
+	</ul>
+
+	<li><a href="#questionconditioncomponents">QuestionConditionComponents</a></li>
+	<ul>
+
+		<li><a href="#abstract">ABSTRACT</a></li>
+		<li><a href="#synopsis">SYNOPSIS</a></li>
+		<li><a href="#description">DESCRIPTION</a></li>
+		<li><a href="#attributes_of_questionconditioncomponents">ATTRIBUTES of QuestionConditionComponents</a></li>
+		<li><a href="#associations_of_questionconditioncomponents">ASSOCIATIONS of QuestionConditionComponents</a></li>
+	</ul>
+
 	<li><a href="#questionrepetition">QuestionRepetition</a></li>
 	<ul>
 
@@ -620,10 +662,9 @@ CaCORE Address object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_address">ASSOCIATIONS of Address</a></h2>
@@ -659,7 +700,6 @@ CaCORE AdministeredComponent object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A component for which attributes (or characteristics) are collected; Data Elements are one type of administered component. Other administered components have relationships to data elements as well as each other.</p>
 <p>
 </p>
 <h2><a name="attributes_of_administeredcomponent">ATTRIBUTES of AdministeredComponent</a></h2>
@@ -786,10 +826,9 @@ CaCORE AdministeredComponent object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_administeredcomponent">ASSOCIATIONS of AdministeredComponent</a></h2>
@@ -849,7 +888,6 @@ CaCORE AdministeredComponentClassSchemeItem object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A class that serves to allow many to many relationships between Administered Component and ClassSchemeClassSchemeItem, providing uniqueness to the CS/CSI pairing to an AC.</p>
 <p>
 </p>
 <h2><a name="attributes_of_administeredcomponentclassschemeitem">ATTRIBUTES of AdministeredComponentClassSchemeItem</a></h2>
@@ -886,10 +924,9 @@ CaCORE AdministeredComponentClassSchemeItem object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_administeredcomponentclassschemeitem">ASSOCIATIONS of AdministeredComponentClassSchemeItem</a></h2>
@@ -899,6 +936,18 @@ CaCORE AdministeredComponentClassSchemeItem object.</p>
 
 <dd>
 <p>Many to one assoication, use <code>getClassSchemeClassSchemeItem</code> to get the associated ClassSchemeClassSchemeItem.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fsourceobjectclass_3a">Instance of <a href="#sourceobjectclass">SourceObjectClass</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getSourceObjectClassCollection</code> to get a collection of associated SourceObjectClass.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2ftargetobjectclass_3a">Instance of <a href="#targetobjectclass">TargetObjectClass</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getTargetObjectClassCollection</code> to get a collection of associated TargetObjectClass.</p>
 </dd>
 </li>
 </dl>
@@ -967,10 +1016,9 @@ CaCORE AdministeredComponentContact object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_administeredcomponentcontact">ASSOCIATIONS of AdministeredComponentContact</a></h2>
@@ -1018,7 +1066,6 @@ CaCORE ClassSchemeClassSchemeItem object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Information pertaining to the association between Classification Schemes and Classification Scheme Items.  This information is used to get all Classification Scheme Items that belong to a particular Classification Scheme as well as the information about t</p>
 <p>
 </p>
 <h2><a name="attributes_of_classschemeclassschemeitem">ATTRIBUTES of ClassSchemeClassSchemeItem</a></h2>
@@ -1061,10 +1108,9 @@ CaCORE ClassSchemeClassSchemeItem object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_classschemeclassschemeitem">ASSOCIATIONS of ClassSchemeClassSchemeItem</a></h2>
@@ -1143,7 +1189,6 @@ CaCORE ClassificationScheme object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An arrangement or division of objects into groups based on characteristics that the objects have in common, e.g., origin, composition, structure, application, function, etc.  Adds information not easily included in definitions, helps organize the registry and facilitates access to the registry.  ISO DEF: the descriptive information for an arrangement or division of objects into groups based on characterisitics, which the objects have in common.</p>
 <p>
 </p>
 <h2><a name="attributes_of_classificationscheme">ATTRIBUTES of ClassificationScheme</a></h2>
@@ -1162,15 +1207,20 @@ CaCORE ClassificationScheme object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_classificationscheme">ASSOCIATIONS of ClassificationScheme</a></h2>
 <p>The following are all the objects that are associated with the ClassificationScheme:</p>
 <dl>
+<dt><strong><a name="item_instance_of__2fchildclassificationscheme_3a">Instance of <a href="#childclassificationscheme">ChildClassificationScheme</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getChildClassificationSchemeCollection</code> to get a collection of associated ChildClassificationScheme.</p>
+</dd>
+</li>
 <dt><strong><a name="item_instance_of__2fchildclassificationschemerelationsh">Instance of <a href="#childclassificationschemerelationship">ChildClassificationSchemeRelationship</a>:</a></strong>
 
 <dd>
@@ -1187,6 +1237,12 @@ CaCORE ClassificationScheme object.</p>
 
 <dd>
 <p>Many to one assoication, use <code>getConceptDerivationRule</code> to get the associated ConceptDerivationRule.</p>
+</dd>
+</li>
+<dt><strong><a name="item_collection_of__2fparentclassificationscheme_3a">Collection of <a href="#parentclassificationscheme">ParentClassificationScheme</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getParentClassificationScheme</code> to get the associated ParentClassificationScheme.</p>
 </dd>
 </li>
 <dt><strong><a name="item_instance_of__2fparentclassificationschemerelations">Instance of <a href="#parentclassificationschemerelationship">ParentClassificationSchemeRelationship</a>:</a></strong>
@@ -1213,7 +1269,6 @@ CaCORE ClassificationSchemeItem object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A component of content in a Classification Scheme. This may be a node in a taxonomy or ontology or a term in a thesaurus, etc.</p>
 <p>
 </p>
 <h2><a name="attributes_of_classificationschemeitem">ATTRIBUTES of ClassificationSchemeItem</a></h2>
@@ -1274,10 +1329,9 @@ CaCORE ClassificationSchemeItem object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_classificationschemeitem">ASSOCIATIONS of ClassificationSchemeItem</a></h2>
@@ -1337,7 +1391,6 @@ CaCORE ClassificationSchemeItemRelationship object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The affiliation between two occurrences of Classification Scheme Items.</p>
 <p>
 </p>
 <h2><a name="attributes_of_classificationschemeitemrelationship">ATTRIBUTES of ClassificationSchemeItemRelationship</a></h2>
@@ -1380,10 +1433,9 @@ CaCORE ClassificationSchemeItemRelationship object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_classificationschemeitemrelationship">ASSOCIATIONS of ClassificationSchemeItemRelationship</a></h2>
@@ -1419,7 +1471,6 @@ CaCORE ClassificationSchemeRelationship object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The affiliation between two occurrences of Classification Schemes.</p>
 <p>
 </p>
 <h2><a name="attributes_of_classificationschemerelationship">ATTRIBUTES of ClassificationSchemeRelationship</a></h2>
@@ -1468,10 +1519,9 @@ CaCORE ClassificationSchemeRelationship object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_classificationschemerelationship">ASSOCIATIONS of ClassificationSchemeRelationship</a></h2>
@@ -1483,7 +1533,7 @@ CaCORE ClassificationSchemeRelationship object.</p>
 <p>Many to one assoication, use <code>getChildClassificationScheme</code> to get the associated ChildClassificationScheme.</p>
 </dd>
 </li>
-<dt><strong><a name="item_collection_of__2fparentclassificationscheme_3a">Collection of <a href="#parentclassificationscheme">ParentClassificationScheme</a>:</a></strong>
+<dt><strong>Collection of <a href="#parentclassificationscheme">ParentClassificationScheme</a>:</strong>
 
 <dd>
 <p>Many to one assoication, use <code>getParentClassificationScheme</code> to get the associated ParentClassificationScheme.</p>
@@ -1507,7 +1557,6 @@ CaCORE ComponentConcept object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The concept <code>component(s)</code> used for a concept derivation</p>
 <p>
 </p>
 <h2><a name="attributes_of_componentconcept">ATTRIBUTES of ComponentConcept</a></h2>
@@ -1531,11 +1580,16 @@ CaCORE ComponentConcept object.</p>
 <p>data type: <code>string</code></p>
 </dd>
 </li>
+<dt><strong><a name="item_value">value</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_componentconcept">ASSOCIATIONS of ComponentConcept</a></h2>
@@ -1601,10 +1655,9 @@ CaCORE ComponentLevel object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_componentlevel">ASSOCIATIONS of ComponentLevel</a></h2>
@@ -1627,7 +1680,6 @@ CaCORE Concept object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The concept for an administered component</p>
 <p>
 </p>
 <h2><a name="attributes_of_concept">ATTRIBUTES of Concept</a></h2>
@@ -1646,10 +1698,9 @@ CaCORE Concept object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_concept">ASSOCIATIONS of Concept</a></h2>
@@ -1685,7 +1736,6 @@ CaCORE ConceptDerivationRule object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The derivation rule between one or more concepts.</p>
 <p>
 </p>
 <h2><a name="attributes_of_conceptderivationrule">ATTRIBUTES of ConceptDerivationRule</a></h2>
@@ -1728,10 +1778,9 @@ CaCORE ConceptDerivationRule object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_conceptderivationrule">ASSOCIATIONS of ConceptDerivationRule</a></h2>
@@ -1773,6 +1822,12 @@ CaCORE ConceptDerivationRule object.</p>
 <p>One to many assoication, use <code>getObjectClassCollection</code> to get a collection of associated ObjectClass.</p>
 </dd>
 </li>
+<dt><strong><a name="item_instance_of__2fobjectclassrelationship_3a">Instance of <a href="#objectclassrelationship">ObjectClassRelationship</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getObjectClassRelationshipCollection</code> to get a collection of associated ObjectClassRelationship.</p>
+</dd>
+</li>
 <dt><strong><a name="item_instance_of__2fproperty_3a">Instance of <a href="#property">Property</a>:</a></strong>
 
 <dd>
@@ -1783,6 +1838,18 @@ CaCORE ConceptDerivationRule object.</p>
 
 <dd>
 <p>One to many assoication, use <code>getRepresentationCollection</code> to get a collection of associated Representation.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fsourceroleconcept_3a">Instance of <a href="#sourceroleconcept">SourceRoleConcept</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getSourceRoleConceptCollection</code> to get a collection of associated SourceRoleConcept.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2ftargetroleconcept_3a">Instance of <a href="#targetroleconcept">TargetRoleConcept</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getTargetRoleConceptCollection</code> to get a collection of associated TargetRoleConcept.</p>
 </dd>
 </li>
 <dt><strong><a name="item_instance_of__2fvaluedomain_3a">Instance of <a href="#valuedomain">ValueDomain</a>:</a></strong>
@@ -1816,7 +1883,6 @@ CaCORE ConceptualDomain object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The set of all possible Valid Value meanings of a Data Element Concept expressed without representation.</p>
 <p>
 </p>
 <h2><a name="attributes_of_conceptualdomain">ATTRIBUTES of ConceptualDomain</a></h2>
@@ -1829,10 +1895,9 @@ CaCORE ConceptualDomain object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_conceptualdomain">ASSOCIATIONS of ConceptualDomain</a></h2>
@@ -1866,6 +1931,154 @@ CaCORE ConceptualDomain object.</p>
 <p>
 </p>
 <hr />
+<h1><a name="conditionmessage">ConditionMessage</a></h1>
+<p>CaCORE::CaDSR::ConditionMessage - Perl extension for ConditionMessage.</p>
+<p>
+</p>
+<h2><a name="abstract">ABSTRACT</a></h2>
+<p>The CaCORE::CaDSR::ConditionMessage is a Perl object representation of the
+CaCORE ConditionMessage object.</p>
+<p>
+</p>
+<h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.</p>
+<p>
+</p>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+</p>
+<h2><a name="attributes_of_conditionmessage">ATTRIBUTES of ConditionMessage</a></h2>
+<p>The following are all the attributes of the ConditionMessage object and their data types:</p>
+<dl>
+<dt><strong>id</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong><a name="item_message">message</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong><a name="item_messagetype">messageType</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+</dl>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
+<p>
+</p>
+<h2><a name="associations_of_conditionmessage">ASSOCIATIONS of ConditionMessage</a></h2>
+<p>The following are all the objects that are associated with the ConditionMessage:</p>
+<dl>
+<dt><strong><a name="item_collection_of__2fquestioncondition_3a">Collection of <a href="#questioncondition">QuestionCondition</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getQuestionCondition</code> to get the associated QuestionCondition.</p>
+</dd>
+</li>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="contactcommunication">ContactCommunication</a></h1>
+<p>CaCORE::CaDSR::ContactCommunication - Perl extension for ContactCommunication.</p>
+<p>
+</p>
+<h2><a name="abstract">ABSTRACT</a></h2>
+<p>The CaCORE::CaDSR::ContactCommunication is a Perl object representation of the
+CaCORE ContactCommunication object.</p>
+<p>
+</p>
+<h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.</p>
+<p>
+</p>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+</p>
+<h2><a name="attributes_of_contactcommunication">ATTRIBUTES of ContactCommunication</a></h2>
+<p>The following are all the attributes of the ContactCommunication object and their data types:</p>
+<dl>
+<dt><strong>createdBy</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong>dateCreated</strong>
+
+<dd>
+<p>data type: <code>dateTime</code></p>
+</dd>
+</li>
+<dt><strong>dateModified</strong>
+
+<dd>
+<p>data type: <code>dateTime</code></p>
+</dd>
+</li>
+<dt><strong>id</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong>modifiedBy</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong>rank</strong>
+
+<dd>
+<p>data type: <code>int</code></p>
+</dd>
+</li>
+<dt><strong>type</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong>value</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+</dl>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
+<p>
+</p>
+<h2><a name="associations_of_contactcommunication">ASSOCIATIONS of ContactCommunication</a></h2>
+<p>The following are all the objects that are associated with the ContactCommunication:</p>
+<dl>
+<dt><strong>Collection of <a href="#organization">Organization</a>:</strong>
+
+<dd>
+<p>Many to one assoication, use <code>getOrganization</code> to get the associated Organization.</p>
+</dd>
+</li>
+<dt><strong>Collection of <a href="#person">Person</a>:</strong>
+
+<dd>
+<p>Many to one assoication, use <code>getPerson</code> to get the associated Person.</p>
+</dd>
+</li>
+</dl>
+<p>
+</p>
+<hr />
 <h1><a name="context">Context</a></h1>
 <p>CaCORE::CaDSR::Context - Perl extension for Context.</p>
 <p>
@@ -1880,7 +2093,6 @@ CaCORE Context object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A designation or description of the application environment or discipline in which a name is applied or from which it originates.</p>
 <p>
 </p>
 <h2><a name="attributes_of_context">ATTRIBUTES of Context</a></h2>
@@ -1941,10 +2153,9 @@ CaCORE Context object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_context">ASSOCIATIONS of Context</a></h2>
@@ -1993,15 +2204,13 @@ CaCORE DataElement object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A unit of data for which the definition, identification, representation and permissible values are specified by means of a set of attributes.</p>
 <p>
 </p>
 <h2><a name="attributes_of_dataelement">ATTRIBUTES of DataElement</a></h2>
 <p>The following are all the attributes of the DataElement object and their data types:</p>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_dataelement">ASSOCIATIONS of DataElement</a></h2>
@@ -2068,15 +2277,13 @@ CaCORE DataElementConcept object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A concept that can be represented in the form of a data element, described independently of any particular representation.</p>
 <p>
 </p>
 <h2><a name="attributes_of_dataelementconcept">ATTRIBUTES of DataElementConcept</a></h2>
 <p>The following are all the attributes of the DataElementConcept object and their data types:</p>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_dataelementconcept">ASSOCIATIONS of DataElementConcept</a></h2>
@@ -2136,7 +2343,6 @@ CaCORE DataElementConceptRelationship object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A description of the affiliation between two occurrences of Data Element Concepts.</p>
 <p>
 </p>
 <h2><a name="attributes_of_dataelementconceptrelationship">ATTRIBUTES of DataElementConceptRelationship</a></h2>
@@ -2185,10 +2391,9 @@ CaCORE DataElementConceptRelationship object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_dataelementconceptrelationship">ASSOCIATIONS of DataElementConceptRelationship</a></h2>
@@ -2224,7 +2429,6 @@ CaCORE DataElementDerivation object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The data element <code>component(s)</code> used for a derived data element.</p>
 <p>
 </p>
 <h2><a name="attributes_of_dataelementderivation">ATTRIBUTES of DataElementDerivation</a></h2>
@@ -2279,10 +2483,9 @@ CaCORE DataElementDerivation object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_dataelementderivation">ASSOCIATIONS of DataElementDerivation</a></h2>
@@ -2324,7 +2527,6 @@ CaCORE DataElementRelationship object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The affiliation between two occurrences of Data Elements.</p>
 <p>
 </p>
 <h2><a name="attributes_of_dataelementrelationship">ATTRIBUTES of DataElementRelationship</a></h2>
@@ -2367,10 +2569,9 @@ CaCORE DataElementRelationship object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_dataelementrelationship">ASSOCIATIONS of DataElementRelationship</a></h2>
@@ -2406,7 +2607,6 @@ CaCORE Definition object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Textual definition from an identified source</p>
 <p>
 </p>
 <h2><a name="attributes_of_definition">ATTRIBUTES of Definition</a></h2>
@@ -2461,10 +2661,9 @@ CaCORE Definition object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_definition">ASSOCIATIONS of Definition</a></h2>
@@ -2536,10 +2735,9 @@ CaCORE DefinitionClassSchemeItem object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_definitionclassschemeitem">ASSOCIATIONS of DefinitionClassSchemeItem</a></h2>
@@ -2575,7 +2773,6 @@ CaCORE DerivationType object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The type of Derived Data Element that is being created. For example a Data Element that is derived/created by subtracting two dates represented by other data elements would be a Calculated Representation Type.   Types include: Calculated, Complex Recode, Compound, Concatenation, Object Class, and Simple Recode.</p>
 <p>
 </p>
 <h2><a name="attributes_of_derivationtype">ATTRIBUTES of DerivationType</a></h2>
@@ -2624,10 +2821,9 @@ CaCORE DerivationType object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_derivationtype">ASSOCIATIONS of DerivationType</a></h2>
@@ -2663,7 +2859,6 @@ CaCORE DerivedDataElement object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The Data Element that is derived from one or more data elements. ISO DEF: the relationship among a Data Element which is derived, the rule controlling its derivation, and the Data <code>Element(s)</code> from which it is derived.</p>
 <p>
 </p>
 <h2><a name="attributes_of_deriveddataelement">ATTRIBUTES of DerivedDataElement</a></h2>
@@ -2718,10 +2913,9 @@ CaCORE DerivedDataElement object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_deriveddataelement">ASSOCIATIONS of DerivedDataElement</a></h2>
@@ -2763,7 +2957,6 @@ CaCORE Designation object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A name by which an Administered Component is known in a specific Context. Also a placeholder to track the usage of Administered Components by different Contexts.</p>
 <p>
 </p>
 <h2><a name="attributes_of_designation">ATTRIBUTES of Designation</a></h2>
@@ -2818,10 +3011,9 @@ CaCORE Designation object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_designation">ASSOCIATIONS of Designation</a></h2>
@@ -2857,7 +3049,6 @@ CaCORE DesignationClassSchemeItem object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A class that serves to allow many to many relationships between Designation and ClassSchemeClassSchemeItem, providing uniqueness to the CS/CSI pairing to an Designation.</p>
 <p>
 </p>
 <h2><a name="attributes_of_designationclassschemeitem">ATTRIBUTES of DesignationClassSchemeItem</a></h2>
@@ -2894,10 +3085,9 @@ CaCORE DesignationClassSchemeItem object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_designationclassschemeitem">ASSOCIATIONS of DesignationClassSchemeItem</a></h2>
@@ -2938,10 +3128,9 @@ CaCORE EnumeratedValueDomain object.</p>
 </p>
 <h2><a name="attributes_of_enumeratedvaluedomain">ATTRIBUTES of EnumeratedValueDomain</a></h2>
 <p>The following are all the attributes of the EnumeratedValueDomain object and their data types:</p>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_enumeratedvaluedomain">ASSOCIATIONS of EnumeratedValueDomain</a></h2>
@@ -2972,7 +3161,6 @@ CaCORE Form object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A questionnaire that documents all the patient data stipulated in the protocol and used by clinicians to record information about patient's visits while on the clinical trial.</p>
 <p>
 </p>
 <h2><a name="attributes_of_form">ATTRIBUTES of Form</a></h2>
@@ -2991,10 +3179,9 @@ CaCORE Form object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_form">ASSOCIATIONS of Form</a></h2>
@@ -3031,15 +3218,13 @@ CaCORE FormElement object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The element of a Form</p>
 <p>
 </p>
 <h2><a name="attributes_of_formelement">ATTRIBUTES of FormElement</a></h2>
 <p>The following are all the attributes of the FormElement object and their data types:</p>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_formelement">ASSOCIATIONS of FormElement</a></h2>
@@ -3117,10 +3302,9 @@ CaCORE Function object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_function">ASSOCIATIONS of Function</a></h2>
@@ -3130,6 +3314,12 @@ CaCORE Function object.</p>
 
 <dd>
 <p>Many to one assoication, use <code>getConceptDerivationRule</code> to get the associated ConceptDerivationRule.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fconditioncomponent_3a">Instance of <a href="#conditioncomponent">ConditionComponent</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getConditionComponentCollection</code> to get a collection of associated ConditionComponent.</p>
 </dd>
 </li>
 </dl>
@@ -3151,7 +3341,6 @@ CaCORE Instruction object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Instruction for a Form, Module, Question or Valid Value on a Form</p>
 <p>
 </p>
 <h2><a name="attributes_of_instruction">ATTRIBUTES of Instruction</a></h2>
@@ -3164,10 +3353,9 @@ CaCORE Instruction object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_instruction">ASSOCIATIONS of Instruction</a></h2>
@@ -3198,7 +3386,6 @@ CaCORE Module object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A collection of data elements, or Common Data Elements, logically grouped on a case report form.</p>
 <p>
 </p>
 <h2><a name="attributes_of_module">ATTRIBUTES of Module</a></h2>
@@ -3217,10 +3404,9 @@ CaCORE Module object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_module">ASSOCIATIONS of Module</a></h2>
@@ -3257,15 +3443,13 @@ CaCORE NonenumeratedValueDomain object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A value domain not expressed as a list of all permissible values.</p>
 <p>
 </p>
 <h2><a name="attributes_of_nonenumeratedvaluedomain">ATTRIBUTES of NonenumeratedValueDomain</a></h2>
 <p>The following are all the attributes of the NonenumeratedValueDomain object and their data types:</p>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_nonenumeratedvaluedomain">ASSOCIATIONS of NonenumeratedValueDomain</a></h2>
@@ -3288,7 +3472,6 @@ CaCORE ObjectClass object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A set of ideas, abstractions, or things in the real world that can be identified with explicit boundaries and meaning and whose properties and behavior follow the same rules.</p>
 <p>
 </p>
 <h2><a name="attributes_of_objectclass">ATTRIBUTES of ObjectClass</a></h2>
@@ -3301,10 +3484,9 @@ CaCORE ObjectClass object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_objectclass">ASSOCIATIONS of ObjectClass</a></h2>
@@ -3353,13 +3535,30 @@ CaCORE ObjectClassRelationship object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A description of the affiliation between two occurrences of Object  Classes</p>
 <p>
 </p>
 <h2><a name="attributes_of_objectclassrelationship">ATTRIBUTES of ObjectClassRelationship</a></h2>
 <p>The following are all the attributes of the ObjectClassRelationship object and their data types:</p>
 <dl>
+<dt><strong>dimensionality</strong>
+
+<dd>
+<p>data type: <code>int</code></p>
+</dd>
+</li>
 <dt><strong><a name="item_direction">direction</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong>displayOrder</strong>
+
+<dd>
+<p>data type: <code>int</code></p>
+</dd>
+</li>
+<dt><strong><a name="item_isarray">isArray</a></strong>
 
 <dd>
 <p>data type: <code>string</code></p>
@@ -3408,25 +3607,54 @@ CaCORE ObjectClassRelationship object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_objectclassrelationship">ASSOCIATIONS of ObjectClassRelationship</a></h2>
 <p>The following are all the objects that are associated with the ObjectClassRelationship:</p>
 <dl>
+<dt><strong>Collection of <a href="#conceptderivationrule">ConceptDerivationRule</a>:</strong>
+
+<dd>
+<p>Many to one assoication, use <code>getConceptDerivationRule</code> to get the associated ConceptDerivationRule.</p>
+</dd>
+</li>
+<dt><strong><a name="item_collection_of__2fsourceconceptderivationrule_3a">Collection of <a href="#sourceconceptderivationrule">SourceConceptDerivationRule</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getSourceConceptDerivationRule</code> to get the associated SourceConceptDerivationRule.</p>
+</dd>
+</li>
 <dt><strong><a name="item_collection_of__2fsourceobjectclass_3a">Collection of <a href="#sourceobjectclass">SourceObjectClass</a>:</a></strong>
 
 <dd>
 <p>Many to one assoication, use <code>getSourceObjectClass</code> to get the associated SourceObjectClass.</p>
 </dd>
 </li>
+<dt><strong><a name="item_collection_of__2fsourceobjectclassclassification_3">Collection of <a href="#sourceobjectclassclassification">SourceObjectClassClassification</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getSourceObjectClassClassification</code> to get the associated SourceObjectClassClassification.</p>
+</dd>
+</li>
+<dt><strong><a name="item_collection_of__2ftargetconceptderivationrule_3a">Collection of <a href="#targetconceptderivationrule">TargetConceptDerivationRule</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getTargetConceptDerivationRule</code> to get the associated TargetConceptDerivationRule.</p>
+</dd>
+</li>
 <dt><strong><a name="item_collection_of__2ftargetobjectclass_3a">Collection of <a href="#targetobjectclass">TargetObjectClass</a>:</a></strong>
 
 <dd>
 <p>Many to one assoication, use <code>getTargetObjectClass</code> to get the associated TargetObjectClass.</p>
+</dd>
+</li>
+<dt><strong><a name="item_collection_of__2ftargetobjectclassclassification_3">Collection of <a href="#targetobjectclassclassification">TargetObjectClassClassification</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getTargetObjectClassClassification</code> to get the associated TargetObjectClassClassification.</p>
 </dd>
 </li>
 </dl>
@@ -3447,7 +3675,6 @@ CaCORE Organization object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Organizational unit like a laboratory, institute or consortium.</p>
 <p>
 </p>
 <h2><a name="attributes_of_organization">ATTRIBUTES of Organization</a></h2>
@@ -3490,10 +3717,9 @@ CaCORE Organization object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_organization">ASSOCIATIONS of Organization</a></h2>
@@ -3509,6 +3735,12 @@ CaCORE Organization object.</p>
 
 <dd>
 <p>One to many assoication, use <code>getAdministeredComponentContactCollection</code> to get a collection of associated AdministeredComponentContact.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fcontactcommunication_3a">Instance of <a href="#contactcommunication">ContactCommunication</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getContactCommunicationCollection</code> to get a collection of associated ContactCommunication.</p>
 </dd>
 </li>
 <dt><strong><a name="item_instance_of__2fperson_3a">Instance of <a href="#person">Person</a>:</a></strong>
@@ -3535,7 +3767,6 @@ CaCORE PermissibleValue object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The exact names, codes and text that can be stored in a data field in an information management system.  ISO DEF: An expression of a value meaning in a specific value domain.</p>
 <p>
 </p>
 <h2><a name="attributes_of_permissiblevalue">ATTRIBUTES of PermissibleValue</a></h2>
@@ -3583,17 +3814,16 @@ CaCORE PermissibleValue object.</p>
 <p>data type: <code>string</code></p>
 </dd>
 </li>
-<dt><strong><a name="item_value">value</a></strong>
+<dt><strong>value</strong>
 
 <dd>
 <p>data type: <code>string</code></p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_permissiblevalue">ASSOCIATIONS of PermissibleValue</a></h2>
@@ -3629,7 +3859,6 @@ CaCORE Person object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Person's first and last name and the connection to the party.</p>
 <p>
 </p>
 <h2><a name="attributes_of_person">ATTRIBUTES of Person</a></h2>
@@ -3696,10 +3925,9 @@ CaCORE Person object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_person">ASSOCIATIONS of Person</a></h2>
@@ -3715,6 +3943,12 @@ CaCORE Person object.</p>
 
 <dd>
 <p>One to many assoication, use <code>getAdministeredComponentContactCollection</code> to get a collection of associated AdministeredComponentContact.</p>
+</dd>
+</li>
+<dt><strong>Instance of <a href="#contactcommunication">ContactCommunication</a>:</strong>
+
+<dd>
+<p>One to many assoication, use <code>getContactCommunicationCollection</code> to get a collection of associated ContactCommunication.</p>
 </dd>
 </li>
 <dt><strong>Collection of <a href="#organization">Organization</a>:</strong>
@@ -3742,7 +3976,6 @@ CaCORE Property object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Property is an attribute of a concept. Examples of properties are ``Synonym'', ``Preferred_Name'', ``Semantic_Type'' etc.</p>
 <p>
 </p>
 <h2><a name="attributes_of_property">ATTRIBUTES of Property</a></h2>
@@ -3755,10 +3988,9 @@ CaCORE Property object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_property">ASSOCIATIONS of Property</a></h2>
@@ -3795,7 +4027,6 @@ CaCORE Protocol object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>An object representation of the protocol used in assembling a clone library.</p>
 <p>
 </p>
 <h2><a name="attributes_of_protocol">ATTRIBUTES of Protocol</a></h2>
@@ -3862,10 +4093,9 @@ CaCORE Protocol object.</p>
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_protocol">ASSOCIATIONS of Protocol</a></h2>
@@ -3896,7 +4126,6 @@ CaCORE Question object.</p>
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The actual text of the data element as specified on a Case Report Form of a Protocol.</p>
 <p>
 </p>
 <h2><a name="attributes_of_question">ATTRIBUTES of Question</a></h2>
@@ -3926,11 +4155,16 @@ CaCORE Question object.</p>
 <p>data type: <code>string</code></p>
 </dd>
 </li>
+<dt><strong><a name="item_ismandatory">isMandatory</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
 <p>
 </p>
 <h2><a name="associations_of_question">ASSOCIATIONS of Question</a></h2>
@@ -3946,6 +4180,18 @@ CaCORE Question object.</p>
 
 <dd>
 <p>Many to one assoication, use <code>getModule</code> to get the associated Module.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fquestioncomponent_3a">Instance of <a href="#questioncomponent">QuestionComponent</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getQuestionComponentCollection</code> to get a collection of associated QuestionComponent.</p>
+</dd>
+</li>
+<dt><strong>Collection of <a href="#questioncondition">QuestionCondition</a>:</strong>
+
+<dd>
+<p>Many to one assoication, use <code>getQuestionCondition</code> to get the associated QuestionCondition.</p>
 </dd>
 </li>
 <dt><strong><a name="item_instance_of__2fquestionrepetition_3a">Instance of <a href="#questionrepetition">QuestionRepetition</a>:</a></strong>
@@ -3970,14 +4216,13 @@ CaCORE Question object.</p>
 <p>
 </p>
 <hr />
-<h1><a name="questionrepetition">QuestionRepetition</a></h1>
-<p>CaCORE::CaDSR::QuestionRepetition - Perl extension for QuestionRepetition.</p>
+<h1><a name="questioncondition">QuestionCondition</a></h1>
+<p>CaCORE::CaDSR::QuestionCondition - Perl extension for QuestionCondition.</p>
 <p>
 </p>
 <h2><a name="abstract">ABSTRACT</a></h2>
-<p>The CaCORE::CaDSR::QuestionRepetition is a Perl object representation of the
-CaCORE QuestionRepetition object.</p>
-<p>QuestionRepetition extends from domain object <a href="#formelement">FormElement</a>.</p>
+<p>The CaCORE::CaDSR::QuestionCondition is a Perl object representation of the
+CaCORE QuestionCondition object.</p>
 <p>
 </p>
 <h2><a name="synopsis">SYNOPSIS</a></h2>
@@ -3987,32 +4232,216 @@ CaCORE QuestionRepetition object.</p>
 <h2><a name="description">DESCRIPTION</a></h2>
 <p>
 </p>
-<h2><a name="attributes_of_questionrepetition">ATTRIBUTES of QuestionRepetition</a></h2>
-<p>The following are all the attributes of the QuestionRepetition object and their data types:</p>
+<h2><a name="attributes_of_questioncondition">ATTRIBUTES of QuestionCondition</a></h2>
+<p>The following are all the attributes of the QuestionCondition object and their data types:</p>
 <dl>
-<dt><strong>defaultValue</strong>
+<dt><strong>id</strong>
 
 <dd>
 <p>data type: <code>string</code></p>
 </dd>
 </li>
-<dt><strong>isEditable</strong>
+</dl>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
+<p>
+</p>
+<h2><a name="associations_of_questioncondition">ASSOCIATIONS of QuestionCondition</a></h2>
+<p>The following are all the objects that are associated with the QuestionCondition:</p>
+<dl>
+<dt><strong>Instance of <a href="#conditioncomponent">ConditionComponent</a>:</strong>
+
+<dd>
+<p>One to many assoication, use <code>getConditionComponentCollection</code> to get a collection of associated ConditionComponent.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fcondtionmessage_3a">Instance of <a href="#condtionmessage">CondtionMessage</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getCondtionMessageCollection</code> to get a collection of associated CondtionMessage.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fforcedconditiontriggeredaction_3a">Instance of <a href="#forcedconditiontriggeredaction">ForcedConditionTriggeredAction</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getForcedConditionTriggeredActionCollection</code> to get a collection of associated ForcedConditionTriggeredAction.</p>
+</dd>
+</li>
+<dt><strong>Instance of <a href="#question">Question</a>:</strong>
+
+<dd>
+<p>One to many assoication, use <code>getQuestionCollection</code> to get a collection of associated Question.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2fquestioncondition_3a">Instance of <a href="#questioncondition">QuestionCondition</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getQuestionConditionCollection</code> to get a collection of associated QuestionCondition.</p>
+</dd>
+</li>
+<dt><strong><a name="item_instance_of__2ftriggeredaction_3a">Instance of <a href="#triggeredaction">TriggeredAction</a>:</a></strong>
+
+<dd>
+<p>One to many assoication, use <code>getTriggeredActionCollection</code> to get a collection of associated TriggeredAction.</p>
+</dd>
+</li>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="questionconditioncomponents">QuestionConditionComponents</a></h1>
+<p>CaCORE::CaDSR::QuestionConditionComponents - Perl extension for QuestionConditionComponents.</p>
+<p>
+</p>
+<h2><a name="abstract">ABSTRACT</a></h2>
+<p>The CaCORE::CaDSR::QuestionConditionComponents is a Perl object representation of the
+CaCORE QuestionConditionComponents object.</p>
+<p>
+</p>
+<h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.</p>
+<p>
+</p>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+</p>
+<h2><a name="attributes_of_questionconditioncomponents">ATTRIBUTES of QuestionConditionComponents</a></h2>
+<p>The following are all the attributes of the QuestionConditionComponents object and their data types:</p>
+<dl>
+<dt><strong><a name="item_constantvalue">constantValue</a></strong>
 
 <dd>
 <p>data type: <code>string</code></p>
 </dd>
 </li>
-<dt><strong><a name="item_repeatsequencenumber">repeatSequenceNumber</a></strong>
+<dt><strong>displayOrder</strong>
 
 <dd>
 <p>data type: <code>int</code></p>
 </dd>
 </li>
+<dt><strong>id</strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong><a name="item_logicaloperand">logicalOperand</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
+<dt><strong><a name="item_operand">operand</a></strong>
+
+<dd>
+<p>data type: <code>string</code></p>
+</dd>
+</li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.</pre>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.</p>
+<p>
+</p>
+<h2><a name="associations_of_questionconditioncomponents">ASSOCIATIONS of QuestionConditionComponents</a></h2>
+<p>The following are all the objects that are associated with the QuestionConditionComponents:</p>
+<dl>
+<dt><strong><a name="item_collection_of__2ffunction_3a">Collection of <a href="#function">Function</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getFunction</code> to get the associated Function.</p>
+</dd>
+</li>
+<dt><strong><a name="item_collection_of__2fparentquestioncondition_3a">Collection of <a href="#parentquestioncondition">ParentQuestionCondition</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getParentQuestionCondition</code> to get the associated ParentQuestionCondition.</p>
+</dd>
+</li>
+<dt><strong><a name="item_collection_of__2fquestion_3a">Collection of <a href="#question">Question</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getQuestion</code> to get the associated Question.</p>
+</dd>
+</li>
+<dt><strong>Collection of <a href="#questioncondition">QuestionCondition</a>:</strong>
+
+<dd>
+<p>Many to one assoication, use <code>getQuestionCondition</code> to get the associated QuestionCondition.</p>
+</dd>
+</li>
+<dt><strong><a name="item_collection_of__2fvalidvalue_3a">Collection of <a href="#validvalue">ValidValue</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getValidValue</code> to get the associated ValidValue.</p>
+</dd>
+</li>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="questionrepetition">QuestionRepetition</a></h1>
+<p>CaCORE::CaDSR::QuestionRepetition - Perl extension for QuestionRepetition.
+
+</p>
+<p>
+</p>
+<h2><a name="abstract">ABSTRACT</a></h2>
+<p>The CaCORE::CaDSR::QuestionRepetition is a Perl object representation of the
+CaCORE QuestionRepetition object.
+
+</p>
+<p>QuestionRepetition extends from domain object <a href="#formelement">FormElement</a>.
+
+</p>
+<p>
+</p>
+<h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>See <a href="/CaCORE/ApplicationService.html">the CaCORE::ApplicationService manpage</a>.
+
+</p>
+<p>
+</p>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+</p>
+<h2><a name="attributes_of_questionrepetition">ATTRIBUTES of QuestionRepetition</a></h2>
+<p>The following are all the attributes of the QuestionRepetition object and their data types:
+
+</p>
+<dl>
+<dt><strong>defaultValue</strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong>isEditable</strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong><a name="item_repeatsequencenumber">repeatSequenceNumber</a></strong>
+
+<dd>
+<p>data type: <code>int</code>
+
+</p>
+</dd>
+</li>
+</dl>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
+
+</p>
 <p>
 </p>
 <h2><a name="associations_of_questionrepetition">ASSOCIATIONS of QuestionRepetition</a></h2>
@@ -4052,9 +4481,6 @@ CaCORE ReferenceDocument object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A place to document additional information about Administered Components that is not readily stored elsewhere.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_referencedocument">ATTRIBUTES of ReferenceDocument</a></h2>
@@ -4167,12 +4593,11 @@ CaCORE ReferenceDocument object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_referencedocument">ASSOCIATIONS of ReferenceDocument</a></h2>
@@ -4231,9 +4656,6 @@ CaCORE Representation object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>Mechanism by which the functional and/or presentational category of an item maybe conveyed to a user. Component of a Data Element Name that describes how data are represented (i.e. the combination of a Value Domain, data type, and if necessary a unit of measure or a character set.)  The Representation occupies the last position in the Data Element name (i.e. rightmost).   Examples: Code - A system of valid symbols that substitute for specified values e.g. alpha, numeric, symbols and/or combinations. Count ? Non-monetary numeric value arrived at by counting. Currency ? Monetary representation. Date ? Calendar representation e.g. YYYY-MM-DD Graphic ? Diagrams, graphs, mathematical curves, or the like ? usually a vector image. Icon ? A sign or representation that stands for its object by virtue of a resemblance or analogy to it. Picture ? A visual representation of a person, object, or scene ? usually a raster image. Quantity ? A continuous number such as the linear dimensions, capacity/amount (non-monetary) of an object. Text ? A text field that is usually unformatted. Time ? Time of day or duration e.g. HH:MM:SS.SSSS.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_representation">ATTRIBUTES of Representation</a></h2>
@@ -4250,12 +4672,11 @@ CaCORE Representation object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_representation">ASSOCIATIONS of Representation</a></h2>
@@ -4303,9 +4724,6 @@ CaCORE TriggerAction object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>a
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_triggeraction">ATTRIBUTES of TriggerAction</a></h2>
@@ -4394,12 +4812,11 @@ CaCORE TriggerAction object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_triggeraction">ASSOCIATIONS of TriggerAction</a></h2>
@@ -4415,10 +4832,26 @@ CaCORE TriggerAction object.
 </p>
 </dd>
 </li>
+<dt><strong><a name="item_collection_of__2fenforcedcondition_3a">Collection of <a href="#enforcedcondition">EnforcedCondition</a>:</a></strong>
+
+<dd>
+<p>Many to one assoication, use <code>getEnforcedCondition</code> to get the associated EnforcedCondition.
+
+</p>
+</dd>
+</li>
 <dt><strong>Instance of <a href="#protocol">Protocol</a>:</strong>
 
 <dd>
 <p>One to many assoication, use <code>getProtocolCollection</code> to get a collection of associated Protocol.
+
+</p>
+</dd>
+</li>
+<dt><strong>Collection of <a href="#questioncondition">QuestionCondition</a>:</strong>
+
+<dd>
+<p>Many to one assoication, use <code>getQuestionCondition</code> to get the associated QuestionCondition.
 
 </p>
 </dd>
@@ -4466,9 +4899,6 @@ CaCORE ValidValue object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The allowable values for a given data element (question) on a Case Report Form.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_validvalue">ATTRIBUTES of ValidValue</a></h2>
@@ -4476,6 +4906,14 @@ CaCORE ValidValue object.
 
 </p>
 <dl>
+<dt><strong>description</strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
 <dt><strong>displayOrder</strong>
 
 <dd>
@@ -4484,13 +4922,20 @@ CaCORE ValidValue object.
 </p>
 </dd>
 </li>
-</dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<dt><strong><a name="item_meaningtext">meaningText</a></strong>
 
-</pre>
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+</dl>
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
+
+</p>
 <p>
 </p>
 <h2><a name="associations_of_validvalue">ASSOCIATIONS of ValidValue</a></h2>
@@ -4498,7 +4943,15 @@ CaCORE ValidValue object.
 
 </p>
 <dl>
-<dt><strong><a name="item_collection_of__2fquestion_3a">Collection of <a href="#question">Question</a>:</a></strong>
+<dt><strong>Instance of <a href="#conditioncomponent">ConditionComponent</a>:</strong>
+
+<dd>
+<p>One to many assoication, use <code>getConditionComponentCollection</code> to get a collection of associated ConditionComponent.
+
+</p>
+</dd>
+</li>
+<dt><strong>Collection of <a href="#question">Question</a>:</strong>
 
 <dd>
 <p>Many to one assoication, use <code>getQuestion</code> to get the associated Question.
@@ -4541,9 +4994,6 @@ CaCORE ValueDomain object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>A set of permissible values for a data element.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_valuedomain">ATTRIBUTES of ValueDomain</a></h2>
@@ -4567,7 +5017,39 @@ CaCORE ValueDomain object.
 </p>
 </dd>
 </li>
+<dt><strong><a name="item_datatypeannotation">datatypeAnnotation</a></strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong><a name="item_datatypedescription">datatypeDescription</a></strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong><a name="item_datatypeiscodegencompatible">datatypeIsCodegenCompatible</a></strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
 <dt><strong><a name="item_datatypename">datatypeName</a></strong>
+
+<dd>
+<p>data type: <code>string</code>
+
+</p>
+</dd>
+</li>
+<dt><strong><a name="item_datatypeschemereference">datatypeSchemeReference</a></strong>
 
 <dd>
 <p>data type: <code>string</code>
@@ -4624,12 +5106,11 @@ CaCORE ValueDomain object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_valuedomain">ASSOCIATIONS of ValueDomain</a></h2>
@@ -4717,9 +5198,6 @@ CaCORE ValueDomainPermissibleValue object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>This captures the many-to-many relationship between value domain and permissible values and allows to associate a value domain to a permissible value.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_valuedomainpermissiblevalue">ATTRIBUTES of ValueDomainPermissibleValue</a></h2>
@@ -4792,12 +5270,11 @@ CaCORE ValueDomainPermissibleValue object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_valuedomainpermissiblevalue">ASSOCIATIONS of ValueDomainPermissibleValue</a></h2>
@@ -4861,9 +5338,6 @@ CaCORE ValueDomainRelationship object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The affiliation between two occurrences of Value Domains.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_valuedomainrelationship">ATTRIBUTES of ValueDomainRelationship</a></h2>
@@ -4920,12 +5394,11 @@ CaCORE ValueDomainRelationship object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_valuedomainrelationship">ASSOCIATIONS of ValueDomainRelationship</a></h2>
@@ -4964,6 +5437,9 @@ CaCORE ValueDomainRelationship object.
 CaCORE ValueMeaning object.
 
 </p>
+<p>ValueMeaning extends from domain object <a href="#administeredcomponent">AdministeredComponent</a>.
+
+</p>
 <p>
 </p>
 <h2><a name="synopsis">SYNOPSIS</a></h2>
@@ -4973,9 +5449,6 @@ CaCORE ValueMeaning object.
 <p>
 </p>
 <h2><a name="description">DESCRIPTION</a></h2>
-<p>The significance associated with an allowable/permissible value.
-
-</p>
 <p>
 </p>
 <h2><a name="attributes_of_valuemeaning">ATTRIBUTES of ValueMeaning</a></h2>
@@ -4983,14 +5456,6 @@ CaCORE ValueMeaning object.
 
 </p>
 <dl>
-<dt><strong>beginDate</strong>
-
-<dd>
-<p>data type: <code>dateTime</code>
-
-</p>
-</dd>
-</li>
 <dt><strong>comments</strong>
 
 <dd>
@@ -4999,55 +5464,7 @@ CaCORE ValueMeaning object.
 </p>
 </dd>
 </li>
-<dt><strong>createdBy</strong>
-
-<dd>
-<p>data type: <code>string</code>
-
-</p>
-</dd>
-</li>
-<dt><strong>dateCreated</strong>
-
-<dd>
-<p>data type: <code>dateTime</code>
-
-</p>
-</dd>
-</li>
-<dt><strong>dateModified</strong>
-
-<dd>
-<p>data type: <code>dateTime</code>
-
-</p>
-</dd>
-</li>
 <dt><strong>description</strong>
-
-<dd>
-<p>data type: <code>string</code>
-
-</p>
-</dd>
-</li>
-<dt><strong>endDate</strong>
-
-<dd>
-<p>data type: <code>dateTime</code>
-
-</p>
-</dd>
-</li>
-<dt><strong>id</strong>
-
-<dd>
-<p>data type: <code>string</code>
-
-</p>
-</dd>
-</li>
-<dt><strong>modifiedBy</strong>
 
 <dd>
 <p>data type: <code>string</code>
@@ -5064,12 +5481,11 @@ CaCORE ValueMeaning object.
 </dd>
 </li>
 </dl>
-<pre>
-  Note: Although you can also use the corresponding setter methods to set the
-  attribute values, it is not recommended to do so unless you absolutely have
-  to change the object's attributes.
+<p>Note: Although you can also use the corresponding setter methods to set the
+attribute values, it is not recommended to do so unless you absolutely have
+to change the object's attributes.
 
-</pre>
+</p>
 <p>
 </p>
 <h2><a name="associations_of_valuemeaning">ASSOCIATIONS of ValueMeaning</a></h2>
@@ -5124,49 +5540,36 @@ support or report a bug.
 <p>The CaCORE Software License, Version 1.0
 
 </p>
-<pre>
-  Copyright 2001-2005 SAIC. This software was developed in conjunction with the
-  National Cancer Institute, and so to the extent government employees are co-authors,
-  any rights in such works shall be subject to Title 17 of the United States Code,
-  section 105. Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
+<p>Copyright 2001-2005 SAIC. This software was developed in conjunction with the National Cancer Institute, and so to the extent government employees are co-authors, any rights in such works shall be subject to Title 17 of the United States Code, section 105. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-</pre>
-<pre>
-  1. Redistributions of source code must retain the above copyright notice, this list
-     of conditions and the disclaimer of Article 5, below. Redistributions in binary 
-     form must reproduce the above copyright notice, this list of conditions and the
-     disclaimer of Article 5 in the documentation and/or other materials provided with
-     the distribution.
-   
-  2. The end-user documentation included with the redistribution, if any, must include
-     the following acknowledgment: &quot;This product includes software developed by SAIC and
-     the National Cancer Institute.&quot; If no such end-user documentation is to be included,
-     this acknowledgment shall appear in the software itself, wherever such third-party
-     acknowledgments normally appear.
-   
-  3. The names &quot;The National Cancer Institute&quot;, &quot;NCI&quot; and &quot;SAIC&quot; must not be used to
-     endorse or promote products derived from this software. This license does not
-     authorize the licensee to use any trademarks owned by either NCI or SAIC.
-   
-  4. This license does not authorize or prohibit the incorporation of this software into
-     any third party proprietary programs. Licensee is expressly made responsible for
-     obtaining any permission required to incorporate this software into third party
-     proprietary programs and for informing licensee's end-users of their obligation
-     to secure any required permissions before incorporating this software into third
-     party proprietary software programs.
-   
-  5. THIS SOFTWARE IS PROVIDED &quot;AS IS,&quot; AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING,
-     BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND
-     FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL
-     CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT,
-     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-     TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+</p>
+<ol>
+<li>
+<p>Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer of Article 5, below. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the disclaimer of Article 5 in the documentation and/or other materials provided with the distribution.
 
-</pre>
+</p>
+</li>
+<li>
+<p>The end-user documentation included with the redistribution, if any, must include the following acknowledgment: &quot;This product includes software developed by SAIC and the National Cancer Institute.&quot; If no such end-user documentation is to be included, this acknowledgment shall appear in the software itself, wherever such third-party acknowledgments normally appear.
+
+</p>
+</li>
+<li>
+<p>The names &quot;The National Cancer Institute&quot;, &quot;NCI&quot; and &quot;SAIC&quot; must not be used to endorse or promote products derived from this software. This license does not authorize the licensee to use any trademarks owned by either NCI or SAIC.
+
+</p>
+</li>
+<li>
+<p>This license does not authorize or prohibit the incorporation of this software into any third party proprietary programs. Licensee is expressly made responsible for obtaining any permission required to incorporate this software into third party proprietary programs and for informing licensee's end-users of their obligation to secure any required permissions before incorporating this software into third party proprietary software programs.
+
+</p>
+</li>
+<li>
+<p>THIS SOFTWARE IS PROVIDED &quot;AS IS,&quot; AND ANY EXPRESSED OR IMPLIED WARRANTIES, (INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE) ARE DISCLAIMED. IN NO EVENT SHALL THE NATIONAL CANCER INSTITUTE, SAIC, OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+</p>
+</li>
+</ol>
 
 </body>
 

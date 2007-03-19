@@ -8,6 +8,7 @@ use LWP::UserAgent;
 use HTTP::Request::Common;
 use CaCORE::ApplicationService;
 use CaCORE::CaBIO;
+use CaCORE::Security;
 use CaCORE::CaDSR;
 
 #
@@ -17,7 +18,7 @@ use CaCORE::CaDSR;
 # The URL being passed to the intance method is the service endpoint of the caCORE webservice.
 # If no such URL is provided in the program, it will default to the caCORE production server, "http://cabio.nci.nih.gov/cacore30/ws/caCOREService"
 #
-my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore31/ws/caCOREService");
+my $appsvc = CaCORE::ApplicationService->instance("http://cabio.nci.nih.gov/cacore32/ws/caCOREService");
 
 # test CaBIO 1: use ApplicationService
 # 
@@ -105,6 +106,7 @@ print "number of result: " . $num . "\n";
 print "test CaBIO 4: nested search\n";
 print "\tSearch for all genes that is associated with taxons that are associated with a given chromosome.\n";
 my @taxons;
+
 eval{
 	#
 	# In this call, we are telling the caCORE server that we have a Gene, we would like to retrieve
@@ -174,6 +176,32 @@ foreach my $a (@ctps){
 
 	}
 }
+# test CaBIO 7: Query by Big Id
+#
+print "test CaBIO 1: query by Big Id\n";
+
+# instantiate a SecurityToken domain object and sets the value of symbol attribute to NAT2.
+$gene = new CaCORE::CaBIO::Gene;
+$gene->setBigid("hdl://2500.1.PMEUQUCCL5/ONSXKL4KEL");
+
+# the eval...warn... construct is recommended, if error is encountered during webservice call, this will
+# trap the exception and allows for error handling, and prevent the program from exiting.
+eval{
+	#
+	# This call encapsulates the webservice invocation to the caCORE server, and converts
+	# the returned XML into list of Chromosome objects
+	# Parameter 1 indicates target class, Chromosome, to be retrieved
+	# Parameter 2 indicates search criteria. In this case, is the genes associated with the chromosome.
+	#
+	@chromos = $appsvc->queryObject("CaCORE::CaBIO::Chromosome", $gene);
+};
+warn "Test CaBIO 1 failed. Error:\n" . $@ if $@; # some exception handling
+
+# iterate thru results
+foreach my $chromo (@chromos){
+	print "Chromosome id=" . $chromo->getId . " number=" . $chromo->getNumber . "\n";
+}
+
 
 print "Test completed.\n";
 
